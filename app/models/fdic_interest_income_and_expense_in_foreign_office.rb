@@ -1,0 +1,2 @@
+class FdicInterestIncomeAndExpenseInForeignOffice < ApplicationRecord
+end

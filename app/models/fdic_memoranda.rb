@@ -1,0 +1,2 @@
+class FdicMemoranda < ApplicationRecord
+end

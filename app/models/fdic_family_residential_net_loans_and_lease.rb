@@ -1,0 +1,2 @@
+class FdicFamilyResidentialNetLoansAndLease < ApplicationRecord
+end

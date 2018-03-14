@@ -1,0 +1,2 @@
+class FdicLettersOfCredit < ApplicationRecord
+end

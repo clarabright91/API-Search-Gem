@@ -1,0 +1,2 @@
+class FdicNetchargeOffsToLoan < ApplicationRecord
+end

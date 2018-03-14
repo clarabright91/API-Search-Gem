@@ -1,0 +1,2 @@
+class FdicIncomeAndExpense < ApplicationRecord
+end

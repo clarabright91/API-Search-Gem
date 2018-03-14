@@ -1,0 +1,42 @@
+
+<%= form_for :dump, :url=>{:action=>"import_csv"}, :html => { :multipart => true, :id => 'import_csv' } do |f| %>
+  <table>
+    <tr>
+      <td>
+        <label for="dump_file">
+          Select a CSV File :
+        </label>
+      </td>
+      <td>
+        <%= f.file_field :file , required:true,label:false%>
+      </td>
+      <td>
+        <label for="model">
+          Select a Type :
+        </label>
+      </td>
+      <td>
+        <%= select_tag "model", options_for_select([["Loan Officers","LoanOfficer"],["Institutions","Institution"],["Factual Mortgage companies","Factual Mortgage companies"],["Cities","Cities"],['FdicFamilyResidentialNetLoansAndLeases','FdicFamilyResidentialNetLoansAndLeases'],['FdicAdditionalNonInterestExpense','FdicAdditionalNonInterestExpense'],['FdicAdditionalNonInterestIncome','FdicAdditionalNonInterestIncome'],['FdicAmountOfOwnershipSellerInterest','FdicAmountOfOwnershipSellerInterest'],['FdicAssetsAndLiability', 'FdicAssetsAndLiability'],['FdicBankAssetsSoldAndSecuritized','FdicBankAssetsSoldAndSecuritized'],['FdicCarryingAmountOfAssetsCoveredByFdicLossShareAgreement', 'FdicCarryingAmountOfAssetsCoveredByFdicLossShareAgreement'],['FdicCashAndBalancesDue', 'FdicCashAndBalancesDue'],['FdicCashDividend','FdicCashDividend'],['FdicChangesInBankEquityCapital','FdicChangesInBankEquityCapital'],['FdicCollectiveInvestmentCommonTrustFund','FdicCollectiveInvestmentCommonTrustFund'],['FdicCorporateTrustAndAgencyAccount','FdicCorporateTrustAndAgencyAccount'],['FdicDepositsBasedOnTheDollar100000ReportingThreshold','FdicDepositsBasedOnTheDollar100000ReportingThreshold'],['FdicDepositsBasedOnTheDollar250000ReportingThreshold','FdicDepositsBasedOnTheDollar250000ReportingThreshold'],['FdicDepositsHeldInForeignOffice','FdicDepositsHeldInForeignOffice'],['FdicDerivative','FdicDerivative'],['FdicFiduciaryAndRelatedService','FdicFiduciaryAndRelatedService'],['FdicFiduciarySettlementsSurchargesAndOtherLoss','FdicFiduciarySettlementsSurchargesAndOtherLoss'],['FdicGoodwillAndOtherIntangible','FdicGoodwillAndOtherIntangible'],['FdicGrossFiduciaryAndRelatedServicesIncome','FdicGrossFiduciaryAndRelatedServicesIncome'],['FdicIncomeAndExpense','FdicIncomeAndExpense'],['FdicInterestIncomeAndExpenseInForeignOffice','FdicInterestIncomeAndExpenseInForeignOffice'],['FdicLettersOfCredit','FdicLettersOfCredit'],['FdicLoanChargeOffsAndRecovery','FdicLoanChargeOffsAndRecovery'],['FdicLoansRestructuredInTroubledDebtRestructuring','FdicLoansRestructuredInTroubledDebtRestructuring'],['FdicLoansToDepositoryInstitution','FdicLoansToDepositoryInstitution'],['FdicMaturityRepricingForLoansAndLease','FdicMaturityRepricingForLoansAndLease'],['FdicMaximumAmountOfCreditExposureRetained','FdicMaximumAmountOfCreditExposureRetained'],['FdicMemoranda','FdicMemoranda'],['FdicNetChargeOffs1To4FamilyResidential','FdicNetChargeOffs1To4FamilyResidential'],['FdicNetchargeOffsToLoan','FdicNetchargeOffsToLoan'],['FdicNetLoansAndLease','FdicNetLoansAndLease'],['FdicNonaccrual1To4FamilyResidential','FdicNonaccrual1To4FamilyResidential'],['FdicNoncurrentLoansToLoan','FdicNoncurrentLoansToLoan'],['FdicNonTransactionAccount','FdicNonTransactionAccount'],['FdicNumberOfFiduciaryAndRelatedAssetAccount','FdicNumberOfFiduciaryAndRelatedAssetAccount'],['FdicOtherRealEstateOwned','FdicOtherRealEstateOwned'],['FdicPastDue30To89Days1To4FamilyResidential','FdicPastDue30To89Days1To4FamilyResidential'],['FdicPastDue90PlusDays1To4FamilyResidential','FdicPastDue90PlusDays1To4FamilyResidential'],['FdicPastDueAndNonaccrualAsset','FdicPastDueAndNonaccrualAsset'],['FdicPastDueNonaccrualLoansWhollyPartiallyUSGvmtGuaranteed','FdicPastDueNonaccrualLoansWhollyPartiallyUSGvmtGuaranteed'],['FdicPerformanceAndConditionRatio','FdicPerformanceAndConditionRatio']]),{include_blank: "Select a Type", required: true}%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= submit_tag 'Submit' %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<style>
+  #import_csv td {
+    position: relative;
+  }
+  #import_csv label.error {
+    position: absolute;
+    left: 5px;
+    bottom: -13px;
+    font-weight: normal;
+    color: red;
+    text-transform: none !important;
+  }  
+</style>

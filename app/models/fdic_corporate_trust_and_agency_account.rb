@@ -1,0 +1,2 @@
+class FdicCorporateTrustAndAgencyAccount < ApplicationRecord
+end

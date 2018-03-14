@@ -1,0 +1,2 @@
+class FdicLoansRestructuredInTroubledDebtRestructuring < ApplicationRecord
+end

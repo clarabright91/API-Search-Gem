@@ -1,0 +1,2 @@
+class FdicNonTransactionAccount < ApplicationRecord
+end

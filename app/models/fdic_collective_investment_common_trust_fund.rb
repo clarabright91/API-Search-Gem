@@ -1,0 +1,2 @@
+class FdicCollectiveInvestmentCommonTrustFund < ApplicationRecord
+end

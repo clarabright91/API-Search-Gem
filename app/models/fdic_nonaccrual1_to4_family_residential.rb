@@ -1,0 +1,2 @@
+class FdicNonaccrual1To4FamilyResidential < ApplicationRecord
+end

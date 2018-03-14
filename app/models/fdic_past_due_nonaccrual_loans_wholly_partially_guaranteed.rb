@@ -1,0 +1,2 @@
+class FdicPastDueNonaccrualLoansWhollyPartiallyGuaranteed < ApplicationRecord
+end

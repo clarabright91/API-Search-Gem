@@ -1,0 +1,2 @@
+class FdicCarryingAmountOfAssetsCoveredByFdicLossShareAgreement < ApplicationRecord
+end

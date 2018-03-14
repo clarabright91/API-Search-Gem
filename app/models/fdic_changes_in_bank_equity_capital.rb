@@ -1,0 +1,2 @@
+class FdicChangesInBankEquityCapital < ApplicationRecord
+end

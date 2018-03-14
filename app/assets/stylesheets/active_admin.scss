@@ -1,0 +1,82 @@
+// SASS variable overrides must be declared before loading up Active Admin's styles.
+//
+// To view the variables that Active Admin provides, take a look at
+// `app/assets/stylesheets/active_admin/mixins/_variables.scss` in the
+// Active Admin source.
+//
+// For example, to change the sidebar width:
+// $sidebar-width: 242px;
+
+// Active Admin's got SASS!
+@import "active_admin/mixins";
+@import "active_admin/base";
+$skinLogo: url("admin_logo.png") no-repeat 0 0;
+$skinActiveColor: #3393ff;
+
+
+@import "active_skin";
+
+// Overriding any non-variable SASS must be done after the fact.
+// For example, to change the default status-tag color:
+//
+//   .status_tag { background: #6090DB; }
+#header h1.site_title {
+    background: #fff !important;
+    padding: 0;
+    color: #1e2a33;
+    text-indent: -999999px;
+    float: left;
+    width: 150px;
+    margin: 0;
+}
+#header h1 img {
+    position: relative;
+    top: 0;
+    float: left;
+    width: 130px;
+    margin: 9px 0 0 8px;
+}
+form fieldset > ol > li {
+    position: relative;
+    float: left;
+    width: 98%;
+    margin: 0;
+    padding: 1%;
+}
+label.error {
+    position: absolute;
+    left: 21%;
+    bottom: -5px;
+    font-weight: normal;
+    color: red !important;
+    text-transform: none !important;
+}
+form fieldset > ol > li.action, form fieldset > ol > li.cancel {
+    width: auto;
+}
+
+
+.attributes_table table th { font-size: 13px !important; text-transform: none !important; color: #000 !important; font-weight:600;}
+.attributes_table table th, .attributes_table table td { color: #4e4e4e; font-size: 13px;}
+table.index_table td { color: #4e4e4e;}
+
+.filter_form select {
+    border: 1px solid #c9d0d6;
+    background: none;
+    padding: 5px 10px 5px 0 !important;
+    font-size: 13px !important;
+    float:left;
+}
+
+.filter_form input {
+    border: 1px solid #c9d0d6;
+    background: none;
+    padding: 7px 10px 5px 10px !important;
+    font-size: 13px !important;
+}
+.filter_form a.clear_filters_btn {
+    padding: 5px 10px !important;
+    position: relative;
+    top: -2px;
+}
+label{ font-size: 13px !important; text-transform: none !important; color: #000 !important; font-weight:600;}

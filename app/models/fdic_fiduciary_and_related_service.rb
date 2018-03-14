@@ -1,0 +1,2 @@
+class FdicFiduciaryAndRelatedService < ApplicationRecord
+end
