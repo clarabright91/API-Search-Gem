@@ -1,2 +1,0 @@
-class FdicBankAssetsSoldAndSecuritized < ApplicationRecord
-end

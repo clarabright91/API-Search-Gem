@@ -1,2 +1,0 @@
-class FdicNoncurrentLoansToLoan < ApplicationRecord
-end

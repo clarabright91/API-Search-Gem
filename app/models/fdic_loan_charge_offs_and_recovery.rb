@@ -1,2 +1,0 @@
-class FdicLoanChargeOffsAndRecovery < ApplicationRecord
-end

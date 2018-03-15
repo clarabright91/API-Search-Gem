@@ -1,2 +1,0 @@
-class FdicCorporateTrustAndAgencyAccount < ApplicationRecord
-end

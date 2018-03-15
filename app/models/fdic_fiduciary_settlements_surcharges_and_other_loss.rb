@@ -1,2 +1,0 @@
-class FdicFiduciarySettlementsSurchargesAndOtherLoss < ApplicationRecord
-end

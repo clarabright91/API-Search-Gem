@@ -1,2 +1,0 @@
-class FdicPastDueAndNonaccrualAsset < ApplicationRecord
-end

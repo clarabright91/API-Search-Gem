@@ -1,2 +1,0 @@
-class FdicPerformanceAndConditionRatio < ApplicationRecord
-end

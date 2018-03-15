@@ -1,2 +1,0 @@
-class FdicNumberOfFiduciaryAndRelatedAssetAccount < ApplicationRecord
-end

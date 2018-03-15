@@ -1,2 +1,0 @@
-class FdicLettersOfCredit < ApplicationRecord
-end

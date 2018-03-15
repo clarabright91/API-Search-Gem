@@ -1,2 +1,0 @@
-class FdicDepositsHeldInForeignOffice < ApplicationRecord
-end

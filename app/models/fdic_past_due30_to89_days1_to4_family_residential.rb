@@ -1,2 +1,0 @@
-class FdicPastDue30To89Days1To4FamilyResidential < ApplicationRecord
-end

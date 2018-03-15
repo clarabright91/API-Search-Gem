@@ -1,6 +1,0 @@
-/tmp/
-/log/
-.byebug_history
-log/development.log
-db/schema.rb
-config/database.yml

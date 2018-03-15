@@ -1,2 +1,0 @@
-class FdicMaximumAmountOfCreditExposureRetained < ApplicationRecord
-end
