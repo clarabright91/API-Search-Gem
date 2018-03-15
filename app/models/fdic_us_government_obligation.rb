@@ -1,0 +1,2 @@
+class FdicUsGovernmentObligation < ApplicationRecord
+end

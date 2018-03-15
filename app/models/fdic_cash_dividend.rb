@@ -1,0 +1,2 @@
+class FdicCashDividend < ApplicationRecord
+end

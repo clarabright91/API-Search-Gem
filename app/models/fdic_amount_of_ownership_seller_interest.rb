@@ -1,0 +1,2 @@
+class FdicAmountOfOwnershipSellerInterest < ApplicationRecord
+end

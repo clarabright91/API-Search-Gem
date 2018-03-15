@@ -1,0 +1,2 @@
+class FdicTotalInterestIncome < ApplicationRecord
+end

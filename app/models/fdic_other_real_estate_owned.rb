@@ -1,0 +1,2 @@
+class FdicOtherRealEstateOwned < ApplicationRecord
+end

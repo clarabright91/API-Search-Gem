@@ -1,0 +1,77 @@
+class CreateFdicSmallBusinessLoans < ActiveRecord::Migration[5.1]
+  def change
+    create_table :fdic_small_business_loans do |t|
+      t.integer :cert
+      t.integer :docket
+      t.integer :fed_rssd
+      t.integer :rssdhcr
+      t.string :name
+      t.string :city
+      t.string :stalp
+      t.integer :zip
+      t.string :repdte
+      t.string :rundate
+      t.string :bkclass
+      t.string :address
+      t.string :namehcr
+      t.integer :offdom
+      t.integer :offfor
+      t.integer :stmult
+      t.integer :specgrp
+      t.integer :subchaps
+      t.string :county
+      t.integer :cbsa_metro
+      t.string :cbsa_metro_name
+      t.string :estymd
+      t.string :insdate
+      t.string :effdate
+      t.string :mutual
+      t.integer :parcert
+      t.integer :trust
+      t.string :regagnt
+      t.string :insagnt1
+      t.string :fdicdbs
+      t.string :fdicsupv
+      t.string :fldoff
+      t.string :fed
+      t.string :occdist
+      t.string :otsregnm
+      t.integer :offoa
+      t.integer :cb
+      t.string :inst_webaddr
+      t.integer :lnrenr4
+      t.integer :lnrenr1
+      t.integer :lnrenr2
+      t.integer :lnrenr3
+      t.integer :lnci4
+      t.integer :lnci1
+      t.integer :lnci2
+      t.integer :lnci3
+      t.integer :lnreag4
+      t.integer :lnreag1
+      t.integer :lnreag2
+      t.integer :lnreag3
+      t.integer :lnag4
+      t.integer :lnag1
+      t.integer :lnag2
+      t.integer :lnag3
+      t.integer :lnrenr4n
+      t.integer :lnrenr1n
+      t.integer :lnrenr2n
+      t.integer :lnrenr3n
+      t.integer :lnci4n
+      t.integer :lnci1n
+      t.integer :lnci2n
+      t.integer :lnci3n
+      t.integer :lnreag4n
+      t.integer :lnreag1n
+      t.integer :lnreag2n
+      t.integer :lnreag3n
+      t.integer :lnag4n
+      t.integer :lnag1n
+      t.integer :lnag2n
+      t.integer :lnag3n
+      t.timestamps
+    end
+  end
+end

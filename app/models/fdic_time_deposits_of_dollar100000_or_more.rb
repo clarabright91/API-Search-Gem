@@ -1,0 +1,2 @@
+class FdicTimeDepositsOfDollar100000OrMore < ApplicationRecord
+end

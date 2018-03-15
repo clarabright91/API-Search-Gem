@@ -1,0 +1,2 @@
+class FdicDerivative < ApplicationRecord
+end

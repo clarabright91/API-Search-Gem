@@ -1,0 +1,2 @@
+class FdicTotalRecoveries1To4FamilyResidential < ApplicationRecord
+end

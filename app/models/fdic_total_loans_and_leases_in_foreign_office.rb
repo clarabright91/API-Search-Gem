@@ -1,0 +1,2 @@
+class FdicTotalLoansAndLeasesInForeignOffice < ApplicationRecord
+end

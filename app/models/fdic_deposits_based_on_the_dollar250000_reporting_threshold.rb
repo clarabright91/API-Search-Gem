@@ -1,0 +1,2 @@
+class FdicDepositsBasedOnTheDollar250000ReportingThreshold < ApplicationRecord
+end

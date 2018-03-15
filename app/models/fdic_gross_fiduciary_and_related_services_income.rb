@@ -1,0 +1,2 @@
+class FdicGrossFiduciaryAndRelatedServicesIncome < ApplicationRecord
+end

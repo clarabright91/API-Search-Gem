@@ -1,0 +1,71 @@
+class CreateFdicTotalDeposits < ActiveRecord::Migration[5.1]
+  def change
+    create_table :fdic_total_deposits do |t|
+      t.integer :cert
+      t.integer :docket
+      t.integer :fed_rssd
+      t.integer :rssdhcr
+      t.string :name
+      t.string :city
+      t.string :stalp
+      t.integer :zip
+      t.string :repdte
+      t.string :rundate
+      t.string :bkclass
+      t.string :address
+      t.string :namehcr
+      t.integer :offdom
+      t.integer :offfor
+      t.integer :stmult
+      t.integer :specgrp
+      t.integer :subchaps
+      t.string :county
+      t.integer :cbsa_metro
+      t.string :cbsa_metro_name
+      t.string :estymd
+      t.string :insdate
+      t.string :effdate
+      t.string :mutual
+      t.integer :parcert
+      t.integer :trust
+      t.string :regagnt
+      t.string :insagnt1
+      t.string :fdicdbs
+      t.string :fdicsupv
+      t.string :fldoff
+      t.string :fed
+      t.string :occdist
+      t.string :otsregnm
+      t.integer :offoa
+      t.integer :cb
+      t.string :inst_webaddr
+      t.integer :dep
+      t.integer :depdom
+      t.integer :idtrni
+      t.integer :idtrngov
+      t.integer :idtrnmu
+      t.integer :idtrcomb
+      t.integer :idtrnfc
+      t.integer :idtrnfg
+      t.integer :depfor
+      t.integer :trn
+      t.integer :ddt
+      t.integer :ntr
+      t.integer :ntrsmmda
+      t.integer :ntrsoth
+      t.integer :ntrtime
+      t.integer :ts
+      t.integer :depnidom
+      t.integer :depidom
+      t.integer :coredep
+      t.integer :depins
+      t.integer :irakeogh
+      t.integer :bro
+      t.integer :broins
+      t.integer :deplsnb
+      t.integer :depnifor
+      t.integer :depifor
+      t.timestamps
+    end
+  end
+end

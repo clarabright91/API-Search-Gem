@@ -1,0 +1,2 @@
+class FdicGoodwillAndOtherIntangible < ApplicationRecord
+end

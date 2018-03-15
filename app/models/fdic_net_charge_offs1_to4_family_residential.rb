@@ -1,0 +1,2 @@
+class FdicNetChargeOffs1To4FamilyResidential < ApplicationRecord
+end

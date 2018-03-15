@@ -1,0 +1,2 @@
+class FdicSmallBusinessLoan < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class FdicSecurity < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class FdicTotalManagedAssetsHeldInFiduciaryAccount < ApplicationRecord
+end

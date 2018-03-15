@@ -1,0 +1,2 @@
+class FdicLoansToDepositoryInstitution < ApplicationRecord
+end

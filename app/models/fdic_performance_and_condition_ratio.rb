@@ -1,0 +1,2 @@
+class FdicPerformanceAndConditionRatio < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class FdicAdditionalNonInterestExpense < ApplicationRecord
+end

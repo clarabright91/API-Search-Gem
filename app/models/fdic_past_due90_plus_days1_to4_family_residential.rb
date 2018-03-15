@@ -1,0 +1,2 @@
+class FdicPastDue90PlusDays1To4FamilyResidential < ApplicationRecord
+end

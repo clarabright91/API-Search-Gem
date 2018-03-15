@@ -1,0 +1,2 @@
+class FdicUnusedCommitment < ApplicationRecord
+end

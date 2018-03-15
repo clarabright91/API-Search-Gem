@@ -1,0 +1,2 @@
+class FdicTradingAccountGainsFee < ApplicationRecord
+end
