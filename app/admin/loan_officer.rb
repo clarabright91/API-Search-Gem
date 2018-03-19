@@ -1,9 +1,9 @@
 ActiveAdmin.register LoanOfficer do
-  permit_params :first,:last,:title,:company,:address,:city,:state,:zip,:county,:phone1,:phone2,:cell,:website,:email,:latitude,:longitude  
+  # Permitting Strong parameters
+  permit_params :first,:last,:title,:company,:address,:city,:state,:zip,:county,:phone1,:phone2,:cell,:website,:email,:latitude,:longitude
 
   index do
     selectable_column
-    id_column
     column :first
     column :last
     column :email
@@ -15,8 +15,7 @@ ActiveAdmin.register LoanOfficer do
   filter :last
   filter :email
   filter :phone1
-  filter :created_at  
-
+  filter :created_at
 
   form do |f|
     f.inputs 'LoanOfficer' do
@@ -35,10 +34,8 @@ ActiveAdmin.register LoanOfficer do
       f.input :website
       f.input :email
       f.input :latitude
-      f.input :longitude  
+      f.input :longitude
     end
-
     f.actions
   end
-
 end

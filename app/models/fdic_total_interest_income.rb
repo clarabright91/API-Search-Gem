@@ -1,2 +1,0 @@
-class FdicTotalInterestIncome < ApplicationRecord
-end

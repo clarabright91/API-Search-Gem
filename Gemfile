@@ -58,6 +58,9 @@ gem 'sidekiq', '~> 5.1', '>= 5.1.1'
 
 #gem 'geocoder', '~> 1.4', '>= 1.4.6'
 
+# gem for editor
+gem 'ckeditor'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

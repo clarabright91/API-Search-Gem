@@ -2,12 +2,12 @@
 
  $(document).ready(function() {
   // "use strict"
-  
+
   $("#new_user,#edit_user").validate({
     rules: {
       "user[first_name]":{
         required: true
-      }, 
+      },
       "user[email]":{
         //required: true,
         required: {
@@ -25,12 +25,12 @@
       "user[password_confirmation]":{
         required: true,
         minlength: 6,
-        //equalTo: '#user_password' 
+        //equalTo: '#user_password'
       },
       "user[phone_number]":{
         required: true,
         minlength: 10,
-        maxlength: 15 
+        maxlength: 15
       },
       "user[zip_code]":{
         required: true,
@@ -56,14 +56,14 @@
         "user[email]":{
         required: "Please enter email address.",
         email: "Please enter valid email address.",
-      }, 
+      },
        "user[password]":{
         required: "Please enter a password.",
         minlength: "Your password must be at least 6 characters long."
       },
       "user[password_confirmation]":{
         required: "Please enter confirm password.",
-        minlength: "Your confirm password must be at least 6 characters long." 
+        minlength: "Your confirm password must be at least 6 characters long."
       },
       "user[phone_number]":{
         required: "Please enter phone number.",
@@ -87,27 +87,6 @@
      }
   });
 
-  $('#new_admin_gender, #edit_admin_gender').validate({
-    rules: {
-      "admin_gender[name]":{
-        required: true
-        }, 
-
-      "admin_gender[body]":{
-          required: true
-        }  
-      },
-    messages: {
-        "admin_gender[name]":{
-          required: "Please select gender."
-        },
-        "admin_gender[body]":{
-          required: "Please enter body."
-        }
-    }  
-
-  })
-
   $('#new_expert, #edit_expert').validate({
     rules: {
       "expert[first_name]":{
@@ -119,7 +98,7 @@
       "expert[phone]":{
         required: true,
         minlength: 10,
-        maxlength: 15 
+        maxlength: 15
       },
       "expert[email]":{
         required: true,
@@ -163,7 +142,7 @@
           },
           "expert[website]":{
             required: "Please enter website."
-          }             
+          }
      }
   })
 
@@ -179,7 +158,7 @@ $('#new_admin_user, #edit_admin_user').validate({
       },
       "admin_user[password_confirmation]":{
         required: true,
-        minlength: 6 
+        minlength: 6
       }
     },
     messages: {
@@ -192,12 +171,12 @@ $('#new_admin_user, #edit_admin_user').validate({
       },
       "admin_user[password_confirmation]":{
         required: "Please enter confirm password.",
-        minlength: "Your password must be at least 6 characters long." 
+        minlength: "Your password must be at least 6 characters long."
       }
     }
   })
-  
-  
+
+
   $('#import_csv').validate({
     rules: {
       "dump[file]":{
@@ -412,7 +391,7 @@ $('#new_admin_user, #edit_admin_user').validate({
       },
       "factual_mortgage_company[email]":{
         email: "Please enter valid email."
-      }, 
+      },
     }
   })
 
@@ -866,6 +845,5 @@ $('#new_institution,#edit_institution').validate({
     },
   }
 })
-
 
 });

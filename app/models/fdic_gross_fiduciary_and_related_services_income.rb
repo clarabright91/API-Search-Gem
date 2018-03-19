@@ -1,2 +1,0 @@
-class FdicGrossFiduciaryAndRelatedServicesIncome < ApplicationRecord
-end

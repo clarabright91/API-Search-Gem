@@ -1,0 +1,16 @@
+<!-- Mailer for sending queries to admin email -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Hi Admin</h3>
+      <b><u>Query Details: </b></u> <br/>
+        Name: <b> <%= @query[:name] %> </b> <br/>
+        Email: <i> <%= @query[:email]%> </i> <br/>
+        <p>
+        Question:  <%= @query[:question]%>
+        </p>
+  </body>
+</html>

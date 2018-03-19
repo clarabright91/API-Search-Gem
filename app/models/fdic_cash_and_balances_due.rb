@@ -1,2 +1,0 @@
-class FdicCashAndBalancesDue < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class FdicDepositsBasedOnTheDollar100000ReportingThreshold < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class FdicMaturityRepricingForLoansAndLease < ApplicationRecord
-end

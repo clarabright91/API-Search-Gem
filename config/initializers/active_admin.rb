@@ -203,7 +203,7 @@ config.register_javascript 'https://www.google.com/jsapi'
      config.register_javascript 'jquery.validate.js'
      config.register_javascript 'additional-methods.js'
      config.register_javascript 'custom_validation.js'
-
+     config.register_javascript 'ckeditor/init.js'
   # == CSV options
   #
   # Set the CSV builder separator

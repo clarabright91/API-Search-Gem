@@ -1,2 +1,0 @@
-class FdicTotalAssetsAndLiabilitiesInForeignOffice < ApplicationRecord
-end

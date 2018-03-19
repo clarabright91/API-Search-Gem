@@ -1,2 +1,0 @@
-class FdicTimeDepositsOfLessThanDollar100000 < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class FdicTotalInterestExpense < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class FdicInterestIncomeAndExpenseInForeignOffice < ApplicationRecord
-end

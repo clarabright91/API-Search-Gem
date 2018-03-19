@@ -1,2 +1,0 @@
-class FdicTotalDebtSecurity < ApplicationRecord
-end

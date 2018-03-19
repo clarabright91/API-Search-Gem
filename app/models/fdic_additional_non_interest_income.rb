@@ -1,2 +1,0 @@
-class FdicAdditionalNonInterestIncome < ApplicationRecord
-end

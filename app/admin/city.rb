@@ -1,9 +1,9 @@
 ActiveAdmin.register City do
+  # Permitting Strong parameters
   permit_params :city,:state_code,:zip,:latitude,:longitude,:county
 
   index do
     selectable_column
-    id_column
     column :city
     column :state_code
     column :zip
@@ -18,7 +18,7 @@ ActiveAdmin.register City do
   filter :zip
   filter :latitude
   filter :longitude
-  filter :created_at  
+  filter :created_at
 
   form do |f|
     f.inputs 'City' do
@@ -29,8 +29,6 @@ ActiveAdmin.register City do
       f.input :longitude
       f.input :county
     end
-
     f.actions
   end
-
 end

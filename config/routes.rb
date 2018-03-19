@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -12,14 +12,12 @@ Rails.application.routes.draw do
   # end
 
   root 'pages#index'
-
+  post '/contact_us_email', to: 'pages#contact_us_email'
   get '/change_status', to: 'pages#change_status'
   get '/activate', to: 'pages#user_mass_activate'
   get '/deactivate', to: 'pages#user_mass_deactivate'
-
-  resources :loan_officers do
-    collection { post :import }
-  end
+  # for dynamic cmspages
+  CmsPage.load                      if CmsPage.present?
   #root to: 'activity#mine'
 
 

@@ -1,9 +1,9 @@
 ActiveAdmin.register FactualMortgageCompany do
+  # Permitting Strong parameters
   permit_params :factual_id,:name,:address,:address_extended,:city,:state,:zip,:country,:neighborhoods,:latitude,:longitude,:phone,:fax,:email,:website,:hours,:hours_display,:citysearch1_id,:citysearch1_url,:citysearch1_description,:citysearch1_reviews,:citysearch2_id,:citysearch2_url,:citysearch2_description,:citysearch2_reviews,:citysearch3_id,:citysearch3_url,:citysearch3_description,:citysearch3_reviews,:facebook1_id,:facebook1_url,:facebook1_description,:facebook1_profile,:facebook2_id,:facebook2_url,:facebook2_description,:facebook2_profile,:facebook3_id,:facebook3_url,:facebook3_description,:facebook3_profile,:foursquare1_id,:foursquare1_url,:foursquare1_description,:foursquare2_id,:foursquare2_url,:foursquare2_description,:foursquare3_id,:foursquare3_url,:foursquare3_description,:insiderpages1_id,:insiderpages1_url,:insiderpages1_description,:insiderpages2_id,:insiderpages2_url,:insiderpages2_description,:insiderpages3_id,:insiderpages3_url,:insiderpages3_description,:instagram1_id,:instagram1_url,:instagram1_description,:instagram2_id,:instagram2_url,:instagram2_description,:instagram3_id,:instagram3_url,:instagram3_description,:superpages1_id,:superpages1_url,:superpages1_description,:superpages1_reviews,:superpages2_id,:superpages2_url,:superpages2_description,:superpages2_reviews,:superpages3_id,:superpages3_url,:superpages3_description,:superpages3_reviews,:twitter1_id,:twitter1_url,:twitter1_description,:twitter2_id,:twitter2_url,:twitter2_description,:twitter3_id,:twitter3_url,:twitter3_description,:wikipedia1_id,:wikipedia1_url,:wikipedia1_description,:wikipedia2_id,:wikipedia2_url,:wikipedia2_description,:wikipedia3_id,:wikipedia3_url,:wikipedia3_description,:yahoolocal1_id,:yahoolocal1_url,:yahoolocal1_description,:yahoolocal1_reviews,:yahoolocal2_id,:yahoolocal2_url,:yahoolocal2_description,:yahoolocal2_reviews,:yahoolocal3_id,:yahoolocal3_url,:yahoolocal3_description,:yahoolocal3_reviews,:yellowpages1_id,:yellowpages1_url,:yellowpages1_description,:yellowpages2_id,:yellowpages2_url,:yellowpages2_description,:yellowpages3_id,:yellowpages3_url,:yellowpages3_description,:yelp1_id,:yelp1_url,:yelp1_description,:yelp1_reviews,:yelp2_id,:yelp2_url,:yelp2_description,:yelp2_reviews,:yelp3_id,:yelp3_url,:yelp3_description,:yelp3_reviews
 
   index do
     selectable_column
-    id_column
     column :name
     column :phone
     column :address
@@ -16,8 +16,6 @@ ActiveAdmin.register FactualMortgageCompany do
   filter :phone
   filter :address
   filter :city
-  #filter :created_at  
-
 
   form do |f|
     f.inputs 'FactualMortgageCompany' do
@@ -153,8 +151,6 @@ ActiveAdmin.register FactualMortgageCompany do
     f.input :yelp3_description
     f.input :yelp3_reviews
     end
-
     f.actions
   end
-
 end
