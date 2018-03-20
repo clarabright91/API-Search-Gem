@@ -23,5 +23,4 @@ class CmsPage < ApplicationRecord
   def reload_routes
     CmsPage.reload
   end
-
 end

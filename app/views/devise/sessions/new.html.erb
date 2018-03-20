@@ -1,16 +1,22 @@
+<%#=begin
+form:           change password
+Developer:      Varun
+Created:        22-02-2018
+Purpose:        sign in
+Params:         email password
+Return:         hash
+=end %>
 <section class="content-main login-page">
 	<div class="container">
 		<h1>Sign In</h1>
-		<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'sign_in_form'}) do |f| %>	
-			
-			<%- flash.each do |name, msg| -%>  <!-- Custom error message for devise  --> 
+		<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'sign_in_form'}) do |f| %>
+			<%- flash.each do |name, msg| -%>  <!-- Custom error message for devise  -->
 			  <div class="col-md-offset-3 col-md-6 alert alert-danger" style="height: 5%;">
 			      <button type="button" class="close" data-dismiss="alert">x</button>
 			      <%=msg%>
 			    </div>
 			<%- end -%>
 			<%= devise_error_messages! %>
-			
 		<div class="login-page-cntnt">
 		 <div class="login-rows">
 			 <%= image_tag("login-user.png", :alt => "User") %>
@@ -21,9 +27,9 @@
 		 <%= image_tag("login-pass.png", :alt => "Password") %>
 		 <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
 		 </div>
-		 <div class="login-rows cntnt-login">								 
+		 <div class="login-rows cntnt-login">
 			<%= f.submit "Sign In", class: "login-page-btn" %>
-			<div class="forgot-signup-links">			   
+			<div class="forgot-signup-links">
 			   <%= link_to "Forgot Password", new_user_password_path %>
 			   or
 			   <%= link_to "Sign up Now", new_registration_path(resource_name), class: "signup-link-clr" %>

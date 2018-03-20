@@ -1,17 +1,17 @@
 class CreateFactualMortgageCompanies < ActiveRecord::Migration[5.1]
   def change
     create_table :factual_mortgage_companies do |t|
-      t.string :factual_id
+      t.string :factual_id, index: { unique: true }
       t.string :name
       t.string :address
       t.string :address_extended
-      t.string :city
-      t.string :state
-      t.string :zip
+      t.string :city, index: true
+      t.string :state, index: true
+      t.integer :zip
       t.string :country
       t.string :neighborhoods
-      t.string :latitude
-      t.string :longitude
+      t.float :latitude
+      t.float :longitude
       t.string :phone
       t.string :fax
       t.string :email

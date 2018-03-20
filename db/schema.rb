@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319065656) do
+ActiveRecord::Schema.define(version: 20180320065154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,13 +35,15 @@ ActiveRecord::Schema.define(version: 20180319065656) do
   create_table "cities", force: :cascade do |t|
     t.string "city"
     t.string "state_code"
-    t.string "zip"
+    t.integer "zip"
     t.float "latitude"
     t.float "longitude"
     t.string "county"
-    t.datetime "updated_at"
-    t.datetime "created_at"
-    t.index ["latitude", "longitude", "state_code"], name: "index_cities_on_latitude_and_longitude_and_state_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["latitude"], name: "index_cities_on_latitude"
+    t.index ["longitude"], name: "index_cities_on_longitude"
+    t.index ["state_code"], name: "index_cities_on_state_code"
     t.index ["zip"], name: "index_cities_on_zip", unique: true
   end
 
@@ -61,23 +63,24 @@ ActiveRecord::Schema.define(version: 20180319065656) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
-    t.string "email", default: "", null: false
+    t.string "email", null: false
     t.string "state"
     t.string "city"
     t.string "license_number"
     t.string "specialty"
     t.string "website"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "loan_type"
-    t.integer "zip"
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.integer "zip"
+    t.integer "loan_type"
     t.boolean "verified", default: false
-    t.index ["city", "state"], name: "index_experts_on_city_and_state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_experts_on_city"
     t.index ["email"], name: "index_experts_on_email", unique: true
+    t.index ["state"], name: "index_experts_on_state"
   end
 
   create_table "factual_mortgage_companies", force: :cascade do |t|
@@ -87,7 +90,7 @@ ActiveRecord::Schema.define(version: 20180319065656) do
     t.string "address_extended"
     t.string "city"
     t.string "state"
-    t.string "zip"
+    t.integer "zip"
     t.string "country"
     t.string "neighborhoods"
     t.float "latitude"
@@ -212,10 +215,11 @@ ActiveRecord::Schema.define(version: 20180319065656) do
     t.string "yelp3_url"
     t.string "yelp3_description"
     t.string "yelp3_reviews"
-    t.datetime "updated_at"
-    t.datetime "created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_factual_mortgage_companies_on_city"
     t.index ["factual_id"], name: "index_factual_mortgage_companies_on_factual_id", unique: true
-    t.index ["state", "city"], name: "index_factual_mortgage_companies_on_state_and_city"
+    t.index ["state"], name: "index_factual_mortgage_companies_on_state"
   end
 
   create_table "fdic_bank_assets_sold_and_securitizeds", force: :cascade do |t|
@@ -512,7 +516,7 @@ ActiveRecord::Schema.define(version: 20180319065656) do
     t.string "stcnty"
     t.string "stnum"
     t.string "webaddr"
-    t.string "zip"
+    t.integer "zip"
     t.string "suprv_fd"
     t.string "occdist"
     t.string "uninum"
@@ -561,7 +565,8 @@ ActiveRecord::Schema.define(version: 20180319065656) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cert"], name: "index_fdic_institutions_on_cert", unique: true
-    t.index ["stname", "city"], name: "index_fdic_institutions_on_stname_and_city"
+    t.index ["city"], name: "index_fdic_institutions_on_city"
+    t.index ["stname"], name: "index_fdic_institutions_on_stname"
   end
 
   create_table "fdic_loan_charge_offs_and_recoveries", force: :cascade do |t|
@@ -1323,7 +1328,7 @@ ActiveRecord::Schema.define(version: 20180319065656) do
     t.string "address"
     t.string "city"
     t.string "state"
-    t.string "zip"
+    t.integer "zip"
     t.string "county"
     t.string "phone1"
     t.string "phone2"
@@ -1332,9 +1337,10 @@ ActiveRecord::Schema.define(version: 20180319065656) do
     t.string "email"
     t.float "latitude"
     t.float "longitude"
-    t.datetime "updated_at"
-    t.datetime "created_at"
-    t.index ["state", "city"], name: "index_loan_officers_on_state_and_city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_loan_officers_on_city"
+    t.index ["state"], name: "index_loan_officers_on_state"
   end
 
   create_table "news_articles", force: :cascade do |t|
@@ -1346,14 +1352,17 @@ ActiveRecord::Schema.define(version: 20180319065656) do
     t.string "snippet"
     t.text "text"
     t.integer "api_type"
+    t.string "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "article_id"
     t.index ["api_type"], name: "index_news_articles_on_api_type"
+    t.index ["article_id"], name: "index_news_articles_on_article_id", unique: true
     t.index ["search_term"], name: "index_news_articles_on_search_term"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "first_name", default: "", null: false
+    t.string "last_name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -1364,19 +1373,17 @@ ActiveRecord::Schema.define(version: 20180319065656) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.float "credit_score"
+    t.float "down_payment"
+    t.float "home_price"
+    t.string "purpose"
+    t.integer "zip_code"
+    t.string "phone_number"
+    t.bigint "last_search_id"
+    t.integer "price_alert"
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "phone_number"
-    t.integer "zip_code"
-    t.string "purpose"
-    t.string "home_price"
-    t.string "down_payment"
-    t.string "credit_score"
-    t.boolean "is_active", default: true
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "last_search_id"
-    t.integer "price_alert"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

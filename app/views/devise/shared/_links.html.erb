@@ -1,3 +1,11 @@
+<%#=begin
+form:           change password
+Developer:      Varun
+Created:        22-02-2018
+Purpose:        links for navigation
+Params:         login signup forgotpassword account confirmation unlock instruction
+Return:         hash
+=end %>
 <%- if controller_name != 'sessions' %>
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end -%>

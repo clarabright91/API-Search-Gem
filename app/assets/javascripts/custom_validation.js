@@ -395,452 +395,452 @@ $('#new_admin_user, #edit_admin_user').validate({
     }
   })
 
-$('#new_institution,#edit_institution').validate({
+$('#new_fdic_institution,#edit_fdic_institution').validate({
   rules: {
-    "institution[stname]":{
+    "fdic_institution[stname]":{
       required: true
     },
-    "institution[cert]":{
+    "fdic_institution[cert]":{
       required: true
     },
-    "institution[docket]":{
+    "fdic_institution[docket]":{
       required: true
     },
-    "institution[active]":{
+    "fdic_institution[active]":{
       required: true
     },
-    "institution[address]":{
+    "fdic_institution[address]":{
       required: true
     },
-    "institution[asset]":{
+    "fdic_institution[asset]":{
       required: true
     },
-    "institution[bkclass]":{
+    "fdic_institution[bkclass]":{
       required: true
     },
-    "institution[changec1]":{
+    "fdic_institution[changec1]":{
       required: true
     },
-    "institution[changec2]":{
+    "fdic_institution[changec2]":{
       required: true
     },
-    "institution[changec3]":{
+    "fdic_institution[changec3]":{
       required: true
     },
-    "institution[changec4]":{
+    "fdic_institution[changec4]":{
       required: true
     },
-    "institution[changec5]":{
+    "fdic_institution[changec5]":{
       required: true
     },
-    "institution[charter]":{
+    "fdic_institution[charter]":{
       required: true
     },
-    "institution[chrtagnt]":{
+    "fdic_institution[chrtagnt]":{
       required: true
     },
-    "institution[conserve]":{
+    "fdic_institution[conserve]":{
       required: true
     },
-    "institution[city]":{
+    "fdic_institution[city]":{
       required: true
     },
-    "institution[clcode]":{
+    "fdic_institution[clcode]":{
       required: true
     },
-    "institution[cmsa_no]":{
+    "fdic_institution[cmsa_no]":{
       required: true
     },
-    "institution[county]":{
+    "fdic_institution[county]":{
       required: true
     },
-    "institution[dateupdt]":{
+    "fdic_institution[dateupdt]":{
       required: true
     },
-    "institution[denovo]":{
+    "fdic_institution[denovo]":{
       required: true
     },
-    "institution[dep]":{
+    "fdic_institution[dep]":{
       required: true
     },
-    "institution[effdate]":{
+    "fdic_institution[effdate]":{
       required: true
     },
-    "institution[endefymd]":{
+    "fdic_institution[endefymd]":{
       required: true
     },
-    "institution[estymd]":{
+    "fdic_institution[estymd]":{
       required: true
     },
-    "institution[fdicdbs]":{
+    "fdic_institution[fdicdbs]":{
       required: true
     },
-    "institution[fdicregn]":{
+    "fdic_institution[fdicregn]":{
       required: true
     },
-    "institution[fdicsupv]":{
+    "fdic_institution[fdicsupv]":{
       required :true
     },
-    "institution[fed]":{
+    "fdic_institution[fed]":{
       required: true
     },
-    "institution[fed_rssd]":{
+    "fdic_institution[fed_rssd]":{
       required: true
     },
-    "institution[fedchrtr]":{
+    "fdic_institution[fedchrtr]":{
       required :true
     },
-    "institution[fldoff]":{
+    "fdic_institution[fldoff]":{
       required: true
     },
-    "institution[iba]":{
+    "fdic_institution[iba]":{
       required: true
     },
-    "institution[inactive]":{
+    "fdic_institution[inactive]":{
       required: true
     },
-    "institution[insagnt1]":{
+    "fdic_institution[insagnt1]":{
       required: true
     },
-    "institution[insdate]":{
+    "fdic_institution[insdate]":{
       required: true
     },
-    "institution[instcrcd]":{
+    "fdic_institution[instcrcd]":{
       required: true
     },
-    "institution[insbif]":{
+    "fdic_institution[insbif]":{
       required: true
     },
-    "institution[inscoml]":{
+    "fdic_institution[inscoml]":{
       required: true
     },
-    "institution[insdif]":{
+    "fdic_institution[insdif]":{
       required: true
     },
-    "institution[insfdic]":{
+    "fdic_institution[insfdic]":{
       required: true
     },
-    "institution[inssaif]":{
+    "fdic_institution[inssaif]":{
       required: true
     },
-    "institution[inssave]":{
+    "fdic_institution[inssave]":{
       required: true
     },
-    "institution[msa_no]":{
+    "fdic_institution[msa_no]":{
       required: true
     },
-    "institution[name]":{
+    "fdic_institution[name]":{
       required: true
     },
-    "institution[newcert]":{
+    "fdic_institution[newcert]":{
       required: true
     },
-    "institution[oakar]":{
+    "fdic_institution[oakar]":{
       required: true
     },
-    "institution[otsdist]":{
+    "fdic_institution[otsdist]":{
       required: true
     },
-    "institution[otsregnm]":{
+    "fdic_institution[otsregnm]":{
       required: true
     },
-    "institution[procdate]":{
+    "fdic_institution[procdate]":{
       required: true
     },
-    "institution[qbprcoml]":{
+    "fdic_institution[qbprcoml]":{
       required: true
     },
-    "institution[regagnt]":{
+    "fdic_institution[regagnt]":{
       required: true
     },
-    "institution[repdte]":{
+    "fdic_institution[repdte]":{
       required: true
     },
-    "institution[risdate]":{
+    "fdic_institution[risdate]":{
       required: true
     },
-    "institution[stchrtr]":{
+    "fdic_institution[stchrtr]":{
       required: true
     },
-    "institution[rundate]":{
+    "fdic_institution[rundate]":{
       required: true
     },
-    "institution[sasser]":{
+    "fdic_institution[sasser]":{
       required: true
     },
-    "institution[law_sasser_flg]":{
+    "fdic_institution[law_sasser_flg]":{
       required: true
     },
-    "institution[stalp]":{
+    "fdic_institution[stalp]":{
       required: true
     },
-    "institution[stcnty]":{
+    "fdic_institution[stcnty]":{
       required: true
     },
-    "institution[stnum]": {
+    "fdic_institution[stnum]": {
       required: true
     },
-    "institution[zip]":{
+    "fdic_institution[zip]":{
       required: true
     },
-    "institution[suprv_fd]":{
+    "fdic_institution[suprv_fd]":{
       required: true
     },
-    "institution[occdist]":{
+    "fdic_institution[occdist]":{
       required: true
     },
-    "institution[uninum]":{
+    "fdic_institution[uninum]":{
       required: true
     },
-    "institution[ultcert]":{
+    "fdic_institution[ultcert]":{
       required: true
     },
-    "institution[offices]":{
+    "fdic_institution[offices]":{
       required: true
     },
-    "institution[csa_flg]":{
+    "fdic_institution[csa_flg]":{
       required: true
     },
-    "institution[cbsa_no]":{
+    "fdic_institution[cbsa_no]":{
       required: true
     },
-    "institution[cbsa_metro]":{
+    "fdic_institution[cbsa_metro]":{
       required: true
     },
-    "institution[cbsa_metro_flg]":{
+    "fdic_institution[cbsa_metro_flg]":{
       required: true
     },
-    "institution[cbsa_micro_flg]":{
+    "fdic_institution[cbsa_micro_flg]":{
       required: true
     },
-    "institution[cbsa_div_no]":{
+    "fdic_institution[cbsa_div_no]":{
       required: true
     },
-    "institution[cbsa_div_flg]":{
+    "fdic_institution[cbsa_div_flg]":{
       required: true
     }
   },
   messages: {
-    "institution[stname]":{
+    "fdic_institution[stname]":{
       required: "Please enter stname."
     },
-    "institution[cert]":{
+    "fdic_institution[cert]":{
       required: "Please enter cert."
     },
-    "institution[docket]":{
+    "fdic_institution[docket]":{
       required: "Please enter docket."
     },
-    "institution[active]":{
+    "fdic_institution[active]":{
       required: "Please enter active."
     },
-    "institution[address]":{
+    "fdic_institution[address]":{
       required: "Please enter address."
     },
-    "institution[asset]":{
+    "fdic_institution[asset]":{
       required: "Please enter asset."
     },
-    "institution[bkclass]":{
+    "fdic_institution[bkclass]":{
       required: "Please enter bkclass."
     },
-    "institution[changec1]":{
+    "fdic_institution[changec1]":{
       required: "Please enter changec1."
     },
-    "institution[changec2]":{
+    "fdic_institution[changec2]":{
       required: "Please enter changec2."
     },
-    "institution[changec3]":{
+    "fdic_institution[changec3]":{
       required: "Please enter changec3."
     },
-    "institution[changec4]":{
+    "fdic_institution[changec4]":{
       required: "Please enter changec4."
     },
-    "institution[changec5]":{
+    "fdic_institution[changec5]":{
       required: "Please enter changec5."
     },
-    "institution[charter]":{
+    "fdic_institution[charter]":{
       required: "Please enter charter."
     },
-    "institution[chrtagnt]":{
+    "fdic_institution[chrtagnt]":{
       required: "Please enter chrtagnt."
     },
-    "institution[conserve]":{
+    "fdic_institution[conserve]":{
       required: "Please enter conserve."
     },
-    "institution[city]":{
+    "fdic_institution[city]":{
       required: "Please enter city."
     },
-    "institution[clcode]":{
+    "fdic_institution[clcode]":{
       required: "Please enter clcode."
     },
-    "institution[cmsa_no]":{
+    "fdic_institution[cmsa_no]":{
       required: "Please enter cmsa_no ."
     },
-    "institution[county]":{
+    "fdic_institution[county]":{
       required: "Please enter county."
     },
-    "institution[dateupdt]":{
+    "fdic_institution[dateupdt]":{
       required: "Please enter dateupdt."
     },
-    "institution[denovo]":{
+    "fdic_institution[denovo]":{
       required: "Please enter denovo."
     },
-    "institution[dep]":{
+    "fdic_institution[dep]":{
       required: "Please enter dep."
     },
-    "institution[effdate]":{
+    "fdic_institution[effdate]":{
       required: "Please enter effdate."
     },
-    "institution[endefymd]":{
+    "fdic_institution[endefymd]":{
       required: "Please enter endefymd."
     },
-    "institution[estymd]":{
+    "fdic_institution[estymd]":{
       required: "Please enter estymd."
     },
-    "institution[fdicdbs]":{
+    "fdic_institution[fdicdbs]":{
       required: "Please enter fdicdbs."
     },
-    "institution[fdicregn]":{
+    "fdic_institution[fdicregn]":{
       required: "Please enter fdicregn."
     },
-    "institution[fdicsupv]":{
+    "fdic_institution[fdicsupv]":{
       required: "Please enter fdicsupv."
     },
-    "institution[fed]":{
+    "fdic_institution[fed]":{
       required: "Please enter fed."
     },
-    "institution[fed_rssd]":{
+    "fdic_institution[fed_rssd]":{
       required: "Please enter fed_rssd."
     },
-    "institution[fedchrtr]":{
+    "fdic_institution[fedchrtr]":{
       required: "Please enter fedchrtr."
     },
-    "institution[fldoff]":{
+    "fdic_institution[fldoff]":{
       required: "Please enter fldoff."
     },
-    "institution[iba]":{
+    "fdic_institution[iba]":{
       required: "Please enter iba."
     },
-    "institution[inactive]":{
+    "fdic_institution[inactive]":{
       required: "Please enter inactive."
     },
-    "institution[insagnt1]":{
+    "fdic_institution[insagnt1]":{
       required: "Please enter insagnt1."
     },
-    "institution[insdate]":{
+    "fdic_institution[insdate]":{
       required: "Please enter insdate."
     },
-    "institution[instcrcd]":{
+    "fdic_institution[instcrcd]":{
       required: "Please enter instcrcd."
     },
-    "institution[insbif]":{
+    "fdic_institution[insbif]":{
       required: "Please enter insbif."
     },
-    "institution[inscoml]":{
+    "fdic_institution[inscoml]":{
       required: "Please enter inscoml."
     },
-    "institution[insdif]":{
+    "fdic_institution[insdif]":{
       required: "Please enter insdif."
     },
-    "institution[insfdic]":{
+    "fdic_institution[insfdic]":{
       required: "Please enter insfdic."
     },
-    "institution[inssaif]":{
+    "fdic_institution[inssaif]":{
       required: "Please enter inssaif."
     },
-    "institution[inssave]":{
+    "fdic_institution[inssave]":{
       required: "Please enter inssave."
     },
-    "institution[msa_no]":{
+    "fdic_institution[msa_no]":{
       required: "Please enter msa_no."
     },
-    "institution[name]":{
+    "fdic_institution[name]":{
       required: "Please enter name."
     },
-    "institution[newcert]":{
+    "fdic_institution[newcert]":{
       required: "Please enter newcert."
     },
-    "institution[oakar]":{
+    "fdic_institution[oakar]":{
       required: "Please enter oakar."
     },
-    "institution[otsdist]":{
+    "fdic_institution[otsdist]":{
       required: "Please enter otsdist."
     },
-    "institution[otsregnm]":{
+    "fdic_institution[otsregnm]":{
       required: "Please enter otsregnm."
     },
-    "institution[procdate]":{
+    "fdic_institution[procdate]":{
       required: "Please enter procdate."
     },
-    "institution[qbprcoml]":{
+    "fdic_institution[qbprcoml]":{
       required: "Please enter qbprcoml."
     },
-    "institution[regagnt]":{
+    "fdic_institution[regagnt]":{
       required: "Please enter regagnt."
     },
-    "institution[repdte]":{
+    "fdic_institution[repdte]":{
       required: "Please enter repdte."
     },
-    "institution[risdate]":{
+    "fdic_institution[risdate]":{
       required: "Please enter risdate."
     },
-    "institution[stchrtr]":{
+    "fdic_institution[stchrtr]":{
       required: "Please enter stchrtr."
     },
-    "institution[rundate]":{
+    "fdic_institution[rundate]":{
       required: "Please enter rundate."
     },
-    "institution[sasser]":{
+    "fdic_institution[sasser]":{
       required: "Please enter sasser."
     },
-    "institution[law_sasser_flg]":{
+    "fdic_institution[law_sasser_flg]":{
       required: "Please enter law sasser flg."
     },
-    "institution[stalp]":{
+    "fdic_institution[stalp]":{
       required: "Please enter stalp."
     },
-    "institution[stcnty]":{
+    "fdic_institution[stcnty]":{
       required: "Please enter stcnty."
     },
-    "institution[stnum]": {
+    "fdic_institution[stnum]": {
       required: "Please enter stnum."
     },
-    "institution[zip]":{
+    "fdic_institution[zip]":{
       required: "Please enter zip."
     },
-    "institution[suprv_fd]":{
+    "fdic_institution[suprv_fd]":{
       required: "Please enter suprv fd."
     },
-    "institution[occdist]":{
+    "fdic_institution[occdist]":{
       required: "Please enter occdist."
     },
-    "institution[uninum]":{
+    "fdic_institution[uninum]":{
       required: "Please enter uninum."
     },
-    "institution[ultcert]":{
+    "fdic_institution[ultcert]":{
       required: "Please enter ultcert."
     },
-    "institution[offices]":{
+    "fdic_institution[offices]":{
       required: "Please enter offices."
     },
-    "institution[csa_flg]":{
+    "fdic_institution[csa_flg]":{
       required: "Please enter csa flg."
     },
-    "institution[cbsa_no]":{
+    "fdic_institution[cbsa_no]":{
       required: "Please enter cbsa no."
     },
-    "institution[cbsa_metro]":{
+    "fdic_institution[cbsa_metro]":{
       required: "Please enter cbsa metro."
     },
-    "institution[cbsa_metro_flg]":{
+    "fdic_institution[cbsa_metro_flg]":{
       required: "Please enter cbsa metro flg."
     },
-    "institution[cbsa_micro_flg]":{
+    "fdic_institution[cbsa_micro_flg]":{
       required: "Please enter cbsa micro flg."
     },
-    "institution[cbsa_div_no]":{
+    "fdic_institution[cbsa_div_no]":{
       required: "Please enter cbsa div no."
     },
-    "institution[cbsa_div_flg]":{
+    "fdic_institution[cbsa_div_flg]":{
       required: "Please enter cbsa div flg."
     },
   }

@@ -1,9 +1,16 @@
+<%#=begin
+form:           change password
+Developer:      Varun
+Created:        22-02-2018
+Purpose:        User change password
+Params:         reset_password_token password password_confirmation
+Return:         hash
+=end %>
 <h2>Change your password</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
-
   <div class="field">
     <%= f.label :password, "New password" %><br />
     <% if @minimum_password_length %>
@@ -11,15 +18,13 @@
     <% end %>
     <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
   </div>
-
   <div class="field">
     <%= f.label :password_confirmation, "Confirm new password" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
   <div class="actions">
     <%= f.submit "Change my password" %>
   </div>
 <% end %>
-
+<!-- rendering links for navigation -->
 <%= render "devise/shared/links" %>

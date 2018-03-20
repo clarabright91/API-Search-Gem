@@ -11,11 +11,11 @@ class CsvDb
                 end
             if selected_model == 'LoanOfficer'
               LoanOfficer.create!(new_hash)
-            elsif selected_model == 'Institution'
-              Institution.create!(new_hash)
-            elsif selected_model == 'Factual Mortgage companies'
+            elsif selected_model == 'FdicInstitution'
+              FdicInstitution.create!(new_hash)
+            elsif selected_model == 'FactualMortgageCompany'
               FactualMortgageCompany.create!(new_hash)
-            elsif selected_model == 'Cities'
+            elsif selected_model == 'City'
               City.create!(new_hash)
             elsif selected_model == 'FdicBankAssetsSoldAndSecuritized'
               FdicBankAssetsSoldAndSecuritized.create!(new_hash)

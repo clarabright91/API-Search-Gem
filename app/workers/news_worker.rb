@@ -4,12 +4,10 @@ class NewsWorker
                   unique: true,
                   retry: false
   def perform
+    NewsArticle.old_articles.destroy_all            if NewsArticle.old_articles.present? # Deleting 30 days old Articles
+    NewsArticle.where.not(id: NewsArticle.last(50)).destroy_all      if NewsArticle.count > 50 #Deleting old Articles if there are more then 50 records
     require 'net/http'
-    #require 'uri'
-    #require 'json'
-  
       # Section start for Microsoft Bing API Call--------------------------------------------------------
-        #uri = URI('https://api.cognitive.microsoft.com/bing/v7.0/news')
         uri = URI('https://api.cognitive.microsoft.com/bing/v7.0/news/search')
         uri.query = URI.encode_www_form({
             # Request parameters
@@ -19,7 +17,6 @@ class NewsWorker
             'mkt' => 'en-us',
             'safeSearch' => 'Moderate'
         })
-      
         request = Net::HTTP::Get.new(uri.request_uri)
           # Request headers
         request['Ocp-Apim-Subscription-Key'] = '98c48a8a18c24ee498ee152ace13e4f9'
@@ -31,22 +28,21 @@ class NewsWorker
         news = response.body.force_encoding('utf-8')
         parsed_data =  JSON.parse(news)
 
-        if parsed_data['value'].present? 
+        if parsed_data['value'].present?
           begin
             parsed_data['value'].first(50).each do |data|
-              NewsArticle.find_or_initialize_by(search_term: data['name'],headline: data['name'], url: data['url'], text: data['description'], author: data['provider'].first['name'], api_type: 1, date_article: data['datePublished']) do |user|
-               user.save!
-              end  
-            end  
+              NewsArticle.find_or_initialize_by(search_term: data['name'],headline: data['name'], url: data['url'], text: data['description'], author: data['provider'].first['name'], api_type: 1, date_article: data['datePublished']) do |api_record|
+               api_record.save!
+              end
+            end
           rescue => e
             p  e.message
           end
-        end    
-        nyt_data  #method calling for nyt
+        end
+      nyt_data  #method calling for nyt
   end
 
-private
-
+ private
   def nyt_data
     # NYT Api -----------------------------------------------------------------------
       uri = URI('https://api.nytimes.com/svc/search/v2/articlesearch.json')
@@ -65,14 +61,13 @@ private
         if nyt_parsed_data['response'].present?
           begin
             nyt_parsed_data['response']['docs'].first(50).each do |nyt_data|
-              NewsArticle.find_or_initialize_by(search_term: nyt_data['headline']['main'],headline: nyt_data['headline']['main'], url: nyt_data['web_url'], text: nyt_data['snippet'], author: nyt_data['byline'].present? ? nyt_data['byline']['organization'] : nil, api_type: 0, date_article: nyt_data['pub_date'].present? ? nyt_data['pub_date'] : nil,article_id: nyt_data['_id']) do |user|
-               user.save!
-              end   
-            end  
+              NewsArticle.find_or_initialize_by(search_term: nyt_data['headline']['main'],headline: nyt_data['headline']['main'], url: nyt_data['web_url'], text: nyt_data['snippet'], author: nyt_data['byline'].present? ? nyt_data['byline']['organization'] : nil, api_type: 0, date_article: nyt_data['pub_date'].present? ? nyt_data['pub_date'] : nil,article_id: nyt_data['_id']) do |api_data|
+               api_data.save!
+              end
+            end
           rescue => e
-            p  e.message          
+            p  e.message
           end
-        end    
-  end
-
+        end
+   end
 end

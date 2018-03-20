@@ -1,8 +1,16 @@
+<%#=begin
+form:           change password
+Developer:      Varun
+Created:        22-02-2018
+Purpose:        registration
+Params:         first_name mail password password_confirmation
+Return:         hash
+=end %>
 <section class="content-main login-page">
 	<div class="container">
 		<h1>Sign Up</h1>
-		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: 'sign_up_form'}) do |f| %>	
-		  <%= devise_error_messages! %>		
+		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: 'sign_up_form'}) do |f| %>
+		  <%= devise_error_messages! %>
 		<div class="login-page-cntnt">
 		 <div class="login-rows">
 				<%= image_tag("login-user.png", :alt => "User") %>
@@ -20,10 +28,10 @@
 		 <%= image_tag("login-pass.png", :alt => "Password") %>
 		 <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confrim Password" %>
 		 </div>
-		 <div class="login-rows cntnt-login">								 
+		 <div class="login-rows cntnt-login">
 			<%= f.submit "Sign Up", class: "login-page-btn" %>
 			<div class="forgot-signup-links">
-			   
+
 			   <%= link_to "Sign In", new_session_path(resource_name), class: "signup-link-clr" %>
 			</div>
 			<p>or sign up with</p>

@@ -1,8 +1,8 @@
-class CreateInstitutions < ActiveRecord::Migration[5.1]
+class CreateFdicInstitutions < ActiveRecord::Migration[5.1]
   def change
-    create_table :institutions do |t|
-      t.string :stname
-      t.string :cert
+    create_table :fdic_institutions do |t|
+      t.string :stname, index: true
+      t.integer :cert, index: { unique: true }
       t.string :docket
       t.string :active
       t.string :address
@@ -16,7 +16,7 @@ class CreateInstitutions < ActiveRecord::Migration[5.1]
       t.string :charter
       t.string :chrtagnt
       t.string :conserve
-      t.string :city
+      t.string :city, index: true
       t.string :clcode
       t.string :cmsa_no
       t.string :cmsa
@@ -71,7 +71,7 @@ class CreateInstitutions < ActiveRecord::Migration[5.1]
       t.string :stcnty
       t.string :stnum
       t.string :webaddr
-      t.string :zip
+      t.integer :zip
       t.string :suprv_fd
       t.string :occdist
       t.string :uninum
