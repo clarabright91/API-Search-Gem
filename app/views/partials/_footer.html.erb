@@ -1,22 +1,23 @@
 <!-- footer start-->
-	 <footer>
-		<div class="container">
-		   <ul>
-			  <li><a href="">About</a></li>
-			  <li><a href="">Mortgage Rates</a></li>
-			  <li><a href="">Refinance Rates</a></li>
-			  <li><a href="">Bank Rates</a></li>
-			  <li class="last-no-bordr"><a href="">Research</a></li>
-		   </ul>
-		   <%CmsPage.active.each do |cp|%>
-						<ul>
-							<li><%=link_to cp.page_slug, cp.page_slug%></li>
-						<ul>
-		   <%end%>
-		   <span>© 2017 Pureloan.com  All rights reserved. </span>
-		</div>
-	 </footer>
-	 <!-- footer end-->
-<%#= javascript_include_tag "jquery.min"%>
+<footer>
+  <div class="container">
+    <ul>
+     <li><a href="">About</a></li>
+     <li><a href="">Mortgage Rates</a></li>
+     <li><a href="">Refinance Rates</a></li>
+     <li><a href="">Bank Rates</a></li>
+     <li class="last-no-bordr"><a href="">Research</a></li>
+    </ul>
+    <!-- iterating all dynamic cms pages link -->
+     <%CmsPage.active.each do |cp|%>
+       <ul>
+        <li><%=link_to cp.page_slug, cp.page_slug%></li>
+       <ul>
+     <%end%>
+     <span>© 2017 Pureloan.com  All rights reserved. </span>
+   </div>
+</footer>
+<!-- footer end-->
+<!-- including javascript files -->
 <%= javascript_include_tag "bootstrap.min"%>
 <%= javascript_include_tag "custom"%>

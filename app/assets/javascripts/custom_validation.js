@@ -278,6 +278,25 @@ $('#new_admin_user, #edit_admin_user').validate({
       }
     }
   })
+  
+  $('#new_cms_page,#edit_cms_page').validate({
+    rules: {
+      "cms_page[page_name]":{
+        required: true
+      },
+      "cms_page[page_slug]":{
+        required: true
+      }
+    },
+    messages: {
+      "cms_page[page_name]":{
+        required: "Please enter page name."
+      },
+      "cms_page[page_slug]":{
+        required: "Please enter page slug."
+      }
+    }
+   })
 
   $('#new_city, #edit_city').validate({
     rules: {

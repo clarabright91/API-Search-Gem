@@ -4,24 +4,27 @@
   <head>
     <title>Standup App</title>
     <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1">
-<%= csrf_meta_tags %>
-<%= stylesheet_link_tag "bootstrap.min"%>
-<%= stylesheet_link_tag "style"%>
-
-<%= javascript_include_tag "jquery.min"%>
-<%= javascript_include_tag "jquery.validate.js"%>
-<%= javascript_include_tag "additional-methods.js"%>
-
-<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
-<link rel="stylesheet" href="fonts/css/font-awesome.min.css">
-
+      <%= csrf_meta_tags %>
+      <!-- required stylesheets link -->
+      <%= stylesheet_link_tag "bootstrap.min"%>
+      <%= stylesheet_link_tag "style"%>
+      <!-- required javascript files -->
+      <%= javascript_include_tag "jquery.min"%>
+      <%= javascript_include_tag "jquery.validate.js"%>
+      <%= javascript_include_tag "additional-methods.js"%>
+      <!-- required style links  -->
+     <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+     <link rel="stylesheet" href="fonts/css/font-awesome.min.css">
   </head>
   <body class="fixed skin-blue-light">
-<div class="wrapper">
-	<%= render 'partials/header' %>
-	<%= yield %>
-	<%= render 'partials/modals' %>
-	<%= render 'partials/footer' %>
-</div> <!-- wrapper end-->
+    <div class="wrapper">
+      <!-- rendering header partial  -->
+      <%= render 'partials/header' %>
+	    <%= yield %>
+      <!-- rendering modals -->
+	    <%= render 'partials/modals' %>
+      <!-- rendering footer partial  -->
+	    <%= render 'partials/footer' %>
+    </div> <!-- wrapper end-->
   </body>
 </html>

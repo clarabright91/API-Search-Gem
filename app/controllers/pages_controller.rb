@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-	before_action :authenticate_user!, only: [:secret]
+  before_action :authenticate_user!, only: [:secret]
   before_action :update_statue, only: [:change_status, :user_mass_activate, :user_mass_deactivate]
 
   def index
@@ -10,9 +10,9 @@ class PagesController < ApplicationController
     @page = CmsPage.find(params[:id])
   end
 
-	def contact_us_email
-		@admin_user = AdminUser.first.email
-		ContactUsMailer.contact_us_email(@admin_user,params).deliver
+  def contact_us_email
+    @admin_user = AdminUser.first.email
+    ContactUsMailer.contact_us_email(@admin_user,params).deliver
 		respond_to do |format|
 	    format.js
 	    format.html
@@ -20,9 +20,9 @@ class PagesController < ApplicationController
 	end
 
 =begin
-	   Developer:      Varun
-	   Created:        16-03-2018
-	   Purpose:        Following actions are for status update in admin panel .
+  Developer:      Varun
+  Created:        16-03-2018
+  Purpose:        Following actions are for status update in admin panel .
 =end
   def change_status
     @user.each do |usr|

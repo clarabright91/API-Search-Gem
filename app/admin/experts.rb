@@ -33,7 +33,9 @@ ActiveAdmin.register Expert do
       f.input :first_name
       f.input :last_name
       f.input :image, hint: (("current image:<br/>").html_safe + f.image_tag(f.object.image.url(:thumb))).html_safe, as: :file  #display image
-      f.input :remove_image, as: :boolean, required: false, label: "remove image"
+      if !f.object.new_record?
+        f.input :remove_image, as: :boolean, required: false, label: "remove image"
+      end
       f.input :phone
       f.input :email
       f.input :loan_type, as: :select,include_blank: "Select loan type", collection: {'mortgage' => 0,'refinance' => 1, 'personal'=> 2, 'auto' => 3}

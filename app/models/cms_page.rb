@@ -1,9 +1,9 @@
 class CmsPage < ApplicationRecord
   validates :page_slug, uniqueness: {message: "Page slug already exist" }  # validation for unique slug
-
+  validates :page_name,:page_slug, presence: true  #validation for presence
   after_save :reload_routes     #Reload/refresh after create/update new data
 
-  scope :active, ->{where(status: true)}    # for finding all active cms pages
+  scope :active, ->{where(status: true)}    # Scope for finding all active cms pages
 
   def self.load
     Rails.application.routes.draw do
