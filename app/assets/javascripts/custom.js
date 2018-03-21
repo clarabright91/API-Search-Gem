@@ -6,7 +6,7 @@
 $(document).ready(function() {
    window.setTimeout(function() {
       $(".alert").fadeTo(500, 0).slideUp(500, function(){
-          $(this).remove(); 
+          $(this).remove();
       });
   }, 4000);
 
@@ -20,7 +20,7 @@ $(document).ready(function() {
 	// Show/hide signin/signup modals
 	$('.signup-link-clr').on('click', function(){
 		$('.login-popup').modal('hide');
-	});	
+	});
 	$('.setLogin').on('click', function(){
 		$('#signup-popup').modal('hide');
 	});
@@ -81,7 +81,7 @@ $(document).ready(function() {
         		required: 'Please enter confirm password.',
             minlength: "Your confirm password must be at least 6 characters long.",
             //equalTo: 'Please enter the same password again.'
-        	}  
+        	}
        }
 
   })
@@ -95,7 +95,7 @@ $(document).ready(function() {
       },
       "user[password]":{
        required: true,
-        minlength: 6 
+        minlength: 6
       }
     },
     messages: {
@@ -123,7 +123,7 @@ $(document).ready(function() {
       },
       "user[password]":{
        required: true,
-        minlength: 6 
+        minlength: 6
       },
       "user[password_confirmation]":{
         required: true,
@@ -165,6 +165,38 @@ $(document).ready(function() {
       }
     }
   })
+
+  $('#contact_us_form').validate({
+    rules: {
+      "name": {
+          required: true
+      },
+      "email": {
+          required: {
+            depends:function(){
+                $(this).val($.trim($(this).val()));
+                return true;
+              }
+          },
+          email: true
+      },
+      "question":{
+          required: true
+      }
+    },
+    messages: {
+      "name": {
+          required: "Please enter your name."
+      },
+      "email": {
+          required: "Please enter your email.",
+          email: "Please enter valid email address.",
+      },
+      "question":{
+          required: "Please enter your question."
+      }
+    }
+  });
 
 
 });

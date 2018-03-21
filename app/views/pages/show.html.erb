@@ -6,13 +6,14 @@ Purpose:        cms pages contactus
 Params:         name email question
 Return:         hash
 =end %>
-<section class="content-main terms-page about-page">
+<section class="content-main terms-page about-page contact-page">
    <div class="container">
-      <h1><%=@page.page_slug%></h1>
+      <h1><%=@page.meta_title%></h1>
       <div class="row">
         <div class="col-xs-12 col-md-5 pull-right">
           <%if @page.page_slug.strip.downcase == "contactus"%>
-          <%= form_with url: contact_us_email_path,remote: true do |f| %>
+            <!-- Email form for contactus -->
+           <%= form_with url: contact_us_email_path,id: 'contact_us_form' ,remote: true do |f| %>
              <div class="login-rows">
                 <%= image_tag("login-user.png", :alt => "Name") %>
                 <%= f.text_field :name, autofocus: true, placeholder: "Enter Name" %>
@@ -23,19 +24,31 @@ Return:         hash
              </div>
              <div class="login-rows">
                <%= image_tag("menu-checkbox_03.png", :alt =>"question")%>
-               <%= f.text_area :question, size: "35x5", autofocus: true, placeholder: "Enter Text"%>
+               <%= f.text_area :question, size: "55x5", autofocus: true, placeholder: "Enter Text", style: 'max-width: 100%'%>
              </div>
              <div class="login-rows cntnt-login">
               <%= f.submit "Submit", class: "login-page-btn" %>
              </div>
-            <%end %>
+            <%end%>
+          <%elsif @page.page_slug.strip.downcase == "aboutus"%>
+             <img src="images/about-us_03.png" alt="">
           <%end%>
         </div>
+          <!-- content for term_of_use webpage -->
+        <%if @page.page_slug.strip.downcase == "termsofuse"%>
+            <div class="col-xs-12 col-md-12">
+              <div class="gray-box-cntnt">
+               <%=raw(@page.page_content)%>
+              </div>
+            </div>
+        <%else%>
          <div class="col-xs-12 col-md-7 our-story-cntnt">
            <div class="gray-box-cntnt">
             <%=raw(@page.page_content)%>
            </div>
          </div>
+        <%end%>
       </div>
+      <%=raw(@page.meta_description)%>
   </div>
 </section>

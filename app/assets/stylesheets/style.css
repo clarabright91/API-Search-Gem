@@ -224,7 +224,7 @@ footer span{ float:right; font-size:14px; color:#8e8e8e; text-transform:uppercas
 #advance-srch-mb .modal-header{ position:relative; border-bottom:1px solid #e2e2e2; background:#f6f6f6;}
 #advance-srch-mb h4.modal-title{ font-size:18px; font-weight:bold; color:#f7612a; text-align:center;}
 #advance-srch-mb .modal-header .close { margin-top: -8px; position: absolute; left: 10px; font-size: 38px;}
-#advance-srch-mb .modal-header a{ top: 21px; position: absolute; right: 10px; font-size: 13px; color:#19214d;} 
+#advance-srch-mb .modal-header a{ top: 21px; position: absolute; right: 10px; font-size: 13px; color:#19214d;}
 #advance-srch-mb .search-cat input[type="text"], #advance-srch-mb .search-cat select { border: 1px solid #e2e2e2; font-size:13px;}
 #advance-srch-mb .search-cat label { margin: 15px 0 5px 0; font-size: 13px; color: #19214d; font-weight:bold;}
 #advance-srch-mb .modal-header, #advance-srch-mb .modal-body, #advance-srch-mb .modal-footer{ float:left; width:100%;}
@@ -418,9 +418,9 @@ label.error { position: absolute; left: 0; bottom: -18px; font-size: 12px; color
 .pagination{ float:left; width:100%; margin:0 0 30px 0; padding:0;}
 .pagination a{ font-size:16px; color:#606060; border-radius:50px; width:40px; height:40px; line-height:38px; text-align:center; background:transparent; margin:0 5px 0 0; float:left;}
 .pagination a.active{ background:#fb6325; color:#fff;}
-.pagination a.arrows-pagination{ color:#19214d; background:#ececec; font-size:20px; font-weight:bold;}	
-.pagination a.arrows-pagination:hover{ color:#fff; background:#19214d;}	
-	
+.pagination a.arrows-pagination{ color:#19214d; background:#ececec; font-size:20px; font-weight:bold;}
+.pagination a.arrows-pagination:hover{ color:#fff; background:#19214d;}
+
 /*directory bank css end*/
 
 .directory-box h2 { padding:25px 25px 5px 25px; font-weight:normal; float: left; width: 100%; color: #19214d; font-size: 30px; margin: 0; border-radius: 5px 5px 0 0; border-bottom: none;}
@@ -442,7 +442,7 @@ label.error { position: absolute; left: 0; bottom: -18px; font-size: 12px; color
 
 /*seo bank auto loan css start*/
 .seo-auto-loan .gray-box-cntnt h3 { text-transform: none;}
-.seo-auto-loan .col-md-4, .seo-auto-loan  .col-md-8{ padding:0;} 
+.seo-auto-loan .col-md-4, .seo-auto-loan  .col-md-8{ padding:0;}
 .seo-auto-loan-cntnt-box{ float:left; width:100%; margin:0 0 40px 0; padding:0; border-radius:5px; box-shadow:0 0 15px #d7d7d7; background:#f7f7f7;}
 .seo-auto-loan-cntnt-box .gray-box-cntnt { border-radius: 5px 0 0 5px; margin:0;}
 .seo-bank-cntn-white-bg{ background:#fff; padding:30px 20px !important; border-radius:0 5px 5px 0; float:right;}
@@ -497,26 +497,26 @@ label.error { position: absolute; left: 0; bottom: -18px; font-size: 12px; color
 
 
 .no-margn-botom{ margin-bottom:0 !important;}
-.bg-white{ background:#fff !important;}					 
+.bg-white{ background:#fff !important;}
 .gray-row{ background:#f4f4f4;}
 .full-width{ width:100% !important;}
 
 @media(min-width:320px) and (max-width:767px){
 #global-nav { padding: 0;}
 .navbar-nav { margin: 0; width: 100%; padding: 0;}
-.nav > li { padding: 0;}	
-.navbar-default .nav li a { font-size: 14px; padding: 7px 1px 7px 6px;}	
+.nav > li { padding: 0;}
+.navbar-default .nav li a { font-size: 14px; padding: 7px 1px 7px 6px;}
 .navbar-default .nav li.active a { background: #f4f4f4 !important;}
 .navbar-default .nav li a.login-btn { padding: 5px 28px; margin: 9px 0 15px 5px; width: auto; float: left;}
-}	
+}
 
 
 @media(min-width:320px) and (max-width:479px){
 .desktop-btn{ display:none;}
 .mb-btn{ display:block;}
 .container { padding-right: 10px; padding-left: 10px;}
-header .navbar-brand { padding: 15px 0;}	
-header .navbar-brand  img{ max-width: 157px;}	
+header .navbar-brand { padding: 15px 0;}
+header .navbar-brand  img{ max-width: 157px;}
 .navbar-toggle { margin-top: 9px; margin-right: 0; border: none;}
 .banner { padding: 19px 0;}
 .banner p{ display:none;}
@@ -653,3 +653,17 @@ footer span{ font-size:12px; float:left; width:100%; background:#f7f7f7; text-al
 }
 
 
+.contact-page .col-md-7{ background: url(../images/home-search-bg.png) no-repeat top center;}
+.contact-page .col-md-7 h3{ color:#fff; line-height: 28px;}
+.contact-page .col-md-7 p{ color:#fff; line-height: 20px; font-weight: normal;}
+.contact-page .col-md-7 .gray-box-cntnt{ background: none;}
+#contact_us_form .login-rows{ border: none;  margin: 4px 0}
+#contact_us_form .login-rows input{ border-bottom: 1px solid #ececec; padding: 10px 0;}
+#contact_us_form .login-rows img {
+    left: 5px;
+    position: absolute;
+    top: 23px;
+}
+#contact_us_form .login-rows textarea{ border: 1px solid #ececec; padding: 10px; resize: none;}
+.contact-page .col-md-5{ padding: 0 15px 0 30px;}
+#contact_us_form .login-rows input.login-page-btn { float: left !important; margin: 0 auto 34px 60px; position: relative; top: 10px;}
