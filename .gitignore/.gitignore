@@ -1,4 +1,4 @@
-tmp/
+/tmp
 /log/
 .byebug_history
 log/development.log
