@@ -8,7 +8,7 @@ ActiveAdmin.register LoanOfficer do
     column :last
     column :email
     column :created_at
-    actions
+    actions name: "Actions"
   end
 
   filter :first

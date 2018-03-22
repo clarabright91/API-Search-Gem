@@ -1,0 +1,2 @@
+class NewsSearchHistory < ApplicationRecord
+end

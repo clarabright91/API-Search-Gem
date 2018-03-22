@@ -1,4 +1,5 @@
 ActiveAdmin.register NewsArticle ,as: "NewsArticle" do
+  menu false
   # Permitting View and index actions only
   actions :all, except: [:new, :edit]
   # Permitting Strong parameters
@@ -12,7 +13,7 @@ ActiveAdmin.register NewsArticle ,as: "NewsArticle" do
     column :snippet
     column :text
     column :created_at
-    actions
+    actions name: "Actions"
   end
 
   filter :date_article

@@ -11,7 +11,7 @@ Return:         hash
       <h1><%=@page.page_name%></h1>
       <div class="row">
         <div class="col-xs-12 col-md-5 pull-right">
-          <%if @page.page_slug.strip.downcase == "contactus"%>
+          <%if remove_space(@page.page_slug).downcase == "contactus"%>
             <!-- Email form for contactus -->
            <%= form_with url: contact_us_email_path,id: 'contact_us_form' ,remote: true do |f| %>
              <div class="login-rows">
@@ -30,17 +30,23 @@ Return:         hash
               <%= f.submit "Submit", class: "login-page-btn" %>
              </div>
             <%end%>
-          <%elsif @page.page_slug.strip.downcase == "aboutus"%>
+          <%elsif remove_space(@page.page_slug).downcase == "aboutus"%>
              <img src="images/about-us_03.png" alt="">
           <%end%>
         </div>
           <!-- content for term_of_use webpage -->
-        <%if @page.page_slug.strip.downcase == "termsofuse"%>
+        <%if remove_space(@page.page_slug).downcase == "termsofuse"%>
             <div class="col-xs-12 col-md-12">
               <div class="gray-box-cntnt">
                <%=raw(@page.page_content)%>
               </div>
             </div>
+        <%elsif remove_space(@page.page_slug).downcase == "privacypolicy"%>
+          <div class="col-xs-12 col-md-12">
+            <div class="gray-box-cntnt">
+             <%=raw(@page.page_content)%>
+            </div>
+          </div>
         <%else%>
          <div class="col-xs-12 col-md-7 our-story-cntnt">
            <div class="gray-box-cntnt">
@@ -49,6 +55,12 @@ Return:         hash
          </div>
         <%end%>
       </div>
-      <%=raw(@page.meta_description)%>
+      <!-- meta description of page -->
+      <div class="col-xs-12 col-md-12">
+        <div class="gray-box-cntnt">
+         <%=raw(@page.meta_description)%>
+        </div>
+      </div>
+
   </div>
 </section>

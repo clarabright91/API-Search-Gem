@@ -240,17 +240,15 @@ config.register_javascript 'https://www.google.com/jsapi'
   #
   # To disable/customize for the :admin namespace:
   #
-      #  config.namespace :admin do |admin|
-      # admin.build_menu do |menu|
-       # menu.add :label => "Upload CSV", :url => "/"
-  
-      # menu.add :label => "Users" do |sites|
-      #   sites.add :label => "Google", :url => "http://google.com", :html_options => { :target => :blank }
-      #   sites.add :label => "Experts", :model => "Experts"
-      # end
-      
-      # end
-   #end
+    config.namespace :admin do |admin|
+      admin.build_menu do |menu|
+       #menu.add :label => "Upload CSV", :url => "/"
+        menu.add :label => "News" do |sites|
+          sites.add :label => "News Articles", :url => "/admin/news_articles"
+          sites.add :label => "News Serch History", :url => "/admin/news_search_histories"
+        end
+      end
+   end
 
   # == Pagination
   #

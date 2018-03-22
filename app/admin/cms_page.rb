@@ -8,7 +8,7 @@ ActiveAdmin.register CmsPage do
     column :page_slug
     column :meta_title
     column :status
-    actions
+    actions name: "Actions"
   end
 
   form do |f|

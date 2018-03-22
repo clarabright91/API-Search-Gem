@@ -42,7 +42,7 @@ ActiveAdmin.register User do
       link_to User.find(usr.id).is_active ? "Active" : "Deactive" , change_status_path(id: [usr.id])
     end
     column :created_at
-    actions
+    actions name: "Actions"
   end
 
   filter :first_name

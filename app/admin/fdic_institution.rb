@@ -9,7 +9,7 @@ ActiveAdmin.register FdicInstitution do
     column :stname
     column :zip
     column :created_at
-    actions
+    actions name: "Actions"
   end
 
   filter :address

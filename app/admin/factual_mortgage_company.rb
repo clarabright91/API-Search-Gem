@@ -9,7 +9,7 @@ ActiveAdmin.register FactualMortgageCompany do
     column :address
     column :city
     column :state
-    actions
+    actions name: "Actions"
   end
 
   filter :name

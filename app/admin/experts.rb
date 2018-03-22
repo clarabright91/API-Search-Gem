@@ -11,7 +11,7 @@ ActiveAdmin.register Expert do
       image_tag product.image, width:100,height:100
     end
     column :created_at
-    actions
+    actions name: "Actions"
   end
 
   filter :first_name

@@ -10,7 +10,7 @@ ActiveAdmin.register City do
     column :latitude
     column :longitude
     column :county
-    actions
+    actions name: "Actions"
   end
 
   filter :city
