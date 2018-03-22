@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Standup App</title>
+    <title><%= @page.present? ? @page.meta_title.present? ? @page.meta_title : 'Standup App' : "Standup App"%></title>
     <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1">
       <%= csrf_meta_tags %>
       <!-- required stylesheets link -->
@@ -18,6 +18,13 @@
   </head>
   <body class="fixed skin-blue-light">
     <div class="wrapper">
+      <!-- <p id="notice"><%#= flash[:notice] %></p> -->
+      <%if !flash[:notice].blank?%>
+        <div class="col-md-offset-3 col-md-6 alert alert-success" style="height: 5%;">
+          <button type="button" class="close" data-dismiss="alert">x</button>
+            <%= flash[:notice]%>
+        </div>
+      <%end%>
       <!-- rendering header partial  -->
       <%= render 'partials/header' %>
 	    <%= yield %>

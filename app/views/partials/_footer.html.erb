@@ -11,7 +11,7 @@
     <!-- iterating all dynamic cms pages link -->
      <%CmsPage.active.each do |cp|%>
        <ul>
-        <li><%=link_to cp.meta_title, cp.page_slug%></li>
+        <li><%=link_to cp.page_name, cp.page_slug%></li>
        <ul>
      <%end%>
      <span>© 2017 Pureloan.com  All rights reserved. </span>

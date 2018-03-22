@@ -13,10 +13,8 @@ class PagesController < ApplicationController
   def contact_us_email
     @admin_user = AdminUser.first.email
     ContactUsMailer.contact_us_email(@admin_user,params).deliver
-		respond_to do |format|
-	    format.js
-	    format.html
-	  end
+    flash[:notice] = 'Email sent successfully.'
+    redirect_back fallback_location: root_path
 	end
 
 =begin
