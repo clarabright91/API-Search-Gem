@@ -278,7 +278,7 @@ $('#new_admin_user, #edit_admin_user').validate({
       }
     }
   })
-  
+
   $('#new_cms_page,#edit_cms_page').validate({
     rules: {
       "cms_page[page_name]":{

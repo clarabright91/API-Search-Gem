@@ -6,7 +6,7 @@ Purpose:        cms pages contactus
 Params:         name email question
 Return:         hash
 =end %>
-<section class="content-main terms-page about-page contact-page">
+<section class="content-main terms-page about-page contact-page dynamic-page">
    <div class="container">
       <h1><%=@page.page_name%></h1>
       <div class="row">
@@ -15,15 +15,15 @@ Return:         hash
             <!-- Email form for contactus -->
            <%= form_with url: contact_us_email_path,id: 'contact_us_form' ,remote: true do |f| %>
              <div class="login-rows">
-                <%= image_tag("login-user.png", :alt => "Name") %>
+                <%= image_tag("white-login-user.png", :alt => "Name") %>
                 <%= f.text_field :name, autofocus: true, placeholder: "Enter Name" %>
              </div>
              <div class="login-rows">
-               <%= image_tag("login-mail.png", :alt => "email") %>
+               <%= image_tag("white-login-mail.png", :alt => "email") %>
                <%= f.email_field :email, autofocus: true, placeholder: "Enter Email" %>
              </div>
              <div class="login-rows">
-               <%= image_tag("menu-checkbox_03.png", :alt =>"question")%>
+               <%= image_tag("white-menu-checkbox_03.png", :alt =>"question")%>
                <%= f.text_area :question, size: "55x5", autofocus: true, placeholder: "Enter Text", style: 'max-width: 100%'%>
              </div>
              <div class="login-rows cntnt-login">
@@ -31,7 +31,7 @@ Return:         hash
              </div>
             <%end%>
           <%elsif remove_space(@page.page_slug).downcase == "aboutus"%>
-             <img src="images/about-us_03.png" alt="">
+             <img src="images/about-us_03.png"  alt="">
           <%end%>
         </div>
           <!-- content for term_of_use webpage -->
@@ -56,11 +56,12 @@ Return:         hash
         <%end%>
       </div>
       <!-- meta description of page -->
-      <div class="col-xs-12 col-md-12">
-        <div class="gray-box-cntnt">
-         <%=raw(@page.meta_description)%>
+      <%if remove_space(@page.page_slug).downcase != "contactus"%>
+        <div class="row">
+          <div class="col-md-12 dynamic-cntnt">
+           <%=raw(@page.meta_description)%>
+          </div>
         </div>
-      </div>
-
+      <%end%>
   </div>
 </section>

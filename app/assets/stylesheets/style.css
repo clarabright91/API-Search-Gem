@@ -652,10 +652,10 @@ footer span{ font-size:12px; float:left; width:100%; background:#f7f7f7; text-al
 
 }
 
-
-.contact-page .col-md-7{ background: url(../images/home-search-bg.png) no-repeat top center;}
-.contact-page .col-md-7 h3{ color:#fff; line-height: 28px;}
-.contact-page .col-md-7 p{ color:#fff; line-height: 20px; font-weight: normal;}
+.contact-page h1{ color:#fff;}
+.contact-page .col-md-7{ background: #fff;}
+.contact-page .col-md-7 h3{ color:#000; line-height: 28px;}
+.contact-page .col-md-7 p{ color:#333; line-height: 20px; font-weight: normal;}
 .contact-page .col-md-7 .gray-box-cntnt{ background: none;}
 #contact_us_form .login-rows{ border: none;  margin: 4px 0}
 #contact_us_form .login-rows input{ border-bottom: 1px solid #ececec; padding: 10px 0;}
@@ -667,3 +667,18 @@ footer span{ font-size:12px; float:left; width:100%; background:#f7f7f7; text-al
 #contact_us_form .login-rows textarea{ border: 1px solid #ececec; padding: 10px; resize: none;}
 .contact-page .col-md-5{ padding: 0 15px 0 30px;}
 #contact_us_form .login-rows input.login-page-btn { float: left !important; margin: 0 auto 34px 60px; position: relative; top: 10px;}
+
+
+.contact-page {
+	background: url('../images/home-search-bg.png');
+	float: left;
+	width: 100%;
+	background-size: cover;
+	background-position: top center;
+}
+#contact_us_form .login-rows input[type="email"], #contact_us_form .login-rows input[type="text"], #contact_us_form .login-rows textarea{ border: 1px solid #fff !important; background: none !important; color:#fff; padding: 10px; font-size: 14px;}
+#contact_us_form .error{ padding-left: 14%; bottom: -3px;}
+.dynamic-cntnt{ float: left; width:100%; margin: 15px 0;}
+
+.dynamic-page.contact-page .col-md-7{ background: none;}
+.dynamic-page.contact-page .col-md-7 .gray-box-cntnt{ background: #fff;}
