@@ -19,7 +19,7 @@ class NewsWorker
         })
         request = Net::HTTP::Get.new(uri.request_uri)
           # Request headers
-        request['Ocp-Apim-Subscription-Key'] = '98c48a8a18c24ee498ee152ace13e4f9'
+        request['Ocp-Apim-Subscription-Key'] = '20cfcb8aebbb4220ae8a8345471a3206'
           # Request body
         request.body = "{body}"
         response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -27,7 +27,6 @@ class NewsWorker
         end
         news = response.body.force_encoding('utf-8')
         parsed_data =  JSON.parse(news)
-
         if parsed_data['value'].present?
           begin
             parsed_data['value'].first(50).each do |data|
@@ -36,7 +35,7 @@ class NewsWorker
               end
             end
           rescue => e
-            p  e.message
+            #p  e.message
           end
         end
       nyt_data  #method calling for nyt
@@ -66,7 +65,7 @@ class NewsWorker
               end
             end
           rescue => e
-            p  e.message
+            #p  e.message
           end
         end
    end

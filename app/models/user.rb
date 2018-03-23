@@ -19,6 +19,13 @@ class User < ApplicationRecord
                      #length: { minimum: 2, maximum: 15 }
   #validates_presence_of :purpose
 
+  # association with search_results module
+  has_many :search_results, dependent: :destroy
+  #association with loan_tek_data
+  has_many :user_favorites, dependent: :destroy
+  #needs to be done
+  #has_many :loan_tek_data, through: :user_favorites
+
   def active_for_authentication?    #for checking user is active
     super && self.is_active
   end

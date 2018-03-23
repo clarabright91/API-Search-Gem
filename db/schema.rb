@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322065832) do
+ActiveRecord::Schema.define(version: 20180323081456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1368,6 +1368,36 @@ ActiveRecord::Schema.define(version: 20180322065832) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "search_results", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "city"
+    t.string "state"
+    t.integer "zip"
+    t.float "latitude"
+    t.float "longitude"
+    t.text "search_input"
+    t.text "response"
+    t.integer "search_type"
+    t.integer "loan_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_search_results_on_city"
+    t.index ["latitude"], name: "index_search_results_on_latitude"
+    t.index ["longitude"], name: "index_search_results_on_longitude"
+    t.index ["search_type"], name: "index_search_results_on_search_type"
+    t.index ["state"], name: "index_search_results_on_state"
+    t.index ["user_id"], name: "index_search_results_on_user_id"
+  end
+
+  create_table "user_favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "loan_tek_data_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loan_tek_data_id"], name: "index_user_favorites_on_loan_tek_data_id"
+    t.index ["user_id"], name: "index_user_favorites_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name", default: "", null: false
     t.string "last_name"
@@ -1396,4 +1426,6 @@ ActiveRecord::Schema.define(version: 20180322065832) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "search_results", "users"
+  add_foreign_key "user_favorites", "users"
 end

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  loan_tek_data: one
+
+two:
+  user: two
+  loan_tek_data: two
