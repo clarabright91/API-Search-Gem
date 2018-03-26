@@ -3,6 +3,10 @@ ActiveAdmin.register NewsSearchHistory do
   # Permitting Strong parameters
   permit_params :search_term,:last_searched_bing, :last_searched_nyt
 
+  action_item 'Back', only: :show do
+    link_to('Back', :back)
+  end
+  
   index do
     selectable_column
     column :search_term

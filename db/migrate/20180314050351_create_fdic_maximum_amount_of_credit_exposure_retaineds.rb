@@ -1,7 +1,7 @@
 class CreateFdicMaximumAmountOfCreditExposureRetaineds < ActiveRecord::Migration[5.1]
   def change
     create_table :fdic_maximum_amount_of_credit_exposure_retaineds do |t|
-      t.integer :cert
+      t.integer :cert, index: true
       t.integer :docket
       t.integer :fed_rssd
       t.integer :rssdhcr

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323081456) do
+ActiveRecord::Schema.define(version: 20180326082759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,8 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.string "county"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["latitude"], name: "index_cities_on_latitude"
-    t.index ["longitude"], name: "index_cities_on_longitude"
-    t.index ["state_code"], name: "index_cities_on_state_code"
+    t.index ["state_code", "city"], name: "index_cities_on_state_code_and_city"
+    t.index ["state_code", "latitude", "longitude"], name: "index_cities_on_state_code_and_latitude_and_longitude"
     t.index ["zip"], name: "index_cities_on_zip", unique: true
   end
 
@@ -217,9 +216,10 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.string "yelp3_reviews"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city"], name: "index_factual_mortgage_companies_on_city"
     t.index ["factual_id"], name: "index_factual_mortgage_companies_on_factual_id", unique: true
-    t.index ["state"], name: "index_factual_mortgage_companies_on_state"
+    t.index ["name"], name: "index_factual_mortgage_companies_on_name"
+    t.index ["state", "city"], name: "index_factual_mortgage_companies_on_state_and_city"
+    t.index ["state", "latitude", "longitude"], name: "index_mortgage_companies_on_state_and_latitude_and_longitude"
   end
 
   create_table "fdic_bank_assets_sold_and_securitizeds", force: :cascade do |t|
@@ -305,6 +305,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "asdroth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_bank_assets_sold_and_securitizeds_on_cert"
   end
 
   create_table "fdic_carrying_amount_of_assets_covered_by_fdic_loss_share_agree", force: :cascade do |t|
@@ -395,6 +396,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "nalgty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_covered_by_fdic_loss_share_agreements_on_cert"
   end
 
   create_table "fdic_goodwill_and_other_intangibles", force: :cascade do |t|
@@ -443,6 +445,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "intangao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_goodwill_and_other_intangibles_on_cert"
   end
 
   create_table "fdic_institutions", force: :cascade do |t|
@@ -565,8 +568,8 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cert"], name: "index_fdic_institutions_on_cert", unique: true
-    t.index ["city"], name: "index_fdic_institutions_on_city"
-    t.index ["stname"], name: "index_fdic_institutions_on_stname"
+    t.index ["name"], name: "index_fdic_institutions_on_name"
+    t.index ["stname", "city"], name: "index_fdic_institutions_on_stname_and_city"
   end
 
   create_table "fdic_loan_charge_offs_and_recoveries", force: :cascade do |t|
@@ -689,6 +692,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "ntagsm"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_loan_charge_offs_and_recoveries_on_cert"
   end
 
   create_table "fdic_maximum_amount_of_credit_exposure_retaineds", force: :cascade do |t|
@@ -767,6 +771,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "asceoth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_maximum_amount_of_credit_exposure_retaineds_on_cert"
   end
 
   create_table "fdic_net_loans_and_leases", force: :cascade do |t|
@@ -847,6 +852,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "lnlsgrf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_net_loans_and_leases_on_cert"
   end
 
   create_table "fdic_past_due_and_nonaccrual_assets", force: :cascade do |t|
@@ -983,6 +989,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "naltot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_past_due_and_nonaccrual_assets_on_cert"
   end
 
   create_table "fdic_securities", force: :cascade do |t|
@@ -1060,6 +1067,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "trlreval"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_securities_on_cert"
   end
 
   create_table "fdic_total_managed_assets_held_in_fiduciary_accounts", force: :cascade do |t|
@@ -1154,6 +1162,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "tomisc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_total_managed_assets_in_fiduciary_accounts_on_cert"
   end
 
   create_table "fdic_total_unused_commitments", force: :cascade do |t|
@@ -1210,6 +1219,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "partacqu"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_total_unused_commitments_on_cert"
   end
 
   create_table "fdic_unused_commitments", force: :cascade do |t|
@@ -1267,6 +1277,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "ucszoth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_unused_commitments_on_cert"
   end
 
   create_table "fdic_us_government_obligations", force: :cascade do |t|
@@ -1318,6 +1329,7 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.integer "sccmog"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cert"], name: "index_fdic_us_government_obligations_on_cert"
   end
 
   create_table "loan_officers", force: :cascade do |t|
@@ -1339,8 +1351,27 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city"], name: "index_loan_officers_on_city"
-    t.index ["state"], name: "index_loan_officers_on_state"
+    t.index ["company"], name: "index_loan_officers_on_company"
+    t.index ["state", "city"], name: "index_loan_officers_on_state_and_city"
+    t.index ["state", "latitude", "longitude"], name: "index_loan_officers_on_state_and_latitude_and_longitude"
+  end
+
+  create_table "mortgage_search_results", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "city"
+    t.string "state"
+    t.integer "zip"
+    t.float "latitude"
+    t.float "longitude"
+    t.text "search_input"
+    t.text "response"
+    t.integer "search_type"
+    t.integer "loan_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["latitude", "longitude", "search_type"], name: "index_search_results_on_latitude_and_longitude_and_search_type"
+    t.index ["state", "city", "search_type"], name: "index_mortgage_search_results_on_state_and_city_and_search_type"
+    t.index ["user_id"], name: "index_mortgage_search_results_on_user_id"
   end
 
   create_table "news_articles", force: :cascade do |t|
@@ -1355,38 +1386,20 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.string "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["api_type"], name: "index_news_articles_on_api_type"
     t.index ["article_id"], name: "index_news_articles_on_article_id", unique: true
     t.index ["search_term"], name: "index_news_articles_on_search_term"
   end
 
   create_table "news_search_histories", force: :cascade do |t|
     t.string "search_term"
-    t.text "last_searched_bing"
-    t.text "last_searched_nyt"
+    t.datetime "last_searched_bing"
+    t.datetime "last_searched_nyt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "search_results", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "city"
-    t.string "state"
-    t.integer "zip"
-    t.float "latitude"
-    t.float "longitude"
-    t.text "search_input"
-    t.text "response"
-    t.integer "search_type"
-    t.integer "loan_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["city"], name: "index_search_results_on_city"
-    t.index ["latitude"], name: "index_search_results_on_latitude"
-    t.index ["longitude"], name: "index_search_results_on_longitude"
-    t.index ["search_type"], name: "index_search_results_on_search_type"
-    t.index ["state"], name: "index_search_results_on_state"
-    t.index ["user_id"], name: "index_search_results_on_user_id"
+    t.index ["last_searched_bing"], name: "index_news_search_histories_on_last_searched_bing"
+    t.index ["last_searched_nyt"], name: "index_news_search_histories_on_last_searched_nyt"
+    t.index ["search_term"], name: "index_news_search_histories_on_search_term", unique: true
+    t.index ["updated_at"], name: "index_news_search_histories_on_updated_at"
   end
 
   create_table "user_favorites", force: :cascade do |t|
@@ -1426,6 +1439,6 @@ ActiveRecord::Schema.define(version: 20180323081456) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "search_results", "users"
+  add_foreign_key "mortgage_search_results", "users"
   add_foreign_key "user_favorites", "users"
 end

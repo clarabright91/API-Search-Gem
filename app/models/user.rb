@@ -19,8 +19,8 @@ class User < ApplicationRecord
                      #length: { minimum: 2, maximum: 15 }
   #validates_presence_of :purpose
 
-  # association with search_results module
-  has_many :search_results, dependent: :destroy
+  # association with mortgage_search_results module
+  has_many :mortgage_search_results, dependent: :destroy
   #association with loan_tek_data
   has_many :user_favorites, dependent: :destroy
   #needs to be done

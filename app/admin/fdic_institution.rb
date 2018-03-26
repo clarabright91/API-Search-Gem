@@ -2,6 +2,10 @@ ActiveAdmin.register FdicInstitution do
   # Permitting Strong parameters
   permit_params :stname,:cert,:docket,:active,:address,:asset,:bkclass,:changec1,:changec2,:changec3,:changec4,:changec5,:charter,:chrtagnt,:conserve,:city,:clcode,:cmsa_no,:cmsa,:county,:dateupdt,:denovo,:dep,:effdate,:endefymd,:eq,:estymd,:fdicdbs,:fdicregn,:fdicsupv,:fed,:fed_rssd,:fedchrtr,:fldoff,:iba,:inactive,:insagnt1,:insagnt2,:insdate,:instcrcd,:insbif,:inscoml,:insdif,:insfdic,:inssaif,:inssave,:msa_no,:msa,:name,:newcert,:oakar,:otsdist,:otsregnm,:procdate,:qbprcoml,:regagnt,:repdte,:risdate,:stchrtr,:roa,:roaq,:roe,:roeq,:rundate,:sasser,:law_sasser_flg,:stalp,:stcnty,:stnum,:webaddr,:zip,:suprv_fd,:occdist,:uninum,:ultcert,:cfpbeffdte,:cfpbenddte,:regagent2,:offices,:certcons,:parcert,:cityhcr,:depdom,:form31,:hctmult,:instag,:mutual,:namehcr,:netinc,:netincq,:offdom,:offfor,:offoa,:rssdhcr,:stalphcr,:stmult,:subchaps,:roaptx,:roaptxq,:trust,:specgrp,:specgrpn,:tract,:csa,:csa_no,:csa_flg,:cbsa,:cbsa_no,:cbsa_metro_name,:cbsa_metro,:cbsa_metro_flg,:cbsa_micro_flg,:cbsa_div,:cbsa_div_no,:cbsa_div_flg,:cb
 
+  action_item 'Back', only: :show do
+    link_to('Back', :back)
+  end
+  
   index do
     selectable_column
     column :address

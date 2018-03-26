@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SearchResultTest < ActiveSupport::TestCase
+class MortgageSearchResultTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -2,6 +2,10 @@ ActiveAdmin.register Expert do
   # Permitting Strong parameters
   permit_params :email, :first_name, :last_name, :phone, :license_number, :specialty, :website, :loan_type, :zip, :image, :verified, :remove_image
 
+  action_item 'Back', only: :show do
+    link_to('Back', :back)
+  end
+
   index do
     selectable_column
     column :first_name

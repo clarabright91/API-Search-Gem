@@ -2,11 +2,11 @@ class CreateFactualMortgageCompanies < ActiveRecord::Migration[5.1]
   def change
     create_table :factual_mortgage_companies do |t|
       t.string :factual_id, index: { unique: true }
-      t.string :name
+      t.string :name, index: true
       t.string :address
       t.string :address_extended
-      t.string :city, index: true
-      t.string :state, index: true
+      t.string :city
+      t.string :state
       t.integer :zip
       t.string :country
       t.string :neighborhoods
@@ -134,5 +134,7 @@ class CreateFactualMortgageCompanies < ActiveRecord::Migration[5.1]
       t.string :yelp3_reviews
       t.timestamps
     end
+    add_index :factual_mortgage_companies, [:state, :city]
+    add_index :factual_mortgage_companies, [:state, :latitude, :longitude], name: "index_mortgage_companies_on_state_and_latitude_and_longitude"
   end
 end

@@ -2,6 +2,10 @@ ActiveAdmin.register LoanOfficer do
   # Permitting Strong parameters
   permit_params :first,:last,:title,:company,:address,:city,:state,:zip,:county,:phone1,:phone2,:cell,:website,:email,:latitude,:longitude
 
+  action_item 'Back', only: :show do
+    link_to('Back', :back)
+  end
+  
   index do
     selectable_column
     column :first

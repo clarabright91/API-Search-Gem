@@ -1,7 +1,7 @@
 class CreateFdicLoanChargeOffsAndRecoveries < ActiveRecord::Migration[5.1]
   def change
     create_table :fdic_loan_charge_offs_and_recoveries do |t|
-      t.integer :cert
+      t.integer :cert, index: true
       t.integer :docket
       t.integer :fed_rssd
       t.integer :rssdhcr

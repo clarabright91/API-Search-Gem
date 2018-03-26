@@ -1,7 +1,7 @@
 class CreateFdicPastDueAndNonaccrualAssets < ActiveRecord::Migration[5.1]
   def change
     create_table :fdic_past_due_and_nonaccrual_assets do |t|
-      t.integer :cert
+      t.integer :cert, index: true
       t.integer :docket
       t.integer :fed_rssd
       t.integer :rssdhcr

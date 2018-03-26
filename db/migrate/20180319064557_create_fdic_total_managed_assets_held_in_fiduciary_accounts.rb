@@ -1,7 +1,7 @@
 class CreateFdicTotalManagedAssetsHeldInFiduciaryAccounts < ActiveRecord::Migration[5.1]
   def change
     create_table :fdic_total_managed_assets_held_in_fiduciary_accounts do |t|
-      t.integer :cert
+      t.integer :cert, index: {name: "index_fdic_total_managed_assets_in_fiduciary_accounts_on_cert"}
       t.integer :docket
       t.integer :fed_rssd
       t.integer :rssdhcr

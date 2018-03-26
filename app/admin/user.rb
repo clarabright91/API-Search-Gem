@@ -5,7 +5,7 @@ ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :first_name,:last_name,:phone_number, :zip_code, :purpose, :home_price, :down_payment, :credit_score, :is_active, :price_alert, :last_search_id
 
   # Custom action for mass activation
-  batch_action :activate do |ids|
+  batch_action :activate, confirm: "Are you sure you want to activate these users?" do |ids|
     user_id=[]
     batch_action_collection.find(ids).each do |uid|
       user_id << uid.id
@@ -14,7 +14,7 @@ ActiveAdmin.register User do
   end
 
   # Custom action for mass deactivation
-  batch_action :deactivate do |ids|
+  batch_action :deactivate, confirm: "Are you sure you want to deactivate these users?" do |ids|
     user_id=[]
     batch_action_collection.find(ids).each do |uid|
       user_id << uid.id
@@ -31,6 +31,10 @@ ActiveAdmin.register User do
       end
       super
     end
+  end
+
+  action_item 'Back', only: :show do
+    link_to('Back', :back)
   end
 
   index do

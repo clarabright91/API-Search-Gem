@@ -1,7 +1,7 @@
 class CreateFdicInstitutions < ActiveRecord::Migration[5.1]
   def change
     create_table :fdic_institutions do |t|
-      t.string :stname, index: true
+      t.string :stname
       t.integer :cert, index: { unique: true }
       t.string :docket
       t.string :active
@@ -16,7 +16,7 @@ class CreateFdicInstitutions < ActiveRecord::Migration[5.1]
       t.string :charter
       t.string :chrtagnt
       t.string :conserve
-      t.string :city, index: true
+      t.string :city
       t.string :clcode
       t.string :cmsa_no
       t.string :cmsa
@@ -49,7 +49,7 @@ class CreateFdicInstitutions < ActiveRecord::Migration[5.1]
       t.string :inssave
       t.string :msa_no
       t.string :msa
-      t.string :name
+      t.string :name, index: true
       t.string :newcert
       t.string :oakar
       t.string :otsdist
@@ -119,5 +119,6 @@ class CreateFdicInstitutions < ActiveRecord::Migration[5.1]
       t.string :cb
       t.timestamps
     end
+    add_index :fdic_institutions, [:stname, :city]
   end
 end

@@ -1,7 +1,7 @@
 class CreateFdicGoodwillAndOtherIntangibles < ActiveRecord::Migration[5.1]
   def change
     create_table :fdic_goodwill_and_other_intangibles do |t|
-      t.integer :cert
+      t.integer :cert, index: true
       t.integer :docket
       t.integer :fed_rssd
       t.integer :rssdhcr

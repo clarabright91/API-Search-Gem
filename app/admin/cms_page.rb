@@ -2,6 +2,10 @@ ActiveAdmin.register CmsPage do
   # Permitting Strong parameters
   permit_params :page_name, :page_content, :page_slug, :meta_title,:meta_description,:status
 
+  action_item 'Back', only: :show do
+    link_to('Back', :back)
+  end
+  
   index do
     selectable_column
     column :page_name

@@ -1,7 +1,7 @@
 class CreateFdicCarryingAmountOfAssetsCoveredByFdicLossShareAgreements < ActiveRecord::Migration[5.1]
   def change
     create_table :fdic_carrying_amount_of_assets_covered_by_fdic_loss_share_agreements do |t|
-      t.integer :cert
+      t.integer :cert, index: {name: "index_fdic_covered_by_fdic_loss_share_agreements_on_cert"}
       t.integer :docket
       t.integer :fed_rssd
       t.integer :rssdhcr

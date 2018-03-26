@@ -5,6 +5,10 @@ ActiveAdmin.register NewsArticle ,as: "NewsArticle" do
   # Permitting Strong parameters
   permit_params :search_term,:date_article, :datetime, :url, :author, :headline, :text, :api_type
 
+  action_item 'Back', only: :show do
+    link_to('Back', :back)
+  end
+  
   index do
     selectable_column
     column :date_article
