@@ -49,14 +49,15 @@ gem 'jquery-validation-rails', '~> 1.16'
 gem 'omniauth-facebook', '~> 4.0'
 
 # for image,file
-gem "paperclip", "~> 5.2.1"  
+gem "paperclip", "~> 5.2.1"
 #gem for background scheduler
 gem 'rufus-scheduler', '~> 3.4', '>= 3.4.2'
 
 # gem for background jobs
 gem 'sidekiq', '~> 5.1', '>= 5.1.1'
 
-#gem 'geocoder', '~> 1.4', '>= 1.4.6'
+# gem for find user location
+gem 'geocoder', '~> 1.4', '>= 1.4.6'
 
 # gem for editor
 gem 'ckeditor'

@@ -114,6 +114,7 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    geocoder (1.4.6)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     has_scope (0.7.1)
@@ -312,6 +313,7 @@ DEPENDENCIES
   ckeditor
   coffee-rails (~> 4.2)
   devise
+  geocoder (~> 1.4, >= 1.4.6)
   jbuilder (~> 2.5)
   jquery-validation-rails (~> 1.16)
   listen (>= 3.0.5, < 3.2)
