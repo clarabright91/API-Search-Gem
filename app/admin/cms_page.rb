@@ -15,6 +15,10 @@ ActiveAdmin.register CmsPage do
     actions name: "Actions"
   end
 
+  filter :page_name  
+  filter :page_slug
+  filter :status
+
   form do |f|
     f.inputs 'CmsPage' do
       f.input :page_name

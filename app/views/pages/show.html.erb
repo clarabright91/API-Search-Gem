@@ -6,34 +6,37 @@ Purpose:        cms pages contactus
 Params:         name email question
 Return:         hash
 =end %>
-<section class="content-main terms-page about-page contact-page dynamic-page">
+<section class="content-main terms-page about-page  dynamic-page">
    <div class="container">
       <h1><%=@page.page_name%></h1>
       <div class="row">
-        <div class="col-xs-12 col-md-5 pull-right">
+       
           <%if remove_space(@page.page_slug).downcase == "contactus"%>
             <!-- Email form for contactus -->
-           <%= form_with url: contact_us_email_path,id: 'contact_us_form' ,remote: true do |f| %>
-             <div class="login-rows">
-                <%= image_tag("white-login-user.png", :alt => "Name") %>
-                <%= f.text_field :name, autofocus: true, placeholder: "Enter Name" %>
-             </div>
-             <div class="login-rows">
-               <%= image_tag("white-login-mail.png", :alt => "email") %>
-               <%= f.email_field :email, autofocus: true, placeholder: "Enter Email" %>
-             </div>
-             <div class="login-rows">
-               <%= image_tag("white-menu-checkbox_03.png", :alt =>"question")%>
-               <%= f.text_area :question, size: "55x5", autofocus: true, placeholder: "Enter Text", style: 'max-width: 100%'%>
-             </div>
-             <div class="login-rows cntnt-login">
-              <%= f.submit "Submit", class: "login-page-btn" %>
-             </div>
+            <div class="col-xs-12 col-md-5 pull-right ">
+              <%= form_with url: contact_us_email_path,id: 'contact_us_form' ,remote: true do |f| %>
+                <div class="login-rows">
+                  <%= image_tag("login-user.png", :alt => "Name") %>
+                  <%= f.text_field :name, autofocus: true, placeholder: "Enter Name" %>
+               </div>
+               <div class="login-rows">
+                 <%= image_tag("login-mail.png", :alt => "email") %>
+                 <%= f.email_field :email, autofocus: true, placeholder: "Enter Email" %>
+               </div>
+               <div class="login-rows">
+                 <%= image_tag("menu-checkbox_03.png", :alt =>"question")%>
+                 <%= f.text_area :question, size: "55x5", autofocus: true, placeholder: "Enter Text", style: 'max-width: 100%'%>
+               </div>
+               <div class="login-rows cntnt-login">
+                <%= f.submit "Submit", class: "login-page-btn" %>
+               </div>
             <%end%>
+           </div>  
           <%elsif remove_space(@page.page_slug).downcase == "aboutus"%>
-             <img src="images/about-us_03.png"  alt="">
+             <div class="col-xs-12 col-md-5 our-story-img pull-right">
+               <img src="images/about-us_03.png" alt="">
+             </div>
           <%end%>
-        </div>
           <!-- content for term_of_use webpage -->
         <%if remove_space(@page.page_slug).downcase == "termsofuse"%>
             <div class="col-xs-12 col-md-12">

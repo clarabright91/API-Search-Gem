@@ -1,3 +1,4 @@
+ # Worker for Microsoft Bing & Nyt API Calls
 class NewsWorker
   include Sidekiq::Worker
   sidekiq_options queue: :default,
@@ -5,15 +6,12 @@ class NewsWorker
                   retry: false
   def perform(news_search_history)
     nsh = NewsSearchHistory.find(news_search_history)
-
     #NewsArticle.old_articles.destroy_all            if NewsArticle.old_articles.present? # Deleting 30 days old Articles
     #NewsArticle.where.not(id: NewsArticle.last(50)).destroy_all      if NewsArticle.count > 50 #Deleting old Articles if there are more then 50 records
     require 'net/http'
-      # Section start for Microsoft Bing API Call--------------------------------------------------------
         uri = URI('https://api.cognitive.microsoft.com/bing/v7.0/news/search')
         uri.query = URI.encode_www_form({
             # Request parameters
-            #'q' => 'microsoft',
             'q' => nsh.search_term,
             'count' => '50',
             'offset' => '0',
@@ -46,13 +44,11 @@ class NewsWorker
           end
         end
       nyt_data(nsh)  #method calling for nyt
-      #update news search history for bing
-     nsh.update(last_searched_bing: DateTime.now)
+     nsh.update(last_searched_bing: DateTime.now)      #update news search history for bing
   end
 
  private
   def nyt_data(nsh)
-    # NYT Api -----------------------------------------------------------------------
       uri = URI('https://api.nytimes.com/svc/search/v2/articlesearch.json')
       uri.query = URI.encode_www_form({
                     'q' => nsh.search_term,
@@ -81,7 +77,6 @@ class NewsWorker
             #p  e.message
           end
         end
-        #update news search history for nyt
-       nsh.update(last_searched_nyt: DateTime.now)
+       nsh.update(last_searched_nyt: DateTime.now)      #update news search history for nyt
    end
 end
