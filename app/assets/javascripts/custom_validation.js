@@ -2,6 +2,11 @@
 
  $(document).ready(function() {
   // "use strict"
+  window.setTimeout(function() {
+    $(".flash").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove();       
+    });
+  }, 4000);
 
   $("#new_user,#edit_user").validate({
     rules: {

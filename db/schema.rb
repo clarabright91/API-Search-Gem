@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326082759) do
+ActiveRecord::Schema.define(version: 20180329093054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1330,6 +1330,39 @@ ActiveRecord::Schema.define(version: 20180326082759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cert"], name: "index_fdic_us_government_obligations_on_cert"
+  end
+
+  create_table "freddie_mac_loan_originations", force: :cascade do |t|
+    t.integer "credit_score"
+    t.datetime "first_paymrnt_date"
+    t.string "first_time_home_buyer_flag"
+    t.datetime "maturity_date"
+    t.integer "metropolitan_statistical_area"
+    t.integer "mortgage_insaurance_percentage"
+    t.integer "number_of_unit"
+    t.string "occupancy_status"
+    t.float "original_combined_loan_to_value"
+    t.integer "original_debt_to_income_ratio"
+    t.integer "original_upb"
+    t.integer "original_loan_to_value"
+    t.float "original_interest_rate"
+    t.string "channel"
+    t.string "prepayment_penalty_mortgage_flag"
+    t.string "product_type"
+    t.string "property_state"
+    t.string "property_type"
+    t.integer "postal_code"
+    t.string "loan_sequence_number"
+    t.string "loan_purpose"
+    t.integer "original_loan_term"
+    t.integer "number_of_borrowers"
+    t.string "seller_name"
+    t.string "service_name"
+    t.string "super_conforming_flag"
+    t.string "pre_harp_loan_sequence_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loan_sequence_number"], name: "index_freddie_mac_loan_originations_on_loan_sequence_number", unique: true
   end
 
   create_table "loan_officers", force: :cascade do |t|

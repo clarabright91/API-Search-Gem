@@ -18,7 +18,6 @@ ActiveAdmin.register LoanOfficer do
   filter :first
   filter :last
   filter :email
-  filter :phone1
   filter :created_at
 
   form do |f|
