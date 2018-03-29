@@ -2,7 +2,7 @@ class CreateFreddieMacLoanOriginations < ActiveRecord::Migration[5.1]
   def change
     create_table :freddie_mac_loan_originations do |t|
       t.integer :credit_score
-      t.datetime :first_paymrnt_date
+      t.datetime :first_payment_date
       t.string :first_time_home_buyer_flag
       t.datetime :maturity_date
       t.integer :metropolitan_statistical_area
