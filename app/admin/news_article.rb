@@ -5,6 +5,8 @@ ActiveAdmin.register NewsArticle ,as: "NewsArticle" do
   # Permitting Strong parameters
   permit_params :search_term,:date_article, :datetime, :url, :author, :headline, :text, :api_type
 
+  #enum api_type_enum: {'New York Times'=>0,'Microsoft Bing'=>1}
+
   action_item 'Back', only: :show do
     link_to('Back', :back)
   end
@@ -14,7 +16,8 @@ ActiveAdmin.register NewsArticle ,as: "NewsArticle" do
     column :date_article
     column :headline
     column :author
-    column :snippet
+    #column :snippet
+    column :api_type
     column :text
     column :created_at
     actions name: "Actions"
@@ -25,7 +28,7 @@ ActiveAdmin.register NewsArticle ,as: "NewsArticle" do
 
   show title: "NewsArticle" do
     panel "NewsArticle Details" do
-      attributes_table_for news_article, :search_term,:date_article, :datetime, :url, :author, :headline, :text
+      attributes_table_for news_article, :search_term,:date_article, :url, :author, :headline, :text, :api_type, :article_id
     end
   end
 end

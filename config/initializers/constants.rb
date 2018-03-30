@@ -1,0 +1,11 @@
+#Constant values for Api_type
+BING_NEWS_API_TYPE = 1 
+NYT_NEWS_API_TYPE = 0
+
+#Bing keys
+BING_API_KEY_1 = '20cfcb8aebbb4220ae8a8345471a3206'  
+BING_API_KEY_2 = '3edb05f41c334965a2561612b6f67ca3'
+
+#Nyt Keys
+NYT_API_KEY_1 = '7256321e913d427b94e9a2eb49c7c201'
+NYT_API_KEY_2 = '9b708bdf0ea943bab0cdae89607c421b'

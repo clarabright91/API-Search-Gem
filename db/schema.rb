@@ -1338,10 +1338,10 @@ ActiveRecord::Schema.define(version: 20180329093054) do
     t.string "first_time_home_buyer_flag"
     t.datetime "maturity_date"
     t.integer "metropolitan_statistical_area"
-    t.integer "mortgage_insaurance_percentage"
-    t.integer "number_of_unit"
+    t.integer "mortgage_insurance_percentage"
+    t.integer "number_of_units"
     t.string "occupancy_status"
-    t.float "original_combined_loan_to_value"
+    t.integer "original_combined_loan_to_value"
     t.integer "original_debt_to_income_ratio"
     t.integer "original_upb"
     t.integer "original_loan_to_value"
@@ -1363,6 +1363,7 @@ ActiveRecord::Schema.define(version: 20180329093054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["loan_sequence_number"], name: "index_freddie_mac_loan_originations_on_loan_sequence_number", unique: true
+    t.index ["postal_code"], name: "index_freddie_mac_loan_originations_on_postal_code"
   end
 
   create_table "loan_officers", force: :cascade do |t|

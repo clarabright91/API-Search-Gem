@@ -6,10 +6,10 @@ class CreateFreddieMacLoanOriginations < ActiveRecord::Migration[5.1]
       t.string :first_time_home_buyer_flag
       t.datetime :maturity_date
       t.integer :metropolitan_statistical_area
-      t.integer :mortgage_insaurance_percentage
-      t.integer :number_of_unit
+      t.integer :mortgage_insurance_percentage
+      t.integer :number_of_units
       t.string :occupancy_status
-      t.float :original_combined_loan_to_value
+      t.integer :original_combined_loan_to_value
       t.integer :original_debt_to_income_ratio
       t.integer :original_upb, length: 8
       t.integer :original_loan_to_value
@@ -19,7 +19,7 @@ class CreateFreddieMacLoanOriginations < ActiveRecord::Migration[5.1]
       t.string :product_type
       t.string :property_state
       t.string :property_type
-      t.integer :postal_code
+      t.integer :postal_code, index: true
       t.string :loan_sequence_number, index: { unique: true }
       t.string :loan_purpose
       t.integer :original_loan_term
