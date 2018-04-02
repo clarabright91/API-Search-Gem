@@ -17,6 +17,10 @@ class PagesController < ApplicationController
     redirect_back fallback_location: root_path
 	end
 
+  def user_profile
+    @user = current_user
+  end
+
 =begin
   Developer:      Varun
   Created:        16-03-2018

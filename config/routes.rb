@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get '/change_status', to: 'pages#change_status'
   get '/activate', to: 'pages#user_mass_activate'
   get '/deactivate', to: 'pages#user_mass_deactivate'
+  
+  get '/profile', to: 'pages#user_profile'
   # for dynamic cmspages
   CmsPage.load                      if CmsPage.present?
   #root to: 'activity#mine'

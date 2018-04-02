@@ -7,6 +7,6 @@ Purpose:        scheduling and executing jobs
 require 'rufus-scheduler'
 scheduler = Rufus::Scheduler.new
 scheduler.every '50s' do #calling scheduler after every 50 seconds
-  nsh = NewsSearchHistory.find_by("updated_at IS NULL OR date(updated_at) <= ?", 3.days.ago.to_date) #Fetching uniq news search history
-  NewsWorker.perform_async(nsh.id) if nsh.present? #sending news_search_history id for background worker
+  #nsh = NewsSearchHistory.find_by("updated_at IS NULL OR date(updated_at) <= ?", 3.months.ago.to_date) #Fetching uniq news search history
+  #NewsWorker.perform_async(nsh.id) if nsh.present? #sending news_search_history id for background worker
 end

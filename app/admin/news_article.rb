@@ -16,13 +16,14 @@ ActiveAdmin.register NewsArticle ,as: "NewsArticle" do
     column :date_article
     column :headline
     column :author
-    #column :snippet
+    column :search_term
     column :api_type
     column :text
     column :created_at
     actions name: "Actions"
   end
 
+  filter :search_term
   filter :date_article
   filter :api_type, as: :select,include_blank: false, collection: {'New York Times'=>0,'Microsoft Bing'=>1}
 
