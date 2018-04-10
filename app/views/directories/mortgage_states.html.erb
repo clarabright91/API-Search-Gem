@@ -17,8 +17,7 @@
                         <h2>Refinance Rates</h2>
                         <div class="directory-links-box">
                           <%@states.each do |state|%>
-                              <%=link_to state, state%>
-                              <%#=link_to state, controller: "directories",action: "all_city",name: state%>         
+                              <%=link_to state, controller: "/directories",action: "state_refinance_rates",state: state%>          
                            <%end%>
                         </div>
                      </div>

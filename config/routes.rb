@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   get '/directory', to: 'directories#mortgage_states'
   get '/mortgage/:state', to: 'directories#state_mortgage_rates'
+  get '/refinance/:state', to: 'directories#state_refinance_rates'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
