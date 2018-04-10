@@ -278,5 +278,27 @@ $(document).ready(function() {
 
   })
 
+  $('#reset_password').validate({
+    rules: {
+      "user[password]": {
+        required: true,
+        minlength: 6
+      },
+      "user[password_confirmation]":{
+        required: true,
+        minlength: 6
+      }
+    },
+    messages: {
+      "user[password]":{
+        required: "Please enter password.",
+        minlength: "Your password must be at least 6 characters long."
+      },
+      "user[password_confirmation]":{
+        required: "Please enter confirm password.",
+        minlength: "Your confirm password must be at least 6 characters long.",
+      }
+    }
+  })
 
 });

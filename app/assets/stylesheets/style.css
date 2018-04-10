@@ -1411,3 +1411,10 @@ label.error {
   text-decoration: none !important;
   min-width: 250px !important;
 }
+
+
+
+/**/
+.forgot-signup-links.forgot-pass-cntnt br{ display: none; }
+.profile-blocks-cntnt .form-group { position: relative;}
+.profile-blocks-cntnt .form-group label.error { bottom: -14px;}

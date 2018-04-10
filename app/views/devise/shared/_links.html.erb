@@ -1,19 +1,20 @@
 <%#=begin
 form:           change password
 Developer:      Varun
-Created:        22-02-2018
+Created:        10-04-2018
 Purpose:        links for navigation
 Params:         login signup forgotpassword account confirmation unlock instruction
 Return:         hash
 =end %>
+<div class="forgot-signup-links forgot-pass-cntnt">
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <%= link_to "Log in", new_session_path(resource_name), class: "signup-link-clr" %><br />
 <% end -%>
-
+|
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <%= link_to "Sign up", new_registration_path(resource_name), class: "signup-link-clr" %><br />
 <% end -%>
-
+</div>
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
 <% end -%>
@@ -25,9 +26,14 @@ Return:         hash
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
-
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
+  <p>or Sign up with</p>
+    <div class="social-login">  
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to image_tag("facebook_13.png", :alt => "Facebook"), omniauth_authorize_path(resource_name, provider) %>
+         <a href=""><%= image_tag("twitter_15.png", :alt => "Twitter") %></a>
+         <a href=""><%= image_tag("google_13.png", :alt => "Google") %></a>
+        <%#= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %>
+      <% end -%>
+    </div>
 <% end -%>
