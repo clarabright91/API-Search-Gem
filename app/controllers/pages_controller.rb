@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:secret]
   before_action :update_statue, only: [:change_status, :user_mass_activate, :user_mass_deactivate]
-
+ 
   def index
 		render "index"
 	end
@@ -17,10 +17,18 @@ class PagesController < ApplicationController
     redirect_back fallback_location: root_path
 	end
 
-  def user_profile
-    @user = current_user
+  def update_profile
+    @user = User.find_by(id: params[:user][:id])
+    @user.update_attributes(user_params)
+    begin
+     @user.save!
+      flash[:notice]= 'Your account has been updated successfully.'
+    rescue => e 
+      flash[:danger]= "Your account has not updated because '#{e.message}'."
+    end
+      redirect_to edit_user_registration_path
   end
-
+ 
 =begin
   Developer:      Varun
   Created:        16-03-2018
@@ -51,5 +59,9 @@ class PagesController < ApplicationController
     def update_statue
       all_ids = params[:id].reject{|a| a.blank?}
       @user = User.find(all_ids)
-    end
+    end  
+    
+    def user_params
+        params.require(:user).permit(:id,:first_name,:last_name,:email,:phone_number,:zip_code,:purpose, :home_price, :down_payment, :credit_score,:password, :password_confirmation, :current_password,:price_alert)
+    end 
 end

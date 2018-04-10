@@ -14,14 +14,16 @@
     <div class="navbar-collapse collapse" id="global-nav" aria-expanded="false">
      <div class="navbar-right">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Mortgage Rates</a></li>
+        <li class="active">
+          <%=link_to("Mortgage Rates", directory_path)%>
+          <!-- <a href="#">Mortgage Rates</a> --></li>
         <li><a href="#">Refinance Rates</a></li>
         <%if !user_signed_in? %>
           <li><a href="#">Mortgage Calculator</a></li>
         <%end%>
         <% if user_signed_in? %>
           <li>
-            <%= link_to("Profile", profile_path) %>
+            <%= link_to("Profile", edit_user_registration_path)%>
           </li>
           <li>
             <%= link_to("Price Alert", root_path) %>

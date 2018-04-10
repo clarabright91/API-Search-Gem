@@ -26,11 +26,17 @@ class User < ApplicationRecord
   #needs to be done
   #has_many :loan_tek_data, through: :user_favorites
 
+  after_create :insert_default_data
+
   def active_for_authentication?    #for checking user is active
     super && self.is_active
   end
 
   def inactive_message              #model level message for deactivated user
     "Sorry, this account has been deactivated."
+  end
+
+  def insert_default_data
+     self.update_attributes!(price_alert: 1)   unless price_alert.present?
   end
 end

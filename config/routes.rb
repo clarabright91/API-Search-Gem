@@ -17,9 +17,16 @@ Rails.application.routes.draw do
   get '/deactivate', to: 'pages#user_mass_deactivate'
   
   get '/profile', to: 'pages#user_profile'
+  
+  put '/update_profile', to: 'pages#update_profile' 
+  
+  get '/pages/:page_slug',to: 'pages#show'  #slug'll not work in devise view pages 
   # for dynamic cmspages
   CmsPage.load                      if CmsPage.present?
   #root to: 'activity#mine'
+
+  get '/directory', to: 'directories#mortgage_states'
+  get '/mortgage/:state', to: 'directories#state_mortgage_rates'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

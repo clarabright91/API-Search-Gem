@@ -198,5 +198,85 @@ $(document).ready(function() {
     }
   });
 
+  $('#user_profile_section').validate({
+    rules: {
+      "user[first_name]": {
+          required: true
+      },
+      "user[email]": {
+          required: {
+            depends:function(){
+                $(this).val($.trim($(this).val()));
+                return true;
+              }
+          },
+          email: true
+      },
+      "user[phone_number]":{
+          required: true
+      },
+      "user[zip_code]": {
+        required: true
+      },
+      "user[home_price]":{
+        required: true
+      },
+      "user[down_payment]":{
+        required: true
+      }
+    },
+    messages: {
+      "user[first_name]": {
+          required: "Please enter your first name."
+      },
+      "user[email]": {
+          required: "Please enter your email.",
+          email: "Please enter valid email address."
+      },
+      "user[phone_number]":{
+          required: "Please enter your mobile number."
+      },
+      "user[zip_code]": {
+        required: "Please enter zip code."
+      },
+      "user[home_price]":{
+        required: 'Please enter the home price.'
+      },
+      "user[down_payment]":{
+        required: "Please enetr down_payment."
+      }
+    }
+  })
+
+  $('#user_password_section').validate({
+    rules: {
+      "user[current_password]":{
+        required: true
+      },
+      "user[password]":{
+        required: true,
+        minlength: 6
+      },
+      "user[password_confirmation]":{
+        required: true,
+        minlength: 6
+      }
+    },
+    messages: {
+      "user[current_password]":{
+        required: "Please enter current password."
+      },
+      "user[password]":{
+        required: "Please enter password.",
+        minlength: "Your password must be at least 6 characters long."
+      },
+      "user[password_confirmation]":{
+        required: "Please enter confirm password.",
+        minlength: "Your confirm password must be at least 6 characters long.",
+      }
+    }
+
+  })
+
 
 });
