@@ -9,7 +9,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href=""><%= image_tag("logo.png", :alt => "PureLOAN") %></a>
+      <!-- <a class="navbar-brand" href=""><%#= image_tag("logo.png", :alt => "PureLOAN") %></a> -->
+      <%= link_to image_tag("logo.png", :alt => "PureLOAN"),root_path, class: "navbar-brand" %>
     </div>
     <div class="navbar-collapse collapse" id="global-nav" aria-expanded="false">
      <div class="navbar-right">

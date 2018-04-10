@@ -425,19 +425,24 @@
             </div>
          </section>
  <!-- search result feed end-->
- <!-- Advertisement with expert start-->
- <section class="advertisement-box">
-    <div class="container">
-       <div class="advertisement">
-          <%= image_tag("home-ad.jpg", :alt => "Expert") %>
-          <h4>Become a mortgage expert on pureloan.comfor Albany, CA</h4>
-          <span>Become an Expert on X.com and reach
-          hundredsof thousands of home buyers or
-          refi customers every month!</span>
-          <a href="" class="dtail-btn">Submit Application</a>
-       </div>
-    </div>
- </section>
- <!-- Advertisement with expert end-->
+ <!-- Advertisement with expert start--> 
+         <section class="advertisement-box">
+            <div class="container">
+               <div class="advertisement">
+                  <img class="mb-hide" src="images/home-ad.jpg" alt="">
+                  <img class="mb-only" src="images/expert-ad-mb-img.png" alt="">
+                  <h4>Become a mortgage expert on pureloan.com for Albany, CA</h4>
+                  <span class="">Become an Expert on X.com and reach 
+                  hundreds of thousands of home buyers or 
+                  refi customers every month!</span>
+          <!--<span class="mb-hide">Become an Expert on X.com and reach 
+                  hundreds of thousands of home buyers or 
+                  refi customers every month!</span>
+                  <span class="mb-only">Reach hundreds of thousands of home buyers every month!</span>-->
+                  <a href="" class="dtail-btn">Submit Application</a>
+               </div>
+            </div>
+         </section>
+         <!-- Advertisement with expert end--> 
  <!--Rendering Experts  -->
  <%= render 'pages/index'%>
