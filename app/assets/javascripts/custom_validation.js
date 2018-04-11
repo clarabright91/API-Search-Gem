@@ -869,5 +869,49 @@ $('#new_fdic_institution,#edit_fdic_institution').validate({
     },
   }
 })
+  
+  $('#new_freddie_mac_loan_origination, #edit_freddie_mac_loan_origination').validate({
+    rules: {
+      "freddie_mac_loan_origination[original_interest_rate]":{
+        required: true
+      },
+      "freddie_mac_loan_origination[postal_code]":{
+        required: true
+      },
+      "freddie_mac_loan_origination[number_of_borrowers]":{
+        required: true
+      },
+      "freddie_mac_loan_origination[loan_sequence_number]":{
+        required: true
+      },
+      "freddie_mac_loan_origination[seller_name]":{
+        required: true
+      },
+      "freddie_mac_loan_origination[service_name]":{
+        required: true
+      }
+    },
+    messages:{
+      "freddie_mac_loan_origination[original_interest_rate]":{
+        required: 'Please enter original interest rate.'
+      },
+      "freddie_mac_loan_origination[postal_code]":{
+        required: 'Please enter postal code.'
+      },
+      "freddie_mac_loan_origination[number_of_borrowers]":{
+        required: 'Please enter number of borrowers.'
+      },
+      "freddie_mac_loan_origination[loan_sequence_number]":{
+        required: 'Please enter loan sequence number.'
+      },
+      "freddie_mac_loan_origination[seller_name]":{
+        required: 'Please enter seller name.'
+      },
+      "freddie_mac_loan_origination[service_name]":{
+        required: 'Please enter service name.'
+      }
+    }
+  })
+
 
 });

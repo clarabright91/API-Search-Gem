@@ -1,4 +1,5 @@
 ActiveAdmin.register Expert do
+  menu false
   # Permitting Strong parameters
   permit_params :email, :first_name, :last_name, :phone, :license_number, :specialty, :website, :loan_type, :zip, :image, :verified, :remove_image
 

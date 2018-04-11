@@ -1,4 +1,5 @@
 ActiveAdmin.register LoanOfficer do
+   menu false
   # Permitting Strong parameters
   permit_params :first,:last,:title,:company,:address,:city,:state,:zip,:county,:phone1,:phone2,:cell,:website,:email,:latitude,:longitude
 

@@ -1,6 +1,5 @@
 ActiveAdmin.register User do
-  #for Setting as first tab
-  menu priority: 1, label: "User"
+  menu false
   # Permitting Strong parameters
   permit_params :email, :password, :password_confirmation, :first_name,:last_name,:phone_number, :zip_code, :purpose, :home_price, :down_payment, :credit_score, :is_active, :price_alert, :last_search_id
 

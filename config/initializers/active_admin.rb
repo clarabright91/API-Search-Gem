@@ -239,16 +239,37 @@ config.register_javascript 'https://www.google.com/jsapi'
   # or customize the formats shown per namespace/globally
   #
   # To disable/customize for the :admin namespace:
-  #
+  
+  # Dropdown menu for user and expert
+    config.namespace :admin do |admin|
+      admin.build_menu do |menu|        
+        menu.add :label => "Manage Users", :priority => 1 do |sites|
+          sites.add :label => "Users", :priority => 1, :url => "/admin/users"
+          sites.add :label => "Experts", :url => "/admin/experts"
+        end
+      end
+    end
+  
+  # Dropdown menu for NewsArticles and NewsSearchHistory
     config.namespace :admin do |admin|
       admin.build_menu do |menu|
-       #menu.add :label => "Upload CSV", :url => "/"
         menu.add :label => "News" do |sites|
           sites.add :label => "News Articles", :url => "/admin/news_articles"
           sites.add :label => "News Serch History", :url => "/admin/news_search_histories"
         end
       end
-   end
+    end
+
+  # Dropdown menu for FdicInstitute and LoanOfficers
+    config.namespace :admin do |admin|
+      admin.build_menu do |menu|
+        menu.add :label => "Bank/Loan" do |sites|
+          sites.add :label => "Fdic Institutions", :url => "/admin/fdic_institutions"
+          sites.add :label => "Loan Officers", :url => "/admin/loan_officers"
+        end
+      end
+    end  
+
 
   # == Pagination
   #
