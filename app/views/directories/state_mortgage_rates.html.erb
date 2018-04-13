@@ -1,67 +1,32 @@
- <!-- dirctory mortgage rates in state start-->
-         <section class="content-main dirctory mortgage-rates-state">
-            <div class="container">
-               <div class="directory-box">
-                  <h1>Cities in <%=state_full_name(@state_name)%></h1>
-                     <div class="directory-links-box">
-                        <%@cities.each_slice(17) do |city|%>
-                           <div class="col-xs-12 col-md-4">
-                              <%city.each do |c|%>               
-                              <%=link_to c,c%>
-                              <%end%>
-                           </div>      
-                        <%end%>   
-                     </div>
-                  <%if @cities.present? && @cities.count == 50%>
-                     <div class="col-xs-12 col-md-4">
-                        <%= form_tag({controller: "/directories",action: "state_mortgage_rates"},method: :get) do |f|%>
-                            <%=hidden_field_tag "state", params[:state]%>
-                            <%=hidden_field_tag "lc", @cities.last%>
-                           <%= submit_tag 'Lists of Cities', class: 'load-more-list'%>
-                        <%end%>
-                     </div>
-                  <%else%>  
-                    <%= link_to "Back", :back %>
-                  <%end%> 
-                  <!-- <div class="directory-links-box">
-                     <div class="col-xs-12 col-md-4">
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                     </div>
-                     <div class="col-xs-12 col-md-4">
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                     </div>
-                     <div class="col-xs-12 col-md-4">
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                        <a href="">Adelanto Home Loan and Mortgage Rates</a>
-                     </div> -->
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!-- dirctory mortgage rates in state end--> 
+<!-- dirctory mortgage rates in state start-->
+<% title 'Cities in '+state_full_name(@state_name) %>
+<section class="content-main dirctory mortgage-rates-state">
+  <div class="container">
+    <div class="directory-box">
+       <h1>Cities in <%=state_full_name(@state_name)%></h1>
+          <div class="directory-links-box">
+             <%@cities.each_slice(17) do |city|%>
+                <div class="col-xs-12 col-md-4">
+                   <%city.each do |c|%>               
+                   <%=link_to c,"#"%>
+                   <%end%>
+                </div>      
+             <%end%>   
+          </div>
+        <%if @cities.present? && @cities.count == 50%> 
+          <div class="col-xs-12 col-md-4">
+            <%= form_tag({controller: "/directories",action: "state_mortgage_rates"},method: :get) do |f|%>
+              <%=hidden_field_tag "state", params[:state]%>
+              <%=hidden_field_tag "lc", @cities.last%>
+              <%= submit_tag 'Lists of Cities', class: 'load-more-list'%>
+            <%end%>
+          </div>
+        <%else%> 
+          <div class="col-xs-12 col-md-4 pull-right">  
+            <%= link_to "Back", root_url, class: 'load-more-list-right' %>
+          </div>
+        <%end%>                  
+    </div>
+  </div>
+</section>
+<!-- dirctory mortgage rates in state end--> 

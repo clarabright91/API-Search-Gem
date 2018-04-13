@@ -1,76 +1,51 @@
 <!--  top level directory content start-->
-         <section class="content-main dirctory top-level-directry">
-            <div class="container">
-               <div class="row">
-                  <div class="col-xs-12 col-md-6">
-                     <div class="directory-box">
-                        <h2>Mortgage Rates</h2>
-                        <div class="directory-links-box">
-                           <%@states.each do |state|%>
-                              <%=link_to state, controller: "/directories",action: "state_mortgage_rates",state: state%>         
-                           <%end%>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xs-12 col-md-6">
-                     <div class="directory-box">
-                        <h2>Refinance Rates</h2>
-                        <div class="directory-links-box">
-                          <%@states.each do |state|%>
-                              <%=link_to state, controller: "/directories",action: "state_refinance_rates",state: state%>          
-                           <%end%>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-xs-12 col-md-12">
-                     <div class="directory-box">
-                        <h2>Mortgage Costs by Bank or Lending Institution</h2>
-                        <div class="directory-links-box">
-                          <%('A'..'Z').each do |alphabet|%>
-                             <%=link_to alphabet, controller: "/directories",action: "state_mortgage_banks",alphabet: alphabet%>
-                           <%end%>               
-                           <!-- <a href="">A</a>
-                           <a href="">B</a>
-                           <a href="">C</a>
-                           <a href="">D</a>
-                           <a href="">E</a>
-                           <a href="">F</a>
-                           <a href="">G</a>
-                           <a href="">H</a>
-                           <a href="">I</a>
-                           <a href="">J</a>
-                           <a href="">K</a>
-                           <a href="">L</a>
-                           <a href="">M</a>
-                           <a href="">N</a>
-                           <a href="">O</a>
-                           <a href="">P</a>
-                           <a href="">Q</a>
-                           <a href="">R</a>
-                           <a href="">S</a>
-                           <a href="">T</a>
-                           <a href="">U</a>
-                           <a href="">V</a>
-                           <a href="">W</a>
-                           <a href="">X</a>
-                           <a href="">Y</a>
-                           <a href="">Z</a> -->
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-xs-12 col-md-12">
-                     <div class="directory-box">
-                        <h2>Research and Interviews from Leading Experts</h2>
-                        <div class="directory-links-box">
-                           <a href="">Research Center</a>
-                        </div>
-                     </div>
-                  </div>
+<% title "Mortgage Rates" %>
+<section class="content-main dirctory top-level-directry">
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12 col-md-6">
+            <div class="directory-box">
+               <h2>Mortgage Rates</h2>
+               <div class="directory-links-box">
+                  <%@states.each do |state|%>
+                     <%=link_to state, controller: "/directories",action: "state_mortgage_rates",state: state%>         
+                  <%end%>
                </div>
             </div>
-         </section>
-         <!-- top level directory content end--> 
+         </div>
+         <div class="col-xs-12 col-md-6">
+            <div class="directory-box">
+               <h2>Refinance Rates</h2>
+               <div class="directory-links-box">
+                 <%@states.each do |state|%>
+                     <%=link_to state, controller: "/directories",action: "state_refinance_rates",state: state%>          
+                  <%end%>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-md-12">
+            <div class="directory-box">
+               <h2>Mortgage Costs by Bank or Lending Institution</h2>
+               <div class="directory-links-box">
+                 <%('A'..'Z').each do |alphabet|%>
+                    <%=link_to alphabet, controller: "/directories",action: "state_mortgage_banks",alphabet: alphabet%>
+                  <%end%>               
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-md-12">
+            <div class="directory-box">
+               <h2>Research and Interviews from Leading Experts</h2>
+               <div class="directory-links-box">
+                  <a href="">Research Center</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- top level directory content end--> 

@@ -2,7 +2,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @page.present? ? @page.meta_title.present? ? @page.meta_title : 'Standup App' : "Standup App"%></title>
+    <title>
+        <% if yield(:title).present? %>
+          <%= yield(:title) %>
+        <% elsif @page.present?%>
+          <%= @page.meta_title.present? ? @page.meta_title : 'Standup App'%>
+        <%else%>
+            Standup App
+        <%end%>
+    </title>        
     <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1">
       <%= csrf_meta_tags %>
       <!-- required stylesheets link -->
