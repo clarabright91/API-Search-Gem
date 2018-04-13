@@ -28,7 +28,10 @@
                      <div class="directory-box">
                         <h2>Mortgage Costs by Bank or Lending Institution</h2>
                         <div class="directory-links-box">
-                           <a href="">A</a>
+                          <%('A'..'Z').each do |alphabet|%>
+                             <%=link_to alphabet, controller: "/directories",action: "state_mortgage_banks",alphabet: alphabet%>
+                           <%end%>               
+                           <!-- <a href="">A</a>
                            <a href="">B</a>
                            <a href="">C</a>
                            <a href="">D</a>
@@ -53,7 +56,7 @@
                            <a href="">W</a>
                            <a href="">X</a>
                            <a href="">Y</a>
-                           <a href="">Z</a>
+                           <a href="">Z</a> -->
                         </div>
                      </div>
                   </div>

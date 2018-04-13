@@ -336,7 +336,7 @@ input.error { position:relative; left:0; bottom:0; font-size:18px; color:#929292
 .directory-box h1 { float: left; width: 100%; color: #19214d; font-size: 30px; margin: 0; padding: 23px 35px; font-weight: bold; border-radius: 5px 5px 0 0; border-bottom:1px solid #e0e0e0;}
 .directory-box-cntnt{ float: left; width: 100%; margin: 0; padding: 23px 35px;}
 .directory-links-box{ float: left; width: 100%; margin: 0; padding: 20px;}
-.directory-box a{ font-size:17px; font-weight:300; color:#19214d; text-decoration:underline; margin:17px 0; float:left; width:100%;}
+.directory-box a{ font-size:17px; font-weight:300; color:#19214d; text-decoration:underline; margin:14px 0; float:left; width:100%;}
 .directory-box a:hover{ color:#fb6325;}
 /*directory mortgage rate in state css end*/
 
@@ -350,7 +350,7 @@ input.error { position:relative; left:0; bottom:0; font-size:18px; color:#929292
 	
 /*directory bank css end*/
 
-.directory-box h2 { padding:25px 25px 5px 25px; font-weight:normal; float: left; width: 100%; color: #19214d; font-size: 30px; margin: 0; border-radius: 5px 5px 0 0; border-bottom: none;}
+.directory-box h2 { padding:25px 17px 5px 17px; font-weight:normal; float: left; width: 100%; color: #19214d; font-size: 30px; margin: 0; border-radius: 5px 5px 0 0; border-bottom: none;}
 .top-level-directry .directory-box a { margin:0 20px 14px 0; width: auto;}
 
 
@@ -1418,3 +1418,20 @@ label.error {
 .forgot-signup-links.forgot-pass-cntnt br{ display: none; }
 .profile-blocks-cntnt .form-group { position: relative;}
 .profile-blocks-cntnt .form-group label.error { bottom: -14px;}
+
+.load-more-list {
+    float: none;
+    background: #fb6325;
+    border-radius: 5px;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    box-shadow: none;
+    padding: 14px 23px;
+    text-align: center;
+    width: auto;
+    margin: auto auto 15px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
