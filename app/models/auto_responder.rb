@@ -1,0 +1,2 @@
+class AutoResponder < ApplicationRecord
+end
