@@ -64,16 +64,17 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'pureloan.herokuapp.com' }
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default charset: "utf-8"
+  config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'example.com',
+    domain:               'pureloan.herokuapp.com',
     user_name:            'testtalentelgia@gmail.com',
     password:             'talentelgia',
     authentication:       'plain',
-    enable_starttls_auto: true  }
+    enable_starttls_auto:  true  }
   config.mailer_sender = 'testtalentelgia@gmail.com'
 
   # Ignore bad email addresses and do not raise email delivery errors.

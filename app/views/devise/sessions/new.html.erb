@@ -11,12 +11,14 @@ Return:         hash
  <div class="container">
   <h1>Sign In</h1>
    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'sign_in_form'}) do |f| %>
-     <%- flash.each do |name, msg| -%>  <!-- Custom error message for devise  -->
-      <div class="col-md-offset-3 col-md-6 alert alert-danger" style="height: 5%;">
-       <button type="button" class="close" data-dismiss="alert">x</button>
-        <%=msg%>
-      </div>
-     <%- end -%>
+      <%if flash[:alert].present?%>
+        <%- flash.each do |name, msg| -%>  <!-- Custom error message for devise  -->
+        <div class="col-md-offset-3 col-md-6 alert alert-danger" style="height: 5%;">
+         <button type="button" class="close" data-dismiss="alert">x</button>
+          <%=msg%>
+        </div>
+       <%- end -%>
+      <%end%> 
     <%= devise_error_messages! %>
     <div class="login-page-cntnt">
       <div class="login-rows">
