@@ -94,15 +94,3 @@
    </div>
 </section>
 <!-- experts block end-->
-
-
-<%begin%>
-  <%@counter = 0%>
-  <%IO.foreach( "/home/talentelgia/Downloads/Relativity loan search engine documents/Freddie Mac Loan Level data/Freddie Mac Data/2016/historical_data1_Q12016/historical_data1_Q12016.txt" ) do |line|%>
-    <%@counter = @counter+1%>
-   <%byebug%>
-   <%exit!%>
-   <%end%>
-<%rescue => e%>
-  <%=e.message%>
-<%end%>
