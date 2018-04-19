@@ -8,7 +8,7 @@
              <%@cities.sort_by(&:city).each_slice(17) do |city|%>
                 <div class="col-xs-12 col-md-4">
                    <%city.each do |c|%>               
-                   <%=link_to c.city,"#"%>
+                     <%=link_to c.city,controller: "/directories",action: "city_home_mortgage_rates",state: c.state_code, city: c.city%>
                    <%end%>
                 </div>      
              <%end%>   
