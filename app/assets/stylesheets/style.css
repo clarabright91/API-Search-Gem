@@ -24,6 +24,7 @@ header .navbar-right{ margin:0 !important;}
 .navbar-default .nav li a.login-btn { border-radius: 25px; border: 2px solid #152544; color: 152544; font-size: 12px; font-weight: 500; padding: 6px 31px; margin-top: 17px; margin-left: 90px;}
 .navbar-default .navbar-nav .login-btn.dropdown-toggle, .navbar-default .navbar-nav .login-btn.dropdown-toggle:hover, .navbar-default .navbar-nav .login-btn.dropdown-toggle:focus, .navbar-default .navbar-nav .login-btn.dropdown-toggle:active{ background:none !important;}
 .navbar-default .nav li.active a{ border-top:5px solid #152544; background:none !important;}
+.navbar-default .nav li a:hover{ background:#eee;}
 /*header css end*/
 
 
@@ -298,8 +299,17 @@ input.error { position:relative; left:0; bottom:0; font-size:18px; color:#929292
 .login-page-cntnt.forgot-pass p { text-align: center; font-size: 16px; margin: 0 0 20px 0; line-height: normal; color:#8F8F8F; font-weight:300;}
 #login_form{ width: 100%; margin:0; float:left; padding: 0; border-bottom:1px solid #e2e2e2; position:relative;}
 /*#login_form img{  left:5px; position:absolute;}*/
-#login_form input{  font-size:18px; font-weight:normal; color:#929292; border:none; width:100%; background: #fff !important;}
+#login_form input{  font-size:14px; font-weight:normal; color:#929292; border:none; width:100%; background: #fff !important;}
 #login_form input:active, #login_form input:focus, #login_form input:visited{ outline:none; background: #fff !important;}
+
+.signup-login-popup li input {
+    font-size: 18px;
+    font-weight: normal;
+    color: #929292;
+    border: none;
+    margin: 0 0 0 -8px;
+    font-size: 13px;}
+
 /*login signup page css end*/
 
 
@@ -318,7 +328,7 @@ input.error { position:relative; left:0; bottom:0; font-size:18px; color:#929292
 .price-input-box input { padding-left:25px;}
 .price-input-box .dollar-icn { bottom: 11px; left:13px;}
 .profile-blocks-cntnt input.ornage-btn-dark-shadow { float: none; background: #fb6325; border-radius: 5px; box-shadow: 0px 3px 0 #d6460c; border: none; text-transform: uppercase; color: #fff; padding: 13px 30px; text-align: center; width: auto; margin-top:10px; font-size: 17px; font-weight: bold; letter-spacing: 1px; min-width:170px; margin-bottom:-5px;}
-.checkbox-custm-row{ float:left; width:auto ;margin-right:50px; font-size:16px; color:#19214d; font-weight:normal;}
+.checkbox-custm-row{ float:left; width:auto ;margin-right:50px; font-size:16px; color:#19214d; font-weight:normal; text-align:center; padding:2px;}
 .checkbox-custm-row input[type="checkbox"]{ float:left; width:auto; margin:3px 16px 0 0; border:none;}
 .fav-search-date{ float:left;}
 .fav-search-date .fav-search-white-block{ border-left:1px solid #e8ecf0;}
