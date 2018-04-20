@@ -1,3 +1,8 @@
+=begin
+  Developer:      Varun
+  Created:        16-03-2018
+  Purpose:        Following actions are for status update in admin panel .
+=end
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:secret]
   before_action :update_statue, only: [:change_status, :user_mass_activate, :user_mass_deactivate]
@@ -28,12 +33,7 @@ class PagesController < ApplicationController
     end
       redirect_to edit_user_registration_path
   end
- 
-=begin
-  Developer:      Varun
-  Created:        16-03-2018
-  Purpose:        Following actions are for status update in admin panel .
-=end
+
   def change_status
     @user.each do |usr|
       usr.update_attributes(is_active: !usr.is_active)

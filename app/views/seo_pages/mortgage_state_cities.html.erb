@@ -1,0 +1,23 @@
+<!-- dirctory mortgage state in state start-->
+<% title 'Cities in '+state_full_name(@state_name) %>
+<section class="content-main dirctory mortgage-rates-state">
+  <div class="container">
+    <div class="directory-box">
+       <h1>Cities in <%=state_full_name(@state_name)%></h1>
+          <div class="directory-links-box">
+            <%@counter=0%>
+            
+             <%@cities.each_slice((@cities.count.to_f/50).round(2)) do |city|%>
+                
+                <div class="col-xs-12 col-md-4">              
+                     <% @counter = @counter+1 %>
+                     
+                     <%= link_to @counter.to_s+city.first.city+' to '+city.last.city, mortgage_state_cities_list_path(state: city.first.state_code, city_list: (city.first.city+'+to+'+city.last.city).tr(" ", "+"))%>
+                  <%#=link_to "Submit", mortgage_state_cities_list_path(state: city.first.state_code, city_list: (city.first.city+'+to+'+city.last.city).tr(" ", "+"), :tag_value),remote: true, method: :get, :id => 'example'%>
+                </div>      
+             <%end%>   
+          </div>                 
+    </div>
+  </div>
+</section>
+<!-- dirctory mortgage state in state end--> 

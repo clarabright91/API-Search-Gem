@@ -25,8 +25,13 @@ Rails.application.routes.draw do
   CmsPage.load                      if CmsPage.present?
   #root to: 'activity#mine'
 
-  get '/directory', to: 'directories#mortgage_states'
-  get '/mortgage/:state', to: 'directories#state_mortgage_rates'
+  get '/directory', to: 'directories#mortgage_states', as: 'directory'
+
+  get '/mortgage/:state', to: 'seo_pages#mortgage_state_cities', as: 'mortgage_state_cities'
+
+  get '/mortgage/:state/:city_list', to: 'seo_pages#mortgage_state_cities_list', as: 'mortgage_state_cities_list' 
+
+
     
   get '/mortgage/:state/:city+mortgage+rate', to: 'directories#city_home_mortgage_rates'
 

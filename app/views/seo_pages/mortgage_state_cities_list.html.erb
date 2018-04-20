@@ -1,0 +1,17 @@
+<% title 'Cities list in '+state_full_name(@state_name) %>
+<section class="content-main dirctory mortgage-rates-state">
+  <div class="container">
+    <div class="directory-box">
+       <h1>Cities List in <%=state_full_name(@state_name)%></h1>
+          <div class="directory-links-box">
+             <%@counter =0%>
+             <%@cities.each do |city|%>
+                  <%@counter = @counter+1%>
+                <div class="col-xs-12 col-md-4">              
+                     <%=link_to @counter.to_s+city.city, mortgage_state_cities_list_path(state: city.state_code, city_list: city.city)%>
+                </div>      
+             <%end%>   
+          </div>                 
+    </div>
+  </div>
+</section>

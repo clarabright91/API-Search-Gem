@@ -8,7 +8,7 @@
                <h2>Mortgage Rates</h2>
                <div class="directory-links-box">
                   <%@states.each do |state|%>
-                     <%=link_to state, controller: "/directories",action: "state_mortgage_rates",state: state%>         
+                     <%=link_to state, mortgage_state_cities_path(state: state)%>         
                   <%end%>
                </div>
             </div>

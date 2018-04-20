@@ -11,9 +11,11 @@ class City < ApplicationRecord
   # end
 
   def self.city_in_state(state)
-    where("lower(state_code) like ?","#{state.downcase}%").uniq(&:city).sort_by(&:id).first(50)
+    where("lower(state_code) like ?","#{state.downcase}%").uniq(&:city).sort_by(&:city)
   end
-  def self.next_cities(state,last_city)
-    where("state_code = ? AND id > ?", state, last_city.to_i).uniq(&:city).sort_by(&:id).first(50)
+
+  def self.citiy_list(start_city,end_city,state)
+     where("lower(state_code) = ?", state.downcase).where(city: start_city..end_city).select('distinct on (city) *').sort_by(&:city).first(50) 
+    #where("lower(state_code) = ? AND lower(city) = ? Between lower(city) = ?", state,start_city,end_city).uniq(&:city).sort_by(&:city)
   end
 end
