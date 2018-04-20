@@ -3,12 +3,12 @@
 <section class="content-main dirctory mortgage-rates-state">
   <div class="container">
      <div class="directory-box">
-        <h1>Mortgage Costs by Bank - <%=@alphabet%></h1>
+        <h1>Mortgage Costs by Bankaaaaa - <%=@alphabet%></h1>
         <div class="directory-links-box">
            <%@banks.each_slice(10) do |bank|%>
               <div class="col-xs-12 col-md-4">
                  <%bank.each do |b|%>               
-                 <%=link_to b,"#"%>
+                   <%=link_to b.name, controller: "/directories", action: "bank_mortgage_loans", name: b.name%>
                  <%end%>
               </div>      
            <%end%>   
@@ -18,7 +18,7 @@
             <%#=link_to 'Lists of banks', controller: "/directories",action: "state_mortgage_banks",alphabet: @alphabet,last_bank_id: @banks.last.id%>
             <%= form_tag({controller: "/directories", action: "state_mortgage_banks"}, method: :get, remote: true) do |f|%>
                 <%=hidden_field_tag "alphabet", @alphabet%>
-                <%=hidden_field_tag "lb", @banks.last%>  
+                <%=hidden_field_tag "lb", @banks.last.id%>  
                <%= submit_tag 'Lists of banks', class: 'load-more-list'%>
             <%end%>
            </div>

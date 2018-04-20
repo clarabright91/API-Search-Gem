@@ -9,6 +9,7 @@ ActiveAdmin.register FdicInstitution do
   
   index do
     selectable_column
+    column :name
     column :address
     column :city
     column :stname
@@ -17,6 +18,7 @@ ActiveAdmin.register FdicInstitution do
     actions name: "Actions"
   end
 
+  filter :name
   filter :address
   filter :city
   filter :stname

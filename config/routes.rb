@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   get '/mortgage/bank/:alphabet', to: 'directories#state_mortgage_banks'  
 
+  get '/mortgage/bank/:name+"demo"', to: 'directories#bank_mortgage_loans'
+
   get '/refinance/:state', to: 'directories#state_refinance_rates'
 
   match '*path', to: redirect('/'), via: :all

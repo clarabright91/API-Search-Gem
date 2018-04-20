@@ -32,6 +32,10 @@ class DirectoriesController < ApplicationController
     @news_articles = all_news_articles.last(10) #.order(id: :desc).first(10)  if all_news_articles.present?
   end 
    
+  def bank_mortgage_loans
+    byebug
+  end
+
   private
     def state_name
       @state_name= params[:state]

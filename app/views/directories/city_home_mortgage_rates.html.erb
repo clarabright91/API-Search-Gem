@@ -905,7 +905,7 @@
           
           <%@news_articles.each do |na|%>
             <div class="car-auto-loan-news">
-               <h6><%=na.headline%></h6>
+               <h6><%=link_to na.headline, na.url, target: "_blank"%></h6>
                <h6>
                   <p><%=na.text%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
                </h6>
