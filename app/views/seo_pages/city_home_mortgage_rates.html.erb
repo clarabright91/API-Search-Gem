@@ -905,37 +905,13 @@
           
           <%@news_articles.each do |na|%>
             <div class="car-auto-loan-news">
-               <h6><%=link_to na.headline, na.url, target: "_blank"%></h6>
+               <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
                <h6>
-                  <p><%=na.text%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                  <p><%=na.text.truncate(200)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
                </h6>
 
             </div>
           <%end%>
-          <!-- <div class="car-auto-loan-news">
-             <h6>Avant Personal Loans</h6>
-             <h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy.</p>
-             </h6>
-          </div>
-          <div class="car-auto-loan-news">
-             <h6>Avant Personal Loans</h6>
-             <h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy.</p>
-             </h6>
-          </div>
-          <div class="car-auto-loan-news">
-             <h6>Avant Personal Loans</h6>
-             <h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy.</p>
-             </h6>
-          </div>
-          <div class="car-auto-loan-news">
-             <h6>Avant Personal Loans</h6>
-             <h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy.</p>
-             </h6>
-          </div> -->
           <a href="" class="see-more-link-common">See More Recent News</a>
        </div>
        <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">

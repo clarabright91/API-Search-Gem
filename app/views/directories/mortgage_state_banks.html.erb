@@ -8,8 +8,9 @@
           <%@counter = 0%>
            <%@banks.in_groups_of((@banks.count.to_f/30).ceil, false) do |bank|%>
               <div class="col-xs-12 col-md-4">
+                 <%p bank.count.to_s%>
                  <%@counter = @counter+1 %> 
-                  <%=form_tag({controller: 'directories',action: 'mortgage_state_banks_list',bank_list: bank.first.name.tr(' ', '+')+ '_'+bank.last.name.tr(" ", "+")}, id: "bank-form-"+@counter.to_s, method: :post) do |f| %>
+                  <%=form_tag(mortgage_state_banks_list_path(bank_list: bank.first.name.tr(' ', '+')+ '_'+bank.last.name.tr(" ", "+")), id: "bank-form-"+@counter.to_s, method: :post) do |f| %>
                       <%=hidden_field_tag 'bank_from_'+@counter.to_s, bank.first.id%>
                       <%=hidden_field_tag 'bank_to_'+@counter.to_s, bank.last.id%>
                       <%=hidden_field_tag 'form_no', @counter%>  
