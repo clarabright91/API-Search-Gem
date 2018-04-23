@@ -6,14 +6,24 @@
        <h1>Cities in <%=state_full_name(@state_name)%></h1>
           <div class="directory-links-box">
             <%@counter=0%>
-            
-             <%@cities.each_slice((@cities.count.to_f/50).round(2)) do |city|%>
-                
+             <%@cities.in_groups_of((@cities.count.to_f/50).ceil, false) do |city|%>
                 <div class="col-xs-12 col-md-4">              
-                     <% @counter = @counter+1 %>
-                     
-                     <%= link_to @counter.to_s+city.first.city+' to '+city.last.city, mortgage_state_cities_list_path(state: city.first.state_code, city_list: (city.first.city+'+to+'+city.last.city).tr(" ", "+"))%>
-                  <%#=link_to "Submit", mortgage_state_cities_list_path(state: city.first.state_code, city_list: (city.first.city+'+to+'+city.last.city).tr(" ", "+"), :tag_value),remote: true, method: :get, :id => 'example'%>
+                     <% @counter = @counter+1 %> 
+                     <!-- <form method="post" id="city-form-<%#= @counter %>" action="<%#= mortgage_state_cities_list_path(state: city.first.state_code, city_list: (city.first.city+'+to+'+city.last.city).tr(" ", "+")) %>">
+                         <%#=hidden_field_tag 'city_from'+@counter.to_s,city.first.id%>
+                          <%#=hidden_field_tag 'city_to'+@counter.to_s,city.last.id%>
+
+                       <a href="javascript:;" class="submitCity" id="city-group-<%= @counter%>">
+                        <%#= city.first.city+' to '+city.last.city %>
+                       </a>
+                     </form> -->
+
+                     <%=form_tag mortgage_state_cities_list_path(state: city.first.state_code, city_list: (city.first.city+'+to+'+city.last.city).tr(" ", "+")), id: "city-form-"+@counter.to_s, method: :post do |f| %>
+                          <%=hidden_field_tag 'city_from_'+@counter.to_s,city.first.id%>
+                          <%=hidden_field_tag 'city_to_'+@counter.to_s,city.last.id%>
+                          <%=hidden_field_tag 'form_no', @counter%>  
+                        <%= link_to city.first.city+' to '+city.last.city,"javascript:;" ,class: "submitCity", id: "city-group-"+@counter.to_s%>
+                      <%end%>  
                 </div>      
              <%end%>   
           </div>                 
@@ -21,3 +31,12 @@
   </div>
 </section>
 <!-- dirctory mortgage state in state end--> 
+
+<script type="text/javascript">
+  $(document).on("mousedown",".submitCity",function(){
+    var getId = $(this).attr('id');
+    getId = getId.split('-');
+    getId = getId[2];
+    $("#city-form-"+getId).submit();
+  });
+</script>

@@ -11,12 +11,10 @@ class SeoPagesController < ApplicationController
   end
 
   def mortgage_state_cities_list
-    city_list= params[:city_list]
-    city_list_array = city_list.tr("+", " ").split("to")
-    starting_city = city_list_array[0].strip
-    ending_city = city_list_array[1].strip
-    @cities = City.citiy_list(starting_city,ending_city,@state_name)
-    #byebug
+    form_no = params[:form_no]
+    city_from = 'city_from_'+form_no
+    city_to = 'city_to_'+form_no
+    @cities = City.cities_list(params[city_from.to_sym],params[city_to.to_sym],@state_name)
   end
 
 

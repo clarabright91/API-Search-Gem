@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   get '/mortgage/:state', to: 'seo_pages#mortgage_state_cities', as: 'mortgage_state_cities'
 
-  get '/mortgage/:state/:city_list', to: 'seo_pages#mortgage_state_cities_list', as: 'mortgage_state_cities_list' 
+  post '/mortgage/:state/:city_list', to: 'seo_pages#mortgage_state_cities_list', as: 'mortgage_state_cities_list' 
 
 
     
