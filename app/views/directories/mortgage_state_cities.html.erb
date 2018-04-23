@@ -25,7 +25,8 @@
 <!-- dirctory mortgage state in state end--> 
 
 <script type="text/javascript">
-  $(document).on("mousedown",".submitCity",function(){
+  $(document).on("mousedown",".submitCity",function(e){
+    //e.preventDefault();
     var getId = $(this).attr('id');
     getId = getId.split('-');
     getId = getId[2];
