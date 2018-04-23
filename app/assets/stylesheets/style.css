@@ -427,8 +427,8 @@ input.error { position:relative; left:0; bottom:0; font-size:18px; color:#929292
 .panel-heading .accordion-toggle.collapsed::after { content:"\e080";}
 .tabs-data-main.tabs-accordians-box{ float:none;}
 .car-auto-loan-news{ float:left; width:20%; margin:0; padding:0 20px 0 0;}
-.car-auto-loan-news h6{ float:left; width:100%; margin:0 0 8px 0; padding:0; font-size:18px; font-weight:bold; color:#fb6325;}
-.car-auto-loan-news p{ float:left; width:100%; margin:0; padding:0; font-size:15px; font-weight:300; color:#19214d; background:none; line-height:25px;}
+.car-auto-loan-news h6{ float:left; width:100%; margin:0 0 8px 0; padding:0; font-size:16px; font-weight:bold; color:#fb6325; min-height: 54px !important;}
+.car-auto-loan-news p{ float:left; width:100%; margin:0; padding:0; font-size:14px; font-weight:300; color:#19214d; background:none; line-height:25px; min-height:200px !important;}
 .car-auto-loan-othr-bank{ float:left; width:100%; margin:0; padding:20px 0; font-size:18px; font-weight:bold; color:#fb6325; background:none;}
 .car-auto-loan-othr-bank a{ float:left; width:100%; margin:0 0 12px 0; padding:0; color:#fb6325;line-height:normal;}
 .loan-chargeoff-recovry-inner-hdng{float:left; width:100%; margin:20px 0 6px 0; padding:0; color:#19214d; line-height:normal; font-size:18px; font-weight:300;}
@@ -482,7 +482,7 @@ p.top-txt-info { text-align: right; font-size:16px; margin:-10px 0 15px 0; color
 .graph-box p{ float:left; width:100%; background:none; font-size:21px !important; color:#19214d; line-height:26px; font-weight:normal; margin:0; padding:0;}
 .link-right-inner{ text-align:right; font-weight:300; font-size:20px; margin:20px 0 10px 0; float:right; color:#19214d;}
 .graph-box p.para-lft-inner{ text-align:left; font-weight:300; font-size:20px !important; margin-top:20px;}
-.seo-cities-mortgage .car-auto-loan-news { padding: 25px 20px 0 0;}
+.seo-cities-mortgage .car-auto-loan-news { padding: 25px 10px 0 0;}
 .seo-cities-mortgage .car-auto-loan-othr-bank { padding: 20px 0;}
 .show-all-specialst-btn{ float:right; color:#fff; border-radius:5px; background:#fb6325; font-size:17px; font-weight:normal; text-decoration:none; padding:7px 15px;}
 .show-all-specialst-btn:hover{ text-decoration:none; color:#fff;}

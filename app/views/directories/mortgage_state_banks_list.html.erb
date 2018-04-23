@@ -1,0 +1,15 @@
+<% title 'Bank list'%>
+<section class="content-main dirctory mortgage-rates-state">
+  <div class="container">
+    <div class="directory-box">
+      <h1>Bank List </h1>
+        <div class="directory-links-box">
+           <%@banks.each do |bank|%>
+              <div class="col-xs-12 col-md-4">              
+                <%=link_to bank.name, '#'%>
+              </div>      
+           <%end%>   
+        </div>                 
+    </div>
+  </div>
+</section>

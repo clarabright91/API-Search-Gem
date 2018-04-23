@@ -1,0 +1,34 @@
+<!-- dirctory mortgage state in state start-->
+<% title 'Cities in '+state_full_name(@state_name) %>
+<section class="content-main dirctory mortgage-rates-state">
+  <div class="container">
+    <div class="directory-box">
+       <h1>Cities in <%=state_full_name(@state_name)%></h1>
+          <div class="directory-links-box">
+            <%@counter=0%>
+             <%@cities.in_groups_of((@cities.count.to_f/50).ceil, false) do |city|%>
+                <%#@cities.each_slice((@cities.size/50.to_f).round).to_a.each do |city|%>
+                <div class="col-xs-12 col-md-4">              
+                 <% @counter = @counter+1 %> 
+                 <%=form_tag mortgage_state_cities_list_path(state: city.first.state_code, city_list: (city.first.city+'_'+city.last.city).tr(" ", "+")), id: "city-form-"+@counter.to_s, method: :post do |f| %>
+                      <%=hidden_field_tag 'city_from_'+@counter.to_s,city.first.id%>
+                      <%=hidden_field_tag 'city_to_'+@counter.to_s,city.last.id%>
+                      <%=hidden_field_tag 'form_no', @counter%>  
+                    <%= link_to city.first.city+' to '+city.last.city,"javascript:;" ,class: "submitCity", id: "city-group-"+@counter.to_s%>
+                  <%end%>  
+              </div>      
+          <%end%>   
+        </div>                 
+    </div>
+  </div>
+</section>
+<!-- dirctory mortgage state in state end--> 
+
+<script type="text/javascript">
+  $(document).on("mousedown",".submitCity",function(){
+    var getId = $(this).attr('id');
+    getId = getId.split('-');
+    getId = getId[2];
+    $("#city-form-"+getId).submit();
+  });
+</script>

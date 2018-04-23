@@ -23,19 +23,27 @@ Rails.application.routes.draw do
   get '/pages/:page_slug',to: 'pages#show'  #slug'll not work in devise view pages 
   # for dynamic cmspages
   CmsPage.load                      if CmsPage.present?
-  #root to: 'activity#mine'
 
+
+
+  #--------------------------- routes for bank pages ---------------------------------
+  get '/mortgage/lender/:alphabet', to: 'directories#mortgage_state_banks', as: 'mortgage_state_banks'  
+
+  post '/mortgage/lender/:bank_list', to: 'directories#mortgage_state_banks_list', as: 'mortgage_state_banks_list'
+
+
+  #-------------------------- routes for directory pages------------------------------
   get '/directory', to: 'directories#mortgage_states', as: 'directory'
 
-  get '/mortgage/:state', to: 'seo_pages#mortgage_state_cities', as: 'mortgage_state_cities'
+  get '/mortgage/:state', to: 'directories#mortgage_state_cities', as: 'mortgage_state_cities'
 
-  post '/mortgage/:state/:city_list', to: 'seo_pages#mortgage_state_cities_list', as: 'mortgage_state_cities_list' 
-
-
+  post '/mortgage/:state/:city_list', to: 'directories#mortgage_state_cities_list', as: 'mortgage_state_cities_list' 
     
-  get '/mortgage/:state/:city+mortgage+rate', to: 'directories#city_home_mortgage_rates'
+  #--------------------------- routes for seo pages ----------------------------------
+  get '/mortgage/:state/:city+mortgage+rate', to: 'seo_pages#city_home_mortgage_rates', as: 'city_home_mortgage_rates' 
 
-  get '/mortgage/bank/:alphabet', to: 'directories#state_mortgage_banks'  
+
+
 
   get '/mortgage/bank/:name+"demo"', to: 'directories#bank_mortgage_loans'
 
