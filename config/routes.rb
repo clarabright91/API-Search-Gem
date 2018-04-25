@@ -31,6 +31,11 @@ Rails.application.routes.draw do
 
   post '/mortgage/lender/:bank_list', to: 'directories#mortgage_state_banks_list', as: 'mortgage_state_banks_list'
 
+  post 'mortgage/lender/(:state)/(:bank_name)', to: 'seo_pages#bank_mortgage_loans', as: 'bank_home_mortgage_loan'
+  
+  
+
+  post '/mortgage/:state(/:city+mortgage+rate)', to: 'seo_pages#city_home_mortgage_rates', as: 'city_home_mortgage_rates' 
 
   #-------------------------- routes for directory pages------------------------------
   get '/directory', to: 'directories#mortgage_states', as: 'directory'
@@ -39,16 +44,15 @@ Rails.application.routes.draw do
 
   post '/mortgage/:state/:city_list', to: 'directories#mortgage_state_cities_list', as: 'mortgage_state_cities_list' 
     
+
   #--------------------------- routes for seo pages ----------------------------------
-  get '/mortgage/:state/:city+mortgage+rate', to: 'seo_pages#city_home_mortgage_rates', as: 'city_home_mortgage_rates' 
+  
+ 
+  
 
-
-
-
-  get '/mortgage/bank/:name+"demo"', to: 'directories#bank_mortgage_loans'
 
   get '/refinance/:state', to: 'directories#state_refinance_rates'
 
-  match '*path', to: redirect('/'), via: :all
+  #match '*path', to: redirect('/'), via: :all
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

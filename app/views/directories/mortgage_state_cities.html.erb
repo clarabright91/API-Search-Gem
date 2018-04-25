@@ -6,8 +6,7 @@
        <h1>Cities in <%=state_full_name(@state_name)%></h1>
           <div class="directory-links-box">
             <%@counter=0%>
-             <%@cities.in_groups_of((@cities.count.to_f/50).ceil, false) do |city|%>
-                <%#@cities.each_slice((@cities.size/50.to_f).round).to_a.each do |city|%>
+             <%@cities.in_groups(@cities.size.quo(link_calculate(@cities.size)).ceil, false) do |city|%>
                 <div class="col-xs-12 col-md-4">              
                  <% @counter = @counter+1 %> 
                  <%=form_tag mortgage_state_cities_list_path(state: city.first.state_code, city_list: (city.first.city+'_'+city.last.city).tr(" ", "+")), id: "city-form-"+@counter.to_s, method: :post do |f| %>
@@ -26,10 +25,22 @@
 
 <script type="text/javascript">
   $(document).on("mousedown",".submitCity",function(e){
-    //e.preventDefault();
-    var getId = $(this).attr('id');
-    getId = getId.split('-');
-    getId = getId[2];
-    $("#city-form-"+getId).submit();
+    e.preventDefault();
+    if (e.which === 1)
+    {
+      var getId = $(this).attr('id');
+      getId = getId.split('-');
+      getId = getId[2];
+      $("#city-form-"+getId).submit();
+    }
+    else
+      {
+        var getId = $(this).attr('id');
+        getId = getId.split('-');
+        getId = getId[2];
+         $("#city-form-"+getId).attr('target','_blank');
+        $("#city-form-"+getId).submit();
+      }
+
   });
 </script>

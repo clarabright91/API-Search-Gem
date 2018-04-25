@@ -10,6 +10,8 @@ $(document).ready(function() {
       });
   }, 4000);
 
+     //console.clear();
+
 	$("#adv-option").click(function(){
 		if( $("#search-adv-option-inner").hasClass("display-adv-search")){
 			$("#search-adv-option-inner").hide("fast").removeClass("display-adv-search");

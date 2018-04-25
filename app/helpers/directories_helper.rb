@@ -1,4 +1,6 @@
 module DirectoriesHelper
+      
+  #mappping state code with state name
   def state_full_name(state_code)
     state = state_abbr = {
       'AL' => 'Alabama',
@@ -64,4 +66,21 @@ module DirectoriesHelper
     return state[code].present? ? state[code] : code
   end
 
+  #per page link calculation
+  def link_calculate(count)
+      num_chunks = (count**0.5).ceil
+      min_links_in_chunk = (count/num_chunks).floor
+      max_links = min_links_in_chunk + 1
+      return max_links 
+  end
+
+  #for removing special chars and space 
+  def customize_path(first, last)
+    return  first.gsub(/[.!@%&"]/,'').squeeze(" ").tr(" ",'+')+ '_'+last.gsub(/[.!@%&"]/,'').squeeze(" ").tr(" ",'+')
+  end
+
+
+  def custom_path(name)
+    return  name.gsub(/[.!@%&"]/,'').squeeze(" ").tr(" ",'+')
+  end  
 end

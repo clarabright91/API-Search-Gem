@@ -7,9 +7,9 @@ class City < ApplicationRecord
   end
 
   def self.cities_list(start_city,end_city,state) 
-     all_city = where("lower(state_code) like ?","#{state.downcase}%").uniq(&:city).sort_by(&:city) 
-     s_city = all_city.index(find_by(state_code: state, id: start_city))
-     l_city = all_city.index(find_by(state_code: state, id: end_city))
+     all_city = city_in_state(state) 
+     s_city = all_city.index(find(start_city))
+     l_city = all_city.index(find(end_city))
     return all_city[s_city..l_city]  
   end
 end

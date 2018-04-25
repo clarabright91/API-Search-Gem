@@ -21,10 +21,6 @@ class DirectoriesController < ApplicationController
     @cities = City.cities_list(params[city_from.to_sym],params[city_to.to_sym],@state_name)
   end
    
-  def bank_mortgage_loans
-    #byebug
-  end
-  
   def state_refinance_rates
 
   end
@@ -37,7 +33,8 @@ class DirectoriesController < ApplicationController
     form_no = params[:form_no]
     bank_from = 'bank_from_'+form_no
     bank_to = 'bank_to_'+form_no
-    @banks = FdicInstitution.banks_list(params[bank_from.to_sym],params[bank_to.to_sym])  
+    alphabet = params[:alphabet]
+    @banks = FdicInstitution.banks_list(alphabet,params[bank_from.to_sym],params[bank_to.to_sym])  
   end
 
   private

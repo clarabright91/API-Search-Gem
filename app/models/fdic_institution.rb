@@ -5,11 +5,10 @@ class FdicInstitution < ApplicationRecord
     where("lower(name) like ?", "#{prefix.downcase}%").sort_by(&:name)
   end
   
-  def self.banks_list(start_bank_id, last_bank_id)
-    #where("lower(#{column}) like ? AND id > ?", "#{prefix.downcase}%", last_bank_id.to_i).sort_by(&:id).first(30)
-    all_banks = all.sort_by(&:name)
-     s_bank = all_banks.index(find_by(id: start_bank_id))
-     l_bank = all_banks.index(find_by(id: last_bank_id))
+  def self.banks_list(alphabet, start_bank_id, last_bank_id)
+    all_banks = search_term(alphabet)
+     s_bank = all_banks.index(find(start_bank_id))
+     l_bank = all_banks.index(find(last_bank_id))
     return all_banks[s_bank..l_bank]    
   end  
 end

@@ -126,16 +126,16 @@
                <div class="seo-auto-loan-cntnt-box mb-bg-gray">
                   <div class="col-xs-12 col-md-8 our-story-cntnt">
                      <div class="gray-box-cntnt">
-                        <h3>Bank of America Mortgage Overview</h3>
+                        <h3><%=@bank%> Mortgage Overview</h3>
                         <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
                         <span href="" id="para-see-more-link">See More</span>
                      </div>
                   </div>
                   <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg">
-                     <h3>Bank of America</h3>
+                     <h3><%=@bank%></h3>
                      <p>Founded March 23,1845<br>
                         FDIC Certificate Number - 43</br>
-                  123 Main St, Charlotte, North Carolina
+                        123 Main St, Charlotte, North Carolina
                      </p>
                      <!-- <p>123 Main St, Charlotte, North Carolina<br>
                         <a href="">www.bankofamerica.com</a>
@@ -591,36 +591,15 @@
                <!-- News on Bank of America start-->
                <div class="volume-auto-loan full-width loan-detail-blocks">
                   <h3>News on Bank of America Mortgages and Home Loans</h3>
-                  <div class="car-auto-loan-news">
-                     <h6>Avant Personal Loans</h6>
-                     <h6>
-                        <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy.</p>
-                     </h6>
-                  </div>
-                  <div class="car-auto-loan-news">
-                     <h6>Avant Personal Loans</h6>
-                     <h6>
-                        <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy.</p>
-                     </h6>
-                  </div>
-                  <div class="car-auto-loan-news">
-                     <h6>Avant Personal Loans</h6>
-                     <h6>
-                        <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy.</p>
-                     </h6>
-                  </div>
-                  <div class="car-auto-loan-news">
-                     <h6>Avant Personal Loans</h6>
-                     <h6>
-                        <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy.</p>
-                     </h6>
-                  </div>
-                  <div class="car-auto-loan-news">
-                     <h6>Avant Personal Loans</h6>
-                     <h6>
-                        <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy.</p>
-                     </h6>
-                  </div>
+                  <%@news_articles.each do |na|%>
+                    <div class="car-auto-loan-news">
+                       <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
+                       <h6>
+                          <p><%=na.text.truncate(200)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                       </h6>
+
+                    </div>
+                  <%end%>
                   <a href="" class="see-more-link-common">See More Reported Financials</a>
                </div>
                <!-- News on Bank of America end-->
