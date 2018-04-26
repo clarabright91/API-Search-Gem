@@ -54,7 +54,7 @@
                <h2>Auto Loans by Bank or Lending Institution</h2>
                <div class="directory-links-box">
                  <%('A'..'Z').each do |alphabet|%>
-                    <%=link_to alphabet, "#",alphabet: alphabet%>
+                    <%=link_to alphabet, auto_loan_state_banks_path(alphabet: alphabet)%>
                   <%end%>               
                </div>
             </div>

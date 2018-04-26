@@ -1,6 +1,6 @@
 class SeoPagesController < ApplicationController
   before_action :city_home, only: [:city_home_mortgage_rates, :city_home_refinance_rates]
-  before_action :bank_home, only: [:bank_mortgage_loans, :bank_personal_loans]
+  before_action :bank_home, only: [:bank_mortgage_loans, :bank_personal_loans, :bank_auto_loans]
 
   def city_home_mortgage_rates
     @news_articles = news_article_data(' mortgage')
@@ -18,6 +18,9 @@ class SeoPagesController < ApplicationController
     @news_articles = bank_news_article(" personal loans")
   end  
 
+  def bank_auto_loans
+    @news_articles = bank_news_article(" auto loans")
+  end
 
   private
     def original_details(info)

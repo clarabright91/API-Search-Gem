@@ -1,9 +1,9 @@
 class DirectoriesController < ApplicationController
   before_action :state_name, only: [:mortgage_state_cities,:mortgage_state_cities_list, :refinance_state_cities, :refinance_state_cities_list]
-  before_action :banks_search, only: [:mortgage_state_banks, :personal_loan_state_banks]
+  before_action :banks_search, only: [:mortgage_state_banks, :personal_loan_state_banks, :auto_loan_state_banks]
   before_action :cities_in_state, only: [:mortgage_state_cities, :refinance_state_cities]
   before_action :city_list, only: [:mortgage_state_cities_list, :refinance_state_cities_list] 
-  before_action :state_banks_list, only: [:mortgage_state_banks_list, :personal_loan_state_banks_list]
+  before_action :state_banks_list, only: [:mortgage_state_banks_list, :personal_loan_state_banks_list, :auto_loan_state_banks_list]
   
   def directory_root
     @states = City.pluck(:state_code).uniq.sort
@@ -33,12 +33,20 @@ class DirectoriesController < ApplicationController
     @flag = 'personal_loan'
   end
 
+  def auto_loan_state_banks
+    @flag = 'auto_loan'
+  end
+
   def mortgage_state_banks_list
     @flag = 'mortgage_loan'
   end
 
   def personal_loan_state_banks_list
     @flag = 'personal_loan'
+  end
+
+  def auto_loan_state_banks_list
+    @flag = 'auto_loan'
   end
 
   private

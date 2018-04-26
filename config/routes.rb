@@ -42,7 +42,15 @@ Rails.application.routes.draw do
 
   post 'personal+loans/lender/(:state)/(:bank_name)', to: 'seo_pages#bank_personal_loans', as: 'bank_home_personal_loan'
 
+  #--------------------------- routes for auto loan pages ----------------------------------
 
+  get '/auto+loans/lender/:alphabet', to: 'directories#auto_loan_state_banks', as: 'auto_loan_state_banks'
+
+  post '/auto+loans/lender/:bank_list', to: 'directories#auto_loan_state_banks_list', as: 'auto_loan_state_banks_list'
+
+  post 'auto+loans/lender/(:state)/(:bank_name)', to: 'seo_pages#bank_auto_loans', as: 'bank_home_auto_loan'
+
+  
   #-------------------------- routes for directory pages------------------------------  
   get '/directory', to: 'directories#directory_root', as: 'directory'
 

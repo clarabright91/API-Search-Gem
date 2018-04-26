@@ -13,6 +13,8 @@
                     <%current_path = mortgage_state_banks_list_path(bank_list: customize_path(bank.first.name, bank.last.name))%>
                   <%elsif @flag == 'personal_loan'%>
                     <%current_path = personal_loan_state_banks_list_path(bank_list: customize_path(bank.first.name, bank.last.name))%>  
+                  <%else %>
+                    <%current_path = auto_loan_state_banks_list_path(bank_list: customize_path(bank.first.name, bank.last.name))%>             
                   <%end%>
                   <%=form_tag(current_path, id: "bank-form-"+@counter.to_s, method: :post) do |f| %>
                       <%=hidden_field_tag 'bank_from_'+@counter.to_s, bank.first.id%>
