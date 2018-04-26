@@ -1,0 +1,75 @@
+<!--  top level directory content start-->
+<% title "Mortgage Rates" %>
+<section class="content-main dirctory top-level-directry">
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12 col-md-6">
+            <div class="directory-box">
+               <h2>Mortgage Rates</h2>
+               <div class="directory-links-box">
+                  <%@states.each do |state|%>
+                     <%=link_to state, mortgage_state_cities_path(state: state)%>         
+                  <%end%>
+               </div>
+            </div>
+         </div>
+         <div class="col-xs-12 col-md-6">
+            <div class="directory-box">
+               <h2>Refinance Rates</h2>
+               <div class="directory-links-box">
+                 <%@states.each do |state|%>
+                     <%=link_to state, refinance_state_cities_path(state: state)%>          
+                  <%end%>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-md-12">
+            <div class="directory-box">
+               <h2>Mortgage Costs by Bank or Lending Institution</h2>
+               <div class="directory-links-box">
+                 <%('A'..'Z').each do |alphabet|%>
+                    <%=link_to alphabet, mortgage_state_banks_path(alphabet: alphabet)%>
+                  <%end%>               
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-md-12">
+            <div class="directory-box">
+               <h2>Personal Loans by Bank or Lending Institution</h2>
+               <div class="directory-links-box">
+                 <%('A'..'Z').each do |alphabet|%>
+                    <%=link_to alphabet, personal_loan_state_banks_path(alphabet: alphabet)%>
+                  <%end%>               
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-md-12">
+            <div class="directory-box">
+               <h2>Auto Loans by Bank or Lending Institution</h2>
+               <div class="directory-links-box">
+                 <%('A'..'Z').each do |alphabet|%>
+                    <%=link_to alphabet, "#",alphabet: alphabet%>
+                  <%end%>               
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-md-12">
+            <div class="directory-box">
+               <h2>Research and Interviews from Leading Experts</h2>
+               <div class="directory-links-box">
+                  <a href="">Research Center</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- top level directory content end--> 

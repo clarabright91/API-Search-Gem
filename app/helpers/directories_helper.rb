@@ -76,7 +76,7 @@ module DirectoriesHelper
 
   #for removing special chars and space 
   def customize_path(first, last)
-    return  first.gsub(/[.!@%&"]/,'').squeeze(" ").tr(" ",'+')+ '_'+last.gsub(/[.!@%&"]/,'').squeeze(" ").tr(" ",'+')
+    return  first.gsub(/[.!@%&"]/,'').squeeze(" ").tr(" ",'+')+ '_'+last.gsub(/[.!@%&"]/,' ').squeeze(" ").tr(" ",'+')
   end
 
 

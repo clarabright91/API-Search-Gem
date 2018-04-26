@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
 
 
-  #--------------------------- routes for bank pages ---------------------------------
+  #--------------------------- routes for mortgage loan pages ---------------------------------
   get '/mortgage/lender/:alphabet', to: 'directories#mortgage_state_banks', as: 'mortgage_state_banks'  
 
   post '/mortgage/lender/:bank_list', to: 'directories#mortgage_state_banks_list', as: 'mortgage_state_banks_list'
@@ -34,8 +34,17 @@ Rails.application.routes.draw do
   post 'mortgage/lender/(:state)/(:bank_name)', to: 'seo_pages#bank_mortgage_loans', as: 'bank_home_mortgage_loan'
   
   
+  #--------------------------- routes for personal loan pages ----------------------------------
+
+  get '/personal+loans/lender/:alphabet', to: 'directories#personal_loan_state_banks', as: 'personal_loan_state_banks'
+
+  post '/personal+loans/lender/:bank_list', to: 'directories#personal_loan_state_banks_list', as: 'personal_loan_state_banks_list'
+
+  post 'personal+loans/lender/(:state)/(:bank_name)', to: 'seo_pages#bank_personal_loans', as: 'bank_home_personal_loan'
+
+
   #-------------------------- routes for directory pages------------------------------  
-  get '/directory', to: 'directories#mortgage_states', as: 'directory'
+  get '/directory', to: 'directories#directory_root', as: 'directory'
 
   #-------------------------- routes for mortgage pages------------------------------ 
   post '/mortgage/:state(/:city+mortgage+rate)', to: 'seo_pages#city_home_mortgage_rates', as: 'city_home_mortgage_rates' 
@@ -53,6 +62,7 @@ Rails.application.routes.draw do
 
   post '/refinance/:state/:city_list', to: 'directories#refinance_state_cities_list', as: 'refinance_state_cities_list'
 
+  #--------------------------- routes for pages ----------------------------------
   
 
   #match '*path', to: redirect('/'), via: :all

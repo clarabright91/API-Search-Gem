@@ -1,5 +1,6 @@
 class SeoPagesController < ApplicationController
   before_action :city_home, only: [:city_home_mortgage_rates, :city_home_refinance_rates]
+  before_action :bank_home, only: [:bank_mortgage_loans, :bank_personal_loans]
 
   def city_home_mortgage_rates
     @news_articles = news_article_data(' mortgage')
@@ -10,13 +11,14 @@ class SeoPagesController < ApplicationController
   end 
 
   def bank_mortgage_loans
-    bank_home = FdicInstitution.find(params[:bank_id])
-    @state = params[:state]
-    @bank = bank_home.present? ? bank_home.name : original_details(params[:bank_name])
-    bank_news_articles = NewsArticle.where(search_term: @bank+" mortgage")
-    @news_articles = bank_news_articles.order(id: :desc).first(10)  
+      @news_articles = bank_news_article(" mortgage")
   end
-  
+    
+  def bank_personal_loans  
+    @news_articles = bank_news_article(" personal loans")
+  end  
+
+
   private
     def original_details(info)
       return info.tr('+',' ')
@@ -31,5 +33,17 @@ class SeoPagesController < ApplicationController
     def news_article_data(flag)
       city_news_articles = NewsArticle.where("search_term = ? OR search_term = ?", @city+flag, @city+', '+@state+flag)
       return city_news_articles.order(id: :desc).first(10)
-    end  
+    end
+
+    def bank_home
+      bank_home = FdicInstitution.find(params[:bank_id])
+      @state = params[:state]
+      @bank = bank_home.present? ? bank_home.name : original_details(params[:bank_name])
+    end
+
+    def bank_news_article(flag)
+      bank_news_articles = NewsArticle.where(search_term: @bank+flag)
+      return bank_news_articles.order(id: :desc).first(10)
+    end
+
 end
