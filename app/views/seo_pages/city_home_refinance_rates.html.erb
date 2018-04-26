@@ -1,0 +1,929 @@
+<!-- banner search start-->
+ <section class="banner search-result-banner" data-spy = "affix" data-offset-top = "60" data-offset-bottom = "200">
+    <div class="container">
+       <!-- banner main search start-->     
+       <div class="search-main adv-search-mb" id="seo-city-mort-desktop">
+          <div class="search-cat zip-srch">
+             <label>Zip Code</label>
+             <input type="text" placeholder="94305">
+          </div>
+          <div class="search-cat purpse-srch">
+             <label>Purpose</label>
+             <select>
+                <option>Purchase</option>
+             </select>
+          </div>
+          <div class="search-cat price-srch">
+             <label>Home Price</label>
+             <div class="dollar-icn">$</div>
+             <input type="text" placeholder="500,000">
+          </div>
+          <div class="search-cat price-srch">
+             <label>Down Payment</label>
+             <div class="dollar-icn">$</div>
+             <input type="text" placeholder="100,000">
+          </div>
+          <div class="search-cat cr-srch">
+             <label>Credit Score</label>
+             <select>
+                <option>750+</option>
+             </select>
+          </div>
+          <button class="rates-btn">Get Rates</button>
+       </div>
+       <div class="search-main adv-search-mb" id="seo-city-mort-mb">
+          <div class="section-lft-srch-drpdwn-icn" id="srch-edit-mb-only">
+             <i class="fa fa-pencil"></i>
+          </div>
+          <div class="section-lft-srch-price-alert">
+             <a data-toggle="modal" data-target="#create-price-alert" href=""><img src="images/mobile/mail4_03.png" alt=""></br>
+             Price Alert
+             </a>
+          </div>
+          <div class="section-lft-srch-drpdwn-icn">
+             <i class="fa fa-angle-double-down"></i>
+          </div>
+          <div class="section-lft-srch">
+             <p>$500,00 Home Purchase <span>in  94043</span></p>
+             <p>$100,00 Down <span>750 +</span></p>
+          </div>
+       </div>
+       <!-- banner main search end-->
+    </div>
+    <!-- advance search start-->
+    <div class="srch-results-adv-srch inner-mb-changes">
+       <div class="container">
+          <div class="search-adv-option-box">
+             <a href="javascript:void(0);" id="adv-option" class="desktop-btn"><i class="fa fa-angle-double-down"></i> Advanced Options</a>
+             <a href="" data-toggle="modal" data-target="#advance-srch-mb" class="mb-btn"><i class="fa fa-angle-double-down"></i> Advanced Options</a>
+             <a data-toggle="modal" data-target="#create-price-alert" href="" class="price-alert-btn"><i class="fa fa-envelope"></i> Create Price Alert</a>
+             <div class="search-adv-option" id="search-adv-option-inner">
+                <div class="row">
+                   <h4>desired loan programs?</h4>
+                   <div class="col-xs-12 col-md-2 advance-check">
+                      <div class="form-group"><input type="checkbox" value=""> 30 Year Fixed</div>
+                      <div class="form-group"><input type="checkbox" value=""> 20 Year Fixed</div>
+                      <div class="form-group"><input type="checkbox" value=""> 15 Year Fixed</div>
+                      <div class="form-group"><input type="checkbox" value=""> 10 Year Fixed</div>
+                      <div class="form-group"><input type="checkbox" value=""> 7/1 Arm</div>
+                      <div class="form-group"><input type="checkbox" value=""> 5/1 Arm</div>
+                      <div class="form-group"><input type="checkbox" value=""> 3/1 Arm</div>
+                   </div>
+                   <div class="col-xs-12 col-md-3 drpdown-box">
+                      <select>
+                         <option>Select Occupancy</option>
+                      </select>
+                      <select>
+                         <option>Select Occupancy</option>
+                      </select>
+                      <select>
+                         <option>Select Occupancy</option>
+                      </select>
+                      <select>
+                         <option>Select Occupancy</option>
+                      </select>
+                   </div>
+                   <div class="col-xs-12 col-md-4 drpdown-box">
+                      <select>
+                         <option>Select Prepay Penalty</option>
+                      </select>
+                      <label>Cash Reserves (mos)</label>
+                      <select>
+                         <option>$ 15</option>
+                      </select>
+                      <label>Monthly Debt</label>
+                      <select>
+                         <option>$ 0</option>
+                      </select>
+                      <label>Monthly Income</label>
+                      <select>
+                         <option>$ 5,000</option>
+                      </select>
+                   </div>
+                   <div class="col-xs-12 col-md-3 advance-check">
+                      <p>Owned Properties <span>01</span></p>
+                      <div class="form-group"><input type="checkbox" value=""> Interest Only</div>
+                      <div class="form-group"><input type="checkbox" value=""> Hazard Insuarance Waived</div>
+                      <div class="form-group"><input type="checkbox" value=""> Property Taxes Waived</div>
+                      <div class="form-group"><input type="checkbox" value=""> First Time Home Buyer</div>
+                      <div class="form-group"><input type="checkbox" value=""> Non Perm Resident Alien</div>
+                      <div class="form-group"><input type="checkbox" value=""> Foreign National</div>
+                      <div class="form-group"><input type="checkbox" value=""> Miltary</div>
+                      <div class="form-group"><input type="checkbox" value=""> Rular</div>
+                   </div>
+                   <div class="col-xs-12 col-md-3 menu-up-adv-search"><a href=""><img src="images/menu-up-white.png" alt=""/></a></div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <!-- advance search end-->
+ </section>
+ <!-- banner end-->
+ <!-- result feed start-->     
+ <section class="content-main seo-cities-mortgage">
+    <div class="container">
+       <div class="row">
+          <div class="col-xs-12 col-md-12">
+             <div class="loan-detail-blocks sectn-wo-bg">
+                <h3><%=@city%>, <%=state_full_name(@state)%> Refinance Rates</h3>
+                <div class="loan-detail-blocks-cntnt-inner">
+                   <p>Here are the most competitive home Refinance rates for <%=@city%>, CA based on around 200 competing banks and lending 
+                      institutions that offer home loans in the cities around <%=@city%>,<%=state_full_name(@state)%>.
+                   </p>
+                   <p class="mb-hide-para">Home Refinance options include fixed rate, adjustable ratem, FHA, VA, USDA, conventional, Jumbo. and conforming home Refinances for <%=@city%>, California.</p>
+                   <span href="" id="para-see-more-link">See More</span>
+                   <span href="" id="para-see-less-link">See Less</span>
+                </div>
+             </div>
+          </div>
+       </div>
+       <p class="top-txt-info">Sorted By  
+          <a href="" class="">APR</a>
+       </p>
+       <!--30 years feed start-->
+       <div class="cntnt-list-box">
+          <h5>30-Year Fixed Rates Customized for March24</h5>
+          <div class="cntnt-list-inner gray-bg col-md-12">
+             <div class="inner-logo"><img src="images/pic1_06.png" alt="">
+   <a href="">Bank of America</a>
+   <p>NMLS ID 54645</p>
+   </div>
+             <div class="inner-block">
+                <span class="hdng-big">4.356% Rate</span>
+                <p class="hiden-txt-mb">4.145% APR</p>
+                <p>30 Year Fixed</p>
+    <a href="" class="more-dtail-link hiden-txt-mb">More Details</a>
+             </div>
+             <div class="inner-block-combined">
+             <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Expected</span> Savings</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$3,072/mo</span>
+                <p><span class="hiden-txt-mb">Monthly</span> Payment</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Total Closing</span> Costs</p>
+             </div>
+             </div>
+             <div class="inner-block-btn">
+                <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
+                <a href="" class="dtail-btn">View Details</a>
+                <a href="" class="lendr-web-link">Lender Website</a>
+             </div>
+   <div class="mb-scroll-icn">
+   <a href=""><i class="fa fa-angle-right"></i></a>
+   </div>
+          </div>
+          <div class="cntnt-list-inner col-md-12">
+             <div class="inner-logo"><img src="images/pic2_03.png" alt="">
+   <a href="">Bank of America</a>
+   <p>NMLS ID 54645</p>
+   </div>
+             <div class="inner-block">
+                <span class="hdng-big">4.356% Rate</span>
+                <p class="hiden-txt-mb">4.145% APR</p>
+                <p>30 Year Fixed</p>
+    <a href="" class="more-dtail-link hiden-txt-mb">More Details</a>
+             </div>
+             <div class="inner-block-combined">
+             <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Expected</span> Savings</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$3,072/mo</span>
+                <p><span class="hiden-txt-mb">Monthly</span> Payment</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Total Closing</span> Costs</p>
+             </div>
+             </div>
+             <div class="inner-block-btn">
+                <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
+                <a href="" class="dtail-btn">View Details</a>
+                <a href="" class="lendr-web-link">Lender Website</a>
+             </div>
+   <div class="mb-scroll-icn">
+   <a href=""><i class="fa fa-angle-right"></i></a>
+   </div>
+          </div>
+          <div class="cntnt-list-inner gray-bg col-md-12">
+             <div class="inner-logo"><img src="images/pic3_07.png" alt="">
+   <a href="">Bank of America</a>
+   <p>NMLS ID 54645</p>
+   </div>
+             <div class="inner-block">
+                <span class="hdng-big">4.356% Rate</span>
+                <p class="hiden-txt-mb">4.145% APR</p>
+                <p>30 Year Fixed</p>
+    <a href="" class="more-dtail-link hiden-txt-mb">More Details</a>
+             </div>
+             <div class="inner-block-combined">
+             <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Expected</span> Savings</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$3,072/mo</span>
+                <p><span class="hiden-txt-mb">Monthly</span> Payment</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Total Closing</span> Costs</p>
+             </div>
+             </div>
+             <div class="inner-block-btn">
+                <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
+                <a href="" class="dtail-btn">View Details</a>
+                <a href="" class="lendr-web-link">Lender Website</a>
+             </div>
+   <div class="mb-scroll-icn">
+   <a href=""><i class="fa fa-angle-right"></i></a>
+   </div>
+          </div>
+       </div>
+                   
+       <div class="cntnt-list-box">
+          <h5>15-Years Fixed Rates Customized for March24</h5>
+          <div class="cntnt-list-inner gray-bg col-md-12">
+             <div class="inner-logo"><img src="images/pic1_06.png" alt="">
+   <a href="">Bank of America</a>
+   <p>NMLS ID 54645</p>
+   </div>
+             <div class="inner-block">
+                <span class="hdng-big">4.356% Rate</span>
+                <p class="hiden-txt-mb">4.145% APR</p>
+                <p>30 Year Fixed</p>
+    <a href="" class="more-dtail-link hiden-txt-mb">More Details</a>
+             </div>
+             <div class="inner-block-combined">
+             <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Expected</span> Savings</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$3,072/mo</span>
+                <p><span class="hiden-txt-mb">Monthly</span> Payment</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Total Closing</span> Costs</p>
+             </div>
+             </div>
+             <div class="inner-block-btn">
+                <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
+                <a href="" class="dtail-btn">View Details</a>
+                <a href="" class="lendr-web-link">Lender Website</a>
+             </div>
+   <div class="mb-scroll-icn">
+   <a href=""><i class="fa fa-angle-right"></i></a>
+   </div>
+          </div>
+          <div class="cntnt-list-inner col-md-12">
+             <div class="inner-logo"><img src="images/pic2_03.png" alt="">
+   <a href="">Bank of America</a>
+   <p>NMLS ID 54645</p>
+   </div>
+             <div class="inner-block">
+                <span class="hdng-big">4.356% Rate</span>
+                <p class="hiden-txt-mb">4.145% APR</p>
+                <p>30 Year Fixed</p>
+    <a href="" class="more-dtail-link hiden-txt-mb">More Details</a>
+             </div>
+             <div class="inner-block-combined">
+             <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Expected</span> Savings</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$3,072/mo</span>
+                <p><span class="hiden-txt-mb">Monthly</span> Payment</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Total Closing</span> Costs</p>
+             </div>
+             </div>
+             <div class="inner-block-btn">
+                <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
+                <a href="" class="dtail-btn">View Details</a>
+                <a href="" class="lendr-web-link">Lender Website</a>
+             </div>
+   <div class="mb-scroll-icn">
+   <a href=""><i class="fa fa-angle-right"></i></a>
+   </div>
+          </div>
+          <div class="cntnt-list-inner gray-bg col-md-12">
+             <div class="inner-logo"><img src="images/pic3_07.png" alt="">
+   <a href="">Bank of America</a>
+   <p>NMLS ID 54645</p>
+   </div>
+             <div class="inner-block">
+                <span class="hdng-big">4.356% Rate</span>
+                <p class="hiden-txt-mb">4.145% APR</p>
+                <p>30 Year Fixed</p>
+    <a href="" class="more-dtail-link hiden-txt-mb">More Details</a>
+             </div>
+             <div class="inner-block-combined">
+             <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Expected</span> Savings</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$3,072/mo</span>
+                <p><span class="hiden-txt-mb">Monthly</span> Payment</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Total Closing</span> Costs</p>
+             </div>
+             </div>
+             <div class="inner-block-btn">
+                <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
+                <a href="" class="dtail-btn">View Details</a>
+                <a href="" class="lendr-web-link">Lender Website</a>
+             </div>
+   <div class="mb-scroll-icn">
+   <a href=""><i class="fa fa-angle-right"></i></a>
+   </div>
+          </div>
+       </div>
+ 
+ 
+       <div class="cntnt-list-box">
+          <h5>15-Years Fixed Rates Customized for March24</h5>
+          <div class="cntnt-list-inner gray-bg col-md-12">
+             <div class="inner-logo"><img src="images/pic1_06.png" alt="">
+   <a href="">Bank of America</a>
+   <p>NMLS ID 54645</p>
+   </div>
+             <div class="inner-block">
+                <span class="hdng-big">4.356% Rate</span>
+                <p class="hiden-txt-mb">4.145% APR</p>
+                <p>30 Year Fixed</p>
+    <a href="" class="more-dtail-link hiden-txt-mb">More Details</a>
+             </div>
+             <div class="inner-block-combined">
+             <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Expected</span> Savings</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$3,072/mo</span>
+                <p><span class="hiden-txt-mb">Monthly</span> Payment</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Total Closing</span> Costs</p>
+             </div>
+             </div>
+             <div class="inner-block-btn">
+                <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
+                <a href="" class="dtail-btn">View Details</a>
+                <a href="" class="lendr-web-link">Lender Website</a>
+             </div>
+   <div class="mb-scroll-icn">
+   <a href=""><i class="fa fa-angle-right"></i></a>
+   </div>
+          </div>
+          <div class="cntnt-list-inner col-md-12">
+             <div class="inner-logo"><img src="images/pic2_03.png" alt="">
+   <a href="">Bank of America</a>
+   <p>NMLS ID 54645</p>
+   </div>
+             <div class="inner-block">
+                <span class="hdng-big">4.356% Rate</span>
+                <p class="hiden-txt-mb">4.145% APR</p>
+                <p>30 Year Fixed</p>
+    <a href="" class="more-dtail-link hiden-txt-mb">More Details</a>
+             </div>
+             <div class="inner-block-combined">
+             <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Expected</span> Savings</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$3,072/mo</span>
+                <p><span class="hiden-txt-mb">Monthly</span> Payment</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Total Closing</span> Costs</p>
+             </div>
+             </div>
+             <div class="inner-block-btn">
+                <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
+                <a href="" class="dtail-btn">View Details</a>
+                <a href="" class="lendr-web-link">Lender Website</a>
+             </div>
+   <div class="mb-scroll-icn">
+   <a href=""><i class="fa fa-angle-right"></i></a>
+   </div>
+          </div>
+          <div class="cntnt-list-inner gray-bg col-md-12">
+             <div class="inner-logo"><img src="images/pic3_07.png" alt="">
+   <a href="">Bank of America</a>
+   <p>NMLS ID 54645</p>
+   </div>
+             <div class="inner-block">
+                <span class="hdng-big">4.356% Rate</span>
+                <p class="hiden-txt-mb">4.145% APR</p>
+                <p>30 Year Fixed</p>
+    <a href="" class="more-dtail-link hiden-txt-mb">More Details</a>
+             </div>
+             <div class="inner-block-combined">
+             <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Expected</span> Savings</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$3,072/mo</span>
+                <p><span class="hiden-txt-mb">Monthly</span> Payment</p>
+             </div>
+   <div class="inner-block inner-block-small">
+                <span class="hdng-big">$23,078</span>
+                <p><span class="hiden-txt-mb">Total Closing</span> Costs</p>
+             </div>
+             </div>
+             <div class="inner-block-btn">
+                <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
+                <a href="" class="dtail-btn">View Details</a>
+                <a href="" class="lendr-web-link">Lender Website</a>
+             </div>
+   <div class="mb-scroll-icn">
+   <a href=""><i class="fa fa-angle-right"></i></a>
+   </div>
+          </div>
+       </div>
+       <!-- 15/1 ARM feed end-->
+       <!-- Closing Cost Summary start-->
+       <div class="row">
+          <div class="col-xs-12 col-md-12">
+             <div class="loan-detail-blocks">
+                <h3>Closing Cost Summary for Refinance Rates in Albany, CA</h3>
+                <div class="closing-cost-smry-cntnt">
+                   <div class="col-xs-12 col-md-2">
+                      Origination Fee
+                      <p>$2,000</p>
+                   </div>
+                   <div class="col-xs-12 col-md-2">
+                      Appraisal Fee
+                      <p>$400</p>
+                   </div>
+                   <div class="col-xs-12 col-md-2">
+                      Underwriting Fee
+                      <p>$500</p>
+                   </div>
+                   <div class="col-xs-12 col-md-1">
+                      Other Fee
+                      <p>$100</p>
+                   </div>
+                   <div class="col-xs-12 col-md-2">
+                      Discount Points           
+                      <p>$2,858</p>
+                   </div>
+                   <div class="col-xs-12 col-md-3">
+                      Estimated  Closing Costs
+                      <p>$5,585</p>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <!-- Closing Cost Summary end-->
+       <!-- Historical Rates for Albany start-->
+       <div class="row">
+          <div class="col-xs-12 col-md-12">
+             <div class="loan-detail-blocks">
+                <h3><b>Historical Rates for Albany,CA Home Loans based on Actual Closed Loan Data</b>
+                   <span>We  have compiled refinance rate statistics for home loans in Albany, California to help you understand trends for
+                   your home purchase process. This data is produced from actual clodes loans.
+                   </span>
+                </h3>
+                <div class="graph-box main-table-graph">
+<div class="dynamic-table-box">
+<div class="col-md-3 table-data-box">
+<div class="data-table-inner table-responsive">
+<div class="mb-scroll-btns mb-only">
+<a id="scrollLeft" href="javascript:void(0);"><i class="fa fa-angle-left"></i></a>
+<a id="scrollRight" href="javascript:void(0);"><i class="fa fa-angle-right"></i></a>
+</div>
+<table class="table table-striped">
+<tr>
+<th></th>
+</tr>
+<tr>
+<th>% 30 year fixed <span class="mb-hide-nw">refinance</span> </th>
+</tr>
+<tr>
+<th><span class="table-inner-lft-space">avg <span class="mb-hide-nw">refinance</span> rate</span></th>
+</tr>
+<tr>
+<th>% 15 year fixed <span class="mb-hide-nw">refinance</span> </th>
+</tr>
+<tr>
+<th><span class="table-inner-lft-space">avg <span class="mb-hide-nw">refinance</span> rate</span></th>
+</tr>
+<tr>
+<th>% 10/1 ARM </th>
+</tr>
+<tr>
+<th><span class="table-inner-lft-space">avg <span class="mb-hide-nw">refinance</span> rate</span></th>
+</tr>
+<tr>
+<th>% 7/1 ARM </th>
+</tr>
+<tr>
+<th><span class="table-inner-lft-space">avg <span class="mb-hide-nw">refinance</span> rate</span></th>
+</tr>
+<tr>
+<th>% 5/1 ARM </th>
+</tr>
+<tr class="row-bordr-botom">
+<th><span class="table-inner-lft-space">avg <span class="mb-hide-nw">refinance</span> rate</span></th>
+</tr>
+<tr>
+<th>Avg credit score </th>
+</tr>
+<tr>
+<th>Avg loan amount</th>
+</tr>
+<tr class="row-bordr-botom">
+<th>Avg LTV (loan to value)</th>
+</tr>
+<tr>
+<th>Avg DTI (debt to income)</th>
+</tr>
+<tr class="row-bordr-botom">
+<th>% First time homebuyer</th>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="col-md-9 table-data-box">
+<div class="data-table-inner table-responsive">
+<table class="table table-striped" id="content-table">
+<tr>
+<td>2010</th>
+<td>2011</td>
+<td>2012</td>
+<td>2013</td>
+<td>2014</td>
+<td>2015</td>
+<td>2016</td>
+<td>2017</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+<td>20%</td>
+</tr>
+<tr class="row-bordr-botom">
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+<td>4.50%</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-bordr-botom">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-bordr-botom">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+                   <a class="link-right-inner">Data produced  from US Government reported financials</a>
+                   <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
+                   <a href="" class="see-more-link-common">See More historical data</a>
+                </div>
+             </div>
+          </div>
+       </div>
+       <!-- Historical Rates for Albany end-->
+       <!-- Online Trends for Refinance Rates start-->
+       <div class="row">
+          <div class="col-xs-12 col-md-12">
+             <div class="loan-detail-blocks">
+                <h3><b>Online Trends for Refinance Rates in Albany,CA</b> 
+                   <span>We  have created a proprietary engine to montitor online rates for the largest home lenders in the United Staes, 
+                   toensure you are getting the best rates even during the online reseach phase.</span>
+                </h3>
+                <div class="graph-box">
+                   <img src="images/seo-city-mortgage-graph2.png" alt="">
+                   <img src="images/seo-city-mortgage-graph2.png" alt="">
+                   <img src="images/seo-city-mortgage-graph2.png" alt="">
+                   <p class="para-lft-inner">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                   <a href="" class="see-more-link-common">See More Graphs</a>
+                </div>
+             </div>
+          </div>
+       </div>
+       <!-- Online Trends for refinance Rates end-->
+       <div class="seo-auto-loan-tabs loan-detail-blocks">
+          <h3><b>Recommended and Best Albany, CA refinance Companies</b> 
+             <span>In Addition to online refinance companies, here are some refinance rate specialists in Albany, CA.</span>
+          </h3>
+          <!--Used Car Loans desktop section end-->
+          <div class="tabs-data-main desktop-tabs-data">
+             <div class="tabs-data-hdng">
+                <div class="col-xs-12 col-md-4">Name</div>
+                <div class="col-xs-12 col-md-4">Address</div>
+                <div class="col-xs-12 col-md-4">Contact</div>
+             </div>
+             <div class="tabs-data-row">
+                <div class="col-xs-12 col-md-4">
+                   <p>Integrity Home Margooge</p>
+                   <p>George Makrides</p>
+                   <p>Martgoge Loan Origiotor</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                   <p>5300 Westview Dr ste 108</p>
+                   <p>Frederick MD</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                   <p>Ph   (301) 639-0804</p>
+                   <p>Fax  (301) 639-0804</p>
+                   <p>adfdgdsg@personal.com</p>
+                   <a href="">Link to stie</a>
+                </div>
+             </div>
+             <div class="tabs-data-row gray-row">
+                <div class="col-xs-12 col-md-4">
+                   <p>Integrity Home Margooge</p>
+                   <p>George Makrides</p>
+                   <p>Martgoge Loan Origiotor</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                   <p>5300 Westview Dr ste 108</p>
+                   <p>Frederick MD</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                   <p>Ph   (301) 639-0804</p>
+                   <p>Fax  (301) 639-0804</p>
+                   <p>adfdgdsg@personal.com</p>
+                   <a href="">Link to stie</a>
+                </div>
+             </div>
+             <div class="tabs-data-row">
+                <div class="col-xs-12 col-md-4">
+                   <p>Integrity Home Margooge</p>
+                   <p>George Makrides</p>
+                   <p>George Makrides</p>
+                   <p>Martgoge Loan Origiotor</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                   <p>5300 Westview Dr ste 108</p>
+                   <p>Frederick MD</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                   <p>Ph   (301) 639-0804</p>
+                   <p>Fax  (301) 639-0804</p>
+                   <p>adfdgdsg@personal.com</p>
+                   <a href="">Link to stie</a>
+                </div>
+             </div>
+          </div>
+          <!--Used Car Loans Officers mobile tabs end-->
+          <div class="tabs-data-main tabs-accordians-box">
+             <div class="panel-group">
+                <div class="panel panel-default">
+                   <div class="panel-heading tabs-data-hdng">
+                      <a class="accordion-toggle" data-toggle="collapse" href="#collapse1">Integrity Home Margooge<br>
+                      George Makrides<br>
+                      Martgoge Loan Origiotor</a>
+                   </div>
+                   <div id="collapse1" class="panel-collapse collapse">
+                      <div class="tabs-data-row">
+                         <div class="col-xs-12 col-md-12">
+                            <h5>Address</h5>
+                            <p>5300 Westview Dr ste 108</p>
+                            <p>Frederick MD</p>
+                         </div>
+                         <div class="col-xs-12 col-md-12">
+                            <h5>Contact</h5>
+                            <p>Ph   (301) 639-0804</p>
+                            <p>Fax  (301) 639-0804</p>
+                            <p>adfdgdsg@personal.com</p>
+                            <a href="">Link to stie</a>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="panel panel-default">
+                   <div class="panel-heading tabs-data-hdng"> 
+                      <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse2" aria-expanded="false">Integrity Home Margooge<br>
+                      George Makrides<br>
+                      Martgoge Loan Origiotor</a>
+                   </div>
+                   <div id="collapse2" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                      <div class="tabs-data-row">
+                         <div class="col-xs-12 col-md-12">
+                            <h5>Address</h5>
+                            <p>5300 Westview Dr ste 108</p>
+                            <p>Frederick MD</p>
+                         </div>
+                         <div class="col-xs-12 col-md-12">
+                            <h5>Contact</h5>
+                            <p>Ph   (301) 639-0804</p>
+                            <p>Fax  (301) 639-0804</p>
+                            <p>adfdgdsg@personal.com</p>
+                            <a href="">Link to stie</a>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="panel panel-default">
+                   <div class="panel-heading tabs-data-hdng"> 
+                      <a class="accordion-toggle" data-toggle="collapse" href="#collapse3">Integrity Home Margooge<br>
+                      George Makrides<br>
+                      Martgoge Loan Origiotor</a>
+                   </div>
+                   <div id="collapse3" class="panel-collapse collapse">
+                      <div class="tabs-data-row">
+                         <div class="col-xs-12 col-md-12">
+                            <h5>Address</h5>
+                            <p>5300 Westview Dr ste 108</p>
+                            <p>Frederick MD</p>
+                         </div>
+                         <div class="col-xs-12 col-md-12">
+                            <h5>Contact</h5>
+                            <p>Ph   (301) 639-0804</p>
+                            <p>Fax  (301) 639-0804</p>
+                            <p>adfdgdsg@personal.com</p>
+                            <a href="">Link to stie</a>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <a href="" class="show-all-specialst-btn">Show all Morgage Specialists</a>
+       </div>
+       <div class="volume-auto-loan full-width loan-detail-blocks">
+          <h3>News on Refinances and Reverse Refinances For <%=@city%>, <%=state_full_name(@state)%></h3>
+          
+          <%@news_articles.each do |na|%>
+            <div class="car-auto-loan-news">
+               <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
+               <h6>
+                  <p><%=na.text.truncate(200)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+               </h6>
+
+            </div>
+          <%end%>
+          <a href="" class="see-more-link-common">See More Recent News</a>
+       </div>
+       <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
+          <h3>Refinance Rates around Albany, California</h3>
+          <div class="car-auto-loan-othr-bank">
+             <a href="">Refinance rates in City Name1, CA</a>
+             <a href="">Refinance rates in City Name1, CA</a>
+             <a href="">Refinance rates in City Name1, CA</a>
+             <a href="">Refinance rates in City Name1, CA</a>
+             <a href="">Refinance rates in City Name1, CA</a>
+          </div>
+       </div>
+    </div>
+ </section>
+ <!-- search result feed end-->   

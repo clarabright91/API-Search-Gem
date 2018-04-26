@@ -1,12 +1,12 @@
 class SeoPagesController < ApplicationController
-  
+  before_action :city_home, only: [:city_home_mortgage_rates, :city_home_refinance_rates]
 
   def city_home_mortgage_rates
-    city_home = City.find(params[:city_id])
-    @city = city_home.present? ? city_home.city : original_details(params[:city])
-    @state = original_details(params[:state])
-    city_news_articles = NewsArticle.where("search_term = ? OR search_term = ? ", @city+" mortgage", @city+', '+@state+" mortgage")
-    @news_articles = city_news_articles.order(id: :desc).first(10)  
+    @news_articles = news_article_data(' mortgage')
+  end 
+
+  def city_home_refinance_rates
+    @news_articles = news_article_data(' refinance')
   end 
 
   def bank_mortgage_loans
@@ -20,5 +20,16 @@ class SeoPagesController < ApplicationController
   private
     def original_details(info)
       return info.tr('+',' ')
+    end
+
+    def city_home
+      city_home = City.find(params[:city_id])
+      @city = city_home.present? ? city_home.city : original_details(params[:city])
+      @state = original_details(params[:state])
+    end  
+
+    def news_article_data(flag)
+      city_news_articles = NewsArticle.where("search_term = ? OR search_term = ?", @city+flag, @city+', '+@state+flag)
+      return city_news_articles.order(id: :desc).first(10)
     end  
 end
