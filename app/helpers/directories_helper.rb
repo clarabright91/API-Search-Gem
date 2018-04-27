@@ -1,8 +1,8 @@
 module DirectoriesHelper
       
   #mappping state code with state name
-  def state_full_name(state_code)
-    state = state_abbr = {
+  def state_full_name(state_code,flag = false)
+    state = {
       'AL' => 'Alabama',
       'AK' => 'Alaska',
       'AS' => 'America Samoa',
@@ -62,8 +62,12 @@ module DirectoriesHelper
       'WI' => 'Wisconsin',
       'WY' => 'Wyoming'
     }
-    code = state_code.upcase
-    return state[code].present? ? state[code] : code
+    code = if flag
+      state.key(state_code).present? ? state.key(state_code) : state_code
+    else
+      state[state_code.upcase].present? ? state[state_code] : state_code
+    end
+    return code 
   end
 
   #per page link calculation

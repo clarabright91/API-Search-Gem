@@ -9,42 +9,16 @@
               <% @counter = @counter+1 %>
               <div class="col-xs-12 col-md-4"> 
                 <% if @flag == 'mortgage_loan' %>
-                  <%current_path = bank_home_mortgage_loan_path(state: custom_path(bank.stname),bank_name: custom_path(bank.name)) %>
+                  <%current_path = bank_home_mortgage_loan_path(state: state_full_name(bank.stname, true),cert: bank.cert,bank_name: custom_path(bank.name)) %>
                 <%elsif @flag == 'personal_loan' %>
-                  <%current_path = bank_home_personal_loan_path(state: custom_path(bank.stname),bank_name: custom_path(bank.name)) %>
+                  <%current_path = bank_home_personal_loan_path(state: state_full_name(bank.stname, true),cert: bank.cert,bank_name: custom_path(bank.name)) %>
                 <%else%>
-                  <%current_path = bank_home_auto_loan_path(state: custom_path(bank.stname),bank_name: custom_path(bank.name)) %>
-                <%end%>
-                 <%=form_tag current_path, id: "bank_form"+@counter.to_s, method: :post do |f| %>
-                      <%=hidden_field_tag 'bank_id', bank.id%>  
-                    <%= link_to bank.name+', '+bank.stname, "javascript:;" ,class: "submit_bank", id: "bank_list_"+@counter.to_s%>
-                  <%end%>             
-                <%#=link_to bank.name+', '+bank.stname, bank_home_mortgage_loan_path(state: custom_path(bank.stname),bank_name: custom_path(bank.name))%>
+                  <%current_path = bank_home_auto_loan_path(state: state_full_name(bank.stname, true),cert: bank.cert,bank_name: custom_path(bank.name)) %>
+                <%end%>           
+                <%=link_to bank.name+', '+bank.stname, current_path%>
               </div>      
            <%end%>   
         </div>                 
     </div>
   </div>
 </section>
-
-<script>
-$(document).on("mousedown",".submit_bank",function(e){
-    e.preventDefault();
-    if (e.which === 1)
-    {
-      var getId = $(this).attr('id');
-      getId = getId.split('_');
-      getId = getId[2];
-      $("#bank_form"+getId).submit();
-    }
-    else
-      {
-        var getId = $(this).attr('id');
-        getId = getId.split('_');
-        getId = getId[2];
-         $("#bank_form"+getId).attr('target','_blank');
-        $("#bank_form"+getId).submit();
-      }
-
-  });
-</script>

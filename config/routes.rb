@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   post '/mortgage/lender/:bank_list', to: 'directories#mortgage_state_banks_list', as: 'mortgage_state_banks_list'
 
-  post 'mortgage/lender/(:state)/(:bank_name)', to: 'seo_pages#bank_mortgage_loans', as: 'bank_home_mortgage_loan'
+  get 'mortgage/lender-(:cert)/(:state)/(:bank_name+mortgage)', to: 'seo_pages#bank_mortgage_loans', as: 'bank_home_mortgage_loan'
   
   
   #--------------------------- routes for personal loan pages ----------------------------------
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   post '/personal+loans/lender/:bank_list', to: 'directories#personal_loan_state_banks_list', as: 'personal_loan_state_banks_list'
 
-  post 'personal+loans/lender/(:state)/(:bank_name)', to: 'seo_pages#bank_personal_loans', as: 'bank_home_personal_loan'
+  get 'personal+loans/lender-(:cert)/(:state)/(:bank_name+personal+loans)', to: 'seo_pages#bank_personal_loans', as: 'bank_home_personal_loan'
 
   #--------------------------- routes for auto loan pages ----------------------------------
 
@@ -48,14 +48,14 @@ Rails.application.routes.draw do
 
   post '/auto+loans/lender/:bank_list', to: 'directories#auto_loan_state_banks_list', as: 'auto_loan_state_banks_list'
 
-  post 'auto+loans/lender/(:state)/(:bank_name)', to: 'seo_pages#bank_auto_loans', as: 'bank_home_auto_loan'
+  get 'auto+loans/lender-(:cert)/(:state)/(:bank_name+auto+loans)', to: 'seo_pages#bank_auto_loans', as: 'bank_home_auto_loan'
 
   
   #-------------------------- routes for directory pages------------------------------  
   get '/directory', to: 'directories#directory_root', as: 'directory'
 
   #-------------------------- routes for mortgage pages------------------------------ 
-  post '/mortgage/:state(/:city+mortgage+rate)', to: 'seo_pages#city_home_mortgage_rates', as: 'city_home_mortgage_rates' 
+  post '/mortgage/:state(/:city+mortgage+rates)', to: 'seo_pages#city_home_mortgage_rates', as: 'city_home_mortgage_rates' 
 
   get '/mortgage/:state', to: 'directories#mortgage_state_cities', as: 'mortgage_state_cities'
 
@@ -64,7 +64,7 @@ Rails.application.routes.draw do
 
   #--------------------------- routes for refinance pages ----------------------------------
   
-  post '/refinance/:state(/:city+refinance+rate)', to: 'seo_pages#city_home_refinance_rates', as: 'city_home_refinance_rates'
+  post '/refinance/:state(/:city+refinance+rates)', to: 'seo_pages#city_home_refinance_rates', as: 'city_home_refinance_rates'
 
   get '/refinance/:state', to: 'directories#refinance_state_cities', as: 'refinance_state_cities'
 
