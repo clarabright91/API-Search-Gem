@@ -126,16 +126,16 @@
                <div class="seo-auto-loan-cntnt-box mb-bg-gray">
                   <div class="col-xs-12 col-md-8 our-story-cntnt">
                      <div class="gray-box-cntnt">
-                        <h3><%=@bank%> Mortgage Overview</h3>
+                        <h3><%=@bank.name%> Mortgage Overview</h3>
                         <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
                         <span href="" id="para-see-more-link">See More</span>
                      </div>
                   </div>
                   <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg">
-                     <h3><%=@bank%></h3>
-                     <p>Founded March 23,1845<br>
-                        FDIC Certificate Number - 43</br>
-                        123 Main St, Charlotte, North Carolina
+                     <h3><%=@bank.name%></h3>
+                     <p>Founded  <%=@bank.estymd.to_date.strftime("%B %d, %Y")%></br>
+                        FDIC Certificate Number - <%=@bank.cert%></br>
+                        <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
                      </p>
                      <!-- <p>123 Main St, Charlotte, North Carolina<br>
                         <a href="">www.bankofamerica.com</a>

@@ -6,7 +6,7 @@
                   <div class="col-xs-12 col-md-8 our-story-cntnt">
                      <div class="gray-box-cntnt seo_bank_auto_loan_top">
                         <h3>
-                           <%=@bank%> Auto Loans
+                           <%=@bank.name%> Auto Loans
                            <div class="star-box pull-right">
                               <img src="images/star_03.png" alt="">
                               <img src="images/star_03.png" alt="">
@@ -20,10 +20,10 @@
                      </div>
                   </div>
                   <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg">
-                     <h3><%=@bank%></h3>
-                     <p>Founded March 23,1845</br>
-                        FDIC Certificate Number - 43</br>
-            123 Main St, Charlotte, North Carolina
+                     <h3><%=@bank.name%></h3>
+                     <p>Founded <%=@bank.estymd.to_date.strftime("%B %d, %Y")%></br>
+                        FDIC Certificate Number - <%=@bank.cert%></br>
+                        <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
                      </p>
                      <!-- <p>123 Main St, Charlotte, North Carolina</br>
                         <a href="">www.bankofamerica.com</a>
@@ -108,7 +108,7 @@
                <!--One Main Financial section end-->
                <!--Volume of Auto Loan start-->     
                <div class="volume-auto-loan">
-                  <h2>Volume of Auto Loan at <%=@bank%></h2>
+                  <h2>Volume of Auto Loan at <%=@bank.name%></h2>
                   <div class="volume-auto-loan-row">
                      <p class="vol-row-inner">Auto Loans-consolidated basis</p>
                      <span>Volue <b>1</b></span>
@@ -139,7 +139,7 @@
                <!--Bank of America Personal Loan Chargeoffs, Recoveries section end-->      
                <!--Used Car Loans Officers section start-->   
                <div class="volume-auto-loan seo-auto-loan-tabs">
-                  <h2><%=@bank%> New and Used Car Loans Officers</h2>
+                  <h2><%=@bank.name%> New and Used Car Loans Officers</h2>
                   <!--Used Car Loans desktop section end-->
                   <div class="tabs-data-main desktop-tabs-data">
                      <div class="tabs-data-hdng">

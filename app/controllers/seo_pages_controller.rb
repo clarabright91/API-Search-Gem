@@ -42,14 +42,14 @@ class SeoPagesController < ApplicationController
       bank_home = FdicInstitution.find_by(cert: params[:cert])
       if bank_home.present?
         @state =  bank_home.stname
-        @bank = bank_home.name
+        @bank = bank_home
       else
         content_not_found
       end  
     end
 
     def bank_news_article(flag)
-      bank_news_articles = NewsArticle.where(search_term: @bank+flag)
+      bank_news_articles = NewsArticle.where(search_term: @bank.name+flag)
       return bank_news_articles.order(id: :desc).first(10)
     end
 
