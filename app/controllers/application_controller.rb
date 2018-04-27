@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   #script added for permitting fields in user table
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def content_not_found
+    render file: "#{Rails.root}/public/404", status: :not_found
+  end
+
   #http_basic_authenticate_with :name => "admin", :password => "pureloan123"
   protected
   def configure_permitted_parameters

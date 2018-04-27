@@ -40,8 +40,12 @@ class SeoPagesController < ApplicationController
 
     def bank_home
       bank_home = FdicInstitution.find_by(cert: params[:cert])
-      @state = bank_home.stname
-      @bank = bank_home.name
+      if bank_home.present?
+        @state =  bank_home.stname
+        @bank = bank_home.name
+      else
+        content_not_found
+      end  
     end
 
     def bank_news_article(flag)
