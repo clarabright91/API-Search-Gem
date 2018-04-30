@@ -140,7 +140,7 @@
              <!-- <p>123 Main St, Charlotte, North Carolina<br>
                 <a href="">www.bankofamerica.com</a>
              </p> -->
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> $142,634,784</p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> $<%=@bank.asset%></p>
              <p class="seo-bank-cntn-white-bg-info"><span>Total Liabilites:</span> $142,634,784</p>
              <!-- <p class="seo-bank-cntn-white-bg-info"><span>Total Equity:</span> $142,64 784</p> -->
           </div>
@@ -461,30 +461,32 @@
                 <div class="col-xs-12 col-md-4">Address</div>
                 <div class="col-xs-12 col-md-4">Contact</div>
              </div>
-                <%@loan_officers.each do |loan_officer|%>
-                  <div class="tabs-data-row">
-                    <div class="col-xs-12 col-md-4">
-                        <p> <%= loan_officer.company%></p>
-                        <p><%= loan_officer.first+' '+ loan_officer.try(:last)%></p>
-                        <p><%= loan_officer.title%></p>
+                <%if @loan_officers.present?%>
+                  <%@loan_officers.each do |loan_officer|%>
+                    <div class="tabs-data-row">
+                      <div class="col-xs-12 col-md-4">
+                          <p> <%= loan_officer.company%></p>
+                          <p><%= loan_officer.first+' '+ loan_officer.try(:last)%></p>
+                          <p><%= loan_officer.title%></p>
+                      </div>
+                      <div class="col-xs-12 col-md-4 ">
+                          <p><%= loan_officer.address%></p>
+                          <p><%= loan_officer.city%></p>
+                          <p><%= loan_officer.state%></p>
+                      </div>
+                      <div class="col-xs-12 col-md-4">
+                          <p><%= loan_officer.phone1%></p>
+                          <p><%= loan_officer.email%></p>
+                          <p><%=link_to 'link to site', loan_officer.website, target: '_blank'%></p>
+                      </div>
+                    </div>  
+                  <%end%>
+                <%else%>
+                    <div class="tabs-data-row">
+                      No Records Found
                     </div>
-                    <div class="col-xs-12 col-md-4 ">
-                        <p><%= loan_officer.address%></p>
-                        <p><%= loan_officer.city%></p>
-                        <p><%= loan_officer.state%></p>
-                    </div>
-                    <div class="col-xs-12 col-md-4">
-                        <p><%= loan_officer.phone1%></p>
-                        <p><%= loan_officer.email%></p>
-                        <p><%=link_to 'link to site', loan_officer.website, target: '_blank'%></p>
-                    </div>
-                  </div>  
-                <%end%>        
+                <%end%>          
           </div>
-
-
-
-
 
           <!--Used Car Loans Officers mobile tabs end-->
           <div class="tabs-data-main tabs-accordians-box">
@@ -560,33 +562,41 @@
                 </div>
              </div>
           </div>
-          <a href="" class="show-all-specialst-btn">Show all Morgage Specialists</a>
+          <a href="" class="show-all-specialst-btn blue_button">Show all Morgage Specialists</a>
        </div>
        <!-- Home Equity Loan Officers end-->
        <!-- News on Bank of America start-->
        <div class="volume-auto-loan full-width loan-detail-blocks">
-          <h3>News on Bank of America Mortgages and Home Loans</h3>
-          <%@news_articles.each do |na|%>
-            <div class="car-auto-loan-news">
-               <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
-               <h6>
-                  <p><%=na.text.truncate(200)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
-               </h6>
+          <h3>News on <%=@bank.name%> Mortgages and Home Loans</h3>
+            <%if @news_articles.present?%>
+              <%@news_articles.each do |na|%>
+                <div class="car-auto-loan-news">
+                   <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
+                   <h6>
+                      <p><%=na.text.truncate(200)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                   </h6>
 
-            </div>
-          <%end%>
+                </div>
+              <%end%>
+            <%else%>
+              <div class="car-auto-loan-news">
+                  No Records Found
+              </div>
+            <%end%>
           <a href="" class="see-more-link-common">See More Reported Financials</a>
        </div>
        <!-- News on Bank of America end-->
        <!-- Loans from Similar Bank start-->
        <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-          <h3>Mortgage and Home Loans from Bank Similar to Bank of America</h3>
+          <h2 class="tab_blue_content">Mortgage and Home Loans from Bank Similar to Bank of America</h2>
           <div class="car-auto-loan-othr-bank">
-             <a href="">Mortgage and home loans by Bank Name 1</a>
-             <a href="">Mortgage and home loans by Bank Name 2</a>
-             <a href="">Mortgage and home loans by Bank Name 3</a>
-             <a href="">Mortgage and home loans by Bank Name 4</a>
-             <a href="">Mortgage and home loans by Bank Name 5</a>
+             <%if @near_by_banks.present?%>
+             <%@near_by_banks.each do |nbb|%>
+              <%=link_to nbb.name, bank_home_mortgage_loan_path(state: state_full_name(nbb.stname, true),cert: nbb.cert,bank_name: custom_path(nbb.name)) %>
+              <%end%>
+             <%else%>
+             No Records Found
+             <%end%> 
           </div>
        </div>
        <!-- Loans from Similar Bank end-->

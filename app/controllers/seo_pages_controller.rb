@@ -49,6 +49,7 @@ class SeoPagesController < ApplicationController
         @state =  bank_home.stname
         @bank = bank_home
         @state_code = state_full_name(bank_home.stname, true)
+        @near_by_banks = FdicInstitution.where(city: bank_home.city, stname: bank_home.stname).where.not(id: bank_home).limit(5)
       else
         content_not_found
       end  

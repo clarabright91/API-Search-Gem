@@ -28,7 +28,7 @@
             <!-- <p>123 Main St, Charlotte, North Carolina</br>
                <a href="">www.bankofamerica.com</a>
             </p> -->
-            <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> $142,634,784</p>
+            <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> $<%=@bank.asset%></p>
             <p class="seo-bank-cntn-white-bg-info"><span>Total Liabilites:</span> $142,634,784</p>
             <!-- <p class="seo-bank-cntn-white-bg-info"><span>Total Equity:</span> $142,64 784</p> -->
          </div>
@@ -108,7 +108,7 @@
       <!--One Main Financial section end-->
       <!--Volume of Auto Loan start-->     
       <div class="volume-auto-loan">
-         <h2>Volume of Auto Loan at <%=@bank.name%></h2>
+         <h2 class="tab_blue_content">Volume of Auto Loan at <%=@bank.name%></h2>
          <div class="volume-auto-loan-row">
             <p class="vol-row-inner">Auto Loans-consolidated basis</p>
             <span>Volue <b>1</b></span>
@@ -130,7 +130,7 @@
       <!--Volume of Auto Loan end-->
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->      
       <div class="volume-auto-loan loan-chargeoff-recovry">
-         <h2>Bank of America Personal Loan Chargeoffs, Recoveries </h2>
+         <h2 class="tab_blue_content">Bank of America Personal Loan Chargeoffs, Recoveries </h2>
          <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
          <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+days</p>
          <p class="loan-chargeoff-recovry-inner-data"><span>Index 21</span> Index 31</p>
@@ -139,7 +139,7 @@
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section end-->      
       <!--Used Car Loans Officers section start-->   
       <div class="volume-auto-loan seo-auto-loan-tabs">
-         <h2><%=@bank.name%> New and Used Car Loans Officers</h2>
+         <h2 class="tab_blue_content"><%=@bank.name%> New and Used Car Loans Officers</h2>
          <!--Used Car Loans desktop section end-->
          <div class="tabs-data-main desktop-tabs-data">
             <div class="tabs-data-hdng">
@@ -147,25 +147,33 @@
                <div class="col-xs-12 col-md-4">Address</div>
                <div class="col-xs-12 col-md-4">Contact</div>
             </div>
-               <%@loan_officers.each do |loan_officer|%>
-         <div class="tabs-data-row">
-           <div class="col-xs-12 col-md-4">
-               <p> <%= loan_officer.company%></p>
-               <p><%= loan_officer.first+' '+ loan_officer.try(:last)%></p>
-               <p><%= loan_officer.title%></p>
-           </div>
-           <div class="col-xs-12 col-md-4 ">
-               <p><%= loan_officer.address%></p>
-               <p><%= loan_officer.city%></p>
-               <p><%= loan_officer.state%></p>
-           </div>
-           <div class="col-xs-12 col-md-4">
-               <p><%= loan_officer.phone1%></p>
-               <p><%= loan_officer.email%></p>
-               <p><%=link_to 'link to site', loan_officer.website, target: '_blank'%></p>
-           </div>
-         </div>  
-       <%end%> 
+               <%if @loan_officers.present? %>
+                  <%@loan_officers.each do |loan_officer|%>
+                  <div class="tabs-data-row">
+                    <div class="col-xs-12 col-md-4">
+                        <p> <%= loan_officer.company%></p>
+                        <p><%= loan_officer.first+' '+ loan_officer.try(:last)%></p>
+                        <p><%= loan_officer.title%></p>
+                    </div>
+                    <div class="col-xs-12 col-md-4 ">
+                        <p><%= loan_officer.address%></p>
+                        <p><%= loan_officer.city%></p>
+                        <p><%= loan_officer.state%></p>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <p><%= loan_officer.phone1%></p>
+                        <p><%= loan_officer.email%></p>
+                        <p><%=link_to 'link to site', loan_officer.website, target: '_blank'%></p>
+                    </div>
+                  </div>  
+                <%end%>
+               <%else%>
+                  <div class="tabs-data-row">
+                    
+                        No Recent Found
+                    
+                   </div> 
+               <%end%>  
          </div>
          <!--Used Car Loans Officers mobile tabs end-->
          <div class="tabs-data-main tabs-accordians-box">
@@ -241,11 +249,12 @@
                </div>
             </div>
          </div>
-         <a href="" class="show-all-loan-link">Show all Auto Loan Officers</a>
+         <a href="" class="show-all-specialst-btn blue_button">Show all Auto Loan Officers</a>
       </div>
       <!--Used Car Loans Officers section end-->       
       <div class="volume-auto-loan full-width">
-         <h2>News on Car and Auto Loans From Bank of America</h2>
+         <h2 class="tab_blue_content">News on Car and Auto Loans From Bank of America</h2>
+            <%if @news_articles.present? %>
             <%@news_articles.each do |na|%>
                <div class="car-auto-loan-news">
                  <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
@@ -254,35 +263,29 @@
                  </h6>
                </div>
             <%end%>
+            <%else%>
+               <div class="car-auto-loan-news">
+                  No Record Found
+               </div>
+            <%end%>
  <a href="" class="see-more-link-common">See More Recent News</a>
       </div>
       <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-         <h3>Auto Loans From Bank Similar to Bank of America</h3>
+         <h2 class="tab_blue_content">Auto Loans From Bank Similar to Bank of America</h2>
          <div class="car-auto-loan-othr-bank">
-            <a href="">Auto Loans By Bank Name1</a>
-            <a href="">Auto Loans By Bank Name1</a>
-            <a href="">Auto Loans By Bank Name1</a>
-            <a href="">Auto Loans By Bank Name1</a>
-            <a href="">Auto Loans By Bank Name1</a>
+            <%if @near_by_banks.present? %>
+            <%@near_by_banks.each do |nbb|%>
+              <%=link_to nbb.name, bank_home_auto_loan_path(state: state_full_name(nbb.stname, true),cert: nbb.cert,bank_name: custom_path(nbb.name)) %>
+              <%end%>
+            <%else%>
+               No Record Found
+            <%end%>  
          </div>
       </div>
    </div>
 </section>
 <!-- search result feed end--> 
-<!-- footer start-->
-<footer>
-   <div class="container">
-      <ul>
-         <li><a href="">About</a></li>
-         <li><a href="">Mortgage Rates</a></li>
-         <li><a href="">Refinance Rates</a></li>
-         <li><a href="">Bank Rates</a></li>
-         <li class="last-no-bordr"><a href="">Research</a></li>
-      </ul>
-      <span>© 2017 Pureloan.com  All rights reserved. </span>
-   </div>
-</footer>
-<!-- footer end-->
+
 <!-- advance search mobile start--> 
 <div class="modal fade" id="advance-srch-mb" role="dialog">
    <div class="modal-dialog">
