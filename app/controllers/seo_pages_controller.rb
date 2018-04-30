@@ -13,15 +13,18 @@ class SeoPagesController < ApplicationController
   end 
 
   def bank_mortgage_loans
-      @news_articles = bank_news_article(" mortgage")
+    @news_articles = bank_news_article(" mortgage")
+    @loan_officers= LoanOfficer.loan_officers_list(@state_code,@bank, 'home')
   end
     
   def bank_personal_loans  
     @news_articles = bank_news_article(" personal loans")
+    @loan_officers = LoanOfficer.loan_officers_list(@state_code, @bank,'personal')
   end  
 
   def bank_auto_loans
     @news_articles = bank_news_article(" auto loans")
+     @loan_officers = LoanOfficer.loan_officers_list(@state_code, @bank,'auto')
   end
 
   private
@@ -45,8 +48,7 @@ class SeoPagesController < ApplicationController
       if bank_home.present?
         @state =  bank_home.stname
         @bank = bank_home
-        state_code = state_full_name(bank_home.stname, true)
-        @loan_officers= LoanOfficer.where('lower(title) like ? AND lower(city) like ? AND lower(state) like ?', '%home%',@bank.city.downcase, state_code.downcase )
+        @state_code = state_full_name(bank_home.stname, true)
       else
         content_not_found
       end  

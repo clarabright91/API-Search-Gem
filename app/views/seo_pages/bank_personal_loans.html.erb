@@ -150,60 +150,25 @@
                   <div class="col-xs-12 col-md-4">Address</div>
                   <div class="col-xs-12 col-md-4">Contact</div>
                </div>
-               <div class="tabs-data-row">
-                  <div class="col-xs-12 col-md-4">
-                     <p>Integrity Home Margooge
-                     <p>
-                     <p>George Makrides</p>
-                     <p>Martgoge Loan Origiotor</p>
-                  </div>
-                  <div class="col-xs-12 col-md-4">
-                     <p>5300 Westview Dr ste 108</p>
-                     <p>Frederick MD</p>
-                  </div>
-                  <div class="col-xs-12 col-md-4">
-                     <p>Ph   (301) 639-0804</p>
-                     <p>Fax  (301) 639-0804</p>
-                     <p>adfdgdsg@personal.com</p>
-                     <a href="">Link to stie</a>
-                  </div>
-               </div>
-               <div class="tabs-data-row gray-row">
-                  <div class="col-xs-12 col-md-4">
-                     <p>Integrity Home Margooge
-                     <p>
-                     <p>George Makrides</p>
-                     <p>Martgoge Loan Origiotor</p>
-                  </div>
-                  <div class="col-xs-12 col-md-4">
-                     <p>5300 Westview Dr ste 108</p>
-                     <p>Frederick MD</p>
-                  </div>
-                  <div class="col-xs-12 col-md-4">
-                     <p>Ph   (301) 639-0804</p>
-                     <p>Fax  (301) 639-0804</p>
-                     <p>adfdgdsg@personal.com</p>
-                     <a href="">Link to stie</a>
-                  </div>
-               </div>
-               <div class="tabs-data-row">
-                  <div class="col-xs-12 col-md-4">
-                     <p>Integrity Home Margooge
-                     <p>
-                     <p>George Makrides</p>
-                     <p>Martgoge Loan Origiotor</p>
-                  </div>
-                  <div class="col-xs-12 col-md-4">
-                     <p>5300 Westview Dr ste 108</p>
-                     <p>Frederick MD</p>
-                  </div>
-                  <div class="col-xs-12 col-md-4">
-                     <p>Ph   (301) 639-0804</p>
-                     <p>Fax  (301) 639-0804</p>
-                     <p>adfdgdsg@personal.com</p>
-                     <a href="">Link to stie</a>
-                  </div>
-               </div>
+                  <%@loan_officers.each do |loan_officer|%>
+                  <div class="tabs-data-row">
+                    <div class="col-xs-12 col-md-4">
+                        <p> <%= loan_officer.company%></p>
+                        <p><%= loan_officer.first+' '+ loan_officer.try(:last)%></p>
+                        <p><%= loan_officer.title%></p>
+                    </div>
+                    <div class="col-xs-12 col-md-4 ">
+                        <p><%= loan_officer.address%></p>
+                        <p><%= loan_officer.city%></p>
+                        <p><%= loan_officer.state%></p>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <p><%= loan_officer.phone1%></p>
+                        <p><%= loan_officer.email%></p>
+                        <p><%=link_to 'link to site', loan_officer.website, target: '_blank'%></p>
+                    </div>
+                  </div>  
+                <%end%> 
             </div>
             <!--Used Car Loans Officers mobile tabs end-->
             <div class="tabs-data-main tabs-accordians-box">

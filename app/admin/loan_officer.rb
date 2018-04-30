@@ -9,6 +9,7 @@ ActiveAdmin.register LoanOfficer do
   
   index do
     selectable_column
+    column :title
     column :first
     column :last
     column :email
@@ -18,6 +19,7 @@ ActiveAdmin.register LoanOfficer do
 
   filter :first
   filter :last
+  filter :title
   filter :email
   filter :created_at
 
