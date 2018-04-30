@@ -1,4 +1,6 @@
 class SeoPagesController < ApplicationController
+  include ApplicationHelper
+
   before_action :city_home, only: [:city_home_mortgage_rates, :city_home_refinance_rates]
   before_action :bank_home, only: [:bank_mortgage_loans, :bank_personal_loans, :bank_auto_loans]
 
@@ -43,6 +45,8 @@ class SeoPagesController < ApplicationController
       if bank_home.present?
         @state =  bank_home.stname
         @bank = bank_home
+        state_code = state_full_name(bank_home.stname, true)
+        @loan_officers= LoanOfficer.where('lower(title) like ? AND lower(city) like ? AND lower(state) like ?', '%home%',@bank.city.downcase, state_code.downcase )
       else
         content_not_found
       end  
