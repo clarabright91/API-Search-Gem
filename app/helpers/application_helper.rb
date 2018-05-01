@@ -84,7 +84,8 @@ module ApplicationHelper
 
   #for removing special chars and space 
   def customize_path(first, last)
-    return  (first.gsub(/[.!@%&"]/,'').squeeze(" ").tr(" ",'+')+ '_'+last.gsub(/[.!@%&"]/,' ').squeeze(" ").tr(" ",'+')).split('+').map(&:capitalize)*'+'
+    #return  (first.gsub(/[.!@%&"]/,'').squeeze(" ").tr(" ",'+')+ '_'+last.gsub(/[.!@%&"]/,' ').squeeze(" ").tr(" ",'+')).split('+').map(&:capitalize)*'+'
+    return  (first.gsub(/[.!@%&"]/,'').squeeze(" ").tr(" ",'+').split('+').map(&:capitalize)*'+' + '_'+last.gsub(/[.!@%&"]/,' ').squeeze(" ").tr(" ",'+').split('+').map(&:capitalize)*'+')
   end
 
 

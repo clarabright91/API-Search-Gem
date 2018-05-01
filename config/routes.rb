@@ -31,24 +31,24 @@ Rails.application.routes.draw do
 
   post '/mortgage/lender/:bank_list', to: 'directories#mortgage_state_banks_list', as: 'mortgage_state_banks_list'
 
-  get 'mortgage/lender-(:cert)/(:state)/(:bank_name+mortgage)', to: 'seo_pages#bank_mortgage_loans', as: 'bank_home_mortgage_loan'
+  get 'mortgage/lender-(:cert)/(:bank_name+mortgage)', to: 'seo_pages#bank_mortgage_loans', as: 'bank_home_mortgage_loan'
   
   
   #--------------------------- routes for personal loan pages ----------------------------------
 
-  get '/personal+loans/lender/:alphabet', to: 'directories#personal_loan_state_banks', as: 'personal_loan_state_banks'
+  get '/personal+loan/lender/:alphabet', to: 'directories#personal_loan_state_banks', as: 'personal_loan_state_banks'
 
-  post '/personal+loans/lender/:bank_list', to: 'directories#personal_loan_state_banks_list', as: 'personal_loan_state_banks_list'
+  post '/personal+loan/lender/:bank_list', to: 'directories#personal_loan_state_banks_list', as: 'personal_loan_state_banks_list'
 
-  get 'personal+loans/lender-(:cert)/(:state)/(:bank_name+personal+loans)', to: 'seo_pages#bank_personal_loans', as: 'bank_home_personal_loan'
+  get 'personal+loan/lender-(:cert)/(:bank_name+personal+loans)', to: 'seo_pages#bank_personal_loans', as: 'bank_home_personal_loan'
 
   #--------------------------- routes for auto loan pages ----------------------------------
 
-  get '/auto+loans/lender/:alphabet', to: 'directories#auto_loan_state_banks', as: 'auto_loan_state_banks'
+  get '/auto+loan/lender/:alphabet', to: 'directories#auto_loan_state_banks', as: 'auto_loan_state_banks'
 
-  post '/auto+loans/lender/:bank_list', to: 'directories#auto_loan_state_banks_list', as: 'auto_loan_state_banks_list'
+  post '/auto+loan/lender/:bank_list', to: 'directories#auto_loan_state_banks_list', as: 'auto_loan_state_banks_list'
 
-  get 'auto+loans/lender-(:cert)/(:state)/(:bank_name+auto+loans)', to: 'seo_pages#bank_auto_loans', as: 'bank_home_auto_loan'
+  get 'auto+loan/lender-(:cert)/(:bank_name+auto+loans)', to: 'seo_pages#bank_auto_loans', as: 'bank_home_auto_loan'
 
   
   #-------------------------- routes for directory pages------------------------------  
