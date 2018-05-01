@@ -15,7 +15,11 @@ class SeoPagesController < ApplicationController
   def bank_mortgage_loans
     @news_articles = bank_news_article(" mortgage")
     @loan_officers= LoanOfficer.loan_officers_list(@state_code,@bank, 'home')
-    @security = FdicSecurity.mortgage_security_details(@bank.name,@bank.city)
+    @security = FdicSecurity.find_by(name: @bank.name, city: @bank.city)
+    @us_govt_obl = FdicUsGovernmentObligation.find_by(name: @bank.name, city: @bank.city)
+    @good_will = FdicGoodwillAndOtherIntangible.find_by(name: @bank.name, city: @bank.city)
+    @managed_assets = FdicTotalManagedAssetsHeldInFiduciaryAccount.find_by(name: @bank.name, city: @bank.city)
+    @net_loan_and_leases = FdicNetLoansAndLease.find_by(name: @bank.name, city: @bank.city)
   end
     
   def bank_personal_loans  

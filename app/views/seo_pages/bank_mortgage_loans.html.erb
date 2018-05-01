@@ -390,48 +390,81 @@
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Privately issued residential mortgage-backed securities
                          </p>
-                         <span>$ <%=@security.idscod%></span>
+                         <span>$ <%=@security.present? ? @security.idscod : 0%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Commercial mortgage-backed securities - Total
                          </p>
-                         <span>$ <%=@security.sccmmb%></span>
+                         <span>$ <%=@security.present? ? @security.sccmmb : 0%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Mortgage-backed securities
                          </p>
-                         <span>$ <%=@security.scmtgbk%></span>
+                         <span>$ <%=@security.present? ? @security.scmtgbk : 0%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Certificates of participation in pools of residential mortgages
                          </p>
-                         <span>$ <%=@security.idscgtpc%></span>
+                         <span>$ <%=@security.present? ? @security.idscgtpc : 0%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Collaterized mortgage obligations
                          </p>
-                         <span>$ <%=@security.idsccmo%></span>
+                         <span>$ <%=@security.present? ? @security.idsccmo : 0%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Commercial mortgage-backed securities
 
                          </p>
-                         <span>$ <%=@security.idsccmt%></span>
+                         <span>$ <%=@security.present? ? @security.idsccmt : 0%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Commercial mortgage pass-through securities
                          </p>
-                         <span>$ <%=@security.sccmpt%></span>
+                         <span>$ <%=@security.present? ? @security.sccmpt : 0%></span>
                       </div>
-                      <div class="volume-auto-loan-row">
+                      <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Other commercial mortgage-backed securities
                          </p>
-                         <span>$ <%=@security.sccmot%></span>
+                         <span>$ <%=@security.present? ? @security.sccmot : 0%></span>
                       </div>
+                      <div class="volume-auto-loan-row">
+                         <p class="vol-row-inner">Commercial mortgage pass-through securities – FNMA, FHLMC, or GNMA
+                         </p>
+                         <span>$ <%=@us_govt_obl.present? ? @us_govt_obl.sccptg : 0%></span>
+                      </div>
+
+                      <div class="volume-auto-loan-row bg-white">
+                         <p class="vol-row-inner">Mortgage servicing assets
+                         </p>
+                         <span>$ <%=@good_will.present? ? @good_will.intanmsr : 0%></span>
+                      </div>
+                      <div class="volume-auto-loan-row">
+                         <p class="vol-row-inner">Mortgage-backed securitiesPurchased credit card relationships and nonmortgage servicing assets
+                         </p>
+                         <span>$ <%=@good_will.present? ? @good_will.intangcc : 0%></span>
+                      </div>
+                      <div class="volume-auto-loan-row bg-white">
+                         <p class="vol-row-inner">Real Estate Mortgages, managed personal trust & agency accts, etc..
+                         </p>
+                         <span>$ <%=@managed_assets.present? ? @managed_assets.tpiremtg : 0%></span>
+                      </div>
+                      <div class="volume-auto-loan-row">
+                         <p class="vol-row-inner">Real estate mortgages,managed emp benft & retire-related trust accnts
+                         </p>
+                         <span>$ <%=@managed_assets.present? ? @managed_assets.teremtg : 0%></span>
+                      </div>
+                      <div class="volume-auto-loan-row bg-white">
+                         <p class="vol-row-inner">Real Estate Mortgages, all other managed accounts
+
+                         </p>
+                         <span>$ <%=@managed_assets.present? ? @managed_assets.toremtg : 0%></span>
+                      </div>
+
                       <a class="link-right-inner">Data produced  from US Government reported financials</a>
                    </div>
                    <div class="col-xs-12 col-md-5">
-                      <p>accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                      <p><%=@bank.name%> lends out a total of $<%=@net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> annually. Of this loan volume, <%=@bank.name%> home mortgages are $BBB. As a result, <%=@bank.name%> home loans represent C% of the total lending of <%=@bank.name%>.  The average home mortgage at Bank of Amerca is $FFF.</p>
                       <img src="images/seo-bank-mortgage-graph1.png" alt="">
                    </div>
                 </div>
