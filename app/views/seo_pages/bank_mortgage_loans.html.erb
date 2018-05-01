@@ -138,7 +138,7 @@
                 <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
              </p>
              <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> $<%=@bank.asset%></p>
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Liabilites:</span> $<%=@bank.dep%></p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> $<%=@bank.dep%></p>
           </div>
        </div>
        <!--Bank of America Mortgage Overview end-->
@@ -389,45 +389,44 @@
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Privately issued residential mortgage-backed securities
-                            1# mortgage index 1#1
                          </p>
-                         <span>$ 1,23,4556</span>
+                         <span>$ <%=@security.idscod%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
-                         <p class="vol-row-inner">Certificates of participation in pools of residential mortgage
-                            1#mortgage index 4#1
+                         <p class="vol-row-inner">Commercial mortgage-backed securities - Total
                          </p>
-                         <span>$ 1,023,4556</span>
+                         <span>$ <%=@security.sccmmb%></span>
                       </div>
                       <div class="volume-auto-loan-row">
-                         <p class="vol-row-inner">Privately issued residential mortgage-backed securities
-                            1# mortgage index 1#1
+                         <p class="vol-row-inner">Mortgage-backed securities
                          </p>
-                         <span>$ 1,23,4556</span>
-                      </div>
-               <div class="volume-auto-loan-row bg-white">
-                         <p class="vol-row-inner">Privately issued residential mortgage-backed securities
-                            1# mortgage index 1#1
-                         </p>
-                         <span>$ 1,023,4556</span>
-                      </div>
-                      <div class="volume-auto-loan-row">
-                         <p class="vol-row-inner">Certificates of participation in pools of residential mortgage
-                            1#mortgage index 4#1
-                         </p>
-                         <span>$ 1,23,4556</span>
+                         <span>$ <%=@security.scmtgbk%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
-                         <p class="vol-row-inner">Privately issued residential mortgage-backed securities
-                            1# mortgage index 1#1
+                         <p class="vol-row-inner">Certificates of participation in pools of residential mortgages
                          </p>
-                         <span>$ 1,023,4556</span>
+                         <span>$ <%=@security.idscgtpc%></span>
                       </div>
                       <div class="volume-auto-loan-row">
-                         <p class="vol-row-inner">Certificates of participation in pools of residential mortgage
-                            1#mortgage index 4#1
+                         <p class="vol-row-inner">Collaterized mortgage obligations
                          </p>
-                         <span>$ 1,23,4556</span>
+                         <span>$ <%=@security.idsccmo%></span>
+                      </div>
+                      <div class="volume-auto-loan-row bg-white">
+                         <p class="vol-row-inner">Commercial mortgage-backed securities
+
+                         </p>
+                         <span>$ <%=@security.idsccmt%></span>
+                      </div>
+                      <div class="volume-auto-loan-row">
+                         <p class="vol-row-inner">Commercial mortgage pass-through securities
+                         </p>
+                         <span>$ <%=@security.sccmpt%></span>
+                      </div>
+                      <div class="volume-auto-loan-row">
+                         <p class="vol-row-inner">Other commercial mortgage-backed securities
+                         </p>
+                         <span>$ <%=@security.sccmot%></span>
                       </div>
                       <a class="link-right-inner">Data produced  from US Government reported financials</a>
                    </div>

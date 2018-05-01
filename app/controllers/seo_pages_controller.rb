@@ -15,6 +15,7 @@ class SeoPagesController < ApplicationController
   def bank_mortgage_loans
     @news_articles = bank_news_article(" mortgage")
     @loan_officers= LoanOfficer.loan_officers_list(@state_code,@bank, 'home')
+    @security = FdicSecurity.mortgage_security_details(@bank.name,@bank.city)
   end
     
   def bank_personal_loans  
