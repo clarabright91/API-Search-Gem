@@ -464,7 +464,7 @@
                       <a class="link-right-inner">Data produced  from US Government reported financials</a>
                    </div>
                    <div class="col-xs-12 col-md-5">
-                      <p><%=@bank.name%> lends out a total of $<%=@net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> annually. Of this loan volume, <%=@bank.name%> home mortgages are $BBB. As a result, <%=@bank.name%> home loans represent C% of the total lending of <%=@bank.name%>.  The average home mortgage at Bank of Amerca is $FFF.</p>
+                      <p><%=@bank.name%> lends out a total of $<%=@net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> annually. Of this loan volume, <%=@bank.name%> home mortgages are $<%=@net_loan_and_leases.present? ? @net_loan_and_leases.lnre : 0 %>. As a result, <%=@bank.name%> home loans represent C% of the total lending of <%=@bank.name%>.  The average home mortgage at Bank of Amerca is $FFF.</p>
                       <img src="images/seo-bank-mortgage-graph1.png" alt="">
                    </div>
                 </div>
@@ -477,8 +477,6 @@
        </div>
        <!-- Home Loan Breakdown end-->
        
-
-
        <!-- Home Equity Loan Officers start-->
        <div class="seo-auto-loan-tabs loan-detail-blocks">
           <h3><%=@bank.name%> Home Equity Loan Officers</h3>
