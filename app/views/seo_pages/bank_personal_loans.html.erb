@@ -106,21 +106,106 @@
          <div class="volume-auto-loan">
             <h2 class="tab_blue_content">Volume of Personal Loan at <%=@bank.name%></h2>
             <div class="volume-auto-loan-row">
-               <p class="vol-row-inner">Personal Loans Retaomed Interest</p>
-               <span>Volue <b>14</b></span>
+               <p class="vol-row-inner">30-89 Days P/D-Other Consumer</p>
+               <span><%= @past_due_and_assets.present? ?  @past_due_and_assets.p3conoth : 0  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
-               <p class="vol-row-inner">Personal Loans Retaomed Interest</p>
-               <span>Volue <b>15</b></span>
+               <p class="vol-row-inner">90+ Days P/D-Other Consumer</p>
+               <span><%= @past_due_and_assets.present? ?  @past_due_and_assets.p9conoth : 0  %></span>
             </div>
             <div class="volume-auto-loan-row">
-               <p class="vol-row-inner">Personal Loans Retaomed Interest</p>
-               <span>Volue <b>16</b></span>
+               <p class="vol-row-inner">Nonaccrual-Other Consumer</p>
+               <span><%= @past_due_and_assets.present? ?  @past_due_and_assets.naconoth : 0  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
-               <p class="vol-row-inner">Personal Loans Retaomed Interest</p>
-               <span>Volue <b>17</b></span>
+               <p class="vol-row-inner">Consumer Loans - FDIC loss-sharing agreements</p>
+               <span><%= @loss_share.present? ?  @loss_share.lcon : 0  %></span>
             </div>
+
+               
+            <div class="volume-auto-loan-row">
+               <p class="vol-row-inner">30-89 D P/D Consumer loans - FDIC loss-sharing agreements</p>
+               <span><%= @loss_share.present? ?  @loss_share.p3lcon : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">90+ D P/D Consumer Loans – FDIC Loss Sharing Agreements</p>
+               <span><%= @loss_share.present? ?  @loss_share.p9lcon : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row">
+               <p class="vol-row-inner">Nonaccrual Consumer Loans - FDIC Loss Sharing Agreements</p>
+               <span><%= @loss_share.present? ?  @loss_share.nalcon : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Bank Securitization Activities , Principal Balance Other Consumer Loans</p>
+               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.szlncon : 0  %></span>
+            </div>
+
+            <div class="volume-auto-loan-row">
+               <p class="vol-row-inner">Past Due Loan Amounts 30-89 Days Other Consumer Loans</p>
+               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.sz30con : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Past Due Loan Amounts 90 Days or More Other Consumer Loans</p>
+               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.sz90con : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row">
+               <p class="vol-row-inner">Charge-Offs On Assets Sold And Securitized Other Consumer Loans</p>
+               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.szdrcon : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Recoveries On Assets Sold and Securitized Other Consumer Loans</p>
+               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.szcrcon : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row">
+               <p class="vol-row-inner">Assets Sold With Recourse Other Consumer Loans</p>
+               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.asdrcons : 0  %></span>
+            </div>
+
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Maximum Amount of Credit Exposure, Retained Interest Other Consumer Loans</p>
+               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.sziocon : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row">
+               <p class="vol-row-inner">Maximum Amount of Credit Exposure, Subordinated Securities Other Consumer Loans</p>
+               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.szssccon : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Maximum Amount of Credit Exposure, Standby Letters of Credit Other Consumer Lns</p>
+               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.idslccon : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row">
+               <p class="vol-row-inner">Maximum Amount of Credit Exposure, Credit Enhancements Other Consumer Loans</p>
+               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.encecon : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Maximum Amount of Credit Exposure, Bank Asset Sales Other Consumer Loans</p>
+               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.ascecons : 0  %></span>
+            </div>
+
+            <div class="volume-auto-loan-row">
+               <p class="vol-row-inner">Reporting Bank's Unused Commitments Other Consumer Loans</p>
+               <span><%= @unused_commitments.present? ?  @unused_commitments.szuccon : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Reporting Bank's Unused Commitments, Liquidity Other Consumer Loans</p>
+               <span><%= @unused_commitments.present? ?  @unused_commitments.ucszcon : 0  %></span>
+            </div>
+            
+            <div class="volume-auto-loan-row">
+               <p class="vol-row-inner">Other Consumer Loan Charge-Offs</p>
+               <span><%= @loan_charges_off.present? ?  @loan_charges_off.drconoth : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Other Consumer Loan Recoveries</p>
+               <span><%= @loan_charges_off.present? ?  @loan_charges_off.crconoth : 0  %></span>
+            </div>
+            <div class="volume-auto-loan-row">
+               <p class="vol-row-inner">Other Consumer Loans Net Charge-Offs</p>
+               <span><%= @loan_charges_off.present? ?  @loan_charges_off.ntconoth : 0  %></span>
+            </div>   
+
+
+
             <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
          </div>
          <!--Volume of Personal Loan end--> 

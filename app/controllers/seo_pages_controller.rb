@@ -25,11 +25,24 @@ class SeoPagesController < ApplicationController
   def bank_personal_loans  
     @news_articles = bank_news_article(" personal loans")
     @loan_officers = LoanOfficer.loan_officers_list(@state_code, @bank,'personal')
+    @past_due_and_assets = FdicPastDueAndNonaccrualAsset.find_by(name: @bank.name, city: @bank.city)
+    @loss_share = FdicCarryingAmountOfAssetsCoveredByFdicLossShareAgreement.find_by(name: @bank.name, city: @bank.city)
+    @bank_assets_and_sec = FdicBankAssetsSoldAndSecuritized.find_by(name: @bank.name, city: @bank.city)
+    @max_amt_and_credit = FdicMaximumAmountOfCreditExposureRetained.find_by(name: @bank.name, city: @bank.city)
+    @unused_commitments = FdicUnusedCommitment.find_by(name: @bank.name, city: @bank.city)
+    @loan_charges_off = FdicLoanChargeOffsAndRecovery.find_by(name: @bank.name, city: @bank.city)
   end  
 
   def bank_auto_loans
     @news_articles = bank_news_article(" auto loans")
-     @loan_officers = LoanOfficer.loan_officers_list(@state_code, @bank,'auto')
+    @loan_officers = LoanOfficer.loan_officers_list(@state_code, @bank,'auto')
+    @net_loan_and_leases = FdicNetLoansAndLease.find_by(name: @bank.name, city: @bank.city)
+    @past_due_and_assets = FdicPastDueAndNonaccrualAsset.find_by(name: @bank.name, city: @bank.city)
+    @bank_assets_and_sec = FdicBankAssetsSoldAndSecuritized.find_by(name: @bank.name, city: @bank.city)
+    @max_amt_and_credit = FdicMaximumAmountOfCreditExposureRetained.find_by(name: @bank.name, city: @bank.city)
+    @unused_commitments = FdicUnusedCommitment.find_by(name: @bank.name, city: @bank.city)
+    @loan_charges_off = FdicLoanChargeOffsAndRecovery.find_by(name: @bank.name, city: @bank.city)
+    @net_loan_and_leases = FdicNetLoansAndLease.find_by(name: @bank.name, city: @bank.city)
   end
 
   private

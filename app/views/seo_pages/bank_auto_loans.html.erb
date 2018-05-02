@@ -15,8 +15,10 @@
                      <img src="images/star_03.png" alt="">
                   </div>
                </h3>
-               <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
-   <span href="" id="para-see-more-link">See More</span>
+               <p><%=@bank.name%> makes $<%=@net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> total loans annually of which $<%=@net_loan_and_leases.present? ?  @net_loan_and_leases.lnauto : 0%> are auto loans, amounting to C% of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are |# Auto Index 11|.</p>
+               <br/>
+               <p> Below are some other banks and lending institutions that specialize in low-cost auto and car loans for your research.</p>
+               <span href="" id="para-see-more-link">See More</span>
             </div>
          </div>
          <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg">
@@ -106,22 +108,89 @@
       <div class="volume-auto-loan">
          <h2 class="tab_blue_content">Volume of Auto Loan at <%=@bank.name%></h2>
          <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Auto Loans-consolidated basis</p>
-            <span>Volue <b>1</b></span>
+            <p class="vol-row-inner">Consumer Loans - Auto</p>
+            <span><%=@net_loan_and_leases.present? ?  @net_loan_and_leases.lnauto : 0%></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Auto Loans-nonaccural automobile loans to individuals for household</p>
-            <span>Volue <b>4</b></span>
+            <p class="vol-row-inner">30-89 Days P/D Auto Loans</p>
+            <span><%=@past_due_and_assets.present? ? @past_due_and_assets.p3auto : 0%></span>
          </div>
          <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Auto Loans-Assets sold with recourse</p>
-            <span>Volue <b>10</b></span>
+            <p class="vol-row-inner">90+ Days P/D Auto Loans</p>
+            <span><%=@past_due_and_assets.present? ? @past_due_and_assets.p9auto : 0%></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Auto Loans-Maximum exposure due to letters of credit</p>
-            <span>Volue <b>13</b></span>
+            <p class="vol-row-inner">Nonaccrual Auto Loans</p>
+            <span><%=@past_due_and_assets.present? ? @past_due_and_assets.naauto : 0%></span>
          </div>
- <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
+         <div class="volume-auto-loan-row">
+            <p class="vol-row-inner">Bank Securitization Activities , Principal Balance Auto Loans</p>
+            <span><%=@bank_assets_and_sec.present? ?  @bank_assets_and_sec.szlauto : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Past Due Loan Amounts 30-89 Days Auto Loans</p>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.sz30auto : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row">
+            <p class="vol-row-inner">Past Due Loan Amounts 90 Days or More Auto Loans</p>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.sz90auto  : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Charge-Offs On Assets Sold And Securitized Auto Loans</p>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.szdrauto : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row">
+            <p class="vol-row-inner">Recoveries On Assets Sold and Securitized Auto Loans</p>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.szcrauto : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Assets Sold With Recourse Auto Loans</p>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.asdrauto : 0%></span>
+         </div>
+
+         <div class="volume-auto-loan-row">
+            <p class="vol-row-inner">Maximum Amount of Credit Exposure, Retained Interest Auto Loans</p>
+            <span><%=@max_amt_and_credit.present? ?  @max_amt_and_credit.szioauto : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Maximum Amount of Credit Exposure, Subordinated Securities Auto Loans</p>
+            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.szsscaut : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row">
+            <p class="vol-row-inner">Maximum Amount of Credit Exposure, Standby Letters of Credit Auto Loans</p>
+            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.idslcaut : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Maximum Amount of Credit Exposure, Credit Enhancements Auto Loans</p>
+            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.enceauto : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row">
+            <p class="vol-row-inner">Maximum Amount of Credit Exposure, Bank Asset Sales Auto Loans</p>
+            <span><%=@max_amt_and_credit.present? ?  @max_amt_and_credit.asceauto : 0%></span>
+         </div>
+
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Reporting Bank's Unused Commitments Auto Loans</p>
+            <span><%=@unused_commitments.present? ? @unused_commitments.szucauto : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row">
+            <p class="vol-row-inner">Reporting Bank's Unused Commitments, Liquidity Auto Loans</p>
+            <span><%=@unused_commitments.present? ? @unused_commitments.ucszauto  : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Auto Loans Charge-Offs</p>
+            <span><%=@loan_charges_off.present? ? @loan_charges_off.drauto : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row">
+            <p class="vol-row-inner">Auto Loans - Recoveries</p>
+            <span><%=@loan_charges_off.present? ? @loan_charges_off.crauto : 0%></span>
+         </div>
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Auto Loans - Net Charge-Offs</p>
+            <span><%=@loan_charges_off.present? ? @loan_charges_off.ntauto : 0%></span>
+         </div>
+
+         <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
       </div>
       <!--Volume of Auto Loan end-->
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->      
@@ -130,7 +199,7 @@
          <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
          <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+days</p>
          <p class="loan-chargeoff-recovry-inner-data"><span>Index 21</span> Index 31</p>
- <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
+         <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
       </div>
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section end-->      
       <!--Used Car Loans Officers section start-->   
@@ -165,9 +234,7 @@
                 <%end%>
                <%else%>
                   <div class="tabs-data-row">
-                    
-                        No Recent Found
-                    
+                        No Records Found
                    </div> 
                <%end%>  
          </div>
@@ -261,10 +328,10 @@
             <%end%>
             <%else%>
                <div class="car-auto-loan-news">
-                  No Record Found
+                  No Records Found
                </div>
             <%end%>
- <a href="" class="see-more-link-common">See More Recent News</a>
+         <a href="" class="see-more-link-common">See More Recent News</a>
       </div>
       <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
          <h2 class="tab_blue_content">Auto Loans From Bank Similar to Bank of America</h2>
@@ -274,14 +341,13 @@
               <%=link_to nbb.name, bank_home_auto_loan_path(state: state_full_name(nbb.stname, true),cert: nbb.cert,bank_name: custom_path(nbb.name)) %>
               <%end%>
             <%else%>
-               No Record Found
+               No Records Found
             <%end%>  
          </div>
       </div>
    </div>
 </section>
 <!-- search result feed end--> 
-
 <!-- advance search mobile start--> 
 <div class="modal fade" id="advance-srch-mb" role="dialog">
    <div class="modal-dialog">
