@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
@@ -54,9 +54,9 @@
   </style>
 </head>
 
-<body class="rails-default-error-page">
+<body class="rails-default-error-page"> -->
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
+  <!-- <div class="dialog">
     <div>
       <h1>The page you were looking for doesn't exist.</h1>
       <p>You may have mistyped the address or the page may have moved.</p>
@@ -65,3 +65,43 @@
   </div>
 </body>
 </html>
+ -->
+
+<div class="page-not-fond">
+ <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    404 Not Found</h2>
+                <div class="error-details">
+                    Sorry, an error has occured, Requested page not found!
+                </div>
+                <div class="error-actions">
+                    <a href="http://pureloan.herokuapp.com" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        Take Me Home </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<style type="text/css">
+.page-not-fond {
+    float: left;
+    width: 100%;
+    padding: 20px 0 50px 0;
+    box-shadow: 1px 1px 5px #cecece inset;
+    min-height: 435px;
+    margin-bottom: 15px;
+}
+.error-template {padding: 40px 15px;text-align: center;}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }
+a.btn.btn-primary.btn-lg {
+    background: #fb6325;
+    border-color: #fb6325;
+}
+</style>

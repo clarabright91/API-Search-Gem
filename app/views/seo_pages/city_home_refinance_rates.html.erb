@@ -917,9 +917,9 @@
        <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
           <h3>Refinance Rates around Albany, California</h3>
           <div class="car-auto-loan-othr-bank">
-             <%if @near_by_cities.present? %>
+             <%if @near_by_cities.flatten.compact.present? %>
                <%@counter=0%>
-                <%@near_by_cities.each do |city|%>
+                <%@near_by_cities.flatten.compact.first(5).each do |city|%>
                     <% @counter = @counter+1 %>
                     <%=form_tag city_home_refinance_rates_path(state: city.state_code, city: city.city.tr(' ', '+')), id: "city_form"+@counter.to_s, method: :post do |f| %>
                       <%=hidden_field_tag 'city_id', city.id%>  

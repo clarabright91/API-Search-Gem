@@ -56,7 +56,14 @@ class SeoPagesController < ApplicationController
       if city_home.present?
         @city = city_home.city 
         @state = original_details(params[:state])
-        @near_by_cities = City.where(state_code: city_home.state_code).where.not(city: @city).first(5)
+        @near_by_cities = []
+        City.where(state_code: city_home.state_code).where.not(city: @city).group_by(&:city).each do |key, val|
+          if val.count == 1
+            @near_by_cities << val
+          else
+            @near_by_cities << val.first
+          end
+        end    
       else
         content_not_found
       end  
