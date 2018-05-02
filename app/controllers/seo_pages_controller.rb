@@ -14,10 +14,8 @@ class SeoPagesController < ApplicationController
 
   def bank_mortgage_loans
     @news_articles = bank_news_article(" mortgage")
-    #@loan_officers= LoanOfficer.loan_officers_list(@state_code,@bank, 'home')
-
-      #@loan_officers = FactualMortgageCompany.where('lower(title) like ? AND lower(city) like ? AND lower(state) like ? AND lower(company) = ?', "%#{term}%",bank.city.downcase, state_code.downcase, bank.name.downcase)
-
+    @loan_officers= LoanOfficer.loan_officers_list(@state_code,@bank, 'home')
+    #@loan_officers = FactualMortgageCompany.where('lower(title) like ? AND lower(city) like ? AND lower(state) like ? AND lower(company) = ?', "%#{term}%",bank.city.downcase, state_code.downcase, bank.name.downcase)
     @security = FdicSecurity.find_by(name: @bank.name, city: @bank.city)
     @us_govt_obl = FdicUsGovernmentObligation.find_by(name: @bank.name, city: @bank.city)
     @good_will = FdicGoodwillAndOtherIntangible.find_by(name: @bank.name, city: @bank.city)
@@ -58,7 +56,7 @@ class SeoPagesController < ApplicationController
       if city_home.present?
         @city = city_home.city 
         @state = original_details(params[:state])
-        @near_by_cities = City.where(state_code: city_home.state_code).where.not(city: @city).limit(5)
+        @near_by_cities = City.where(state_code: city_home.state_code).where.not(city: @city).first(5)
       else
         content_not_found
       end  
