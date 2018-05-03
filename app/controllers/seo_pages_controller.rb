@@ -13,9 +13,12 @@ class SeoPagesController < ApplicationController
   end 
 
   def bank_mortgage_loans
+    
     @news_articles = bank_news_article(" mortgage")
     @loan_officers= LoanOfficer.loan_officers_list(@state_code,@bank, 'home')
-    #@loan_officers = FactualMortgageCompany.where('lower(title) like ? AND lower(city) like ? AND lower(state) like ? AND lower(company) = ?', "%#{term}%",bank.city.downcase, state_code.downcase, bank.name.downcase)
+    
+   # @loan_officers = FactualMortgageCompany.fuzzy_search(name: @bank.name).first(5)
+    
     @security = FdicSecurity.find_by(name: @bank.name, city: @bank.city)
     @us_govt_obl = FdicUsGovernmentObligation.find_by(name: @bank.name, city: @bank.city)
     @good_will = FdicGoodwillAndOtherIntangible.find_by(name: @bank.name, city: @bank.city)
