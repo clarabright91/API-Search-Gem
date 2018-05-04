@@ -29,9 +29,10 @@
             <div class="directory-box">
                <h2>Mortgage Costs by Bank or Lending Institution</h2>
                <div class="directory-links-box">
-                 <%('A'..'Z').each do |alphabet|%>
+                  <%('A'..'Z').each do |alphabet|%>
                     <%=link_to alphabet, mortgage_state_banks_path(alphabet: alphabet)%>
-                  <%end%>               
+                  <%end%> 
+                    <%=link_to '1', mortgage_state_banks_path(alphabet: '1')%> 
                </div>
             </div>
          </div>
@@ -43,7 +44,8 @@
                <div class="directory-links-box">
                  <%('A'..'Z').each do |alphabet|%>
                     <%=link_to alphabet, personal_loan_state_banks_path(alphabet: alphabet)%>
-                  <%end%>               
+                  <%end%>  
+                    
                </div>
             </div>
          </div>
@@ -55,7 +57,8 @@
                <div class="directory-links-box">
                  <%('A'..'Z').each do |alphabet|%>
                     <%=link_to alphabet, auto_loan_state_banks_path(alphabet: alphabet)%>
-                  <%end%>               
+                  <%end%>
+
                </div>
             </div>
          </div>

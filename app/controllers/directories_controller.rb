@@ -56,7 +56,11 @@ class DirectoriesController < ApplicationController
     
     def banks_search
       @alphabet= params[:alphabet]
-      @banks= FdicInstitution.search_term(@alphabet)
+      @banks= if @alphabet == '1'
+        FdicInstitution.search_term_special  
+      else
+        FdicInstitution.search_term(@alphabet)
+      end
     end
     
     def cities_in_state
@@ -75,6 +79,11 @@ class DirectoriesController < ApplicationController
       bank_from = 'bank_from_'+form_no
       bank_to = 'bank_to_'+form_no
       alphabet = params[:alphabet]
-      @banks = FdicInstitution.banks_list(alphabet,params[bank_from.to_sym],params[bank_to.to_sym])
+
+      @banks = if alphabet == '1'
+        FdicInstitution.banks_list_special(params[bank_from.to_sym],params[bank_to.to_sym])
+      else  
+        FdicInstitution.banks_list(alphabet,params[bank_from.to_sym],params[bank_to.to_sym])
+      end
     end  
 end
