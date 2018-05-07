@@ -18,7 +18,9 @@
         <li class="active">
           <%=link_to("Mortgage Rates", directory_path)%>
           <!-- <a href="#">Mortgage Rates</a> --></li>
-        <li><a href="#">Refinance Rates</a></li>
+        <li>
+           <%= link_to 'Refinance Rates', refinance_path%> 
+          <!-- <a href="#">Refinance Rates</a> --></li>
         <%if !user_signed_in? %>
           <li><a href="#">Mortgage Calculator</a></li>
         <%end%>

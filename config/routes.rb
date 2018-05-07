@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # end
 
   root 'pages#index'
+  get 'pages/refinance', to: 'pages#refinance', as: 'refinance'
   post '/contact_us_email', to: 'pages#contact_us_email'
   get '/change_status', to: 'pages#change_status'
   get '/activate', to: 'pages#user_mass_activate'

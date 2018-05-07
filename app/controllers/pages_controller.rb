@@ -8,11 +8,15 @@ class PagesController < ApplicationController
   before_action :update_statue, only: [:change_status, :user_mass_activate, :user_mass_deactivate]
  
   def index
-		render "index"
+		#render "index"
 	end
 
   def show
     @page = CmsPage.find(params[:id])
+  end
+
+  def refinance
+
   end
 
   def contact_us_email
