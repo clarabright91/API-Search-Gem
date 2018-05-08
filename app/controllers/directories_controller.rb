@@ -1,4 +1,5 @@
 class DirectoriesController < ApplicationController
+  #apply dry concept for performing common operations
   before_action :state_name, only: [:mortgage_state_cities,:mortgage_state_cities_list, :refinance_state_cities, :refinance_state_cities_list]
   before_action :banks_search, only: [:mortgage_state_banks, :personal_loan_state_banks, :auto_loan_state_banks]
   before_action :cities_in_state, only: [:mortgage_state_cities, :refinance_state_cities]
@@ -80,7 +81,7 @@ class DirectoriesController < ApplicationController
       bank_to = 'bank_to_'+form_no
       alphabet = params[:alphabet]
 
-      @banks = if alphabet == '1'
+      @banks = if alphabet == '1'             #for special alphabet or number
         FdicInstitution.banks_list_special(params[bank_from.to_sym],params[bank_to.to_sym])
       else  
         FdicInstitution.banks_list(alphabet,params[bank_from.to_sym],params[bank_to.to_sym])

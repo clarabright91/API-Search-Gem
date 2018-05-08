@@ -49,15 +49,12 @@ class SeoPagesController < ApplicationController
   end
 
   private
-    def original_details(info)
-      return info.tr('+',' ')
-    end
 
     def city_home
       city_home = City.find(params[:city_id])
       if city_home.present?
-        @city = city_home.city 
-        @state = original_details(params[:state])
+        @city = city_home.city
+        @state = state_full_name(city_home.state_code, false) 
         @near_by_cities = []
         City.where(state_code: city_home.state_code).where.not(city: @city).group_by(&:city).each do |key, val|
           if val.count == 1

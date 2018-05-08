@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
   #script added for permitting fields in user table
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # rendering 404 status page
   def content_not_found
     render file: "#{Rails.root}/public/404", status: :not_found
   end
 
-  #http_basic_authenticate_with :name => "admin", :password => "pureloan123"
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone_number, :zip_code, :purpose, :home_price, :down_payment, :credit_score, :last_search_id, :price_alert, :is_active])

@@ -150,23 +150,23 @@
 
          <div class="volume-auto-loan-row">
             <p class="vol-row-inner">Maximum Amount of Credit Exposure, Retained Interest Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ?  @max_amt_and_credit.szioauto : 0%></span>
+            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.szioauto.present? ? @max_amt_and_credit.szioauto : 0 : 0%></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
             <p class="vol-row-inner">Maximum Amount of Credit Exposure, Subordinated Securities Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.szsscaut : 0%></span>
+            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.szsscaut.present? ? @max_amt_and_credit.szsscaut : 0 : 0%></span>
          </div>
          <div class="volume-auto-loan-row">
             <p class="vol-row-inner">Maximum Amount of Credit Exposure, Standby Letters of Credit Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.idslcaut : 0%></span>
+            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.idslcaut.present? ? @max_amt_and_credit.idslcaut : 0 : 0%></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
             <p class="vol-row-inner">Maximum Amount of Credit Exposure, Credit Enhancements Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.enceauto : 0%></span>
+            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.enceauto.present? ? @max_amt_and_credit.enceauto : 0 : 0%></span>
          </div>
          <div class="volume-auto-loan-row">
             <p class="vol-row-inner">Maximum Amount of Credit Exposure, Bank Asset Sales Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ?  @max_amt_and_credit.asceauto : 0%></span>
+            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.asceauto.present? ? @max_amt_and_credit.asceauto : 0 : 0 %></span>
          </div>
 
          <div class="volume-auto-loan-row bg-white">
