@@ -15,7 +15,7 @@
     <div class="navbar-collapse collapse" id="global-nav" aria-expanded="false">
      <div class="navbar-right">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li id="first">
           <%=link_to("Mortgage Rates", directory_path)%>
           <!-- <a href="#">Mortgage Rates</a> --></li>
         <li>
@@ -50,15 +50,19 @@
 </header>
 <!-- header end-->
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   $(function() {
-     var pgurl = window.location.href.substr(window.location.href
+    var pgurl = window.location.href.substr(window.location.href
       .lastIndexOf("/")+1);
-           $(".navbar-nav a").each(function(){
-                if($(this).attr("href").split("/")[1]  == pgurl || $(this).attr("href").split("/")[1] == '' )
-                alert($(this))
-                $(this).closest("li").addClass("active"); 
-           })
-      });
+        $(".navbar-nav a").each(function(){
+          if ($(this).attr("href").split("/") == "" )
+            $('#first').addClass("active");
+          else if($(this).attr("href").split("/")[1]  == pgurl || $(this).attr("href").split("/")[2]  == pgurl)
+            $(this).closest("li").addClass("active");
+          else
+            //alert('')
+            $(this).closest("li").removeClass("active");   
+        })
+    });
 
-</script> -->
+</script>

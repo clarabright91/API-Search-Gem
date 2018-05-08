@@ -1,6 +1,6 @@
 class SeoPagesController < ApplicationController
   include ApplicationHelper
-
+  #apply dry concept for common code
   before_action :city_home, only: [:city_home_mortgage_rates, :city_home_refinance_rates]
   before_action :bank_home, only: [:bank_mortgage_loans, :bank_personal_loans, :bank_auto_loans]
 
@@ -13,11 +13,10 @@ class SeoPagesController < ApplicationController
   end 
 
   def bank_mortgage_loans
-    
     @news_articles = bank_news_article(" mortgage")
+    #fetch loanofficer data using fuzzy search on the basis of search terms      
     @loan_officers= LoanOfficer.loan_officers_list(@state_code,@bank, 'home')
-    
-   # @loan_officers = FactualMortgageCompany.fuzzy_search(name: @bank.name).first(5)
+    @loan_officers= LoanOfficer.loan_officers_list(@state_code,@bank, 'mortgage')    unless @loan_officers.present?
     
     @security = FdicSecurity.find_by(name: @bank.name, city: @bank.city)
     @us_govt_obl = FdicUsGovernmentObligation.find_by(name: @bank.name, city: @bank.city)

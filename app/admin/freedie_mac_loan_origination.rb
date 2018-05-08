@@ -7,8 +7,8 @@ ActiveAdmin.register FreddieMacLoanOrigination, as: "FreddieMac"  do
     link_to('Back', :back)
   end
 
-#index pagination_total: false do
-  index do
+index pagination_total: false do
+  #index do
     selectable_column
     column :credit_score
     column :first_payment_date
