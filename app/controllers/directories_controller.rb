@@ -1,4 +1,5 @@
 class DirectoriesController < ApplicationController
+  include ApplicationHelper
   #apply dry concept for performing common operations
   before_action :state_name, only: [:mortgage_state_cities,:mortgage_state_cities_list, :refinance_state_cities, :refinance_state_cities_list]
   before_action :banks_search, only: [:mortgage_state_banks, :personal_loan_state_banks, :auto_loan_state_banks]
@@ -69,10 +70,17 @@ class DirectoriesController < ApplicationController
     end
 
     def city_list
-      form_no = params[:form_no]
-      city_from = 'city_from_'+form_no
-      city_to = 'city_to_'+form_no
-      @cities = City.cities_list(params[city_from.to_sym],params[city_to.to_sym],@state_name)
+      city_from = params[:city_from]
+      city_to = params[:city_to]
+      if city_from.present? && city_to.present?
+         if City.cities_list(city_from,city_to,@state_name)
+            @cities = City.cities_list(city_from,city_to,@state_name)
+          else
+            content_not_found   #rendering 404 page if ids are not present
+         end   
+      else 
+         content_not_found  #rendering 404 page if ids are not present
+      end 
     end
 
     def state_banks_list

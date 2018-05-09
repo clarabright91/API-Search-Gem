@@ -215,11 +215,11 @@
                   <%@loan_officers.each do |loan_officer|%>
                   <div class="tabs-data-row">
                     <div class="col-xs-12 col-md-6">
-                        <p><%= loan_officer.first+' '+ loan_officer.try(:last)%></p>
-                        <p><%= loan_officer.title.gsub('�', ' ')%></p>
+                        <p><%= remove_unnecessary_keywords(loan_officer.try(:first))+' '+ remove_unnecessary_keywords(loan_officer.try(:last))%></p>
+                        <p><%= remove_unnecessary_keywords(loan_officer.title)%></p>
                     </div>
                     <div class="col-xs-12 col-md-6">
-                        <p><%= loan_officer.phone1%></p>
+                        <p><%= loan_officer.phone1.present? ? remove_unnecessary_keywords(loan_officer.phone1) : remove_unnecessary_keywords(loan_officer.phone2)%>%></p>
                         <p><%= loan_officer.email%></p>
                     </div>
                   </div>  

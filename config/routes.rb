@@ -55,21 +55,21 @@ Rails.application.routes.draw do
   #-------------------------- routes for directory pages------------------------------  
   get '/directory', to: 'directories#directory_root', as: 'directory'
 
-  #-------------------------- routes for mortgage pages------------------------------ 
+  #-------------------------- routes for city mortgage pages------------------------------ 
   post '/mortgage/:state(/:city+mortgage+rates)', to: 'seo_pages#city_home_mortgage_rates', as: 'city_home_mortgage_rates' 
 
   get '/mortgage/:state', to: 'directories#mortgage_state_cities', as: 'mortgage_state_cities'
 
-  post '/mortgage/:state/:city_list', to: 'directories#mortgage_state_cities_list', as: 'mortgage_state_cities_list' 
+  get '/mortgage/:state-(:city_from)-(:city_to)/:city_list', to: 'directories#mortgage_state_cities_list', as: 'mortgage_state_cities_list' 
     
 
-  #--------------------------- routes for refinance pages ----------------------------------
+  #--------------------------- routes for city refinance pages ----------------------------------
   
   post '/refinance/:state(/:city+refinance+rates)', to: 'seo_pages#city_home_refinance_rates', as: 'city_home_refinance_rates'
 
   get '/refinance/:state', to: 'directories#refinance_state_cities', as: 'refinance_state_cities'
 
-  post '/refinance/:state/:city_list', to: 'directories#refinance_state_cities_list', as: 'refinance_state_cities_list'
+  get '/refinance/:state-(:city_from)-(:city_to)/:city_list', to: 'directories#refinance_state_cities_list', as: 'refinance_state_cities_list'
 
   #--------------------------- routes for pages ----------------------------------
   
