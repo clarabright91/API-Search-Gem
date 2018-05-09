@@ -73,26 +73,39 @@ class DirectoriesController < ApplicationController
       city_from = params[:city_from]
       city_to = params[:city_to]
       if city_from.present? && city_to.present?
-         if City.cities_list(city_from,city_to,@state_name)
-            @cities = City.cities_list(city_from,city_to,@state_name)
+        city_list_data = City.cities_list(city_from,city_to,@state_name) 
+          if city_list_data
+            @cities = city_list_data
           else
             content_not_found   #rendering 404 page if ids are not present
-         end   
+          end   
       else 
-         content_not_found  #rendering 404 page if ids are not present
+        content_not_found  #rendering 404 page if city is not present
       end 
     end
 
     def state_banks_list
-      form_no = params[:form_no]
-      bank_from = 'bank_from_'+form_no
-      bank_to = 'bank_to_'+form_no
+      bank_from = params[:bank_from]
+      bank_to = params[:bank_to]
       alphabet = params[:alphabet]
-
-      @banks = if alphabet == '1'             #for special alphabet or number
-        FdicInstitution.banks_list_special(params[bank_from.to_sym],params[bank_to.to_sym])
-      else  
-        FdicInstitution.banks_list(alphabet,params[bank_from.to_sym],params[bank_to.to_sym])
-      end
+      if bank_from.present? && bank_to.present? && alphabet.present?
+        if alphabet == '1'             #for special alphabet or number
+          special_banks = FdicInstitution.banks_list_special(bank_from, bank_to)
+            if special_banks
+              @banks = special_banks
+            else 
+              content_not_found   #rendering 404 page if ids are not present
+            end       
+        else 
+           normal_banks = FdicInstitution.banks_list(alphabet,bank_from, bank_to) 
+          if normal_banks
+            @banks = normal_banks
+          else
+            content_not_found    #rendering 404 page if ids are not present
+          end    
+        end
+      else 
+        content_not_found       #rendering 404 page if ids are not present
+      end   
     end  
 end

@@ -6,10 +6,14 @@ class FdicInstitution < ApplicationRecord
   end
   
   def self.banks_list(alphabet, start_bank_id, last_bank_id)
-    all_banks = search_term(alphabet)
-     s_bank = all_banks.index(find(start_bank_id))
-     l_bank = all_banks.index(find(last_bank_id))
-    return all_banks[s_bank..l_bank]    
+    begin
+      all_banks = search_term(alphabet)
+       s_bank = all_banks.index(find(start_bank_id))
+       l_bank = all_banks.index(find(last_bank_id))
+      return all_banks[s_bank..l_bank]
+    rescue
+      return false
+    end        
   end  
 
   def self.search_term_special
@@ -17,10 +21,14 @@ class FdicInstitution < ApplicationRecord
   end
 
   def self.banks_list_special(start_bank_id, last_bank_id)
-    all_banks = search_term_special
-     s_bank = all_banks.index(find(start_bank_id))
-     l_bank = all_banks.index(find(last_bank_id))
-    return all_banks[s_bank..l_bank]
+    begin
+      all_banks = search_term_special
+       s_bank = all_banks.index(find(start_bank_id))
+       l_bank = all_banks.index(find(last_bank_id))
+      return all_banks[s_bank..l_bank]
+    rescue
+      return false
+    end  
   end
 
 end

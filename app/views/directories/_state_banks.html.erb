@@ -5,24 +5,17 @@
      <div class="directory-box">
         <h1>Mortgage Costs by Bank - <%=@alphabet%></h1>
         <div class="directory-links-box">
-          <%@counter = 0%>
            <%@banks.in_groups(@banks.size.quo(link_calculate(@banks.size)).ceil, false) do |bank|%>
               <div class="col-xs-12 col-md-4">
-                 <%@counter = @counter+1 %> 
                   <%if @flag == 'mortgage_loan'%>
-                    <%current_path = mortgage_state_banks_list_path(bank_list: customize_path(bank.first.name, bank.last.name))%>
+
+                    <%current_path =mortgage_banks_list_path(bank_from: bank.first.id, bank_to: bank.last.id,bank_list: customize_path(bank.first.name, bank.last.name), alphabet: @alphabet)%>
                   <%elsif @flag == 'personal_loan'%>
-                    <%current_path = personal_loan_state_banks_list_path(bank_list: customize_path(bank.first.name, bank.last.name))%>  
+                    <%current_path = personal_loan_state_banks_list_path(bank_from: bank.first.id, bank_to: bank.last.id,bank_list: customize_path(bank.first.name, bank.last.name), alphabet: @alphabet)%>  
                   <%else %>
-                    <%current_path = auto_loan_state_banks_list_path(bank_list: customize_path(bank.first.name, bank.last.name))%>             
-                  <%end%>
-                  <%=form_tag(current_path, id: "bank-form-"+@counter.to_s, method: :post) do |f| %>
-                      <%=hidden_field_tag 'bank_from_'+@counter.to_s, bank.first.id%>
-                      <%=hidden_field_tag 'bank_to_'+@counter.to_s, bank.last.id%>
-                      <%=hidden_field_tag 'form_no', @counter%>
-                      <%= hidden_field_tag 'alphabet', @alphabet%>  
-                    <%=link_to bank.first.name+' to '+ bank.last.name, "javascript:;", class: "submit_bank", id: "bank-group-"+@counter.to_s %>
-                  <%end%>    
+                    <%current_path = auto_loan_state_banks_list_path(bank_from: bank.first.id, bank_to: bank.last.id,bank_list: customize_path(bank.first.name, bank.last.name), alphabet: @alphabet)%>             
+                  <%end%>  
+                    <%=link_to bank.first.name+' to '+ bank.last.name, current_path %>    
               </div>      
            <%end%>   
         </div>
@@ -32,27 +25,3 @@
   </div>
 </section>
 <!-- directory bank content end--> 
-
-<script type="text/javascript">
-   $(document).on("mousedown",".submit_bank",function(e){
-    e.preventDefault();
-    if (e.which === 1)
-      { 
-        var getId = $(this).attr('id');
-        getId = getId.split('-');
-        getId = getId[2];
-        $("#bank-form-"+getId).submit();
-      }
-    else
-      {
-          var getId = $(this).attr('id');
-          getId = getId.split('-');
-          getId = getId[2];
-        $("#bank-form-"+getId).attr('target','_blank');
-        $("#bank-form-"+getId).submit();
-      }
-
-  });
-
-   
-</script>

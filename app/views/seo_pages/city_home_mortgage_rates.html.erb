@@ -918,13 +918,8 @@
           <h3>Mortgage Rates around Albany, California</h3>
           <div class="car-auto-loan-othr-bank">
               <%if @near_by_cities.flatten.compact.present? %>
-               <%@counter=0%>
                 <%@near_by_cities.flatten.compact.first(5).each do |city|%>
-                    <% @counter = @counter+1 %>
-                    <%=form_tag city_home_mortgage_rates_path(state: city.state_code, city: city.city.tr(' ', '+')), id: "city_form"+@counter.to_s, method: :post do |f| %>
-                      <%=hidden_field_tag 'city_id', city.id%>  
-                      <%= link_to city.city+', '+city.state_code,"javascript:;" ,class: "submit_city", id: "city_list_"+@counter.to_s%>
-                    <%end%>
+                  <%= link_to city.city+', '+city.state_code,city_home_mortgage_rates_path(state: city.state_code, city: city.city.tr(' ', '+'),city_id: city.id)%>
                 <%end%>
               <%else%>
                  No Records Found
@@ -934,25 +929,3 @@
     </div>
  </section>
  <!-- search result feed end-->   
-
-<script>
-  $(document).on("mousedown",".submit_city",function(e){
-    e.preventDefault();
-    if (e.which === 1)
-    {
-      var getId = $(this).attr('id');
-      getId = getId.split('_');
-      getId = getId[2];
-      $("#city_form"+getId).submit();
-    }
-    else
-      {
-        var getId = $(this).attr('id');
-        getId = getId.split('_');
-        getId = getId[2];
-         $("#city_form"+getId).attr('target','_blank');
-        $("#city_form"+getId).submit();
-      }
-
-  });
-</script>

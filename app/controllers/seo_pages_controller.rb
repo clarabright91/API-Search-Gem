@@ -51,7 +51,7 @@ class SeoPagesController < ApplicationController
   private
 
     def city_home
-      city_home = City.find(params[:city_id])
+      city_home = City.find_by(id: params[:city_id])
       if city_home.present?
         @city = city_home.city
         @state = state_full_name(city_home.state_code, false) 
