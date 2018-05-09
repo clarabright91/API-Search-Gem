@@ -491,7 +491,7 @@
                     <div class="tabs-data-row">
                       <div class="col-xs-12 col-md-6">                          
                           <p><%= loan_officer.try(:first)%> <%=loan_officer.try(:last)%></p>
-                          <p><%= loan_officer.title%></p>
+                          <p><%= loan_officer.title.gsub('�', ' ')%></p>
                       </div>
                       <div class="col-xs-12 col-md-6">
                           <p><%= loan_officer.phone1.present? ? loan_officer.phone1 : loan_officer.phone2%></p>
