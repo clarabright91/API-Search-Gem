@@ -10,11 +10,12 @@
     </ul> -->
     <!-- iterating all dynamic cms pages link -->
      <ul>
-     <%CmsPage.active.each do |cp|%>
-       
-        <li><%=link_to cp.page_name,controller: '/pages', action: 'show', page_slug: cp.page_slug, id: cp.id%></li>
-       
-     <%end%>
+        <%CmsPage.active.sort_by(&:page_slug).each do |cp|%>
+            <li><%=link_to cp.page_name,controller: '/pages', action: 'show', page_slug: cp.page_slug, id: cp.id%></li>       
+        <%end%>
+        <li><%=link_to("Mortgage Rates", directory_path)%></li>
+        <li><%=link_to('Refinance Rates', refinance_path)%></li>
+         <li><a href="#">Calculator</a></li>
       </ul>
      <span>© 2018 Pureloan.com  All rights reserved. </span>
    </div>

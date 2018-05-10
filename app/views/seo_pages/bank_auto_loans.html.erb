@@ -2,7 +2,7 @@
 <section class="content-main terms-page seo-auto-loan">
    <div class="container">
       <!--Bank of America Auto Loans section end-->      
-      <div class="seo-auto-loan-cntnt-box mb-bg-gray">
+      <div class="seo-auto-loan-cntnt-box mb-bg-gray seo-loan-cntnt-box-chnge">
          <div class="col-xs-12 col-md-8 our-story-cntnt">
             <div class="gray-box-cntnt seo_bank_auto_loan_top">
                <h3>
@@ -15,7 +15,7 @@
                      <img src="/assets/star_03.png" alt="">
                   </div>
                </h3>
-               <p><%=@bank.name%> makes $<%=@net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> total loans annually of which $<%=@net_loan_and_leases.present? ?  @net_loan_and_leases.lnauto : 0%> are auto loans, amounting to C% of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are |# Auto Index 11|.</p>
+               <p><%=@bank.name%> makes $<%=a = @net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> total loans annually of which $<%= b = @net_loan_and_leases.present? ?  @net_loan_and_leases.lnauto : 0%> are auto loans, amounting to <%= a.to_i == 0 ? 0 : (b.to_f/a).round(2)%> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are |# Auto Index 11|.</p>
                <br/>
                <p> Below are some other banks and lending institutions that specialize in low-cost auto and car loans for your research.</p>
                <span href="" id="para-see-more-link">See More</span>

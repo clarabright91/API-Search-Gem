@@ -466,7 +466,7 @@
                       <a class="link-right-inner">Data produced  from US Government reported financials</a>
                    </div>
                    <div class="col-xs-12 col-md-5">
-                      <p><%=@bank.name%> lends out a total of $<%=@net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> annually. Of this loan volume, <%=@bank.name%> home mortgages are $<%=@net_loan_and_leases.present? ? @net_loan_and_leases.lnre : 0 %>. As a result, <%=@bank.name%> home loans represent C% of the total lending of <%=@bank.name%>.  The average home mortgage at Bank of Amerca is $FFF.</p>
+                      <p><%=@bank.name%> lends out a total of $<%= a = @net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> annually. Of this loan volume, <%=@bank.name%> home mortgages are $<%= b = @net_loan_and_leases.present? ? @net_loan_and_leases.lnre.to_f : 0 %>. As a result, <%=@bank.name%> home loans represent <%=(a.to_i == 0 ? 0 : (b.to_f/a).round(2) ) %> % of the total lending of <%=@bank.name%>.</p>
                       <img src="/assets/seo-bank-mortgage-graph1.png" alt="">
                    </div>
                 </div>

@@ -1437,6 +1437,7 @@ footer .container{ padding:0; width:100% !important;}
 .seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge{ background: none !important; }
 .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ background: #f7f7f7; padding: 15px; }
 .state-bank-page-list .row { margin: 0;}
+.directory-links-box .col-xs-12.col-md-4 a{ width: 100%; text-align: left;}
 }
 /*tab css end*/
 
