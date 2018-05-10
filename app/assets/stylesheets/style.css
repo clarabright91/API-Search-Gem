@@ -15,9 +15,9 @@ header{ float:left; width:100%; background:#fff; position:relative; margin:0 !im
 /* .black-head{ background:#000 !important;} */
 .logo-white{ display:none;}
 header .navbar-default{ background:none; border-radius:0; border:none; margin:0 !important;}
-header .navbar-brand{ padding:20px  0; heigh:auto; margin:0 !important;}
+header .navbar-brand{ padding:15px  0; height: auto; margin:0 !important;}
 header .navbar-right{ margin:0 !important;}
-
+  
 .navbar-default .nav ul{ padding:0}
 .navbar-default .nav ul li{ padding:0}
 .navbar-default .nav li a{ font-size:16px; color:#152544; text-transform:uppercase; border-top:5px solid transparent; padding:20px;}
@@ -1083,6 +1083,7 @@ footer .container{ padding:0;}
 
 .seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge{ background: none !important; }
 .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ background: #f7f7f7; padding: 15px; }
+.state-bank-page-list .row { margin: 0;}
 }
 
 /*mobile device css end*/
@@ -1434,6 +1435,7 @@ footer .container{ padding:0; width:100% !important;}
 
 .seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge{ background: none !important; }
 .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ background: #f7f7f7; padding: 15px; }
+.state-bank-page-list .row { margin: 0;}
 }
 /*tab css end*/
 

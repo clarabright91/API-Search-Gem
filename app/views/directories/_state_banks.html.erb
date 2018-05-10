@@ -5,11 +5,14 @@
      <div class="directory-box">
         <h1>Mortgage Costs by Bank - <%=@alphabet%></h1>
         <div class="directory-links-box">
-           <div class="row">
+          <%@counter= 0%>
            <%@banks.in_groups(@banks.size.quo(link_calculate(@banks.size)).ceil, false) do |bank|%>              
-              <div class="col-xs-12 col-md-4">
+              <%if @counter % 3 == 0%>
+                <div class= 'row'>
+              <%end%>
+              <div class="col-xs-12 col-md-4 " >
+                  <%@counter += 1%>
                   <%if @flag == 'mortgage_loan'%>
-
                     <%current_path =mortgage_banks_list_path(bank_from: bank.first.id, bank_to: bank.last.id,bank_list: customize_path(bank.first.name, bank.last.name), alphabet: @alphabet)%>
                   <%elsif @flag == 'personal_loan'%>
                     <%current_path = personal_loan_state_banks_list_path(bank_from: bank.first.id, bank_to: bank.last.id,bank_list: customize_path(bank.first.name, bank.last.name), alphabet: @alphabet)%>  
@@ -17,12 +20,12 @@
                     <%current_path = auto_loan_state_banks_list_path(bank_from: bank.first.id, bank_to: bank.last.id,bank_list: customize_path(bank.first.name, bank.last.name), alphabet: @alphabet)%>             
                   <%end%>  
                     <%=link_to bank.first.name+' to '+ bank.last.name, current_path %>    
-              </div>     
-           <%end%>  
-              </div>             
-        </div>
-         <div class="col-xs-12 col-md-4">
-         </div>    
+              </div>
+              <%if @counter%3 == 0%>
+                </div>
+              <%end%>     
+           <%end%>   
+        </div>  
      </div>
   </div>
 </section>

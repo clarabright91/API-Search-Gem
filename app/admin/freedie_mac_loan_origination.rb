@@ -7,7 +7,7 @@ ActiveAdmin.register FreddieMacLoanOrigination, as: "FreddieMac"  do
     link_to('Back', :back)
   end
 
-index pagination_total: false do
+  index pagination_total: false do
   #index do
     selectable_column
     column :credit_score
@@ -22,7 +22,7 @@ index pagination_total: false do
   filter :first_payment_date
   filter :maturity_date
   filter :postal_code
-  filter :loan_sequence_number
+  filter :loan_sequence_number, filters: [:equals]
 
   form do |f|
     f.object.first_payment_date ||= DateTime.now

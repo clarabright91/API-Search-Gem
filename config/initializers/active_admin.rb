@@ -302,7 +302,7 @@ config.register_javascript 'https://www.google.com/jsapi'
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-   config.footer = '© 2017 PURELOAN.COM ALL RIGHTS RESERVED.'
+   config.footer = '© 2018 PURELOAN.COM ALL RIGHTS RESERVED.'
 
   # == Sorting
   #

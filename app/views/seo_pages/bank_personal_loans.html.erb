@@ -8,11 +8,11 @@
                   <h3>
                      <%=@bank.name%> Personal Loans
                      <div class="star-box pull-right">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
                      </div>
                   </h3>
                   <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
@@ -37,11 +37,11 @@
                   <h3>
                      Lending Club Personal Loans 
                      <div class="star-box pull-right">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
                      </div>
                      <span>Up to $40,000, starting 5.99%</span>
                   </h3>
@@ -49,7 +49,7 @@
                </div>
             </div>
             <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
-               <img src="images/seo-prsnl-loan-img1.png" alt="">
+               <img src="/assets/seo-prsnl-loan-img1.png" alt="">
                <a href="" class="apply-btn">Apply</a>
             </div>
          </div>
@@ -61,11 +61,11 @@
                   <h3>
                      Avant Personal Loans 
                      <div class="star-box pull-right">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
                      </div>
                      <span>Up to $40,000, starting 5.99%</span>
                   </h3>
@@ -73,7 +73,7 @@
                </div>
             </div>
             <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
-               <img src="images/seo-prsnl-loan-img2.png" alt="">
+               <img src="/assets/seo-prsnl-loan-img2.png" alt="">
                <a href="" class="apply-btn">Apply</a>
             </div>
          </div>
@@ -85,11 +85,11 @@
                   <h3>
                      Prosper Personal Loans
                      <div class="star-box pull-right">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
-                        <img src="images/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
+                        <img src="/assets/star_03.png" alt="">
                      </div>
                      <span>Up to $40,000, starting 5.99%</span>
                   </h3>
@@ -97,7 +97,7 @@
                </div>
             </div>
             <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
-               <img src="images/seo-prsnl-loan-img3.png" alt="">
+               <img src="/assets/seo-prsnl-loan-img3.png" alt="">
                <a href="" class="apply-btn">Apply</a>
             </div>
          </div>
@@ -351,7 +351,7 @@
                <div class="car-auto-loan-othr-bank">
                <%if @near_by_banks.present? %>
                <%@near_by_banks.each do |nbb|%>
-                  <%=link_to nbb.name, bank_home_personal_loan_path(state: state_full_name(nbb.stname, true),cert: nbb.cert,bank_name: custom_path(nbb.name)) %>
+                  <%=link_to nbb.name, bank_home_personal_loan_path(cert: nbb.cert,bank_name: custom_path(nbb.name)) %>
                <%end%>
              </div>
              <%else%>
