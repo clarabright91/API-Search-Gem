@@ -53,5 +53,5 @@ test:
 production:
   <<: *default
   database: new_mortgage
-  username: adminDevise
+  #username: adminDevise
   password: <%= ENV['ADMINDEVISE_DATABASE_PASSWORD'] %>
