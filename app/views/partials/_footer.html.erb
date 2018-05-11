@@ -2,9 +2,9 @@
 <footer>
   <div class="container">
     <ul>
-        <%#CmsPage.active.sort_by(&:page_slug).each do |cp|%>
-          <!--  <li><%#=link_to cp.page_name,show_cms_pages_path(page_slug: cp.page_slug, id: cp.id)%></li> -->       
-        <%#end%>
+    <%#CmsPage.active.sort_by(&:page_slug).each do |cp|%>
+      <!--  <li><%#=link_to cp.page_name,show_cms_pages_path(page_slug: cp.page_slug, id: cp.id)%></li> -->       
+    <%#end%>
     <li><%=link_to "About",show_cms_pages_path(page_slug: 'about')%></li>
     <li><%=link_to "Contact",show_cms_pages_path(page_slug: 'contact')%></li>
     <li><%=link_to("Mortgage Rates", directory_path)%></li>

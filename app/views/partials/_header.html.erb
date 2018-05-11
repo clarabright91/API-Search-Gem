@@ -15,12 +15,12 @@
     <div class="navbar-collapse collapse" id="global-nav" aria-expanded="false">
      <div class="navbar-right">
       <ul class="nav navbar-nav">
-        <li id="first">
+        <li>
           <%=link_to("Mortgage Rates", directory_path)%>
-          <!-- <a href="#">Mortgage Rates</a> --></li>
+        </li>
         <li>
            <%= link_to 'Refinance Rates', refinance_path%> 
-          <!-- <a href="#">Refinance Rates</a> --></li>
+        </li>
         <%if !user_signed_in? %>
           <li><a href="#">Mortgage Calculator</a></li>
         <%end%>
@@ -55,12 +55,9 @@
     var pgurl = window.location.href.substr(window.location.href
       .lastIndexOf("/")+1);
         $(".navbar-nav a").each(function(){
-          if ($(this).attr("href").split("/") == "" )
-            $('#first').addClass("active");
-          else if($(this).attr("href").split("/")[1]  == pgurl || $(this).attr("href").split("/")[2]  == pgurl)
+          if($(this).attr("href").split("/")[1]  == pgurl || $(this).attr("href").split("/")[2]  == pgurl)
             $(this).closest("li").addClass("active");
           else
-            //alert('')
             $(this).closest("li").removeClass("active");   
         })
     });
