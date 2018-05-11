@@ -152,7 +152,7 @@
           <h5>30-Year Fixed Rates Customized for March24</h5>
           <div class="cntnt-list-inner gray-bg col-md-12">
              <div class="inner-logo"><img src="/assets/pic1_06.png" alt="">
-        <a href="">Bank of America</a>
+        <a href=""><%=@bank.name%></a>
         <p>NMLS ID 54645</p>
         </div>
              <div class="inner-block">
@@ -186,7 +186,7 @@
           </div>
           <div class="cntnt-list-inner col-md-12">
              <div class="inner-logo"><img src="/assets/pic2_03.png" alt="">
-        <a href="">Bank of America</a>
+        <a href=""><%=@bank.name%></a>
         <p>NMLS ID 54645</p>
         </div>
              <div class="inner-block">
@@ -220,7 +220,7 @@
           </div>
           <div class="cntnt-list-inner gray-bg col-md-12">
              <div class="inner-logo"><img src="/assets/pic3_07.png" alt="">
-        <a href="">Bank of America</a>
+        <a href=""><%=@bank.name%></a>
         <p>NMLS ID 54645</p>
         </div>
              <div class="inner-block">
@@ -258,7 +258,7 @@
           <h5>15-Years Fixed Rates Customized for March24</h5>
           <div class="cntnt-list-inner gray-bg col-md-12">
              <div class="inner-logo"><img src="/assets/pic1_06.png" alt="">
-        <a href="">Bank of America</a>
+        <a href=""><%=@bank.name%></a>
         <p>NMLS ID 54645</p>
         </div>
              <div class="inner-block">
@@ -292,7 +292,7 @@
           </div>
           <div class="cntnt-list-inner col-md-12">
              <div class="inner-logo"><img src="/assets/pic2_03.png" alt="">
-        <a href="">Bank of America</a>
+        <a href=""><%=@bank.name%></a>
         <p>NMLS ID 54645</p>
         </div>
              <div class="inner-block">
@@ -326,7 +326,7 @@
           </div>
           <div class="cntnt-list-inner gray-bg col-md-12">
              <div class="inner-logo"><img src="/assets/pic3_07.png" alt="">
-        <a href="">Bank of America</a>
+        <a href=""><%=@bank.name%></a>
         <p>NMLS ID 54645</p>
         </div>
              <div class="inner-block">
@@ -365,7 +365,7 @@
        <div class="row">
           <div class="col-xs-12 col-md-12">
              <div class="loan-detail-blocks">
-                <h3>Bank of America Mortgage Rates Comparision</h3>
+                <h3><%=@bank.name%> Mortgage Rates Comparision</h3>
                 <p class="space-top">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here making it look like readable English.</p>
                 <div class="graph-box">
                    <img src="/assets/seo-city-mortgage-graph2.png" alt="">
@@ -382,7 +382,7 @@
        <div class="row">
           <div class="col-xs-12 col-md-12 seo-bank-table-graph">
              <div class="loan-detail-blocks volume-auto-loan home-loan-breakdown">
-                <h3>Bank of America Home Loan Breakdown</h3>
+                <h3><%=@bank.name%> Home Loan Breakdown</h3>
                 <div class="row">
                    <div class="col-xs-12 col-md-7">
                       <div class="volume-auto-loan-row bg-white">
@@ -608,7 +608,7 @@
        <!-- News on Bank of America end-->
        <!-- Loans from Similar Bank start-->
        <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-          <h2 class="tab_blue_content">Mortgage and Home Loans from Bank Similar to Bank of America</h2>
+          <h2 class="tab_blue_content">Mortgage and Home Loans from Bank Similar to <%=@bank.name%></h2>
           <div class="car-auto-loan-othr-bank">
              <%if @near_by_banks.present?%>
              <%@near_by_banks.each do |nbb|%>

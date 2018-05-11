@@ -465,7 +465,7 @@
        <div class="row">
           <div class="col-xs-12 col-md-12">
              <div class="loan-detail-blocks">
-                <h3>Closing Cost Summary for Mortgage Rates in Albany, CA</h3>
+                <h3>Closing Cost Summary for Mortgage Rates in <%=@city%>, <%=state_full_name(@state)%></h3>
                 <div class="closing-cost-smry-cntnt">
                    <div class="col-xs-12 col-md-2">
                       Origination Fee
@@ -500,8 +500,8 @@
        <div class="row">
           <div class="col-xs-12 col-md-12">
              <div class="loan-detail-blocks">
-                <h3><b>Historical Rates for Albany,CA Home Loans based on Actual Closed Loan Data</b>
-                   <span>We  have compiled mortgage rate statistics for home loans in Albany, California to help you understand trends for
+                <h3><b>Historical Rates for <%=@city%>, <%=state_full_name(@state)%> Home Loans based on Actual Closed Loan Data</b>
+                   <span>We  have compiled mortgage rate statistics for home loans in <%=@city%>, <%=state_full_name(@state)%> to help you understand trends for
                    your home purchase process. This data is produced from actual clodes loans.
                    </span>
                 </h3>
@@ -745,7 +745,7 @@
        <div class="row">
           <div class="col-xs-12 col-md-12">
              <div class="loan-detail-blocks">
-                <h3><b>Online Trends for Mortgage Rates in Albany,CA</b> 
+                <h3><b>Online Trends for Mortgage Rates in <%=@city%>, <%=state_full_name(@state)%></b> 
                    <span>We  have created a proprietary engine to montitor online rates for the largest home lenders in the United Staes, 
                    toensure you are getting the best rates even during the online reseach phase.</span>
                 </h3>
@@ -761,8 +761,8 @@
        </div>
        <!-- Online Trends for Mortgage Rates end-->
        <div class="seo-auto-loan-tabs loan-detail-blocks">
-          <h3><b>Recommended and Best Albany, CA Mortgage Companies</b> 
-             <span>In Addition to online mortgage companies, here are some mortgage rate specialists in Albany, CA.</span>
+          <h3><b>Recommended and Best <%=@city%>, <%=state_full_name(@state)%> Mortgage Companies</b> 
+             <span>In Addition to online mortgage companies, here are some mortgage rate specialists in <%=@city%>, <%=state_full_name(@state)%>.</span>
           </h3>
           <!--Used Car Loans desktop section end-->
           <div class="tabs-data-main desktop-tabs-data">
@@ -915,7 +915,7 @@
           <a href="" class="see-more-link-common">See More Recent News</a>
        </div>
        <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-          <h3>Mortgage Rates around Albany, California</h3>
+          <h3>Mortgage Rates around <%=@city%>, <%=state_full_name(@state)%></h3>
           <div class="car-auto-loan-othr-bank">
               <%if @near_by_cities.flatten.compact.present? %>
                 <%@near_by_cities.flatten.compact.first(5).each do |city|%>

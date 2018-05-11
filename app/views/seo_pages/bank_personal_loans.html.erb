@@ -327,7 +327,7 @@
          <!-- Car Loans Officers section end-->       
          <!-- News on Car section start-->
          <div class="volume-auto-loan full-width loan-detail-blocks">
-            <h2 class="tab_blue_content">News on Personal Loans From Bank of America</h2>
+            <h2 class="tab_blue_content">News on Personal Loans From <%=@bank.name%></h2>
              <%if @news_articles.present?%>
               <%@news_articles.each do |na|%>
                   <div class="car-auto-loan-news">
@@ -347,7 +347,7 @@
          </div>
          <!-- News on Car section end-->
          <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-            <h2 class="tab_blue_content">Personal Loans From Bank Similar to Bank of America</h2>
+            <h2 class="tab_blue_content">Personal Loans From Bank Similar to <%=@bank.name%></h2>
                <div class="car-auto-loan-othr-bank">
                <%if @near_by_banks.present? %>
                <%@near_by_banks.each do |nbb|%>

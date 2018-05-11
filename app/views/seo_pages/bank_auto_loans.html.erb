@@ -195,7 +195,7 @@
       <!--Volume of Auto Loan end-->
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->      
       <div class="volume-auto-loan loan-chargeoff-recovry">
-         <h2 class="tab_blue_content">Bank of America Personal Loan Chargeoffs, Recoveries </h2>
+         <h2 class="tab_blue_content"><%=@bank.name%> Personal Loan Chargeoffs, Recoveries </h2>
          <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
          <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+days</p>
          <p class="loan-chargeoff-recovry-inner-data"><span>Index 21</span> Index 31</p>
@@ -308,7 +308,7 @@
       </div>
       <!--Used Car Loans Officers section end-->       
       <div class="volume-auto-loan full-width">
-         <h2 class="tab_blue_content">News on Car and Auto Loans From Bank of America</h2>
+         <h2 class="tab_blue_content">News on Car and Auto Loans From <%=@bank.name%></h2>
             <%if @news_articles.present? %>
             <%@news_articles.each do |na|%>
                <div class="car-auto-loan-news">
@@ -326,7 +326,7 @@
          <a href="" class="see-more-link-common">See More Recent News</a>
       </div>
       <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-         <h2 class="tab_blue_content">Auto Loans From Bank Similar to Bank of America</h2>
+         <h2 class="tab_blue_content">Auto Loans From Bank Similar to <%=@bank.name%></h2>
          <div class="car-auto-loan-othr-bank">
             <%if @near_by_banks.present? %>
             <%@near_by_banks.each do |nbb|%>
