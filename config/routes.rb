@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   root 'pages#index'
   get '/refinance', to: 'pages#refinance', as: 'refinance'
+  get '/mortgage', to: 'pages#mortgage', as: 'mortgage'
   post '/contact_us_email', to: 'pages#contact_us_email'
   get '/change_status', to: 'pages#change_status'
   get '/activate', to: 'pages#user_mass_activate'

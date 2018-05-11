@@ -10,6 +10,17 @@ $(document).ready(function() {
       });
   }, 4000);
 
+     var firstDiv = parseFloat($('#bank_content').height())
+      var secondDiv = parseFloat($('#bank_details').height())
+    if(firstDiv > secondDiv)
+      {
+      $('#bank_details').css( "height",firstDiv);
+      }
+    else
+    {
+      $('#bank_content').css( "height",secondDiv);
+    }
+
      //console.clear();
 
 	$("#adv-option").click(function(){

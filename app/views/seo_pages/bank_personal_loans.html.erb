@@ -4,7 +4,7 @@
          <!--Bank of America Personal Loans start-->      
          <div class="seo-auto-loan-cntnt-box mb-bg-gray seo-loan-cntnt-box-chnge">
             <div class="col-xs-12 col-md-8 our-story-cntnt">
-               <div class="gray-box-cntnt seo_bank_auto_loan_top">
+               <div class="gray-box-cntnt seo_bank_auto_loan_top" id="bank_content">
                   <h3>
                      <%=@bank.name%> Personal Loans
                      <div class="star-box pull-right">
@@ -19,7 +19,7 @@
                   <span href="" id="para-see-more-link">See More</span>
                </div>
             </div>
-            <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg">
+            <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg" id="bank_details">
                <h3><%=@bank.name%></h3>
                      <p>Founded  <%=@bank.estymd.to_date.strftime("%B %d, %Y")%></br>
                         FDIC Certificate Number - <%=@bank.cert%></br>

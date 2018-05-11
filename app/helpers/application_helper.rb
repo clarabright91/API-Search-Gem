@@ -77,8 +77,8 @@ module ApplicationHelper
   #per page link calculation
   def link_calculate(count)
       num_chunks = (count**0.5).ceil
-      min_links_in_chunk = (count/num_chunks).floor
-      max_links = min_links_in_chunk + 1
+      min_links_in_chunk = (count/num_chunks).floor  if num_chunks > 0
+      max_links = min_links_in_chunk + 1        if min_links_in_chunk.present?
       return max_links 
   end
 

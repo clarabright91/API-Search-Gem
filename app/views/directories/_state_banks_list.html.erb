@@ -18,7 +18,7 @@
                 <%else%>
                   <%current_path = bank_home_auto_loan_path(cert: bank.cert,bank_name: custom_path(bank.name)) %>
                 <%end%>           
-                <%=link_to bank.name+', '+bank.stname, current_path%>
+                <%=link_to bank.name+', '+ state_full_name(bank.stname, true), current_path%>
               </div>
               <%if @counter%3 == 0%>
                 </div>

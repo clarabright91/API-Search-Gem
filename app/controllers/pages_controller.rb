@@ -24,6 +24,10 @@ class PagesController < ApplicationController
 
   end
 
+  def mortgage
+
+  end  
+
   def contact_us_email
     @admin_user = AdminUser.first.email
     ContactUsMailer.contact_us_email(@admin_user,params).deliver
