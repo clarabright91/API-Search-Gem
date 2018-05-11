@@ -473,11 +473,11 @@ p.top-txt-info { text-align: right; font-size:16px; margin:-10px 0 15px 0; color
 .see-more-link-common{display:none; float:left; text-decoration:underline; color:#19214d !important; font-size:13px; cursor:pointer; padding:5px 10px 0px 10px;}
 .tab_blue_content{float: left;width: 100%;background: #58a9e1; border-radius: 5px 5px 0 0; padding: 10px;
 color: #fff !important;font-size: 24px;
-font-weight: bold;margin: 0; height:50px;}
+font-weight: bold;margin: 0; min-height:50px;}
 .tab_blue_content1
 {float: left;width: 100%;background: #58a9e1; border-radius: 5px 5px 0 0; padding: 10px;
   color: #fff !important; font-size: 24px;
-font-weight: bold;margin-top: 5px; height:50px;}
+font-weight: bold;margin-top: 5px; min-height:50px;}
 .tab_blue_content h2{color:#fff}
 .tab_blue_content1 h2{color:#fff};
 /*}*/
@@ -749,8 +749,8 @@ label.error {
 
 .seo-loan-cntnt-box-chnge{ background: none; }
 .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt{ padding-left: 0; }
-.seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ min-height:305px; }
-
+.seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ min-height:330px; }
+.seo-loan-cntnt-box-chnge .col-xs-12.col-md-4.seo-bank-cntn-white-bg.seo-bank-cntn-top-white-bg{ min-height:330px; }
 
 
 /*mobile device css start*/
@@ -933,7 +933,7 @@ footer span{ font-size:12px; float:left; width:100%; background:#f7f7f7; text-al
 .seo-auto-loan .gray-box-cntnt h3 span { margin: 10px 0 0 0; width: 100%;}
 .seo-auto-loan-cntnt-box2 .seo-bank-cntn-white-bg { background: #fff; box-shadow: 0 0 15px #d7d7d7; border-radius: 5px; padding:0px 15px !important; margin-top:20px;}
 .volume-auto-loan{ width:100%;}
-.volume-auto-loan h2 { color: #fff; font-size: 20px; margin: 0; background: #58a9e1; padding:10px; height:50px;}
+.volume-auto-loan h2 { color: #fff; font-size: 20px; margin: 0; background: #58a9e1; padding:10px; height:auto;}
 .volume-auto-loan-row{ padding: 17px 15px;}
 .volume-auto-loan p.vol-row-inner { padding: 0; width:78%; line-height:26px; font-size:14px;}
 .volume-auto-loan-row span { width: 20%; font-size: 14px; line-height:26px;}
@@ -1085,6 +1085,8 @@ footer .container{ padding:0;}
 .seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge{ background: none !important; }
 .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ background: #f7f7f7; padding: 15px; }
 .state-bank-page-list .row { margin: 0;}
+
+.directory-box .directory-links-box .row{  margin:0;}
 }
 
 /*mobile device css end*/
@@ -1438,6 +1440,8 @@ footer .container{ padding:0; width:100% !important;}
 .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ background: #f7f7f7; padding: 15px; }
 .state-bank-page-list .row { margin: 0;}
 .directory-links-box .col-xs-12.col-md-4 a{ width: 100%; text-align: left;}
+
+.directory-box .directory-links-box .row{  margin:0;}
 }
 /*tab css end*/
 

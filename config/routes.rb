@@ -16,16 +16,11 @@ Rails.application.routes.draw do
   get '/change_status', to: 'pages#change_status'
   get '/activate', to: 'pages#user_mass_activate'
   get '/deactivate', to: 'pages#user_mass_deactivate'
-  
   get '/profile', to: 'pages#user_profile'
-  
   put '/update_profile', to: 'pages#update_profile' 
-  
-  get '/pages/:page_slug',to: 'pages#show'  #slug'll not work in devise view pages 
+  get '/pages/:page_slug',to: 'pages#show', as: 'show_cms_pages'
   # for dynamic cmspages
-  CmsPage.load                      if CmsPage.present?
-
-
+  #CmsPage.load                      if CmsPage.present?
 
   #--------------------------- routes for mortgage loan pages ---------------------------------
   get '/mortgage/lender/:alphabet', to: 'directories#mortgage_state_banks', as: 'mortgage_state_banks'  
@@ -71,9 +66,8 @@ Rails.application.routes.draw do
 
   get '/refinance/:state-(:city_from)-(:city_to)/:city_list', to: 'directories#refinance_state_cities_list', as: 'refinance_state_cities_list'
 
-  #--------------------------- routes for pages ----------------------------------
+  #--------------------------- route for wrong requested pages ----------------------------------
   
-
-  #match '*path', to: redirect('/'), via: :all
+  match '*path', to: redirect('/'), via: :all
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

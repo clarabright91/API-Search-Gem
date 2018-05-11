@@ -1,23 +1,19 @@
 <!-- footer start-->
 <footer>
   <div class="container">
-    <!-- <ul>
-     <li><a href="">About</a></li>
-     <li><a href="">Mortgage Rates</a></li>
-     <li><a href="">Refinance Rates</a></li>
-     <li><a href="">Bank Rates</a></li>
-     <li class="last-no-bordr"><a href="">Research</a></li>
-    </ul> -->
-    <!-- iterating all dynamic cms pages link -->
-     <ul>
-        <%CmsPage.active.sort_by(&:page_slug).each do |cp|%>
-            <li><%=link_to cp.page_name,controller: '/pages', action: 'show', page_slug: cp.page_slug, id: cp.id%></li>       
-        <%end%>
-        <li><%=link_to("Mortgage Rates", directory_path)%></li>
-        <li><%=link_to('Refinance Rates', refinance_path)%></li>
-         <li><a href="#">Calculator</a></li>
-      </ul>
-     <span>© 2018 Pureloan.com  All rights reserved. </span>
+    <ul>
+        <%#CmsPage.active.sort_by(&:page_slug).each do |cp|%>
+          <!--  <li><%#=link_to cp.page_name,show_cms_pages_path(page_slug: cp.page_slug, id: cp.id)%></li> -->       
+        <%#end%>
+    <li><%=link_to "About",show_cms_pages_path(page_slug: 'about')%></li>
+    <li><%=link_to "Contact",show_cms_pages_path(page_slug: 'contact')%></li>
+    <li><%=link_to("Mortgage Rates", directory_path)%></li>
+    <li><%=link_to('Refinance Rates', refinance_path)%></li>
+    <li><a href="#">Calculator</a></li>
+    <li><%=link_to("Directory", directory_path)%></li>
+    <li><%=link_to "Terms",show_cms_pages_path(page_slug: 'terms')%></li>
+  </ul>
+ <span>© 2018 Pureloan.com  All rights reserved. </span>
    </div>
 </footer>
 <!-- footer end-->
