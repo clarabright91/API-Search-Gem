@@ -1,5 +1,6 @@
 class SeoPagesController < ApplicationController
   include ApplicationHelper
+  include SeoPagesHelper
   #apply dry concept for common code
   before_action :city_home, only: [:city_home_mortgage_rates, :city_home_refinance_rates]
   before_action :bank_home, only: [:bank_mortgage_loans, :bank_personal_loans, :bank_auto_loans]
@@ -15,37 +16,36 @@ class SeoPagesController < ApplicationController
   def bank_mortgage_loans
     @news_articles = bank_news_article(" mortgage")
     #fetch loanofficer data using fuzzy search on the basis of search terms      
-    @loan_officers= LoanOfficer.loan_officers_list(@state_code,@bank, 'home')
-    @loan_officers= LoanOfficer.loan_officers_list(@state_code,@bank, 'mortgage')    unless @loan_officers.present?
-    
-    @security = FdicSecurity.find_by(name: @bank.name, city: @bank.city)
-    @us_govt_obl = FdicUsGovernmentObligation.find_by(name: @bank.name, city: @bank.city)
-    @good_will = FdicGoodwillAndOtherIntangible.find_by(name: @bank.name, city: @bank.city)
-    @managed_assets = FdicTotalManagedAssetsHeldInFiduciaryAccount.find_by(name: @bank.name, city: @bank.city)
-    @net_loan_and_leases = FdicNetLoansAndLease.find_by(name: @bank.name, city: @bank.city)
+    @loan_officers= LoanOfficer.loan_officers_list(@bank.name, 'home')
+    @loan_officers= LoanOfficer.loan_officers_list(@bank.name, 'mortgage')    unless @loan_officers.present?
+    @security = FdicSecurity.find_by(cert: @bank.cert)
+    @us_govt_obl = FdicUsGovernmentObligation.find_by(cert: @bank.cert)
+    @good_will = FdicGoodwillAndOtherIntangible.find_by(cert: @bank.cert)
+    @managed_assets = FdicTotalManagedAssetsHeldInFiduciaryAccount.find_by(cert: @bank.cert)
+    @net_loan_and_leases = FdicNetLoansAndLease.find_by(cert: @bank.cert)
   end
     
-  def bank_personal_loans  
+  def bank_personal_loans 
     @news_articles = bank_news_article(" personal loans")
-    @loan_officers = LoanOfficer.loan_officers_list(@state_code, @bank,'personal')
-    @past_due_and_assets = FdicPastDueAndNonaccrualAsset.find_by(name: @bank.name, city: @bank.city)
-    @loss_share = FdicCarryingAmountOfAssetsCoveredByFdicLossShareAgreement.find_by(name: @bank.name, city: @bank.city)
-    @bank_assets_and_sec = FdicBankAssetsSoldAndSecuritized.find_by(name: @bank.name, city: @bank.city)
-    @max_amt_and_credit = FdicMaximumAmountOfCreditExposureRetained.find_by(name: @bank.name, city: @bank.city)
-    @unused_commitments = FdicUnusedCommitment.find_by(name: @bank.name, city: @bank.city)
-    @loan_charges_off = FdicLoanChargeOffsAndRecovery.find_by(name: @bank.name, city: @bank.city)
+    @loan_officers = LoanOfficer.loan_officers_list(@bank.name,'personal')
+    @past_due_and_assets = FdicPastDueAndNonaccrualAsset.find_by(cert: @bank.cert)
+    @loss_share = FdicCarryingAmountOfAssetsCoveredByFdicLossShareAgreement.find_by(cert: @bank.cert)
+    @bank_assets_and_sec = FdicBankAssetsSoldAndSecuritized.find_by(cert: @bank.cert)
+    @max_amt_and_credit = FdicMaximumAmountOfCreditExposureRetained.find_by(cert: @bank.cert)
+    @unused_commitments = FdicUnusedCommitment.find_by(cert: @bank.cert)
+    @loan_charges_off = FdicLoanChargeOffsAndRecovery.find_by(cert: @bank.cert)
   end  
 
   def bank_auto_loans
     @news_articles = bank_news_article(" auto loans")
-    @loan_officers = LoanOfficer.loan_officers_list(@state_code, @bank,'auto')
-    @net_loan_and_leases = FdicNetLoansAndLease.find_by(name: @bank.name, city: @bank.city)
-    @past_due_and_assets = FdicPastDueAndNonaccrualAsset.find_by(name: @bank.name, city: @bank.city)
-    @bank_assets_and_sec = FdicBankAssetsSoldAndSecuritized.find_by(name: @bank.name, city: @bank.city)
-    @max_amt_and_credit = FdicMaximumAmountOfCreditExposureRetained.find_by(name: @bank.name, city: @bank.city)
-    @unused_commitments = FdicUnusedCommitment.find_by(name: @bank.name, city: @bank.city)
-    @loan_charges_off = FdicLoanChargeOffsAndRecovery.find_by(name: @bank.name, city: @bank.city)
-    @net_loan_and_leases = FdicNetLoansAndLease.find_by(name: @bank.name, city: @bank.city)
+    @loan_officers = LoanOfficer.loan_officers_list(@bank.name,'auto')
+    @net_loan_and_leases = FdicNetLoansAndLease.find_by(cert: @bank.cert)
+    @past_due_and_assets = FdicPastDueAndNonaccrualAsset.find_by(cert: @bank.cert)
+    @bank_assets_and_sec = FdicBankAssetsSoldAndSecuritized.find_by(cert: @bank.cert)
+    @max_amt_and_credit = FdicMaximumAmountOfCreditExposureRetained.find_by(cert: @bank.cert)
+    @unused_commitments = FdicUnusedCommitment.find_by(cert: @bank.cert)
+    @loan_charges_off = FdicLoanChargeOffsAndRecovery.find_by(cert: @bank.cert)
+    @net_loan_and_leases = FdicNetLoansAndLease.find_by(cert: @bank.cert)
   end
 
   private
@@ -62,7 +62,8 @@ class SeoPagesController < ApplicationController
           else
             @near_by_cities << val.first
           end
-        end    
+        end 
+        #historial_rates_report(city_home.state_code)   
       else
         content_not_found
       end  
@@ -79,7 +80,8 @@ class SeoPagesController < ApplicationController
         @state =  bank_home.stname
         @bank = bank_home
         @state_code = state_full_name(bank_home.stname, true)
-        @near_by_banks = FdicInstitution.where(city: bank_home.city, stname: bank_home.stname).where.not(id: bank_home).limit(5)
+        #@near_by_banks = FdicInstitution.where(city: bank_home.city, stname: bank_home.stname).where.not(id: bank_home).limit(5)
+        @near_by_banks = FdicInstitution.near_by_banks(bank_home.cert)
       else
         content_not_found
       end  
