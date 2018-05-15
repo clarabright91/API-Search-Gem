@@ -55,6 +55,8 @@ class SeoPagesController < ApplicationController
       if city_home.present?
         @city = city_home.city
         @state = state_full_name(city_home.state_code, false) 
+         #byebug
+         #@near_by_cities = City.where("SELECT DISTINCT(city), FROM cities WHERE state_code = ? AND zip < ? limit 2",city_home.state_code ,city_home.zip)
         @near_by_cities = []
         City.where(state_code: city_home.state_code).where.not(city: @city).group_by(&:city).each do |key, val|
           if val.count == 1

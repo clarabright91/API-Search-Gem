@@ -32,8 +32,8 @@ class FdicInstitution < ApplicationRecord
   end
 
   def self.near_by_banks(cert)
-    first_two_banks = FdicInstitution.where('cert > ?', cert).limit(2)
-    last_three_banks = FdicInstitution.where('cert < ?', cert).limit(3)
+    first_two_banks = FdicInstitution.where('cert > ?', cert).order(cert: :ASC).limit(2)
+    last_three_banks = FdicInstitution.where('cert < ?', cert).order(cert: :DESC).limit(3)
     return first_two_banks + last_three_banks
   end
 
