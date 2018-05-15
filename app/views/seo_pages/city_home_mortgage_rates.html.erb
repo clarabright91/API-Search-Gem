@@ -741,29 +741,39 @@
           </div>
        </div>
 
-      <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th> </th>
-            <%#@report.keys.each do |report_header|%>
-            <th>
-                <%#=report_header%>  
-            </th>
-            <%#end%>
-          </tr>
-        </thead>
+============================Dynamic Report start's from here ===============================
+       
+  <div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th> </th>
+        <%@header.each do |report_header|%>
+        <th>
+            <%=report_header%>  
+        </th>
+        <%end%>
+      </tr>
+    </thead>
 
-        <tbody>
-          <%#@report.each do |year,report|%>               
-              <%#report.each do |re,val|%>
-                <tr><%#=report[re].to_s%>
-              <%#end%>
-              </tr>
-          <%#end%>
-        </tbody>
-      </table>
-    </div>
+    <tbody>
+      <%@count = 0%>
+      <%@report.each do |term,report|%>
+          <%@count += 1%>
+          <tr>
+          <td><b><%=term%></b> </td>               
+            <%report.each do |re,val|%>
+            <%if @count <= 10 %>
+              <td><%=val.to_s == 'NaN' ? 0.0.to_s+'%' : val.round(2).to_s+'%'%></td>
+            <%else%>
+              <td><%=val.to_s == 'NaN' ? 0.0 : val.round(2)%></td>
+            <%end%>
+          <%end%>
+          </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
 
        <!-- Historical Rates for Albany end-->
        <!-- Online Trends for Mortgage Rates start-->
