@@ -740,6 +740,31 @@
              </div>
           </div>
        </div>
+
+      <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th> </th>
+            <%#@report.keys.each do |report_header|%>
+            <th>
+                <%#=report_header%>  
+            </th>
+            <%#end%>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%#@report.each do |year,report|%>               
+              <%#report.each do |re,val|%>
+                <tr><%#=report[re].to_s%>
+              <%#end%>
+              </tr>
+          <%#end%>
+        </tbody>
+      </table>
+    </div>
+
        <!-- Historical Rates for Albany end-->
        <!-- Online Trends for Mortgage Rates start-->
        <div class="row">

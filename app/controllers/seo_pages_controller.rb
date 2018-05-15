@@ -63,7 +63,7 @@ class SeoPagesController < ApplicationController
             @near_by_cities << val.first
           end
         end 
-        #historial_rates_report(city_home.state_code)   
+        #@report = historial_rates_report(city_home.state_code)   
       else
         content_not_found
       end  
