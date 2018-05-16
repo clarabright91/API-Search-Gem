@@ -55,7 +55,7 @@ class SeoPagesController < ApplicationController
       if city_home.present?
         @city = city_home.city
         @state = state_full_name(city_home.state_code, false) 
-         #byebug
+    
          #@near_by_cities = City.where("SELECT DISTINCT(city), FROM cities WHERE state_code = ? AND zip < ? limit 2",city_home.state_code ,city_home.zip)
         @near_by_cities = []
         City.where(state_code: city_home.state_code).where.not(city: @city).group_by(&:city).each do |key, val|
@@ -65,7 +65,8 @@ class SeoPagesController < ApplicationController
             @near_by_cities << val.first
           end
         end 
-        @header, @report = historial_rates_report(city_home.state_code)   
+        similer_cities = City.where(city: city_home.city).pluck(:zip) #fetching all city record similer to current city
+        @header, @report = historial_rates_report(similer_cities)   
       else
         content_not_found
       end  
@@ -82,7 +83,6 @@ class SeoPagesController < ApplicationController
         @state =  bank_home.stname
         @bank = bank_home
         @state_code = state_full_name(bank_home.stname, true)
-        #@near_by_banks = FdicInstitution.where(city: bank_home.city, stname: bank_home.stname).where.not(id: bank_home).limit(5)
         @near_by_banks = FdicInstitution.near_by_banks(bank_home.cert)
       else
         content_not_found

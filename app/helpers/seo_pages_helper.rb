@@ -4,7 +4,7 @@ module SeoPagesHelper
     return arg.gsub('�', ' ')  if arg.present?
   end  
 
-  def historial_rates_report(state_code)
+  def historial_rates_report(postal_codes)
     main_hash = {}
     year_hash_30 = {}
     avg_rate_hash_30 = {}
@@ -27,7 +27,12 @@ module SeoPagesHelper
       date = DateTime.new(year)
       year_start = date.beginning_of_year
       year_end = date.end_of_year
-      complete_year_data= FreddieMacLoanOrigination.where("first_payment_date >= ? and first_payment_date <= ? and loan_purpose = ? and property_state = ?",  year_start, year_end, 'P', state_code)
+
+      #byebug
+      complete_data = FreddieMacLoanOrigination.where(postal_code: postal_codes)
+      complete_year_data = complete_data.where("first_payment_date >= ? and first_payment_date <= ? and loan_purpose = ?",  year_start, year_end, 'P')
+
+      #complete_year_data= FreddieMacLoanOrigination.where("first_payment_date >= ? and first_payment_date <= ? and loan_purpose = ? and postal_code = ?",  year_start, year_end, 'P', state_code)
       complete_year_data_count = complete_year_data.count
 
       #header

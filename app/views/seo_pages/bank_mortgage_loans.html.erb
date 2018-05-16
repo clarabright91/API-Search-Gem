@@ -467,9 +467,10 @@
                       <a class="link-right-inner">Data produced  from US Government reported financials</a>
                    </div>
                    <div class="col-xs-12 col-md-5">
-                      <p><%=@bank.name%> lends out a total of $<%= a = @net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> annually. Of this loan volume, <%=@bank.name%> home mortgages are $<%= b = @net_loan_and_leases.present? ? @net_loan_and_leases.lnre.to_f : 0 %>. As a result, <%=@bank.name%> home loans represent <%=(a.to_i == 0 ? 0 : (b.to_f/a).round(2) ) %> % of the total lending of <%=@bank.name%>.</p>
-                      <img src="/assets/seo-bank-mortgage-graph1.png" alt="">
+                      <p><%=@bank.name%> lends out a total of $<%= a = @net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> annually. Of this loan volume, <%=@bank.name%> home mortgages are $<%= b = @net_loan_and_leases.present? ? @net_loan_and_leases.lnre.to_f : 0 %>. As a result, <%=@bank.name%> home loans represent <%= (a.to_i == 0 ? 0 : (b.to_f/a).round(2) ) %> % of the total lending of <%=@bank.name%>.</p>
+                      <!-- <img src="/assets/seo-bank-mortgage-graph1.png" alt=""> -->
                    </div>
+                    <div class="col-xs-12 col-md-5" id="piechart"></div>
                 </div>
                 <div class="graph-box">
                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
@@ -648,3 +649,28 @@
     </div>
  </div>
  <!-- common popup end-->
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Loans', 'Percentage'],
+  ['Mortgage Loans', <%= b%>],
+  ['Personal Loans', <%= @net_loan_and_leases.try(:lnauto) %>],
+  ['Auto Loans', <%= @net_loan_and_leases.try(:lnauto) == nil  ? 0 : @net_loan_and_leases.lnauto*0.58%>],
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':' ', 'width':650, 'height':400};
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+</script>
