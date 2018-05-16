@@ -1087,6 +1087,8 @@ footer .container{ padding:0;}
 .state-bank-page-list .row { margin: 0;}
 
 .directory-box .directory-links-box .row{  margin:0;}
+.seo-loan-cntnt-box-chnge .col-xs-12.col-md-4.seo-bank-cntn-white-bg.seo-bank-cntn-top-white-bg{ min-height:auto; height: auto !important; }
+#piechart div, #piechart svg{ max-width: 100%;}
 }
 
 /*mobile device css end*/

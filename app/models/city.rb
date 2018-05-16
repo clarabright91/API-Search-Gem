@@ -16,4 +16,12 @@ class City < ApplicationRecord
       return false 
      end
   end
+
+  # def self.near_by_cities(city_name, city_home)
+  #   except_self = where.not(city: city_name)
+  #   c1 = except_self.where('state_code = ? and zip > ?', city_home.state_code, city_home.zip).order(zip: :DESC).limit(2)
+  #   c2 = except_self.where('state_code = ? and zip < ?', city_home.state_code, city_home.zip).order(zip: :ASC).limit(3)
+  #   return c1 + c2
+  # end 
+
 end

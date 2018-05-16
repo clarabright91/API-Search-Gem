@@ -55,8 +55,9 @@ class SeoPagesController < ApplicationController
       if city_home.present?
         @city = city_home.city
         @state = state_full_name(city_home.state_code, false) 
-    
          #@near_by_cities = City.where("SELECT DISTINCT(city), FROM cities WHERE state_code = ? AND zip < ? limit 2",city_home.state_code ,city_home.zip)
+         #@near_by_cities = City.near_by_cities(@city, city_home)
+
         @near_by_cities = []
         City.where(state_code: city_home.state_code).where.not(city: @city).group_by(&:city).each do |key, val|
           if val.count == 1
@@ -65,7 +66,9 @@ class SeoPagesController < ApplicationController
             @near_by_cities << val.first
           end
         end 
-        similer_cities = City.where(city: city_home.city).pluck(:zip) #fetching all city record similer to current city
+        
+        # for report section fetching all cities record similer to current city
+        similer_cities = City.where(city: city_home.city, state_code: city_home.state_code).pluck(:zip) 
         @header, @report = historial_rates_report(similer_cities)   
       else
         content_not_found

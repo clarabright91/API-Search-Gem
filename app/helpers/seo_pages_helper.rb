@@ -23,18 +23,14 @@ module SeoPagesHelper
     avg_first_time_home_buyer_hash ={}
     avg_mortgage_insurance_percentage_hash ={}
     @header_array =[]
+    #fetching all records for an city on the basis of all zip codes
+    complete_data = FreddieMacLoanOrigination.where(postal_code: postal_codes) 
     (Date.today.year-8..Date.today.year-1).each do |year|
       date = DateTime.new(year)
       year_start = date.beginning_of_year
       year_end = date.end_of_year
-
-      #byebug
-      complete_data = FreddieMacLoanOrigination.where(postal_code: postal_codes)
-      complete_year_data = complete_data.where("first_payment_date >= ? and first_payment_date <= ? and loan_purpose = ?",  year_start, year_end, 'P')
-
-      #complete_year_data= FreddieMacLoanOrigination.where("first_payment_date >= ? and first_payment_date <= ? and loan_purpose = ? and postal_code = ?",  year_start, year_end, 'P', state_code)
+      complete_year_data = complete_data.where("first_payment_date >= ? and first_payment_date <= ? and loan_purpose = ?", year_start, year_end, 'P')
       complete_year_data_count = complete_year_data.count
-
       #header
       @header_array << year
       # for 30 year data
