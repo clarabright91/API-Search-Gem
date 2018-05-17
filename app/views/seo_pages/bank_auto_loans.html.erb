@@ -15,7 +15,7 @@
                      <img src="/assets/star_03.png" alt="">
                   </div>
                </h3>
-               <p><%=@bank.name%> makes $<%=a = @net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> total loans annually of which $<%= b = @net_loan_and_leases.present? ?  @net_loan_and_leases.lnauto : 0%> are auto loans, amounting to <%= a.to_i == 0 ? 0 : (b.to_f/a).round(2)%> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are |# Auto Index 11|.</p>
+               <p><%=@bank.name%> makes $<%=a = @net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> total loans annually of which $<%= b = @net_loan_and_leases.present? ?  @net_loan_and_leases.lnauto : 0%> are auto loans, amounting to <%= a.to_i == 0 ? 0 : (b.to_f/a).round(2)%> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are $ <%=@max_amt_and_credit.present? ? @max_amt_and_credit.szioauto.present? ? @max_amt_and_credit.szioauto : 0 : 0%>.</p>
                <br/>
                <p> Below are some other banks and lending institutions that specialize in low-cost auto and car loans for your research.</p>
                <span href="" id="para-see-more-link">See More</span>

@@ -130,7 +130,7 @@
              <div class="gray-box-cntnt" id="bank_content">
                 <h3><%=@bank.name%> Mortgage Overview</h3>
                 <p>The mortgage and refinance department of <%=@bank.name%> primarily focuses on residential mortgages, which includes privately issued residential mortgage-backed securities, US government agency and corporation issued obligations or guaranteed certification of participation in pools of residential mortgages, and mortgage-backed pass-through securities held-to-maturity at amoritized cost and available-for-sale at fair value.</p>
-                <p>The total amount of outstanding residential mortgages is |#mortgage index 1#| and total amount of outstanding commercial mortgages is |#mortgage index2#| </p>
+                <p>The total amount of outstanding residential mortgages is $ <%=@security.present? ? @security.idscod : 0%> and total amount of outstanding commercial mortgages is $ <%=@security.present? ? @security.sccmmb : 0%> .</p>
                 <span href="" id="para-see-more-link">See More</span>
              </div>
           </div>
@@ -361,7 +361,6 @@
           </div>
        </div>
 
-
        <!-- Bank of America Mortgage Rates Comparision start-->
        <div class="row">
           <div class="col-xs-12 col-md-12">
@@ -450,18 +449,18 @@
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Real Estate Mortgages, managed personal trust & agency accts, etc..
                          </p>
-                         <span>$ <%=@managed_assets.present? ? @managed_assets.tpiremtg : 0%></span>
+                         <span>$ <%=@managed_assets.present? ? @managed_assets.tpiremtg.present? ? @managed_assets.tpiremtg : 0 : 0%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Real estate mortgages,managed emp benft & retire-related trust accnts
                          </p>
-                         <span>$ <%=@managed_assets.present? ? @managed_assets.teremtg : 0%></span>
+                         <span>$ <%=@managed_assets.present? ? @managed_assets.teremtg.present? ? @managed_assets.teremtg : 0 : 0%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Real Estate Mortgages, all other managed accounts
 
                          </p>
-                         <span>$ <%=@managed_assets.present? ? @managed_assets.toremtg : 0%></span>
+                         <span>$ <%=@managed_assets.present? ? @managed_assets.toremtg.present? ? @managed_assets.toremtg : 0 : 0%></span>
                       </div>
 
                       <a class="link-right-inner">Data produced  from US Government reported financials</a>

@@ -7,10 +7,12 @@ class SeoPagesController < ApplicationController
 
   def city_home_mortgage_rates
     @news_articles = news_article_data(' mortgage')
+    @loan_companies = FactualMortgageCompany.loan_companies_for_city(@city.zip)
   end 
 
   def city_home_refinance_rates
     @news_articles = news_article_data(' refinance')
+    @loan_officers = LoanOfficer.loan_officers_for_city(@city.zip)
   end 
 
   def bank_mortgage_loans
@@ -53,20 +55,16 @@ class SeoPagesController < ApplicationController
     def city_home
       city_home = City.find_by(id: params[:city_id])
       if city_home.present?
-        @city = city_home.city
+        @city = city_home
         @state = state_full_name(city_home.state_code, false) 
-         #@near_by_cities = City.where("SELECT DISTINCT(city), FROM cities WHERE state_code = ? AND zip < ? limit 2",city_home.state_code ,city_home.zip)
-         #@near_by_cities = City.near_by_cities(@city, city_home)
-
         @near_by_cities = []
-        City.where(state_code: city_home.state_code).where.not(city: @city).group_by(&:city).each do |key, val|
+        City.where(state_code: city_home.state_code).where.not(city: @city.city).group_by(&:city).each do |key, val|
           if val.count == 1
             @near_by_cities << val
           else
             @near_by_cities << val.first
           end
         end 
-        
         # for report section fetching all cities record similer to current city
         similer_cities = City.where(city: city_home.city, state_code: city_home.state_code).pluck(:zip) 
         @header, @report = historial_rates_report(similer_cities)   
@@ -76,7 +74,7 @@ class SeoPagesController < ApplicationController
     end  
 
     def news_article_data(flag)
-      city_news_articles = NewsArticle.where("search_term = ? OR search_term = ?", @city+flag, @city+', '+@state+flag)
+      city_news_articles = NewsArticle.where("search_term = ? OR search_term = ?", @city.city+flag, @city.city+', '+@state+flag)
       return city_news_articles.order(id: :desc).first(10)
     end
 
