@@ -16,7 +16,7 @@
                      </div>
                   </h3>
                   <p>
-                     <%=@bank.name%> is very active in personal loans, with a total carrying amount of loans to individuals for household, family and other personal expenditures that are covered by FDIC loss-sharing agreements of $ <%= @loss_share.present? ?  @loss_share.lcon : 0  %>. Nonaccrual other loans from <%=@bank.name%> to individuals for household, family and other personal expenditures on a consolidated basis amount to $ <%= @past_due_and_assets.present? ?  @past_due_and_assets.naconoth : 0  %>.
+                     <%=@bank.name%> is very active in personal loans, with a total carrying amount of loans to individuals for household, family and other personal expenditures that are covered by FDIC loss-sharing agreements of  <%= @loss_share.present? ?  number_to_currency(@loss_share.lcon, precision: 0): '$0' %>. Nonaccrual other loans from <%=@bank.name%> to individuals for household, family and other personal expenditures on a consolidated basis amount to <%= @past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.naconoth, precision: 0) : '$0' %>.
                   </p>
                   <p>Below are some other banks and lending institutions that specialize in personal loans for you to compare. </p>
                   <span href="" id="para-see-more-link">See More</span>
@@ -28,8 +28,8 @@
                         FDIC Certificate Number - <%=@bank.cert%></br>
                         <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
                      </p>
-               <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> $<%=@bank.asset%></p>
-               <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> $<%=@bank.dep%></p>
+               <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= number_to_currency(@bank.asset, precision: 0)%></p>
+               <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= number_to_currency(@bank.dep, precision: 0)%></p>
             </div>
          </div>
          <!--Bank of America Personal Loans end-->
@@ -110,100 +110,100 @@
             <h2 class="tab_blue_content">Volume of Personal Loan at <%=@bank.name%></h2>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">30-89 Days P/D-Other Consumer</p>
-               <span><%= @past_due_and_assets.present? ?  @past_due_and_assets.p3conoth : 0  %></span>
+               <span><%= @past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.p3conoth, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">90+ Days P/D-Other Consumer</p>
-               <span><%= @past_due_and_assets.present? ?  @past_due_and_assets.p9conoth : 0  %></span>
+               <span><%= @past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.p9conoth, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Nonaccrual-Other Consumer</p>
-               <span><%= @past_due_and_assets.present? ?  @past_due_and_assets.naconoth : 0  %></span>
+               <span><%= @past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.naconoth, precision: 0 ): '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Consumer Loans - FDIC loss-sharing agreements</p>
-               <span><%= @loss_share.present? ?  @loss_share.lcon : 0  %></span>
+               <span><%= @loss_share.present? ? number_to_currency(@loss_share.lcon, precision: 0) : '$0'  %></span>
             </div>
 
                
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">30-89 D P/D Consumer loans - FDIC loss-sharing agreements</p>
-               <span><%= @loss_share.present? ?  @loss_share.p3lcon : 0  %></span>
+               <span><%= @loss_share.present? ?  number_to_currency(@loss_share.p3lcon, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">90+ D P/D Consumer Loans – FDIC Loss Sharing Agreements</p>
-               <span><%= @loss_share.present? ?  @loss_share.p9lcon : 0  %></span>
+               <span><%= @loss_share.present? ? number_to_currency(@loss_share.p9lcon, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Nonaccrual Consumer Loans - FDIC Loss Sharing Agreements</p>
-               <span><%= @loss_share.present? ?  @loss_share.nalcon : 0  %></span>
+               <span><%= @loss_share.present? ?  number_to_currency(@loss_share.nalcon, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Bank Securitization Activities , Principal Balance Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.szlncon : 0  %></span>
+               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szlncon, precision: 0) : '$0'  %></span>
             </div>
 
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Past Due Loan Amounts 30-89 Days Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.sz30con : 0  %></span>
+               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.sz30con, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Past Due Loan Amounts 90 Days or More Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.sz90con : 0  %></span>
+               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.sz90con, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Charge-Offs On Assets Sold And Securitized Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.szdrcon : 0  %></span>
+               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szdrcon, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Recoveries On Assets Sold and Securitized Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.szcrcon : 0  %></span>
+               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szcrcon, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Assets Sold With Recourse Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ?  @bank_assets_and_sec.asdrcons : 0  %></span>
+               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.asdrcons, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Maximum Amount of Credit Exposure, Retained Interest Other Consumer Loans</p>
-               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.sziocon.present? ? @max_amt_and_credit.sziocon : 0 : 0  %></span>
+               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.sziocon.present? ? number_to_currency(@max_amt_and_credit.sziocon, precision: 0) : '$0' : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Maximum Amount of Credit Exposure, Subordinated Securities Other Consumer Loans</p>
-               <span><%= @max_amt_and_credit.present? ? @max_amt_and_credit.szssccon.present? ? @max_amt_and_credit.szssccon : 0 : 0 %></span>
+               <span><%= @max_amt_and_credit.present? ? @max_amt_and_credit.szssccon.present? ? number_to_currency(@max_amt_and_credit.szssccon, precision: 0) : '$0' : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Maximum Amount of Credit Exposure, Standby Letters of Credit Other Consumer Lns</p>
-               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.idslccon.present? ? @max_amt_and_credit.idslccon : 0 : 0 %></span>
+               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.idslccon.present? ? number_to_currency(@max_amt_and_credit.idslccon, precision: 0) : '$0' : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Maximum Amount of Credit Exposure, Credit Enhancements Other Consumer Loans</p>
-               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.encecon.present? ? @max_amt_and_credit.encecon : 0 : 0 %></span>
+               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.encecon.present? ? number_to_currency(@max_amt_and_credit.encecon, precision: 0) : '$0' : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Maximum Amount of Credit Exposure, Bank Asset Sales Other Consumer Loans</p>
-               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.ascecons.present? ? @max_amt_and_credit.ascecons : 0  : 0 %></span>
+               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.ascecons.present? ? number_to_currency(@max_amt_and_credit.ascecons, precision: 0) : '$0'  : '$0' %></span>
             </div>
 
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Reporting Bank's Unused Commitments Other Consumer Loans</p>
-               <span><%= @unused_commitments.present? ?  @unused_commitments.szuccon : 0  %></span>
+               <span><%= @unused_commitments.present? ?  number_to_currency(@unused_commitments.szuccon, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Reporting Bank's Unused Commitments, Liquidity Other Consumer Loans</p>
-               <span><%= @unused_commitments.present? ?  @unused_commitments.ucszcon : 0  %></span>
+               <span><%= @unused_commitments.present? ?  number_to_currency(@unused_commitments.ucszcon, precision: 0) : '$0'  %></span>
             </div>
             
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Other Consumer Loan Charge-Offs</p>
-               <span><%= @loan_charges_off.present? ?  @loan_charges_off.drconoth : 0  %></span>
+               <span><%= @loan_charges_off.present? ?  number_to_currency(@loan_charges_off.drconoth, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Other Consumer Loan Recoveries</p>
-               <span><%= @loan_charges_off.present? ?  @loan_charges_off.crconoth : 0  %></span>
+               <span><%= @loan_charges_off.present? ?  number_to_currency(@loan_charges_off.crconoth, precision: 0) : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Other Consumer Loans Net Charge-Offs</p>
-               <span><%= @loan_charges_off.present? ?  @loan_charges_off.ntconoth : 0  %></span>
+               <span><%= @loan_charges_off.present? ?  number_to_currency(@loan_charges_off.ntconoth, precision: 0) : '$0'  %></span>
             </div>   
 
 
@@ -350,7 +350,7 @@
          </div>
          <!-- News on Car section end-->
          <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-            <h2 class="tab_blue_content">Personal Loans From Bank Similar to <%=@bank.name%></h2>
+            <h3 class="tab_blue_content">Personal Loans From Bank Similar to <%=@bank.name%></h3>
                <div class="car-auto-loan-othr-bank">
                <%if @near_by_banks.present? %>
                <%@near_by_banks.each do |nbb|%>

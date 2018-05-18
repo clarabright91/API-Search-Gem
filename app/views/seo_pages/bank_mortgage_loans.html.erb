@@ -130,7 +130,7 @@
              <div class="gray-box-cntnt" id="bank_content">
                 <h3><%=@bank.name%> Mortgage Overview</h3>
                 <p>The mortgage and refinance department of <%=@bank.name%> primarily focuses on residential mortgages, which includes privately issued residential mortgage-backed securities, US government agency and corporation issued obligations or guaranteed certification of participation in pools of residential mortgages, and mortgage-backed pass-through securities held-to-maturity at amoritized cost and available-for-sale at fair value.</p>
-                <p>The total amount of outstanding residential mortgages is $ <%=@security.present? ? @security.idscod : 0%> and total amount of outstanding commercial mortgages is $ <%=@security.present? ? @security.sccmmb : 0%> .</p>
+                <p>The total amount of outstanding residential mortgages is <%=@security.present? ? number_to_currency(@security.idscod, precision: 0) : '$0'%> and total amount of outstanding commercial mortgages is <%=@security.present? ? number_to_currency(@security.sccmmb, precision: 0) : '$0'%> .</p>
                 <span href="" id="para-see-more-link">See More</span>
              </div>
           </div>
@@ -140,8 +140,8 @@
                 FDIC Certificate Number - <%=@bank.cert%></br>
                 <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
              </p>
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> $<%=@bank.asset%></p>
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> $<%=@bank.dep%></p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%=number_to_currency(@bank.asset, precision: 0)%></p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%=number_to_currency(@bank.dep, precision: 0)%></p>
           </div>
        </div>
        <!--Bank of America Mortgage Overview end-->
@@ -392,81 +392,81 @@
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Privately issued residential mortgage-backed securities
                          </p>
-                         <span>$ <%=@security.present? ? @security.idscod : 0%></span>
+                         <span> <%=@security.present? ? number_to_currency(@security.idscod, precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Commercial mortgage-backed securities - Total
                          </p>
-                         <span>$ <%=@security.present? ? @security.sccmmb : 0%></span>
+                         <span> <%=@security.present? ? number_to_currency(@security.sccmmb, precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Mortgage-backed securities
                          </p>
-                         <span>$ <%=@security.present? ? @security.scmtgbk : 0%></span>
+                         <span> <%=@security.present? ? number_to_currency(@security.scmtgbk, precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Certificates of participation in pools of residential mortgages
                          </p>
-                         <span>$ <%=@security.present? ? @security.idscgtpc : 0%></span>
+                         <span> <%=@security.present? ? number_to_currency(@security.idscgtpc, precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Collaterized mortgage obligations
                          </p>
-                         <span>$ <%=@security.present? ? @security.idsccmo : 0%></span>
+                         <span> <%=@security.present? ? number_to_currency(@security.idsccmo, precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Commercial mortgage-backed securities
 
                          </p>
-                         <span>$ <%=@security.present? ? @security.idsccmt : 0%></span>
+                         <span> <%=@security.present? ? number_to_currency(@security.idsccmt, precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Commercial mortgage pass-through securities
                          </p>
-                         <span>$ <%=@security.present? ? @security.sccmpt : 0%></span>
+                         <span> <%=@security.present? ? number_to_currency(@security.sccmpt, precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Other commercial mortgage-backed securities
                          </p>
-                         <span>$ <%=@security.present? ? @security.sccmot : 0%></span>
+                         <span> <%=@security.present? ? number_to_currency(@security.sccmot, precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Commercial mortgage pass-through securities – FNMA, FHLMC, or GNMA
                          </p>
-                         <span>$ <%=@us_govt_obl.present? ? @us_govt_obl.sccptg : 0%></span>
+                         <span> <%=@us_govt_obl.present? ? number_to_currency(@us_govt_obl.sccptg, precision: 0) : '$0'%></span>
                       </div>
 
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Mortgage servicing assets
                          </p>
-                         <span>$ <%=@good_will.present? ? @good_will.intanmsr : 0%></span>
+                         <span> <%=@good_will.present? ? number_to_currency(@good_will.intanmsr, precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Mortgage-backed securitiesPurchased credit card relationships and nonmortgage servicing assets
                          </p>
-                         <span>$ <%=@good_will.present? ? @good_will.intangcc : 0%></span>
+                         <span> <%=@good_will.present? ? number_to_currency(@good_will.intangcc, precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Real Estate Mortgages, managed personal trust & agency accts, etc..
                          </p>
-                         <span>$ <%=@managed_assets.present? ? @managed_assets.tpiremtg.present? ? @managed_assets.tpiremtg : 0 : 0%></span>
+                         <span> <%=@managed_assets.present? ? @managed_assets.tpiremtg.present? ? number_to_currency(@managed_assets.tpiremtg, precision: 0) : '$0' : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Real estate mortgages,managed emp benft & retire-related trust accnts
                          </p>
-                         <span>$ <%=@managed_assets.present? ? @managed_assets.teremtg.present? ? @managed_assets.teremtg : 0 : 0%></span>
+                         <span> <%=@managed_assets.present? ? @managed_assets.teremtg.present? ? number_to_currency(@managed_assets.teremtg, precision: 0) : '$0' : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Real Estate Mortgages, all other managed accounts
 
                          </p>
-                         <span>$ <%=@managed_assets.present? ? @managed_assets.toremtg.present? ? @managed_assets.toremtg : 0 : 0%></span>
+                         <span> <%=@managed_assets.present? ? @managed_assets.toremtg.present? ? number_to_currency(@managed_assets.toremtg, precision: 0) : '$0' : '$0'%></span>
                       </div>
 
                       <a class="link-right-inner">Data produced  from US Government reported financials</a>
                    </div>
                    <div class="col-xs-12 col-md-5">
-                      <p><%=@bank.name%> lends out a total of $<%= a = @net_loan_and_leases.present? ?  @net_loan_and_leases.lnlsgr : 0%> annually. Of this loan volume, <%=@bank.name%> home mortgages are $<%= b = @net_loan_and_leases.present? ? @net_loan_and_leases.lnre.to_f : 0 %>. As a result, <%=@bank.name%> home loans represent <%= (a.to_i == 0 ? 0 : (b.to_f/a).round(2) ) %> % of the total lending of <%=@bank.name%>.</p>
+                      <p><%=@bank.name%> lends out a total of <%=@net_loan_and_leases.present? ?  number_to_currency(@net_loan_and_leases.lnlsgr, precision: 0) : '$0'%> annually. Of this loan volume, <%=@bank.name%> home mortgages are <%= @net_loan_and_leases.present? ? number_to_currency(@net_loan_and_leases.lnre, precision: 0) : '$0' %>. As a result, <%=@bank.name%> home loans represent <%= mortgage_loan_per_calculation(@net_loan_and_leases)%>% of the total lending of <%=@bank.name%>.</p>
                       <!-- <img src="/assets/seo-bank-mortgage-graph1.png" alt=""> -->
                    </div>
                     <div class="col-xs-12 col-md-5" id="piechart"></div>
@@ -609,7 +609,7 @@
        <!-- News on Bank of America end-->
        <!-- Loans from Similar Bank start-->
        <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-          <h2 class="tab_blue_content">Mortgage and Home Loans from Bank Similar to <%=@bank.name%></h2>
+          <h3 class="tab_blue_content">Mortgage and Home Loans from Bank Similar to <%=@bank.name%></h3>
           <div class="car-auto-loan-othr-bank">
              <%if @near_by_banks.present?%>
              <%@near_by_banks.each do |nbb|%>
@@ -661,8 +661,8 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
   ['Loans', 'Percentage'],
-  ['Mortgage Loans', <%= b%>],
-  ['Personal Loans', <%= @net_loan_and_leases.try(:lnauto) %>],
+  ['Mortgage Loans', <%= @net_loan_and_leases.present? ? @net_loan_and_leases.lnre.to_f : 0%>],
+  ['Personal Loans', <%= @net_loan_and_leases.try(:lnauto) == nil ? 0 : @net_loan_and_leases.lnauto %>],
   ['Auto Loans', <%= @net_loan_and_leases.try(:lnauto) == nil  ? 0 : @net_loan_and_leases.lnauto*0.58%>],
 ]);
 

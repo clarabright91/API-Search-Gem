@@ -447,7 +447,7 @@ a.seo-loan-aftr-cntnt-link{ float:right; text-align:right; color:#fb6325; font-s
 .content-main.seo-cities-mortgage .gray-box-cntnt h3{ text-transform:none;}
 .loan-detail-blocks h3 b{ font-size:30px;}
 .loan-detail-blocks h3 a{ float:right; font-style:italic; font-size:15px; font-weight:normal; color:#fff; text-decoration:underline; margin:5px 0 0 0px;}
-.car-auto-loan-othr-bank-box h3 { background: none; color: #19214d !important; font-weight: bold; padding: 0px 10px 0 0 !important; font-size:25px;}
+.car-auto-loan-othr-bank-box h3 { background: none; color: #19214d !important; font-weight: bold; padding: 0px 10px 0 0 !important; font-size:25px; min-height: auto;}
 .loan-detail-blocks-cntnt{ float:left; width:100%; border-radius:0 0 5px 5px; padding:0; margin:0; background:#f6f8fa;}
 .loan-detail-blocks-full{ width:100%;}
 .loan-detail-blocks-cntnt-row{ float:left; width:100%; padding:15px 20px; font-size:20px; color:#19214d;}
@@ -1089,6 +1089,7 @@ footer .container{ padding:0;}
 .directory-box .directory-links-box .row{  margin:0;}
 .seo-loan-cntnt-box-chnge .col-xs-12.col-md-4.seo-bank-cntn-white-bg.seo-bank-cntn-top-white-bg{ min-height:auto; height: auto !important; }
 #piechart div, #piechart svg{ max-width: 100%;}
+.othr-mb-padding-para{ padding:0 10px; }
 }
 
 /*mobile device css end*/
@@ -1489,5 +1490,5 @@ header .navbar-brand img { max-width: 140px;}
 .loan-dtail .loan-detail-blocks-cntnt-row { font-size:16px;}
 }
 
-
+.main-table-grapg-box{ float:left; width:100%; }
 
