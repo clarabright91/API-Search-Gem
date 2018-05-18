@@ -7,11 +7,14 @@ class SeoPagesController < ApplicationController
 
   def city_home_mortgage_rates
     @news_articles = news_article_data(' mortgage')
+    # for report section fetching all cities record similer to current city 
+    @header, @report = historial_rates_report(@similer_cities, 'P')
     @loan_companies = FactualMortgageCompany.loan_companies_for_city(@city.zip)
   end 
 
   def city_home_refinance_rates
     @news_articles = news_article_data(' refinance')
+    @header, @report = historial_rates_report(@similer_cities, 'N')
     @loan_officers = LoanOfficer.loan_officers_for_city(@city.zip)
   end 
 
@@ -64,10 +67,8 @@ class SeoPagesController < ApplicationController
           else
             @near_by_cities << val.first
           end
-        end 
-        # for report section fetching all cities record similer to current city
-        similer_cities = City.where(city: city_home.city, state_code: city_home.state_code).pluck(:zip) 
-        @header, @report = historial_rates_report(similer_cities)   
+        end         
+       @similer_cities = City.where(city: @city.city, state_code: @city.state_code).pluck(:zip) 
       else
         content_not_found
       end  

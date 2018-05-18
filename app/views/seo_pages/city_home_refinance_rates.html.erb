@@ -513,226 +513,44 @@
                   <a id="scrollLeft" href="javascript:void(0);"><i class="fa fa-angle-left"></i></a>
                   <a id="scrollRight" href="javascript:void(0);"><i class="fa fa-angle-right"></i></a>
                   </div>
-                  <table class="table table-striped">
-                  <tr>
-                  <th></th>
-                  </tr>
-                  <tr>
-                  <th>% 30 year fixed <span class="mb-hide-nw">refinance</span> </th>
-                  </tr>
-                  <tr>
-                  <th><span class="table-inner-lft-space">avg <span class="mb-hide-nw">refinance</span> rate</span></th>
-                  </tr>
-                  <tr>
-                  <th>% 15 year fixed <span class="mb-hide-nw">refinance</span> </th>
-                  </tr>
-                  <tr>
-                  <th><span class="table-inner-lft-space">avg <span class="mb-hide-nw">refinance</span> rate</span></th>
-                  </tr>
-                  <tr>
-                  <th>% 10/1 ARM </th>
-                  </tr>
-                  <tr>
-                  <th><span class="table-inner-lft-space">avg <span class="mb-hide-nw">refinance</span> rate</span></th>
-                  </tr>
-                  <tr>
-                  <th>% 7/1 ARM </th>
-                  </tr>
-                  <tr>
-                  <th><span class="table-inner-lft-space">avg <span class="mb-hide-nw">refinance</span> rate</span></th>
-                  </tr>
-                  <tr>
-                  <th>% 5/1 ARM </th>
-                  </tr>
-                  <tr class="row-bordr-botom">
-                  <th><span class="table-inner-lft-space">avg <span class="mb-hide-nw">refinance</span> rate</span></th>
-                  </tr>
-                  <tr>
-                  <th>Avg credit score </th>
-                  </tr>
-                  <tr>
-                  <th>Avg loan amount</th>
-                  </tr>
-                  <tr class="row-bordr-botom">
-                  <th>Avg LTV (loan to value)</th>
-                  </tr>
-                  <tr>
-                  <th>Avg DTI (debt to income)</th>
-                  </tr>
-                  <tr class="row-bordr-botom">
-                  <th>% First time homebuyer</th>
-                  </tr>
-                  </table>
+                 
                   </div>
                   </div>
+                  </div>
+                  
+                   <!-- Dynamic report section starts from here-->
+                    <div class="container">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th> </th>
+                          <%@header.each do |report_header|%>
+                          <th>
+                              <%=report_header%>  
+                          </th>
+                          <%end%>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <%@count = 0%>
+                        <%@report.each do |term,report|%>
+                            <%@count += 1%>
+                            <tr>
+                            <td><b><%=term%></b> </td>               
+                              <%report.each do |re,val|%>
+                              <%if @count <= 10 %>
+                                <td><%=val.to_s == 'NaN' ? ' ' : val == 0.0 ? '' : val.round(2).to_s+'%'%></td>
+                              <%else%>
+                                <td><%=val.to_s == 'NaN' ? '' : val.round(2)%></td>
+                              <%end%>
+                            <%end%>
+                            </tr>
+                        <%end%>
+                      </tbody>
+                    </table>
+                  </div>    
+                  
 
-                  <div class="col-md-9 table-data-box">
-                  <div class="data-table-inner table-responsive">
-                  <table class="table table-striped" id="content-table">
-                  <tr>
-                  <td>2010</th>
-                  <td>2011</td>
-                  <td>2012</td>
-                  <td>2013</td>
-                  <td>2014</td>
-                  <td>2015</td>
-                  <td>2016</td>
-                  <td>2017</td>
-                  </tr>
-                  <tr>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  </tr>
-                  <tr>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  </tr>
-                  <tr>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  </tr>
-                  <tr>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  </tr>
-                  <tr>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  </tr>
-                  <tr>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  </tr>
-                  <tr>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  </tr>
-                  <tr>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  </tr>
-                  <tr>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  <td>20%</td>
-                  </tr>
-                  <tr class="row-bordr-botom">
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  <td>4.50%</td>
-                  </tr>
-                  <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  </tr>
-                  <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  </tr>
-                  <tr class="row-bordr-botom">
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  </tr>
-                  <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  </tr>
-                  <tr class="row-bordr-botom">
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  </tr>
-                  </table>
-                  </div>
-                  </div>
-                  </div>
                    <a class="link-right-inner">Data produced  from US Government reported financials</a>
                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
                    <a href="" class="see-more-link-common">See More historical data</a>
