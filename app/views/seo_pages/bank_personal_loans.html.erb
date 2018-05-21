@@ -145,28 +145,28 @@
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Bank Securitization Activities , Principal Balance Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szlncon, precision: 0) : '$0'  %></span>
+               <span><%= @bank_assets_and_sec.present? ? @bank_assets_and_sec.szlncon.present? ? number_to_currency(@bank_assets_and_sec.szlncon, precision: 0) : '$0' : '$0' %></span>
             </div>
 
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Past Due Loan Amounts 30-89 Days Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.sz30con, precision: 0) : '$0'  %></span>
+               <span><%= @bank_assets_and_sec.present? ? @bank_assets_and_sec.sz30con.present? ? number_to_currency(@bank_assets_and_sec.sz30con, precision: 0) : '$0' : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Past Due Loan Amounts 90 Days or More Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.sz90con, precision: 0) : '$0'  %></span>
+               <span><%= @bank_assets_and_sec.present? ? @bank_assets_and_sec.sz90con.present? ? number_to_currency(@bank_assets_and_sec.sz90con, precision: 0) : '$0'  : '$0'   %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Charge-Offs On Assets Sold And Securitized Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szdrcon, precision: 0) : '$0'  %></span>
+               <span><%= @bank_assets_and_sec.present? ? @bank_assets_and_sec.szdrcon.present? ? number_to_currency(@bank_assets_and_sec.szdrcon, precision: 0) : '$0' : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Recoveries On Assets Sold and Securitized Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szcrcon, precision: 0) : '$0'  %></span>
+               <span><%= @bank_assets_and_sec.present? ? @bank_assets_and_sec.szcrcon.present? ? number_to_currency(@bank_assets_and_sec.szcrcon, precision: 0) : '$0' : '$0'  %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Assets Sold With Recourse Other Consumer Loans</p>
-               <span><%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.asdrcons, precision: 0) : '$0'  %></span>
+               <span><%= @bank_assets_and_sec.present? ? @bank_assets_and_sec.asdrcons.present? ? number_to_currency(@bank_assets_and_sec.asdrcons, precision: 0) : '$0' : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Maximum Amount of Credit Exposure, Retained Interest Other Consumer Loans</p>
