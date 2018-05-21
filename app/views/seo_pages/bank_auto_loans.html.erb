@@ -129,31 +129,31 @@
          </div>
          <div class="volume-auto-loan-row bg-white">
             <p class="vol-row-inner">Nonaccrual Auto Loans</p>
-            <span><%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.naauto, precision: 0) : '$0'%></span>
+            <span><%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.naauto, precision: 0) : '$0' %></span>
          </div>
          <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Bank Securitization Activities , Principal Balance Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szlauto,precision: 0) : '$0'%></span>
+            <p class="vol-row-inner">Bank Securitization Activities, Principal Balance Auto Loans</p>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.szlauto.present? ? number_to_currency(@bank_assets_and_sec.szlauto,precision: 0) : '$0' : '$0' %></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
             <p class="vol-row-inner">Past Due Loan Amounts 30-89 Days Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.sz30auto, precision: 0) : '$0'%></span>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.sz30auto.present? ? number_to_currency(@bank_assets_and_sec.sz30auto, precision: 0) : '$0' : '$0' %></span>
          </div>
          <div class="volume-auto-loan-row">
             <p class="vol-row-inner">Past Due Loan Amounts 90 Days or More Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.sz90auto, precision: 0 ) : '$0'%></span>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.sz90auto.present? ? number_to_currency(@bank_assets_and_sec.sz90auto, precision: 0 ) : '$0' : '$0' %></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
             <p class="vol-row-inner">Charge-Offs On Assets Sold And Securitized Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szdrauto, precision: 0) : '$0'%></span>
+            <span><%= @bank_assets_and_sec.present? ? @bank_assets_and_sec.szdrauto.present? ? number_to_currency(@bank_assets_and_sec.szdrauto, precision: 0) : '$0' : '$0' %></span>
          </div>
          <div class="volume-auto-loan-row">
             <p class="vol-row-inner">Recoveries On Assets Sold and Securitized Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szcrauto, precision: 0) : '$0'%></span>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.szcrauto.present? ? number_to_currency(@bank_assets_and_sec.szcrauto, precision: 0) : '$0' : '$0' %></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
             <p class="vol-row-inner">Assets Sold With Recourse Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.asdrauto,precision: 0) : '$0'%></span>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.asdrauto.present? ? number_to_currency(@bank_assets_and_sec.asdrauto,precision: 0) : '$0' : '$0' %></span>
          </div>
 
          <div class="volume-auto-loan-row">
