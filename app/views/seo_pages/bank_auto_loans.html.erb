@@ -72,7 +72,7 @@
                      <img src="/assets/star_03.png" alt="">
                      <img src="/assets/star_03.png" alt="">
                      <img src="/assets/star_03.png" alt="">
-                     <img src="/assets/star_03.png" alt="">
+                     <img src="/assets/star_half.png" alt="">
                   </div>
                   <span>Up to $40,000, starting 5.99%</span>
                </h3>
@@ -98,7 +98,7 @@
                      <img src="/assets/star_03.png" alt="">
                      <img src="/assets/star_03.png" alt="">
                      <img src="/assets/star_03.png" alt="">
-                     <img src="/assets/star_03.png" alt="">
+                     <img src="/assets/star_half.png" alt="">
                   </div>
                   <span>Up to $40,000, starting 5.99%</span>
                </h3>
@@ -204,9 +204,15 @@
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->      
       <div class="volume-auto-loan loan-chargeoff-recovry">
          <h2 class="tab_blue_content"><%=@bank.name%> Personal Loan Chargeoffs, Recoveries </h2>
-         <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
+         <p> For <%=@bank.name%>'s assets sold and securitized auto loans, the charge-offs amount to <%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szdrauto, precision: 0) : '$0'%> and the recoveries amount to <%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szcrauto, precision: 0) : '$0'%>.
+         <p>
+         For general car loans, the charge-offs amount to <%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.drauto, precision: 0) : '$0'%> and the recoveries amount to <%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.crauto, precision: 0) : '$0'%>. This results in a net charge-offs of automobile loans debited to the allowance for loan and lease losses of <%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.ntauto, precision: 0) : '$0'%>.  
+         </p>
+         <p>
+            An additional figure for loan performance are automobile loans to individuals for household, family and other personal expenditures that are past due  still and accruing interest.   
+         </p>
          <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+days</p>
-         <p class="loan-chargeoff-recovry-inner-data"><span>Index 21</span> Index 31</p>
+         <p class="loan-chargeoff-recovry-inner-data"><span><%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.p3auto, precision: 0) : '$0'%></span> <%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.p9auto, precision: 0) : '$0'%></p>
          <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
       </div>
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section end-->      
