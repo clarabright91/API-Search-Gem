@@ -15,8 +15,8 @@
                      <img src="/assets/star_03.png" alt="">
                   </div>
                </h3>
-               <p><%=@bank.name%> makes <%= @net_loan_and_leases.present? ?  number_to_currency(@net_loan_and_leases.lnlsgr, precision: 0) : $0%> total loans annually of which <%= @net_loan_and_leases.present? ? number_to_currency(@net_loan_and_leases.lnauto, precision: 0) : $0%> are auto loans, amounting to <%=auto_loan_per_calculation(@net_loan_and_leases)%> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are $ <%=@max_amt_and_credit.present? ? @max_amt_and_credit.szioauto.present? ? number_to_currency(@max_amt_and_credit.szioauto, precision: 0) : 0 : 0%>.</p>
-               <br/>
+               <p><%=@bank.name%> makes <%= @net_loan_and_leases.present? ?  number_to_currency(@net_loan_and_leases.lnlsgr, precision: 0) : '$0' %> total loans annually of which <%= @net_loan_and_leases.present? ? number_to_currency(@net_loan_and_leases.lnauto, precision: 0) : '$0' %> are auto loans, amounting to <%=auto_loan_per_calculation(@net_loan_and_leases)%> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are $ <%=@max_amt_and_credit.present? ? @max_amt_and_credit.szioauto.present? ? number_to_currency(@max_amt_and_credit.szioauto, precision: 0) : 0 : 0%>.</p>
+               <div class="space-row"></div>
                <p> Below are some other banks and lending institutions that specialize in low-cost auto and car loans for your research.</p>
                <span href="" id="para-see-more-link">See More</span>
             </div>
@@ -32,36 +32,13 @@
          </div>
       </div>
       <!--Bank of America Auto Loans section end-->
-      <!--Light Stream section start-->
-      <div class="seo-auto-loan-cntnt-box seo-auto-loan-cntnt-box2 mb-bg-none">
-         <div class="col-xs-12 col-md-9 our-story-cntnt ">
-            <div class="gray-box-cntnt">
-               <h3>
-                  Light Stream 
-                  <div class="star-box pull-right">
-                     <img src="/assets/star_03.png" alt="">
-                     <img src="/assets/star_03.png" alt="">
-                     <img src="/assets/star_03.png" alt="">
-                     <img src="/assets/star_03.png" alt="">
-                     <img src="/assets/star_03.png" alt="">
-                  </div>
-                  <span>Up to $40,000, starting 5.99%</span>
-               </h3>
-               <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
-            </div>
-         </div>
-         <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
-            <img src="/assets/seo-auto-loan-img1.png" alt="">
-            <a href="" class="apply-btn">Apply</a>
-         </div>
-      </div>
-      <!--Light Stream section end-->
       <!--Upstart section start-->        
       <div class="seo-auto-loan-cntnt-box seo-auto-loan-cntnt-box2">
+         <div class="row">
          <div class="col-xs-12 col-md-9 our-story-cntnt ">
             <div class="gray-box-cntnt">
                <h3>
-                  Upstart 
+                  Upstart Auto Loans
                   <div class="star-box pull-right">
                      <img src="/assets/star_03.png" alt="">
                      <img src="/assets/star_03.png" alt="">
@@ -71,7 +48,9 @@
                   </div>
                   <span>Up to $40,000, starting 5.99%</span>
                </h3>
-               <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
+               <p>Looking for a lower monthly car loan payment? By refinancing your car loan via Upstart, you could lower your monthly car payments, which will leave you with more money in your pocket every month. The whole process is easy and completely online.</p>
+               <div class="space-row"></div>
+               <p>All car loans feature an affordable fixed rate, which means your monthly payment will never increase. And there is no prepayment penalty so you have the flexibility to pay off your car loan at any time.</p>
             </div>
          </div>
          <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
@@ -79,13 +58,15 @@
             <a href="" class="apply-btn">Apply</a>
          </div>
       </div>
+      </div>
       <!--Upstart section end-->
       <!--One Main Financial section start-->         
       <div class="seo-auto-loan-cntnt-box seo-auto-loan-cntnt-box2 mb-bg-none">
+         <div class="row">
          <div class="col-xs-12 col-md-9 our-story-cntnt ">
             <div class="gray-box-cntnt">
                <h3>
-                  One Main Financial
+                  One Main Financial Auto Loans
                   <div class="star-box pull-right">
                      <img src="/assets/star_03.png" alt="">
                      <img src="/assets/star_03.png" alt="">
@@ -95,7 +76,7 @@
                   </div>
                   <span>Up to $40,000, starting 5.99%</span>
                </h3>
-               <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's sta ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
+               <p>A car loan through OneMain Financial can provide an easy way to get that special car when other lenders may be saying no to car loans.  If you have good credit, you’re a perfect candidate for a personal loan through Prosper’s peer to peer lending marketplace.  Get low fixed rates without any of the hidden fees and red tape associated with other types of loans.</p>
             </div>
          </div>
          <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
@@ -103,7 +84,34 @@
             <a href="" class="apply-btn">Apply</a>
          </div>
       </div>
+      </div>
       <!--One Main Financial section end-->
+      <!--Light Stream section start-->
+      <div class="seo-auto-loan-cntnt-box seo-auto-loan-cntnt-box2 mb-bg-none">
+         <div class="row">
+         <div class="col-xs-12 col-md-9 our-story-cntnt ">
+            <div class="gray-box-cntnt">
+               <h3>
+                  Light Stream Auto Loans
+                  <div class="star-box pull-right">
+                     <img src="/assets/star_03.png" alt="">
+                     <img src="/assets/star_03.png" alt="">
+                     <img src="/assets/star_03.png" alt="">
+                     <img src="/assets/star_03.png" alt="">
+                     <img src="/assets/star_03.png" alt="">
+                  </div>
+                  <span>Up to $40,000, starting 5.99%</span>
+               </h3>
+               <p>LightStream has over 350,000 customers to date.  Avant prides itself on loan transparency.  You’ll always know what you pay. There are no hidden fees and no collateral needed for an unsecured loan.</p>
+            </div>
+         </div>
+         <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
+            <img src="/assets/seo-auto-loan-img1.png" alt="">
+            <a href="" class="apply-btn">Apply</a>
+         </div>
+         </div>
+      </div>
+      <!--Light Stream section end-->
       <!--Volume of Auto Loan start-->     
       <div class="volume-auto-loan">
          <h2 class="tab_blue_content">Volume of Auto Loan at <%=@bank.name%></h2>

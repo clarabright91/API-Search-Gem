@@ -1491,4 +1491,5 @@ header .navbar-brand img { max-width: 140px;}
 }
 
 .main-table-grapg-box{ float:left; width:100%; }
-
+.space-row{ float: left; width:100%; height:15px; }
+.graph-box.main-table-graph .table.table-striped{ border-bottom: 2px solid #19214d;}

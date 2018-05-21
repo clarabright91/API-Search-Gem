@@ -506,8 +506,11 @@
                    </span>
                 </h3>
               <!-- Dynamic report section starts from here-->
-                  <div class="table-responsive main-table-grapg-box">
-                <table class="table">
+              <div class="graph-box main-table-graph">
+              <div class="dynamic-table-box">
+              <div class="col-md-12 table-data-box">
+                  <div class="data-table-inner table-responsive main-table-grapg-box">
+                <table class="table table-striped">
                   <thead>
                     <tr>
                       <th> </th>
@@ -523,7 +526,7 @@
                     <%@report.each do |term,report|%>
                         <%@count += 1%>
                         <tr>
-                        <td><b><%=term%></b> </td>               
+                        <td><%=term%></td>               
                           <%report.each do |re,val|%>
                           <%if @count <= 10 %>
                             <td><%=val.to_s == 'NaN' ? ' ' : val == 0.0 ? '' : val.round(2).to_s+'%'%></td>
@@ -536,13 +539,15 @@
                   </tbody>
                 </table>
               </div>
-
-                   <a class="link-right-inner">Data produced  from US Government reported financials</a>
-                   <p class="othr-mb-padding-para">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
-                   <a href="" class="see-more-link-common">See More historical data</a>
-                </div>
-             </div>
-          </div>
+               <a class="link-right-inner">Data produced  from US Government reported financials</a>
+               <p class="">The table above shows the historical mortgage rates for home loans in <%=@city.city%>, <%=state_full_name(@state, true)%> over the past 10 years. This table is compiled using actual closed loans in <%=@city.city%>, <%=state_full_name(@state, true)%>, and this information is disclosed by the US government due to consumer protection laws. </p>
+               <a href="" class="see-more-link-common">See More historical data</a>
+            </div>
+            </div>
+            </div>
+            </div>
+         </div>
+      </div>
 
        
        <!-- Historical Rates for Albany end-->
@@ -558,7 +563,7 @@
                    <img src="/assets/seo-city-mortgage-graph2.png" alt="">
                    <img src="/assets/seo-city-mortgage-graph2.png" alt="">
                    <img src="/assets/seo-city-mortgage-graph2.png" alt="">
-                   <p class="para-lft-inner">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                   <p class="para-lft-inner">The charts above are the historical interest rates quoted for home loans in <%=@city.city%>, <%=state_full_name(@state, true)%>. This is data generated from our unique data service, and is not seen anywhere else.  We have shown the most relevant metrics (interest rates, APR, and closing costs) for the most popular loan types (30-yr fixed, 15-yr fixed, and 5/1 ARM).</p>
                    <a href="" class="see-more-link-common">See More Graphs</a>
                 </div>
              </div>
