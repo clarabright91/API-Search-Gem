@@ -21,7 +21,7 @@ module SeoPagesHelper
   end
 
   def mortgage_loan_per_calculation(net_loan_and_leases)
-      if net_loan_and_leases.present?
+    if net_loan_and_leases.present?
       a = if net_loan_and_leases.lnlsgr.present?
              net_loan_and_leases.lnlsgr
             else
@@ -118,20 +118,22 @@ module SeoPagesHelper
           end 
       end
       #final hash of hashes for displaying data
+        #common code section
         main_hash['% 30 year fixed mortgage'] = year_hash_30
-        main_hash['avg mortgage rate(30 yr)'] = avg_rate_hash_30
+        main_hash['avg rate(30 yr)'] = avg_rate_hash_30
         main_hash['% 15 year fixed mortgage'] =  year_hash_15
-        main_hash['avg mortgage rate(15 yr)'] =  avg_rate_hash_15
+        main_hash['avg rate(15 yr)'] =  avg_rate_hash_15
         main_hash['% 10/1 ARM'] =  year_hash_10
-        main_hash['avg mortgage rate(10 yr)'] =  avg_rate_hash_10
+        main_hash['avg rate(10 yr)'] =  avg_rate_hash_10
         main_hash['% 7/1 ARM'] =  year_hash_7
-        main_hash['avg mortgage rate(7 yr)'] =  avg_rate_hash_7
+        main_hash['avg rate(7 yr)'] =  avg_rate_hash_7
         main_hash['% 5/1 ARM'] =  year_hash_5
-        main_hash['avg mortgage rate(5 yr)'] =  avg_rate_hash_5
+        main_hash['avg rate(5 yr)'] =  avg_rate_hash_5
         main_hash['Avg credit score'] = avg_credit_score_hash
         main_hash['Avg loan amount'] = avg_loan_to_value_hash
         main_hash['Avg LTV (loan to value)'] = avg_combined_loan_to_value_hash
         main_hash['Avg DTI (debt to income)'] = avg_debt_to_income_ration_hash
+        #Special sections on the basis of loan type
         if loan_purpose == 'P'
           main_hash['% First time homebuyer'] = avg_first_time_home_buyer_hash
           main_hash['Mortgage insurance percentage'] = avg_mortgage_insurance_percentage_hash

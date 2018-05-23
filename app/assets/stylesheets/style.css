@@ -64,7 +64,7 @@ header .navbar-right{ margin:0 !important;}
 .banner p{ float:left; width:100%; text-align:center; color:#fff; font-size:34px; margin:0 0 50px 0;}
 .search-main{ float:left; width:100%; background:#fff; border-radius:5px; box-shadow:1px 1px 10px -2px #4E4E4E; padding:28px 25px; position:relative;}
 .search-cat{ float:left; width:14%; margin-right:2%; position:relative;}
-.search-cat label{ float:left; width:100%; margin:0 0 20px 0; font-size:13px; color:#19214d; font-weight:bold;}
+.search-cat label{ float:left; width:100%; margin:0 0 20px 0; font-size:14px; color:#19214d; font-weight:bold;}
 .search-cat input[type="text"], .search-cat select { float: left; width: 95%; border: 2px solid #19214d; border-radius: 5px; color: #19214d; font-size: 15px; background: none; padding: 12px 5px; font-weight:600; -webkit-appearance:none; -moz-appearance:none; appearance:none; position:relative; }
 .search-cat.purpse-srch:before, .search-cat.cr-srch:before { content: "\f107"; font-family: FontAwesome; font-style: normal; font-weight: normal; text-decoration: inherit; color: #000; font-size: 18px; padding-right: 0.5em; position: absolute; bottom: 12px; right:7px; z-index:9;}
 .select-arrow{ position:relative;}
@@ -429,7 +429,7 @@ input.error { position:relative; left:0; bottom:0; font-size:18px; color:#929292
 .car-auto-loan-news{ float:left; width:20%; margin:0; padding:0 20px 0 0;}
 .car-auto-loan-news h6{ float:left; width:100%; margin:0 0 8px 0; padding:0; font-size:16px; font-weight:bold; color:#fb6325; min-height: 54px !important;}
 .car-auto-loan-news p{ float:left; width:100%; margin:0; padding:0; font-size:14px; font-weight:300; color:#19214d; background:none; line-height:25px; min-height:200px !important;}
-.car-auto-loan-othr-bank{ float:left; width:100%; margin:0; padding:20px 0; font-size:18px; font-weight:bold; color:#fb6325; background:none;}
+.car-auto-loan-othr-bank{ float:left; width:100%; margin:0; padding:15px 0; font-size:18px; font-weight:normal; color:#fb6325; background:none;}
 .car-auto-loan-othr-bank a{ float:left; width:100%; margin:0 0 12px 0; padding:0; color:#fb6325;line-height:normal;}
 .loan-chargeoff-recovry-inner-hdng{float:left; width:100%; margin:20px 0 6px 0; padding:0; color:#19214d; line-height:normal; font-size:18px; font-weight:300;}
 a.seo-loan-aftr-cntnt-link{ float:right; text-align:right; color:#fb6325; font-size:17px; font-weight:normal;}
@@ -447,7 +447,7 @@ a.seo-loan-aftr-cntnt-link{ float:right; text-align:right; color:#fb6325; font-s
 .content-main.seo-cities-mortgage .gray-box-cntnt h3{ text-transform:none;}
 .loan-detail-blocks h3 b{ font-size:30px;}
 .loan-detail-blocks h3 a{ float:right; font-style:italic; font-size:15px; font-weight:normal; color:#fff; text-decoration:underline; margin:5px 0 0 0px;}
-.car-auto-loan-othr-bank-box h3 { background: none; color: #19214d !important; font-weight: bold; padding: 0px 10px 0 0 !important; font-size:25px; min-height: auto;}
+.car-auto-loan-othr-bank-box h3 { background: none; color: #19214d !important; font-weight: bold; padding: 0px 10px 0 0 !important; font-size:24px; min-height: auto;}
 .loan-detail-blocks-cntnt{ float:left; width:100%; border-radius:0 0 5px 5px; padding:0; margin:0; background:#f6f8fa;}
 .loan-detail-blocks-full{ width:100%;}
 .loan-detail-blocks-cntnt-row{ float:left; width:100%; padding:15px 20px; font-size:20px; color:#19214d;}
@@ -471,9 +471,8 @@ a.seo-loan-aftr-cntnt-link{ float:right; text-align:right; color:#fb6325; font-s
 p.top-txt-info { text-align: right; font-size:16px; margin:-10px 0 15px 0; color:#19214d;}
 #para-see-more-link, #para-see-less-link{ display:none;}
 .see-more-link-common{display:none; float:left; text-decoration:underline; color:#19214d !important; font-size:13px; cursor:pointer; padding:5px 10px 0px 10px;}
-.tab_blue_content{float: left;width: 100%;background: #58a9e1; border-radius: 5px 5px 0 0; padding: 10px;
-color: #fff !important;font-size: 24px;
-font-weight: bold;margin: 0; min-height:50px;}
+.tab_blue_content{float: left;width: 100%;background: none; border-radius:0; padding:0 0 10px 0; color:#19214d;font-size:24px;
+font-weight: bold;margin: 0; min-height:40px;}
 .tab_blue_content1
 {float: left;width: 100%;background: #58a9e1; border-radius: 5px 5px 0 0; padding: 10px;
   color: #fff !important; font-size: 24px;
@@ -1090,6 +1089,9 @@ footer .container{ padding:0;}
 .seo-loan-cntnt-box-chnge .col-xs-12.col-md-4.seo-bank-cntn-white-bg.seo-bank-cntn-top-white-bg{ min-height:auto; height: auto !important; }
 #piechart div, #piechart svg{ max-width: 100%;}
 .othr-mb-padding-para{ padding:0 10px; }
+
+.no-record-box{ padding: 10px 5px !important; }
+.seo-auto-loan-cntnt-box.seo-auto-loan-cntnt-box2 .row{ margin: 0; }
 }
 
 /*mobile device css end*/
@@ -1499,3 +1501,4 @@ header .navbar-brand img { max-width: 140px;}
   float: left;
   width: 100%;
 }
+#desktop_loan_off_data{ border: none; }

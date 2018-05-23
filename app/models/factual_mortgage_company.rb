@@ -6,7 +6,7 @@ class FactualMortgageCompany < ApplicationRecord
    loan_companies =  where(zip: zip) 
    loan_companies = where("zip::text like ?", "#{zip.to_s.first(4).to_i}%")   unless loan_companies.present?
    loan_companies = where("zip::text like ?", "#{zip.to_s.first(3).to_i}%")   unless loan_companies.present?
-   return  loan_companies.order("RANDOM()").first(5)
+   return  loan_companies.order("RANDOM()").first(10)
   end  
 
 end

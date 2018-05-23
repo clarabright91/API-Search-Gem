@@ -1,7 +1,7 @@
 <!-- seo bank personal loan start-->
    <section class="content-main terms-page seo-auto-loan">
       <div class="container">
-         <!--Bank of America Personal Loans start-->      
+         <!--Bank of America Personal Loans start-->
          <div class="seo-auto-loan-cntnt-box mb-bg-gray seo-loan-cntnt-box-chnge">
             <div class="col-xs-12 col-md-8 our-story-cntnt">
                <div class="gray-box-cntnt seo_bank_auto_loan_top" id="bank_content">
@@ -39,7 +39,7 @@
             <div class="col-xs-12 col-md-9 our-story-cntnt ">
                <div class="gray-box-cntnt">
                   <h3>
-                     Lending Club Personal Loans 
+                     Lending Club Personal Loans
                      <div class="star-box pull-right">
                         <img src="/assets/star_03.png" alt="">
                         <img src="/assets/star_03.png" alt="">
@@ -51,7 +51,7 @@
                   </h3>
                   <p>Lending Club offers personal loans for credit card refinancing, debt consolidation, home improvement, major purchases, and more.</p>
                     <div class="space-row"> </div>
-                  <p>  
+                  <p>
                   Borrowers who used a personal loan via Lending Club to consolidate debt or pay off high interest credit cards received an interest rate 35% lower than they were paying on their outstanding debt or credit cards.</p>
                </div>
             </div>
@@ -61,7 +61,7 @@
             </div>
          </div>
          <!--Lending Club Personal Loans end-->
-         <!--Prosper Personal Loans start-->         
+         <!--Prosper Personal Loans start-->
          <div class="seo-auto-loan-cntnt-box seo-auto-loan-cntnt-box2 mb-bg-none">
             <div class="col-xs-12 col-md-9 our-story-cntnt ">
                <div class="gray-box-cntnt">
@@ -85,12 +85,12 @@
             </div>
          </div>
          <!--Prosper Personal Loans end-->
-         <!--Avant Personal Loans start-->         
+         <!--Avant Personal Loans start-->
          <div class="seo-auto-loan-cntnt-box seo-auto-loan-cntnt-box2">
             <div class="col-xs-12 col-md-9 our-story-cntnt ">
                <div class="gray-box-cntnt">
                   <h3>
-                     Avant Personal Loans 
+                     Avant Personal Loans
                      <div class="star-box pull-right">
                         <img src="/assets/star_03.png" alt="">
                         <img src="/assets/star_03.png" alt="">
@@ -110,7 +110,7 @@
          </div>
          <!--Avant Personal Loans end-->
 
-         <!--Volume of Personal Loan start-->       
+         <!--Volume of Personal Loan start-->
          <div class="volume-auto-loan">
             <h2 class="tab_blue_content">Volume of Personal Loan at <%=@bank.name%></h2>
             <div class="volume-auto-loan-row">
@@ -130,7 +130,7 @@
                <span><%= @loss_share.present? ? number_to_currency(@loss_share.lcon, precision: 0) : '$0'  %></span>
             </div>
 
-               
+
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">30-89 D P/D Consumer loans - FDIC loss-sharing agreements</p>
                <span><%= @loss_share.present? ?  number_to_currency(@loss_share.p3lcon, precision: 0) : '$0'  %></span>
@@ -197,7 +197,7 @@
                <p class="vol-row-inner">Reporting Bank's Unused Commitments, Liquidity Other Consumer Loans</p>
                <span><%= @unused_commitments.present? ?  number_to_currency(@unused_commitments.ucszcon, precision: 0) : '$0'  %></span>
             </div>
-            
+
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Other Consumer Loan Charge-Offs</p>
                <span><%= @loan_charges_off.present? ?  number_to_currency(@loan_charges_off.drconoth, precision: 0) : '$0'  %></span>
@@ -209,30 +209,30 @@
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Other Consumer Loans Net Charge-Offs</p>
                <span><%= @loan_charges_off.present? ?  number_to_currency(@loan_charges_off.ntconoth, precision: 0) : '$0'  %></span>
-            </div>   
+            </div>
 
 
 
             <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
          </div>
-         <!--Volume of Personal Loan end--> 
-         <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->      
+         <!--Volume of Personal Loan end-->
+         <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->
          <div class="volume-auto-loan loan-chargeoff-recovry">
             <h2 class="tab_blue_content"><%=@bank.name%> Personal Loan Chargeoffs, Recoveries  </h2>
-            <p>For <%=@bank.name%>'s assets sold And securitized by other consumer personal loans, the charge-offs amount to <%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szdrcon, precision: 0) : '$0'%> and the recoveries amount to <%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szcrcon, precision: 0) : '$0'  %> .  
+            <p>For <%=@bank.name%>'s assets sold And securitized by other consumer personal loans, the charge-offs amount to <%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szdrcon, precision: 0) : '$0'%> and the recoveries amount to <%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szcrcon, precision: 0) : '$0'  %> .
                </p>
                <p>
-               An additional figure for personal loan performance are other consumer loans to individuals for household, family and other personal expenditures that are past due still and accruing interest:    
+               An additional figure for personal loan performance are other consumer loans to individuals for household, family and other personal expenditures that are past due still and accruing interest:
                </p>
-            <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+days</p>
+            <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+ days</p>
             <p class="loan-chargeoff-recovry-inner-data"><span><%= @past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.p9conoth, precision: 0) : '$0'  %></span> <%= @past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.naconoth, precision: 0 ): '$0'  %></p>
             <div class="loan-chargeoff-recovry-inner-hdng">With FDIC Loss-sharing Agreements</div>
-            <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+days</p>
+            <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+ days</p>
             <p class="loan-chargeoff-recovry-inner-data"><span><%= @loss_share.present? ? number_to_currency(@loss_share.p3lcon, precision: 0) : '$0' %></span> <%= @loss_share.present? ? number_to_currency(@loss_share.p9lcon, precision: 0) : '$0' %></p>
             <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
          </div>
-         <!--Bank of America Personal Loan Chargeoffs, Recoveries section end-->      
-         <!--Car Loans Officers section start-->    
+         <!--Bank of America Personal Loan Chargeoffs, Recoveries section end-->
+         <!--Car Loans Officers section start-->
          <div class="volume-auto-loan seo-auto-loan-tabs">
             <h2 class="tab_blue_content"><%=@bank.name%> Unsecured Personal Loans Officers</h2>
             <!--Used Car Loans desktop section end-->
@@ -250,93 +250,47 @@
                        </div>
                        <div class="col-xs-12 col-md-6">
                            <p><%= loan_officer.phone1.present? ? remove_unnecessary_keywords(loan_officer.phone1) : remove_unnecessary_keywords(loan_officer.phone2)%></p>
-                           <p><%= remove_unnecessary_keywords(loan_officer.email)%></p>
                        </div>
-                     </div>  
-                   <%end%> 
+                     </div>
+                   <%end%>
                   <%else%>
-                      <div class="tabs-data-row">
-                           No Records Found
-                      </div>
-                  <%end%> 
+                     <div class="tabs-data-row">
+                        No Records Found
+                     </div>
+                  <%end%>
             </div>
             <!--Used Car Loans Officers mobile tabs end-->
             <div class="tabs-data-main tabs-accordians-box">
                <div class="panel-group">
-                  <div class="panel panel-default">
-                     <div class="panel-heading tabs-data-hdng">
-                        <a class="accordion-toggle" data-toggle="collapse" href="#collapse1">Integrity Home Margooge</br>
-                        George Makrides</br>
-                        Martgoge Loan Origiotor</a>
-                     </div>
-                     <div id="collapse1" class="panel-collapse collapse">
-                        <div class="tabs-data-row">
-                           <div class="col-xs-12 col-md-12">
-                              <h5>Address</h5>
-                              <p>5300 Westview Dr ste 108</p>
-                              <p>Frederick MD</p>
-                           </div>
-                           <div class="col-xs-12 col-md-12">
-                              <h5>Contact</h5>
-                              <p>Ph   (301) 639-0804</p>
-                              <p>Fax  (301) 639-0804</p>
-                              <p>adfdgdsg@personal.com</p>
-                              <a href="">Link to stie</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="panel panel-default">
-                     <div class="panel-heading tabs-data-hdng"> 
-                        <a class="accordion-toggle" data-toggle="collapse" href="#collapse2">Integrity Home Margooge</br>
-                        George Makrides</br>
-                        Martgoge Loan Origiotor</a>
-                     </div>
-                     <div id="collapse2" class="panel-collapse collapse">
-                        <div class="tabs-data-row">
-                           <div class="col-xs-12 col-md-12">
-                              <h5>Address</h5>
-                              <p>5300 Westview Dr ste 108</p>
-                              <p>Frederick MD</p>
-                           </div>
-                           <div class="col-xs-12 col-md-12">
-                              <h5>Contact</h5>
-                              <p>Ph   (301) 639-0804</p>
-                              <p>Fax  (301) 639-0804</p>
-                              <p>adfdgdsg@personal.com</p>
-                              <a href="">Link to stie</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="panel panel-default">
-                     <div class="panel-heading tabs-data-hdng"> 
-                        <a class="accordion-toggle" data-toggle="collapse" href="#collapse3">Integrity Home Margooge</br>
-                        George Makrides</br>
-                        Martgoge Loan Origiotor</a>
-                     </div>
-                     <div id="collapse3" class="panel-collapse collapse">
-                        <div class="tabs-data-row">
-                           <div class="col-xs-12 col-md-12">
-                              <h5>Address</h5>
-                              <p>5300 Westview Dr ste 108</p>
-                              <p>Frederick MD</p>
-                           </div>
-                           <div class="col-xs-12 col-md-12">
-                              <h5>Contact</h5>
-                              <p>Ph   (301) 639-0804</p>
-                              <p>Fax  (301) 639-0804</p>
-                              <p>adfdgdsg@personal.com</p>
-                              <a href="">Link to stie</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                 <%if @loan_officers.present?%>
+                    <%@loan_officers.first(3).each_with_index do |loan_officer, i|%>
+                      <div class="panel panel-default">
+                         <div class="panel-heading tabs-data-hdng">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%=i.to_s%>">
+                              <%= remove_unnecessary_keywords(loan_officer.first)+' '+ remove_unnecessary_keywords(loan_officer.try(:last))%>
+                              </br>
+                              <%= remove_unnecessary_keywords(loan_officer.title)%>
+                            </a>
+                         </div>
+                         <div id="collapse_<%=i.to_s%>" class="panel-collapse collapse">
+                            <div class="tabs-data-row">
+                               <div class="col-xs-12 col-md-12">
+                                  <h5>Contact</h5>
+                                  <p><%= loan_officer.phone1.present? ? remove_unnecessary_keywords(loan_officer.phone1) : remove_unnecessary_keywords(loan_officer.phone2)%></p>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                     <%end%>
+                  <%else%>
+                    <div class="tabs-data-row">
+                      No Records Found
+                    </div>
+                <%end%>
                </div>
             </div>
-            <a href="" class="show-all-specialst-btn blue_button">Show all Auto Loan Officers</a>
          </div>
-         <!-- Car Loans Officers section end-->       
+         <!-- Car Loans Officers section end-->
          <!-- News on Car section start-->
          <div class="volume-auto-loan full-width loan-detail-blocks">
             <h2 class="tab_blue_content">News on Personal Loans From <%=@bank.name%></h2>
@@ -349,7 +303,7 @@
                      </h6>
 
                   </div>
-            <%end%> 
+            <%end%>
             <%else%>
                <div class="car-auto-loan-news">
                      No Records Found
@@ -359,7 +313,7 @@
          </div>
          <!-- News on Car section end-->
          <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-            <h3 class="tab_blue_content">Personal Loans From Bank Similar to <%=@bank.name%></h3>
+            <h3 class="tab_blue_content">Personal Loans From Banks Similar to <%=@bank.name%></h3>
                <div class="car-auto-loan-othr-bank">
                <%if @near_by_banks.present? %>
                <%@near_by_banks.each do |nbb|%>
@@ -369,12 +323,12 @@
              <%else%>
                   No Records Found
                <%end%>
-         <!-- Loans From Similar Bank end-->   
+         <!-- Loans From Similar Bank end-->
       </div>
    </section>
-   <!-- search result feed end--> 
-   
-   <!-- advance search mobile start--> 
+   <!-- search result feed end-->
+
+   <!-- advance search mobile start-->
    <div class="modal fade" id="advance-srch-mb" role="dialog">
       <div class="modal-dialog">
          <div class="modal-content">
@@ -477,4 +431,4 @@
          </div>
       </div>
    </div>
-   <!-- advance search mobile end-->     
+   <!-- advance search mobile end-->
