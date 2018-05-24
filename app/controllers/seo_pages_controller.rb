@@ -24,7 +24,6 @@ class SeoPagesController < ApplicationController
     @loan_officers= LoanOfficer.loan_officers_list(@bank.name, 'home')
     @loan_officers= LoanOfficer.loan_officers_list(@bank.name, 'mortgage')    unless @loan_officers.present?
     @security = FdicSecurity.find_by(cert: @bank.cert)
-    @us_govt_obl = FdicUsGovernmentObligation.find_by(cert: @bank.cert)
     @good_will = FdicGoodwillAndOtherIntangible.find_by(cert: @bank.cert)
     @managed_assets = FdicTotalManagedAssetsHeldInFiduciaryAccount.find_by(cert: @bank.cert)
     @net_loan_and_leases = FdicNetLoansAndLease.find_by(cert: @bank.cert)
@@ -37,8 +36,6 @@ class SeoPagesController < ApplicationController
     @loss_share = FdicCarryingAmountOfAssetsCoveredByFdicLossShareAgreement.find_by(cert: @bank.cert)
     @bank_assets_and_sec = FdicBankAssetsSoldAndSecuritized.find_by(cert: @bank.cert)
     @max_amt_and_credit = FdicMaximumAmountOfCreditExposureRetained.find_by(cert: @bank.cert)
-    @unused_commitments = FdicUnusedCommitment.find_by(cert: @bank.cert)
-    @loan_charges_off = FdicLoanChargeOffsAndRecovery.find_by(cert: @bank.cert)
   end  
 
   def bank_auto_loans
@@ -48,9 +45,7 @@ class SeoPagesController < ApplicationController
     @past_due_and_assets = FdicPastDueAndNonaccrualAsset.find_by(cert: @bank.cert)
     @bank_assets_and_sec = FdicBankAssetsSoldAndSecuritized.find_by(cert: @bank.cert)
     @max_amt_and_credit = FdicMaximumAmountOfCreditExposureRetained.find_by(cert: @bank.cert)
-    @unused_commitments = FdicUnusedCommitment.find_by(cert: @bank.cert)
     @loan_charges_off = FdicLoanChargeOffsAndRecovery.find_by(cert: @bank.cert)
-    @net_loan_and_leases = FdicNetLoansAndLease.find_by(cert: @bank.cert)
   end
 
   private

@@ -15,7 +15,7 @@
                      <img src="/assets/star_03.png" alt="">
                   </div>
                </h3>
-               <p><%=@bank.name%> makes <%= @net_loan_and_leases.present? ?  number_to_currency(@net_loan_and_leases.lnlsgr, precision: 0) : '$0' %> total loans annually of which <%= @net_loan_and_leases.present? ? number_to_currency(@net_loan_and_leases.lnauto, precision: 0) : '$0' %> are auto loans, amounting to <%=auto_loan_per_calculation(@net_loan_and_leases)%> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are $ <%=@max_amt_and_credit.present? ? @max_amt_and_credit.szioauto.present? ? number_to_currency(@max_amt_and_credit.szioauto, precision: 0) : 0 : 0%>.</p>
+               <p><%=@bank.name%> makes <%= @net_loan_and_leases.present? ?  number_to_currency(@net_loan_and_leases.lnlsgr, precision: 0) : '$0' %> total loans annually of which <%= @net_loan_and_leases.present? ? number_to_currency(@net_loan_and_leases.lnauto, precision: 0) : '$0' %> are auto loans, amounting to <%=auto_loan_per_calculation(@net_loan_and_leases)%> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are <%=@max_amt_and_credit.present? ? @max_amt_and_credit.szioauto.present? ? number_to_currency(@max_amt_and_credit.szioauto, precision: 0) : 0 : 0%>.</p>
                <div class="space-row"></div>
                <p> Below are some other banks and lending institutions that specialize in low-cost auto and car loans for your research.</p>
                <span href="" id="para-see-more-link">See More</span>
@@ -117,85 +117,25 @@
          <h2 class="tab_blue_content">Volume of Auto Loan at <%=@bank.name%></h2>
          <div class="volume-auto-loan-row">
             <p class="vol-row-inner">Consumer Loans - Auto</p>
-            <span><%=@net_loan_and_leases.present? ? number_to_currency(@net_loan_and_leases.lnauto, precision: 0) : '$0'%></span>
-         </div>
-         <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">30-89 Days P/D Auto Loans</p>
-            <span><%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.p3auto, precision: 0) : '$0'%></span>
-         </div>
-         <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">90+ Days P/D Auto Loans</p>
-            <span><%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.p9auto, precision: 0) : '$0'%></span>
+            <span><%=@net_loan_and_leases.present? ? number_to_currency(@net_loan_and_leases.lnauto.to_f * 1000, precision: 0) : '$0' %></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
             <p class="vol-row-inner">Nonaccrual Auto Loans</p>
-            <span><%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.naauto, precision: 0) : '$0' %></span>
+            <span><%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.naauto.to_f * 1000, precision: 0) : '$0' %></span>
          </div>
-         <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Bank Securitization Activities, Principal Balance Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.szlauto.present? ? number_to_currency(@bank_assets_and_sec.szlauto,precision: 0) : '$0' : '$0' %></span>
-         </div>
-         <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Past Due Loan Amounts 30-89 Days Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.sz30auto.present? ? number_to_currency(@bank_assets_and_sec.sz30auto, precision: 0) : '$0' : '$0' %></span>
-         </div>
-         <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Past Due Loan Amounts 90 Days or More Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.sz90auto.present? ? number_to_currency(@bank_assets_and_sec.sz90auto, precision: 0 ) : '$0' : '$0' %></span>
-         </div>
-         <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Charge-Offs On Assets Sold And Securitized Auto Loans</p>
-            <span><%= @bank_assets_and_sec.present? ? @bank_assets_and_sec.szdrauto.present? ? number_to_currency(@bank_assets_and_sec.szdrauto, precision: 0) : '$0' : '$0' %></span>
-         </div>
-         <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Recoveries On Assets Sold and Securitized Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.szcrauto.present? ? number_to_currency(@bank_assets_and_sec.szcrauto, precision: 0) : '$0' : '$0' %></span>
-         </div>
+         
          <div class="volume-auto-loan-row bg-white">
             <p class="vol-row-inner">Assets Sold With Recourse Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.asdrauto.present? ? number_to_currency(@bank_assets_and_sec.asdrauto,precision: 0) : '$0' : '$0' %></span>
+            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.asdrauto.present? ? number_to_currency(@bank_assets_and_sec.asdrauto.to_f * 1000, precision: 0) : '$0' : '$0' %></span>
          </div>
 
          <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Maximum Amount of Credit Exposure, Retained Interest Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.szioauto.present? ? number_to_currency(@max_amt_and_credit.szioauto, precision: 0) : '$0' : '$0'%></span>
-         </div>
-         <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Maximum Amount of Credit Exposure, Subordinated Securities Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.szsscaut.present? ? number_to_currency(@max_amt_and_credit.szsscaut, precision: 0) : '$0' : '$0'%></span>
-         </div>
-         <div class="volume-auto-loan-row">
             <p class="vol-row-inner">Maximum Amount of Credit Exposure, Standby Letters of Credit Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.idslcaut.present? ? number_to_currency(@max_amt_and_credit.idslcaut,precision: 0) : '$0' : '$0'%></span>
+            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.idslcaut.present? ? number_to_currency(@max_amt_and_credit.idslcaut.to_f * 1000, precision: 0) : '$0' : '$0'%></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
             <p class="vol-row-inner">Maximum Amount of Credit Exposure, Credit Enhancements Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.enceauto.present? ? number_to_currency(@max_amt_and_credit.enceauto, precision: 0) : '$0' : '$0'%></span>
-         </div>
-         <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Maximum Amount of Credit Exposure, Bank Asset Sales Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.asceauto.present? ? number_to_currency(@max_amt_and_credit.asceauto, precision: 0) : '$0' : '$0' %></span>
-         </div>
-
-         <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Reporting Bank's Unused Commitments Auto Loans</p>
-            <span><%=@unused_commitments.present? ? number_to_currency(@unused_commitments.szucauto, precision: 0) : '$0'%></span>
-         </div>
-         <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Reporting Bank's Unused Commitments, Liquidity Auto Loans</p>
-            <span><%=@unused_commitments.present? ? number_to_currency(@unused_commitments.ucszauto, precision: 0)  :  '$0'%></span>
-         </div>
-         <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Auto Loans Charge-Offs</p>
-            <span><%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.drauto, precision: 0) : '$0'%></span>
-         </div>
-         <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Auto Loans - Recoveries</p>
-            <span><%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.crauto, precision: 0) : '$0'%></span>
-         </div>
-         <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Auto Loans - Net Charge-Offs</p>
-            <span><%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.ntauto, precision: 0) : '$0'%></span>
+            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.enceauto.present? ? number_to_currency(@max_amt_and_credit.enceauto.to_f * 1000, precision: 0) : '$0' : '$0'%></span>
          </div>
 
          <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
