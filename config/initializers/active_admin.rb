@@ -269,7 +269,16 @@ config.register_javascript 'https://www.google.com/jsapi'
         end
       end
     end  
-
+  # Dropdown menu for FreddieMac & FreddieMacCache
+    config.namespace :admin do |admin|
+      admin.build_menu do |menu|
+        menu.add :label => "Freddie Data" do |sites|
+          sites.add :label => "FreddieMac", :url => "/admin/freddie_macs"
+          sites.add :label => "FreddieMacCache", :url => "/admin/freddie_mac_caches"
+        end
+      end
+    end
+       
 
   # == Pagination
   #

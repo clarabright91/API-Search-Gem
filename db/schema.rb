@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503062627) do
+ActiveRecord::Schema.define(version: 20180524103601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
+  enable_extension "hstore"
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -1340,6 +1341,15 @@ ActiveRecord::Schema.define(version: 20180503062627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cert"], name: "index_fdic_us_government_obligations_on_cert"
+  end
+
+  create_table "freddie_mac_caches", force: :cascade do |t|
+    t.integer "city_id"
+    t.integer "cached_year"
+    t.hstore "freddie_data"
+    t.string "loan_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "freddie_mac_loan_originations", force: :cascade do |t|

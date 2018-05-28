@@ -460,7 +460,9 @@
                           <p><%= remove_unnecessary_keywords(loan_officer.title)%></p>
                       </div>
                       <div class="col-xs-12 col-md-6">
-                          <p><%= loan_officer.phone1.present? ? remove_unnecessary_keywords(loan_officer.phone1) : remove_unnecessary_keywords(loan_officer.phone2)%></p>
+                          <p><%= loan_officer.phone1.present? ? mobile_no_formatting(loan_officer.phone1) : 
+                          loan_officer.phone2.present? ? mobile_no_formatting(loan_officer.phone2) : mobile_no_formatting(loan_officer.cell)%>
+                          </p>
                       </div>
                     </div>
                   <%end%>
@@ -487,7 +489,7 @@
                         <div class="tabs-data-row">
                            <div class="col-xs-12 col-md-12">
                               <h5>Contact</h5>
-                              <p><%= loan_officer.phone1.present? ? remove_unnecessary_keywords(loan_officer.phone1) : remove_unnecessary_keywords(loan_officer.phone2)%></p>
+                              <p><%= loan_officer.phone1.present? ? mobile_no_formatting(loan_officer.phone1) : mobile_no_formatting(loan_officer.phone2)%></p>
                            </div>
                         </div>
                      </div>

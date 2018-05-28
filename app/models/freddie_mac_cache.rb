@@ -1,0 +1,2 @@
+class FreddieMacCache < ApplicationRecord
+end

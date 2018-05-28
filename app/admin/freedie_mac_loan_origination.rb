@@ -2,7 +2,7 @@ ActiveAdmin.register FreddieMacLoanOrigination, as: "FreddieMac"  do
   # Permitting Strong parameters
   actions :all, except: [:new, :edit, :destroy]
   permit_params :credit_score, :first_payment_date, :first_time_home_buyer_flag, :maturity_date,:metropolitan_statistical_area,:mortgage_insurance_percentage,:number_of_units, :occupancy_status,:original_combined_loan_to_value,:original_debt_to_income_ratio,:original_upb,:original_loan_to_value,:original_interest_rate, :channel,:prepayment_penalty_mortgage_flag, :product_type, :property_state, :property_type, :postal_code,:loan_sequence_number,:loan_purpose,:original_loan_term,:number_of_borrowers, :seller_name, :service_name, :super_conforming_flag, :pre_harp_loan_sequence_number
-
+  menu false
   action_item 'Back', only: :show do
     link_to('Back', :back)
   end

@@ -8,13 +8,35 @@ class SeoPagesController < ApplicationController
   def city_home_mortgage_rates
     @news_articles = news_article_data(' mortgage')
     # for report section fetching all cities record similer to current city 
-    @header, @report = historial_rates_report(@similer_cities, 'P')
+    cached_data = FreddieMacCache.find_by(city_id: params[:city_id], loan_type: 'P')
+    if cached_data.present?
+      @header = eval(cached_data.freddie_data.first(1).to_h.values.first).keys.sort
+      @report = cached_data.freddie_data
+      @flag = true
+    else
+      @header, @report = historial_rates_report(@similer_cities, 'P')
+      @flag = false
+      FreddieMacWorker.perform_async(params[:city_id],'P',@header, @report.to_json)
+    end 
+    #section end
     @loan_companies = FactualMortgageCompany.loan_companies_for_city(@city.zip)
   end 
 
   def city_home_refinance_rates
     @news_articles = news_article_data(' refinance')
-    @header, @report = historial_rates_report(@similer_cities, 'N')
+    # for report section fetching all cities record similer to current city
+    # for loan type N & C
+    cached_data = FreddieMacCache.find_by(city_id: params[:city_id], loan_type: 'N') 
+    if cached_data.present?
+      @header = eval(cached_data.freddie_data.first(1).to_h.values.first).keys.sort
+      @report = cached_data.freddie_data
+      @flag = true
+    else
+      @header, @report = historial_rates_report(@similer_cities, 'N')
+      @flag = false
+      FreddieMacWorker.perform_async(params[:city_id],'N',@header, @report.to_json)
+    end
+    #section end  
     @loan_officers = LoanOfficer.loan_officers_for_city(@city.zip)
   end 
 

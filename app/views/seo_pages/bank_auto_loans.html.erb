@@ -143,7 +143,7 @@
       <!--Volume of Auto Loan end-->
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->
       <div class="volume-auto-loan loan-chargeoff-recovry">
-         <h2 class="tab_blue_content"><%=@bank.name%> Personal Loan Chargeoffs, Recoveries </h2>
+         <h2 class="tab_blue_content"><%=@bank.name%> Auto Loan Chargeoffs, Recoveries </h2>
          <p> For <%=@bank.name%>'s assets sold and securitized auto loans, the charge-offs amount to <%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szdrauto, precision: 0) : '$0'%> and the recoveries amount to <%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szcrauto, precision: 0) : '$0'%>.
          <p>
          For general car loans, the charge-offs amount to <%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.drauto, precision: 0) : '$0'%> and the recoveries amount to <%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.crauto, precision: 0) : '$0'%>. This results in a net charge-offs of automobile loans debited to the allowance for loan and lease losses of <%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.ntauto, precision: 0) : '$0'%>.
@@ -173,7 +173,8 @@
                         <p><%= remove_unnecessary_keywords(loan_officer.title)%></p>
                     </div>
                     <div class="col-xs-12 col-md-6">
-                        <p><%= loan_officer.phone1.present? ? remove_unnecessary_keywords(loan_officer.phone1) : remove_unnecessary_keywords(loan_officer.phone2)%>%></p>
+                         <p><%= loan_officer.phone1.present? ? mobile_no_formatting(loan_officer.phone1) : 
+                          loan_officer.phone2.present? ? mobile_no_formatting(loan_officer.phone2) : mobile_no_formatting(loan_officer.cell)%></p>
                     </div>
                   </div>
                 <%end%>
@@ -200,7 +201,7 @@
                        <div class="tabs-data-row">
                           <div class="col-xs-12 col-md-12">
                              <h5>Contact</h5>
-                             <p><%= loan_officer.phone1.present? ? remove_unnecessary_keywords(loan_officer.phone1) : remove_unnecessary_keywords(loan_officer.phone2)%></p>
+                              <p><%= loan_officer.phone1.present? ? mobile_no_formatting(loan_officer.phone1) : mobile_no_formatting(loan_officer.phone2)%></p>
                           </div>
                        </div>
                     </div>
