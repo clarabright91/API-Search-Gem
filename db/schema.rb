@@ -1350,6 +1350,7 @@ ActiveRecord::Schema.define(version: 20180524103601) do
     t.string "loan_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_freddie_mac_caches_on_city_id"
   end
 
   create_table "freddie_mac_loan_originations", force: :cascade do |t|
