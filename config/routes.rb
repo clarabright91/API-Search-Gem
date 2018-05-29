@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get '/profile', to: 'pages#user_profile'
   put '/update_profile', to: 'pages#update_profile' 
   get '/pages/:page_slug',to: 'pages#show', as: 'show_cms_pages'
+  
+  get '/city_freddie_cache_data', to: 'pages#city_freddie_cache_data', as: 'city_freddie_cache_data'  
+
   # for dynamic cmspages
   #CmsPage.load                      if CmsPage.present?
 

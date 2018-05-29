@@ -4,11 +4,15 @@ class FreddieMacWorker
   def perform(city_id,loan_type,header_array, main_hash)
     data = JSON.parse(main_hash)
     begin
-      FreddieMacCache.create!(city_id: city_id, cached_year: Date.today.year, freddie_data: data, loan_type: loan_type )
+      FreddieMacCache.find_or_initialize_by(city_id: city_id, loan_type: loan_type) do |fmc|
+       fmc.cached_year = Date.today.year
+       fmc.freddie_data = data
+       fmc.save!
+      end 
     rescue => e
       p e.messages
-    ensure
-      GC.start
+    # ensure
+    #   GC.start
     end
   end 
 

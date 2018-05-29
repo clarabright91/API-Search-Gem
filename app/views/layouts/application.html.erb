@@ -38,6 +38,10 @@
             <%= flash[:danger]%>
         </div> 
       <%end%>
+      <noscript>
+        <div class="alert alert-danger"> It seems that javascript is disbabled from your browser, Please enable javascript or change the browser for better performance. 
+        </div>
+      </noscript>
       <!-- rendering header partial  -->
       <%= render 'partials/header' %>
 	    <%= yield %>
@@ -48,4 +52,3 @@
     </div> <!-- wrapper end-->
   </body>
 </html>
-

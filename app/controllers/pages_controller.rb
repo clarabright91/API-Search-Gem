@@ -68,6 +68,11 @@ class PagesController < ApplicationController
     redirect_to admin_root_path, notice: 'Selected Users Deactivated Succesfully.'
   end
 
+  def city_freddie_cache_data
+    FreddieMacCacheWorker.perform_async
+    redirect_to admin_freddie_mac_caches_path, notice: 'Data Cache start for Cities.'  
+  end   
+
   private
     def update_statue
       all_ids = params[:id].reject{|a| a.blank?}

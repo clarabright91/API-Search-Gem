@@ -1,65 +1,42 @@
-module SeoPagesHelper
+class FreddieMacCacheWorker
+  include Sidekiq::Worker
+  sidekiq_options :retry => 2
 
-  def remove_unnecessary_keywords(arg)
-    return arg.gsub('�', ' ')  if arg.present?
+  def perform
+    @count = 0  
+    City.all.group_by(&:state_code).each do |state, city|
+      city.each do |c|
+        @count += 1
+        sleep(5)  if @count % 200 == 0
+        all_zip_code = City.where(city: c.city, state_code: c.state_code).pluck(:zip)
+        mortgage_result = common_report_section(all_zip_code, 'P')
+            freedie_cache_data(mortgage_result.to_json, 'P', c.id) # for mortgage 
+        n_refinance_result = common_report_section(all_zip_code, 'N')
+            freedie_cache_data(n_refinance_result.to_json, 'N', c.id) # for refinance Non-cash out
+        c_refinance_result = common_report_section(all_zip_code, 'C')
+            freedie_cache_data(c_refinance_result.to_json, 'C', c.id) # for refinance Cash out         
+      end 
+    end
   end  
-
-  #for removing special chars & formatting contact numbers
-  def mobile_no_formatting(arg)
-    if arg.present?                               
-      if arg.downcase.include?('toll') || arg.downcase.include?('phone') || arg.downcase.include?('direct') || arg.downcase.include?('office')
-        return number_to_phone(arg.gsub(/[^\d,\.]/, '').to_i, area_code: true)
-      elsif arg.downcase.include?('ext')
-        phone_number = arg.downcase.split('ext')
-        phone = if phone_number[0].to_i == 0 || phone_number[0].to_i.to_s.size < 10
-          number_to_phone(phone_number[0].gsub!(/[^0-9A-Za-z]/, '').to_i, area_code: true)
-        else
-         number_to_phone(phone_number[0].to_i, area_code: true)
-        end
-       return phone.to_s + ' Ext'+ remove_unnecessary_keywords(phone_number[1])
-      elsif arg.include?('(') || arg.include?(')') || arg.include?('-') || arg.include?('.') || arg.include?(' ')
-       return  number_to_phone(arg.gsub!(/[^0-9A-Za-z]/, '').to_i, area_code: true)    
-      else
-        return number_to_phone(arg.to_i, area_code: true) 
-      end
+  
+  def freedie_cache_data(main_hash, loan_type, city_id)
+    begin
+      data = JSON.parse(main_hash)
+      FreddieMacCache.find_or_initialize_by(city_id: city_id, loan_type: loan_type) do |fmcd|
+        fmcd.cached_year = Date.today.year
+        fmcd.freddie_data = data
+        fmcd.save!
+      end  
+    rescue => e
+      #byebug
+      p e.message
+     # ensure
+     #   GC.start
     end
-
-  end
-
-  def auto_loan_per_calculation(net_loan_and_leases)
-    if net_loan_and_leases.present?
-      a = if net_loan_and_leases.lnlsgr.present?
-             net_loan_and_leases.lnlsgr
-            else
-                0
-            end 
-      b = if net_loan_and_leases.lnauto.present?
-            net_loan_and_leases.lnauto
-         else 
-            0
-         end
-    end
-    return a.to_i == 0 ? 0 : (b.to_f/a).round(2)          
-  end
-
-  def mortgage_loan_per_calculation(net_loan_and_leases)
-    if net_loan_and_leases.present?
-      a = if net_loan_and_leases.lnlsgr.present?
-             net_loan_and_leases.lnlsgr
-            else
-                0
-            end 
-      b = if net_loan_and_leases.lnre.present?
-            net_loan_and_leases.lnre
-         else 
-            0
-         end
-    end
-    return a.to_i == 0 ? 0 : (b.to_f/a).round(2)
   end  
 
   #dynamic report starts from here for both mortgage and refinance
-  def historial_rates_report(postal_codes, loan_purpose)
+  def common_report_section(postal_codes, loan_purpose)
     main_hash = {}
     year_hash_30 = {}
     avg_rate_hash_30 = {}
@@ -80,25 +57,20 @@ module SeoPagesHelper
     first_average_for_the_location = {}
     second_average_for_the_location = {}  
     average_for_the_location = {}
-    @header_array =[]
     #curent date for fetching required years & dates
     current_date = DateTime.now 
     start_year = current_date - 8.year
     end_year = current_date - 1.year
     #fetching all records for an city on the basis of all zip codes
-    #if loan_purpose == 'P'
-    complete_data =   FreddieMacLoanOrigination.where(postal_code: postal_codes, loan_purpose: loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)
-    # else 
-    #   FreddieMacLoanOrigination.where(postal_code: postal_codes).where.not(loan_purpose: 'P').where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)
-    # end 
+      complete_data = FreddieMacLoanOrigination.where(postal_code: postal_codes, loan_purpose: loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)
+    
       (current_date.year-8..current_date.year-1).each do |year|
         date = DateTime.new(year)
         year_start = date.beginning_of_year
         year_end = date.end_of_year
         complete_year_data = complete_data.where("first_payment_date >= ? and first_payment_date <= ?", year_start, year_end)
         complete_year_data_count = complete_year_data.count
-        #header
-        @header_array << year
+    
         # for 30 year data
         yr_data_30 = complete_year_data.where(original_loan_term: 360)
         year_hash_30[year] = yr_data_30.count.to_f*100/complete_year_data_count
@@ -164,7 +136,7 @@ module SeoPagesHelper
           main_hash['% No cash-out refinance'] = second_average_for_the_location
           main_hash['Avg mortgage insurance %'] =  average_for_the_location 
         end 
-      return @header_array, main_hash
+      return main_hash
   end  
 
-end
+end    

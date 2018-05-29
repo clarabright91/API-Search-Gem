@@ -77,14 +77,18 @@ class SeoPagesController < ApplicationController
       if city_home.present?
         @city = city_home
         @state = state_full_name(city_home.state_code, false) 
-        @near_by_cities = []
-        City.where(state_code: city_home.state_code).where.not(city: @city.city).group_by(&:city).each do |key, val|
-          if val.count == 1
-            @near_by_cities << val
-          else
-            @near_by_cities << val.first
-          end
-        end         
+        g_city = City.where('zip > ?',@city.zip).limit(50).select('distinct on (city) *').to_a
+        l_city = City.where('zip < ?',@city.zip).limit(50).select('distinct on (city) *').to_a
+        @near_by_cities = g_city + l_city
+        #old logic
+        #@near_by_cities = []
+        #City.where(state_code: city_home.state_code).where.not(city: @city.city).group_by(&:city).each do |key, val|
+          #if val.count == 1
+            #@near_by_cities << val
+          #else
+           # @near_by_cities << val.first
+          #end
+        #end         
        @similer_cities = City.where(city: @city.city, state_code: @city.state_code).pluck(:zip) 
       else
         content_not_found
