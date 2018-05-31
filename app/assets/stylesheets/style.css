@@ -1505,3 +1505,5 @@ header .navbar-brand img { max-width: 140px;}
 
 .row-bordr-botom{ border-bottom: 2px solid #19214d; }
 .data-table-inner.table-responsive.main-table-grapg-box td:first-child{ text-align: center; }
+.data-table-inner.table-responsive.main-table-grapg-box th{ border-bottom: none; }
+.data-table-inner.table-responsive.main-table-grapg-box th:last-child{ border-right: none; }
