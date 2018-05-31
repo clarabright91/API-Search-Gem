@@ -30,13 +30,12 @@ class NewsWorker
         if parsed_data['value'].present?
           begin
             parsed_data['value'].first(50).each do |data|
-              NewsArticle.find_or_initialize_by(headline: data['name'], search_term: nsh.search_term, api_type: BING_NEWS_API_TYPE) do |api_record|
+              api_record = NewsArticle.find_or_create_by(headline: data['name'], search_term: nsh.search_term, api_type: BING_NEWS_API_TYPE)
                api_record.url = data['url']
                api_record.text = data['description']
                api_record.author = data['provider'].first['name']
                api_record.date_article = data['datePublished']
                api_record.save!
-              end
             end
           rescue => e
             #p  e.message
@@ -69,7 +68,7 @@ class NewsWorker
         if nyt_parsed_data['response'].present?
           begin
             nyt_parsed_data['response']['docs'].first(50).each do |nyt_data|
-              NewsArticle.find_or_initialize_by(api_type: NYT_NEWS_API_TYPE, article_id: nyt_data['_id']) do |api_data|
+              api_data = NewsArticle.find_or_create_by(api_type: NYT_NEWS_API_TYPE, article_id: nyt_data['_id'])
                 api_data.search_term = nsh.search_term
                 api_data.headline = nyt_data['headline']['main']
                 api_data.url = nyt_data['web_url']
@@ -77,7 +76,6 @@ class NewsWorker
                 api_data.author = nyt_data['byline'].present? ? nyt_data['byline']['organization'] : nil
                 api_data.date_article = nyt_data['pub_date'].present? ? nyt_data['pub_date'] : nil
                 api_data.save!
-              end
             end
           rescue => e
             #p  e.message

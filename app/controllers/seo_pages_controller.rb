@@ -45,29 +45,16 @@ class SeoPagesController < ApplicationController
     #fetch loanofficer data using fuzzy search on the basis of search terms      
     @loan_officers= LoanOfficer.loan_officers_list(@bank.name, 'home')
     @loan_officers= LoanOfficer.loan_officers_list(@bank.name, 'mortgage')    unless @loan_officers.present?
-    @security = FdicSecurity.find_by(cert: @bank.cert)
-    @good_will = FdicGoodwillAndOtherIntangible.find_by(cert: @bank.cert)
-    @managed_assets = FdicTotalManagedAssetsHeldInFiduciaryAccount.find_by(cert: @bank.cert)
-    @net_loan_and_leases = FdicNetLoansAndLease.find_by(cert: @bank.cert)
   end
     
   def bank_personal_loans 
     @news_articles = bank_news_article(" personal loans")
     @loan_officers = LoanOfficer.loan_officers_list(@bank.name,'personal')
-    @past_due_and_assets = FdicPastDueAndNonaccrualAsset.find_by(cert: @bank.cert)
-    @loss_share = FdicCarryingAmountOfAssetsCoveredByFdicLossShareAgreement.find_by(cert: @bank.cert)
-    @bank_assets_and_sec = FdicBankAssetsSoldAndSecuritized.find_by(cert: @bank.cert)
-    @max_amt_and_credit = FdicMaximumAmountOfCreditExposureRetained.find_by(cert: @bank.cert)
   end  
 
   def bank_auto_loans
     @news_articles = bank_news_article(" auto loans")
     @loan_officers = LoanOfficer.loan_officers_list(@bank.name,'auto')
-    @net_loan_and_leases = FdicNetLoansAndLease.find_by(cert: @bank.cert)
-    @past_due_and_assets = FdicPastDueAndNonaccrualAsset.find_by(cert: @bank.cert)
-    @bank_assets_and_sec = FdicBankAssetsSoldAndSecuritized.find_by(cert: @bank.cert)
-    @max_amt_and_credit = FdicMaximumAmountOfCreditExposureRetained.find_by(cert: @bank.cert)
-    @loan_charges_off = FdicLoanChargeOffsAndRecovery.find_by(cert: @bank.cert)
   end
 
   private
@@ -107,6 +94,7 @@ class SeoPagesController < ApplicationController
         @bank = bank_home
         @state_code = state_full_name(bank_home.stname, true)
         @near_by_banks = FdicInstitution.near_by_banks(bank_home.cert)
+        @fdic_cal_data = FdicCalculation.find_by(cert: params[:cert])
       else
         content_not_found
       end  

@@ -15,7 +15,7 @@
                      <img src="/assets/star_03.png" alt="">
                   </div>
                </h3>
-               <p><%=@bank.name%> makes <%= @net_loan_and_leases.present? ?  number_to_currency(@net_loan_and_leases.lnlsgr, precision: 0) : '$0' %> total loans annually of which <%= @net_loan_and_leases.present? ? number_to_currency(@net_loan_and_leases.lnauto, precision: 0) : '$0' %> are auto loans, amounting to <%=auto_loan_per_calculation(@net_loan_and_leases)%> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are <%=@max_amt_and_credit.present? ? @max_amt_and_credit.szioauto.present? ? number_to_currency(@max_amt_and_credit.szioauto, precision: 0) : 0 : 0%>.</p>
+               <p><%=@bank.name%> makes <%= number_to_currency(@fdic_cal_data.a_lnlsgr, precision: 0)%> total loans annually of which <%= number_to_currency(@fdic_cal_data.a_lnauto, precision: 0)%> are auto loans, amounting to <%= (@fdic_cal_data.a_lnauto/@fdic_cal_data.a_lnlsgr).round(2) %> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are <%=number_to_currency(@fdic_cal_data.a_szioauto, precision: 0)%>.</p>
                <div class="space-row"></div>
                <p> Below are some other banks and lending institutions that specialize in low-cost auto and car loans for your research.</p>
                <span href="" id="para-see-more-link">See More</span>
@@ -116,26 +116,51 @@
       <div class="volume-auto-loan">
          <h2 class="tab_blue_content">Volume of Auto Loan at <%=@bank.name%></h2>
          <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Consumer Loans - Auto</p>
-            <span><%=@net_loan_and_leases.present? ? number_to_currency(@net_loan_and_leases.lnauto.to_f * 1000, precision: 0) : '$0' %></span>
+            <p class="vol-row-inner">Auto loans -consolidated basis</p>
+            <span><%=number_to_currency(@fdic_cal_data.a_lnauto * 1000, precision: 0)%></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Nonaccrual Auto Loans</p>
-            <span><%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.naauto.to_f * 1000, precision: 0) : '$0' %></span>
+            <p class="vol-row-inner">Auto loans -nonaccrual automobile loans to individuals</p>
+            <span><%=number_to_currency(@fdic_cal_data.a_naauto * 1000, precision: 0)%></span>
          </div>
          
          <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Assets Sold With Recourse Auto Loans</p>
-            <span><%=@bank_assets_and_sec.present? ? @bank_assets_and_sec.asdrauto.present? ? number_to_currency(@bank_assets_and_sec.asdrauto.to_f * 1000, precision: 0) : '$0' : '$0' %></span>
+            <p class="vol-row-inner">Auto loans -assets sold with recourse</p>
+            <span><%=number_to_currency(@fdic_cal_data.a_asdrauto * 1000, precision: 0)%></span>
          </div>
 
          <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Maximum Amount of Credit Exposure, Standby Letters of Credit Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.idslcaut.present? ? number_to_currency(@max_amt_and_credit.idslcaut.to_f * 1000, precision: 0) : '$0' : '$0'%></span>
+            <p class="vol-row-inner">Auto loans -maximum exposure due to letters of credit</p>
+            <span><%=number_to_currency(@fdic_cal_data.a_idslcaut * 1000, precision: 0)%></span>
          </div>
          <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Maximum Amount of Credit Exposure, Credit Enhancements Auto Loans</p>
-            <span><%=@max_amt_and_credit.present? ? @max_amt_and_credit.enceauto.present? ? number_to_currency(@max_amt_and_credit.enceauto.to_f * 1000, precision: 0) : '$0' : '$0'%></span>
+            <p class="vol-row-inner">Auto loans -credit enhancements</p>
+            <span><%=number_to_currency(@fdic_cal_data.a_enceauto * 1000, precision: 0)%></span>
+         </div>
+        
+          <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Bank securitization, principal balance on auto loans</p>
+            <span><%=number_to_currency(@fdic_cal_data.a_szlauto * 1000, precision: 0)%></span>
+         </div>
+
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Credit exposure in retained interest in auto loans</p>
+            <span><%=number_to_currency(@fdic_cal_data.a_szioauto * 1000, precision: 0)%></span>
+         </div>
+
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Credit exposure in subordinated securities in auto loans</p>
+            <span><%=number_to_currency(@fdic_cal_data.a_szsscaut * 1000, precision: 0)%></span>
+         </div>
+
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Bank's unused commitments auto loans</p>
+            <span><%=number_to_currency(@fdic_cal_data.a_szucauto * 1000, precision: 0)%></span>
+         </div>
+
+         <div class="volume-auto-loan-row bg-white">
+            <p class="vol-row-inner">Bank's unused commitments liquidity auto loans</p>
+            <span><%=number_to_currency(@fdic_cal_data.a_ucszauto * 1000, precision: 0)%></span>
          </div>
 
          <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
@@ -144,15 +169,16 @@
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->
       <div class="volume-auto-loan loan-chargeoff-recovry">
          <h2 class="tab_blue_content"><%=@bank.name%> Auto Loan Chargeoffs, Recoveries </h2>
-         <p> For <%=@bank.name%>'s assets sold and securitized auto loans, the charge-offs amount to <%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szdrauto, precision: 0) : '$0'%> and the recoveries amount to <%=@bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szcrauto, precision: 0) : '$0'%>.
+         <p> For <%=@bank.name%>'s assets sold and securitized auto loans, the charge-offs amount to <%=number_to_currency(@fdic_cal_data.a_szdrauto, precision: 0)%> and the recoveries amount to <%=  number_to_currency(@fdic_cal_data.try(:a_szcrauto), precision: 0)%> XX .
          <p>
-         For general car loans, the charge-offs amount to <%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.drauto, precision: 0) : '$0'%> and the recoveries amount to <%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.crauto, precision: 0) : '$0'%>. This results in a net charge-offs of automobile loans debited to the allowance for loan and lease losses of <%=@loan_charges_off.present? ? number_to_currency(@loan_charges_off.ntauto, precision: 0) : '$0'%>.
+          <!-- a_szcrauto column not -->
+         For general car loans, the charge-offs amount to <%=number_to_currency(@fdic_cal_data.a_drauto, precision: 0)%> and the recoveries amount to <%=number_to_currency(@fdic_cal_data.a_crauto, precision: 0)%>. This results in a net charge-offs of automobile loans debited to the allowance for loan and lease losses of <%=number_to_currency(@fdic_cal_data.a_ntauto, precision: 0)%>.
          </p>
          <p>
             An additional figure for loan performance are automobile loans to individuals for household, family and other personal expenditures that are past due  still and accruing interest.
          </p>
          <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+ days</p>
-         <p class="loan-chargeoff-recovry-inner-data"><span><%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.p3auto, precision: 0) : '$0'%></span> <%=@past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.p9auto, precision: 0) : '$0'%></p>
+         <p class="loan-chargeoff-recovry-inner-data"><span><%= number_to_currency(@fdic_cal_data.a_p3auto, precision: 0)%></span> <%=number_to_currency(@fdic_cal_data.a_p9auto, precision: 0)%></p>
          <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
       </div>
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section end-->

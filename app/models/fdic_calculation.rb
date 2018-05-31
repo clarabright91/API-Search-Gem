@@ -1,0 +1,2 @@
+class FdicCalculation < ApplicationRecord
+end

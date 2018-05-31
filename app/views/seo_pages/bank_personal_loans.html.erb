@@ -16,7 +16,7 @@
                      </div>
                   </h3>
                   <p>
-                     <%=@bank.name%> is very active in personal loans, with a total carrying amount of loans to individuals for household, family and other personal expenditures that are covered by FDIC loss-sharing agreements of  <%= @loss_share.present? ?  number_to_currency(@loss_share.lcon, precision: 0): '$0' %>. Nonaccrual other loans from <%=@bank.name%> to individuals for household, family and other personal expenditures on a consolidated basis amount to <%= @past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.naconoth, precision: 0) : '$0' %>.
+                     <%=@bank.name%> is very active in personal loans, with a total carrying amount of loans to individuals for household, family and other personal expenditures that are covered by FDIC loss-sharing agreements of  <%= number_to_currency(@fdic_cal_data.p_lcon, precision: 0) %>. Nonaccrual other loans from <%=@bank.name%> to individuals for household, family and other personal expenditures on a consolidated basis amount to <%= number_to_currency(@fdic_cal_data.p_naconoth, precision: 0)%>.
                   </p>
                   <div class="space-row"> </div>
                   <p>Below are some other banks and lending institutions that specialize in personal loans for you to compare. </p>
@@ -109,30 +109,46 @@
             </div>
          </div>
          <!--Avant Personal Loans end-->
-
          <!--Volume of Personal Loan start-->
          <div class="volume-auto-loan">
             <h2 class="tab_blue_content">Volume of Personal Loan at <%=@bank.name%></h2>
-            
             <div class="volume-auto-loan-row bg-white">
-               <p class="vol-row-inner">Maximum Amount of Credit Exposure, Retained Interest Other Consumer Loans</p>
-               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.sziocon.present? ? number_to_currency(@max_amt_and_credit.sziocon.to_f * 1000, precision: 0) : '$0' : '$0'  %></span>
+               <p class="vol-row-inner">Personal loans -retained interest</p>
+               <span><%= number_to_currency(@fdic_cal_data.p_sziocon * 1000, precision: 0)%></span>
             </div>
             <div class="volume-auto-loan-row">
-               <p class="vol-row-inner">Maximum Amount of Credit Exposure, Subordinated Securities Other Consumer Loans</p>
-               <span><%= @max_amt_and_credit.present? ? @max_amt_and_credit.szssccon.present? ? number_to_currency(@max_amt_and_credit.szssccon.to_f * 1000, precision: 0) : '$0' : '$0' %></span>
+               <p class="vol-row-inner">Personal loans -subordinated securities</p>
+               <span><%= number_to_currency(@fdic_cal_data.p_szssccon * 1000, precision: 0)%></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
-               <p class="vol-row-inner">Maximum Amount of Credit Exposure, Standby Letters of Credit Other Consumer Lns</p>
-               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.idslccon.present? ? number_to_currency(@max_amt_and_credit.idslccon.to_f * 1000, precision: 0) : '$0' : '$0' %></span>
+               <p class="vol-row-inner">Personal loans -standby letters of credit</p>
+               <span><%= number_to_currency(@fdic_cal_data.p_idslccon * 1000, precision: 0)%></span>
             </div>
             <div class="volume-auto-loan-row">
-               <p class="vol-row-inner">Maximum Amount of Credit Exposure, Credit Enhancements Other Consumer Loans</p>
-               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.encecon.present? ? number_to_currency(@max_amt_and_credit.encecon.to_f * 1000, precision: 0) : '$0' : '$0' %></span>
+               <p class="vol-row-inner">Personal loans -credit enhancements</p>
+               <span><%= number_to_currency(@fdic_cal_data.p_encecon * 1000, precision: 0)%></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
-               <p class="vol-row-inner">Maximum Amount of Credit Exposure, Bank Asset Sales Other Consumer Loans</p>
-               <span><%= @max_amt_and_credit.present? ?  @max_amt_and_credit.ascecons.present? ? number_to_currency(@max_amt_and_credit.ascecons.to_f * 1000, precision: 0) : '$0'  : '$0' %></span>
+               <p class="vol-row-inner">Personal loans -bank asset sales</p>
+               <span><%= number_to_currency(@fdic_cal_data.p_ascecons * 1000, precision: 0) %></span>
+            </div>
+
+
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Consumer assets sold with recourse </p>
+               <span><%= number_to_currency(@fdic_cal_data.p_asdrcons * 1000, precision: 0)%></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Consumer loan charge-offs</p>
+               <span><%= number_to_currency(@fdic_cal_data.p_drconoth * 1000, precision: 0)%></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Consumer loan recoveries</p>
+               <span><%= number_to_currency(@fdic_cal_data.p_crconoth * 1000, precision: 0)%></span>
+            </div>
+            <div class="volume-auto-loan-row bg-white">
+               <p class="vol-row-inner">Consumer loan net charge-offs</p>
+               <span><%= number_to_currency(@fdic_cal_data.p_ntconoth * 1000, precision: 0)%></span>
             </div>
 
             <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
@@ -141,16 +157,16 @@
          <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->
          <div class="volume-auto-loan loan-chargeoff-recovry">
             <h2 class="tab_blue_content"><%=@bank.name%> Personal Loan Chargeoffs, Recoveries  </h2>
-            <p>For <%=@bank.name%>'s assets sold And securitized by other consumer personal loans, the charge-offs amount to <%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szdrcon, precision: 0) : '$0'%> and the recoveries amount to <%= @bank_assets_and_sec.present? ? number_to_currency(@bank_assets_and_sec.szcrcon, precision: 0) : '$0'  %> .
+            <p>For <%=@bank.name%>'s assets sold And securitized by other consumer personal loans, the charge-offs amount to <%= number_to_currency(@fdic_cal_data.p_szdrcon, precision: 0)%> and the recoveries amount to <%= number_to_currency(@fdic_cal_data.p_szcrcon, precision: 0)%> .
                </p>
                <p>
                An additional figure for personal loan performance are other consumer loans to individuals for household, family and other personal expenditures that are past due still and accruing interest:
                </p>
             <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+ days</p>
-            <p class="loan-chargeoff-recovry-inner-data"><span><%= @past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.p9conoth, precision: 0) : '$0'  %></span> <%= @past_due_and_assets.present? ? number_to_currency(@past_due_and_assets.naconoth, precision: 0 ): '$0'  %></p>
+            <p class="loan-chargeoff-recovry-inner-data"><span><%= number_to_currency(@fdic_cal_data.p_p9conoth, precision: 0)%></span> <%= number_to_currency(@fdic_cal_data.p_naconoth, precision: 0 )%></p>
             <div class="loan-chargeoff-recovry-inner-hdng">With FDIC Loss-sharing Agreements</div>
             <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+ days</p>
-            <p class="loan-chargeoff-recovry-inner-data"><span><%= @loss_share.present? ? number_to_currency(@loss_share.p3lcon, precision: 0) : '$0' %></span> <%= @loss_share.present? ? number_to_currency(@loss_share.p9lcon, precision: 0) : '$0' %></p>
+            <p class="loan-chargeoff-recovry-inner-data"><span><%= number_to_currency(@fdic_cal_data.p_p3lcon, precision: 0)%></span> <%= number_to_currency(@fdic_cal_data.p_p9lcon, precision: 0)%></p>
             <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
          </div>
          <!--Bank of America Personal Loan Chargeoffs, Recoveries section end-->

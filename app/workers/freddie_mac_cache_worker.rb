@@ -22,13 +22,11 @@ class FreddieMacCacheWorker
   def freedie_cache_data(main_hash, loan_type, city_id)
     begin
       data = JSON.parse(main_hash)
-      FreddieMacCache.find_or_initialize_by(city_id: city_id, loan_type: loan_type) do |fmcd|
+      fmcd = FreddieMacCache.find_or_create_by(city_id: city_id, loan_type: loan_type)
         fmcd.cached_year = Date.today.year
         fmcd.freddie_data = data
-        fmcd.save!
-      end  
+        fmcd.save! 
     rescue => e
-      #byebug
       p e.message
      # ensure
      #   GC.start

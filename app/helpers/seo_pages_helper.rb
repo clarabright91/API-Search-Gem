@@ -26,38 +26,6 @@ module SeoPagesHelper
 
   end
 
-  def auto_loan_per_calculation(net_loan_and_leases)
-    if net_loan_and_leases.present?
-      a = if net_loan_and_leases.lnlsgr.present?
-             net_loan_and_leases.lnlsgr
-            else
-                0
-            end 
-      b = if net_loan_and_leases.lnauto.present?
-            net_loan_and_leases.lnauto
-         else 
-            0
-         end
-    end
-    return a.to_i == 0 ? 0 : (b.to_f/a).round(2)          
-  end
-
-  def mortgage_loan_per_calculation(net_loan_and_leases)
-    if net_loan_and_leases.present?
-      a = if net_loan_and_leases.lnlsgr.present?
-             net_loan_and_leases.lnlsgr
-            else
-                0
-            end 
-      b = if net_loan_and_leases.lnre.present?
-            net_loan_and_leases.lnre
-         else 
-            0
-         end
-    end
-    return a.to_i == 0 ? 0 : (b.to_f/a).round(2)
-  end  
-
   #dynamic report starts from here for both mortgage and refinance
   def historial_rates_report(postal_codes, loan_purpose)
     main_hash = {}
