@@ -580,7 +580,7 @@
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
                           <%end%>
                         </tr>
-                        <tr>
+                        <tr class="row-bordr-botom">
                           <td> avg mortgage rate</td>
                           <%eval(@report['avg rate(5 yr)']).each do |k,v|%>
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
@@ -604,13 +604,13 @@
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
                           <%end%>
                         </tr>
-                        <tr>
+                        <tr class="row-bordr-botom">
                           <td>Avg DTI (debt to income) </td>
                           <%eval(@report['Avg DTI (debt to income)']).each do |k,v|%>
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
                           <%end%>
                         </tr>
-                        <tr>
+                        <tr >
                           <td>% First time homebuyer </td>
                           <%eval(@report['% First time homebuyer']).each do |k,v|%>
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
@@ -631,24 +631,39 @@
                             <tr>
                               <%if @count <=10%>
                                 <%if @count % 2 == 0%>
-                                  <td> avg mortgage rate</td>
+                                  <%if @count == 10 %>
+                                    <td class ="row-bordr-botom"> avg mortgage rate</td>
+                                  <%else%>
+                                    <td> avg mortgage rate</td>
+                                  <%end%>                                
                                 <%else%>
                                     <td><%=term%></td>
                                 <%end%>
                               <%else%>
-                                <td><%=term%></td>
+                                <%if @count == 14%>
+                                  <td class ="row-bordr-botom"><%=term%></td>
+                                <%else%>
+                                    <td><%=term%></td>
+                                <%end%>
                               <%end%>
                               <%report.each do |re,val|%>
-                              <%if @count <= 10 %>
-                                <td><%=val.to_s == 'NaN' ? '' : val == 0.0 || val ==  nil ? '' : val.round(2).to_s+'%'%></td>
-                              <%else%>
-                                <td><%=val.to_s == 'NaN' || val ==  nil ? '' : val.round(2)%></td>
+                                <%if @count <= 10  %> 
+                                  <%if @count == 10%>
+                                    <td class ="row-bordr-botom" ><%=val.to_s == 'NaN' || val == 0.0  ? '' : val == 0.0 || val ==  nil ? '' : val.round(2).to_s+'%'%></td>
+                                  <%else%>
+                                    <td><%=val.to_s == 'NaN' || val == 0.0  ? '' : val == 0.0 || val ==  nil ? '' : val.round(2).to_s+'%'%></td> 
+                                  <%end%>  
+                                <%else%>
+                                    <%if @count == 14%>
+                                      <td class ="row-bordr-botom"><%=val.to_s == 'NaN' || val ==  nil || val == 0.0  ? '' : val.round(2)%></td>
+                                    <%else%>
+                                      <td><%=val.to_s == 'NaN' || val ==  nil || val == 0.0  ? '' : val.round(2)%></td>       
+                                    <%end%>
+                                <%end%>
                               <%end%>
-                            <%end%>
                             </tr>
                         <%end%>
                     <%end%>    
-
                   </tbody>
                 </table>
               </div>
