@@ -141,8 +141,8 @@
                 FDIC Certificate Number - <%=@bank.cert%></br>
                 <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
              </p>
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ?number_to_currency(@bank.asset, precision: 0) : '$0' %></p>
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ?number_to_currency(@bank.dep, precision: 0) : '$0' %></p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency(@bank.asset, precision: 0) : '$0' %></p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency(@bank.dep, precision: 0) : '$0' %></p>
           </div>
        </div>
        <!--Bank of America Mortgage Overview end-->

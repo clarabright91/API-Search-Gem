@@ -13,6 +13,8 @@ class CsvDb
               LoanOfficer.create!(new_hash)
             elsif selected_model == 'FdicInstitution'
               FdicInstitution.create!(new_hash)
+            elsif selected_model == 'FdicCalculation'
+              FdicCalculation.create!(new_hash)
             elsif selected_model == 'FactualMortgageCompany'
               FactualMortgageCompany.create!(new_hash)
             elsif selected_model == 'City'
