@@ -169,7 +169,7 @@
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->
       <div class="volume-auto-loan loan-chargeoff-recovry">
          <h2 class="tab_blue_content"><%=@bank.name%> Auto Loan Chargeoffs, Recoveries </h2>
-         <p> For <%=@bank.name%>'s assets sold and securitized auto loans, the charge-offs amount to <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.a_szdrauto * 1000, precision: 0) : '$0'%> and the recoveries amount to <%#= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.try(:a_szcrauto) * 1000, precision: 0) : '$0'%>.
+         <p> For <%=@bank.name%>'s assets sold and securitized auto loans, the charge-offs amount to <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.a_szdrauto * 1000, precision: 0) : '$0'%> and the recoveries amount to <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.a_szcrauto * 1000, precision: 0) : '$0'%>.
          <p>
           <!-- a_szcrauto column not -->
          For general car loans, the charge-offs amount to <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.a_drauto * 1000, precision: 0) : '$0'%> and the recoveries amount to <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.a_crauto * 1000, precision: 0) : '$0'%>. This results in a net charge-offs of automobile loans debited to the allowance for loan and lease losses of <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.a_ntauto * 1000, precision: 0) : '$0'%>.
