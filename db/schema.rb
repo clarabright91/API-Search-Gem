@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180530103504) do
+ActiveRecord::Schema.define(version: 20180601074802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -382,6 +382,7 @@ ActiveRecord::Schema.define(version: 20180530103504) do
     t.float "a_lnlsgr"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "a_szcrauto"
     t.index ["cert"], name: "index_fdic_calculations_on_cert", unique: true
   end
 

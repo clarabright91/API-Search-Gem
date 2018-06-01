@@ -66,8 +66,8 @@ class SeoPagesController < ApplicationController
         @state = state_full_name(city_home.state_code, false) 
         all_city = City.where.not(city: @city.city).where(state_code: @city.state_code).select('distinct on (city) *')
         uniq_city_ids= all_city.to_a.pluck(:id)
-        g_city = all_city.where('zip > ?', @city.zip).limit(50).where(id: uniq_city_ids)
-        l_city = all_city.where('zip < ?',@city.zip).limit(50).where(id: uniq_city_ids)
+        g_city = all_city.where('zip > ?', @city.zip).limit(3).where(id: uniq_city_ids)
+        l_city = all_city.where('zip < ?',@city.zip).limit(2).where(id: uniq_city_ids)
         @near_by_cities = g_city + l_city
         #old logic
         #@near_by_cities = []
