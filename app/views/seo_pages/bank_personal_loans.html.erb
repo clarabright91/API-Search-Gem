@@ -29,8 +29,8 @@
                         FDIC Certificate Number - <%=@bank.cert%></br>
                         <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
                      </p>
-               <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency(@bank.asset, precision: 0) : '$0'%></p>
-               <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency(@bank.dep, precision: 0) : '$0'%></p>
+               <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency(asset_and_dep_formatting(@bank.asset) * 1000, precision: 0) : '$0'%></p>
+               <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency(asset_and_dep_formatting(@bank.dep) * 1000, precision: 0) : '$0'%></p>
             </div>
          </div>
          <!--Bank of America Personal Loans end-->
@@ -57,7 +57,8 @@
             </div>
             <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
                <img src="/assets/seo-prsnl-loan-img1.png" alt="">
-               <a href="" class="apply-btn">Apply</a>
+               <!-- <a href="" class="apply-btn">Apply</a> -->
+               <%=link_to 'Apply',"https://www.lendingclub.com/loans/personal-loans", target: :_blank, class: "apply-btn"%>
             </div>
          </div>
          <!--Lending Club Personal Loans end-->
@@ -81,7 +82,8 @@
             </div>
             <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
                <img src="/assets/seo-prsnl-loan-img3.png" alt="">
-               <a href="" class="apply-btn">Apply</a>
+               <!-- <a href="" class="apply-btn">Apply</a> -->
+               <%=link_to 'Apply',"https://www.prosper.com", target: :_blank, class: "apply-btn"%>
             </div>
          </div>
          <!--Prosper Personal Loans end-->
@@ -105,7 +107,8 @@
             </div>
             <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
                <img src="/assets/seo-prsnl-loan-img2.png" alt="">
-               <a href="" class="apply-btn">Apply</a>
+               <!-- <a href="" class="apply-btn">Apply</a> -->
+               <%=link_to 'Apply',"https://www.avant.com/personal-loans", target: :_blank, class: "apply-btn"%>
             </div>
          </div>
          <!--Avant Personal Loans end-->
@@ -233,7 +236,7 @@
          <!-- Car Loans Officers section end-->
          <!-- News on Car section start-->
          <div class="volume-auto-loan full-width loan-detail-blocks">
-            <h2 class="tab_blue_content">News on Personal Loans From <%=@bank.name%></h2>
+            <h2 class="tab_blue_content">News on Personal Loans from <%=@bank.name%></h2>
              <%if @news_articles.present?%>
               <%@news_articles.each do |na|%>
                   <div class="car-auto-loan-news">
@@ -253,7 +256,7 @@
          </div>
          <!-- News on Car section end-->
          <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-            <h3 class="tab_blue_content">Personal Loans From Banks Similar to <%=@bank.name%></h3>
+            <h3 class="tab_blue_content">Personal Loans from Banks Similar to <%=@bank.name%></h3>
                <div class="car-auto-loan-othr-bank">
                <%if @near_by_banks.present? %>
                <%@near_by_banks.each do |nbb|%>

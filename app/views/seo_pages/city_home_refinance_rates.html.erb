@@ -591,7 +591,7 @@
                           <%end%>
                         </tr>
                         <tr>
-                          <td> Avg LTV (loan to value)</td>
+                          <td class="class-right"> Avg LTV (loan to value)</td>
                           <%eval(@report['Avg LTV (loan to value']).each do |k,v|%>
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
                           <%end%>
@@ -603,7 +603,7 @@
                           <%end%>
                         </tr>
                         <tr class="row-bordr-botom">
-                          <td>Avg DTI (debt to income) </td>
+                          <td class="class-right">Avg DTI (debt to income) </td>
                           <%eval(@report['Avg DTI (debt to income)']).each do |k,v|%>
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
                           <%end%>
@@ -615,7 +615,7 @@
                           <%end%>
                         </tr>
                         <tr>
-                          <td> % No cash-out refinance</td>
+                          <td class="class-right">% No cash-out refinance</td>
                           <%eval(@report['% No cash-out refinance']).each do |k,v|%>
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
                           <%end%>
@@ -816,17 +816,22 @@
         <button class= "show-all-specialst-btn" id="desktop_loan_off_data">Show all Morgage Specialists </button>
        </div>
        <div class="volume-auto-loan full-width loan-detail-blocks">
-          <h3>News on Refinances and Reverse Refinances For <%=@city.city%>, <%=state_full_name(@state)%></h3>
+          <h3>News on Low Cost Refi's for <%=@city.city%>, <%=state_full_name(@state)%></h3>
+          <%if @news_articles.present?%>
+            <%@news_articles.each do |na|%>
+              <div class="car-auto-loan-news">
+                 <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
+                 <h6>
+                    <p><%=na.text.truncate(200)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                 </h6>
 
-          <%@news_articles.each do |na|%>
-            <div class="car-auto-loan-news">
-               <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
-               <h6>
-                  <p><%=na.text.truncate(200)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
-               </h6>
-
+              </div>
+            <%end%>
+          <%else%>
+            <div class="tabs-data-row no-record-box">
+              No Record Found
             </div>
-          <%end%>
+          <%end%>  
           <a href="" class="see-more-link-common">See More Recent News</a>
        </div>
        <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">

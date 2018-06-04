@@ -66,8 +66,8 @@ class SeoPagesController < ApplicationController
         @state = state_full_name(city_home.state_code, false) 
         all_city = City.where.not(city: @city.city).where(state_code: @city.state_code).select('distinct on (city) *')
         uniq_city_ids= all_city.to_a.pluck(:id)
-        g_city = all_city.where('zip > ?', @city.zip).limit(3).where(id: uniq_city_ids)
-        l_city = all_city.where('zip < ?',@city.zip).limit(2).where(id: uniq_city_ids)
+        g_city = all_city.where('zip > ?', @city.zip).limit(50).where(id: uniq_city_ids).to_a.last(3)
+        l_city = all_city.where('zip < ?',@city.zip).limit(50).where(id: uniq_city_ids).to_a.first(2)
         @near_by_cities = g_city + l_city
         #old logic
         #@near_by_cities = []
@@ -85,13 +85,13 @@ class SeoPagesController < ApplicationController
     end  
 
     def news_article_data(flag)
-      city_news_articles = NewsArticle.where("search_term = ? OR search_term = ?", @city.city+flag, @city.city+', '+@state+flag)
+      city_news_articles = NewsArticle.where("search_term = ? OR search_term = ?", @city.city+flag, @city.city+', '+@city.state_code+flag)
       return city_news_articles.order(id: :desc).first(10)
     end
 
     def bank_home
       bank_home = FdicInstitution.find_by(cert: params[:cert])
-      if bank_home.present?
+      if bank_home.present? && bank_home.used
         @state =  bank_home.stname
         @bank = bank_home
         @state_code = state_full_name(bank_home.stname, true)

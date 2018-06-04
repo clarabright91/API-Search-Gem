@@ -401,8 +401,8 @@ input.error { position:relative; left:0; bottom:0; font-size:18px; color:#929292
 .volume-auto-loan{ float:left; width:65%; margin:0 0 50px 0; padding:0; border-radius:0;}
 /*.volume-auto-loan h2{ padding:0; float: left; width: 100%; color: #19214d; font-size: 26px; margin: 0 0 25px 0; font-weight:bold;}*/
 .volume-auto-loan .volume-auto-loan-row{ padding:14px 17px; font-weight:normal; float: left; width: 100%; color: #19214d; font-size: 18px; margin: 0; background:#f1f1f1; line-height:normal;}
-.volume-auto-loan p.vol-row-inner{ padding:0; font-weight:normal; float: left; width: 85%; color: #19214d; font-size: 18px; margin: 0; background:none; line-height:normal;}
-.volume-auto-loan-row span{ float:right; width:14%; text-align:right;}
+.volume-auto-loan p.vol-row-inner{ padding:0; font-weight:normal; float: left; width: 80%; color: #19214d; font-size: 18px; margin: 0; background:none; line-height:normal;}
+.volume-auto-loan-row span{ float:right; width:19%; text-align:right; word-wrap: break-word;}
 .volume-auto-loan-row span b{ color:#fb6325; font-weight:normal;}
 .volume-auto-loan.loan-chargeoff-recovry p{ padding:0; line-height:32px; font-size:18px; font-weight:300; background:none; margin:0 0 20px 0; text-align:left;}
 .volume-auto-loan.loan-chargeoff-recovry p.loan-chargeoff-recovry-inner-data{ margin:0 0 5px 0;}
@@ -507,7 +507,7 @@ font-weight: bold;margin-top: 5px; min-height:50px;}
 .data-table-inner.table-responsive { float: left; width: 100%; margin:0;}
 .data-table-inner.table-responsive table{ margin:0;}
 .data-table-inner tr{ border:none;}
-.data-table-inner td, .data-table-inner th{ color:#19214d; font-size:18px; font-weight:normal; padding:15px 10px !important;  border-top:none !important; border-right:1px solid #c8d5e6; text-align:left; height:58px;}
+.data-table-inner td, .data-table-inner th{ color:#19214d; font-size:18px; font-weight:normal; padding:15px 10px !important;  border-top:none !important; border-right:1px solid #c8d5e6; text-align:center; height:58px;}
 .data-table-inner td:last-child{ border-right:none;}
 .table-data-box{ padding:0;}
 .row-bordr-botom td, .row-bordr-botom th{ border-bottom:2px solid #19214d;}
@@ -1504,6 +1504,16 @@ header .navbar-brand img { max-width: 140px;}
 #desktop_loan_off_data{ border: none; }
 
 .row-bordr-botom{ border-bottom: 2px solid #19214d; }
-.data-table-inner.table-responsive.main-table-grapg-box td:first-child{ text-align: center; }
+.data-table-inner.table-responsive.main-table-grapg-box td:first-child{ text-align: left; }
 .data-table-inner.table-responsive.main-table-grapg-box th{ border-bottom: none; }
 .data-table-inner.table-responsive.main-table-grapg-box th:last-child{ border-right: none; }
+.main-table-grapg-box .table-striped>tbody>tr td:first-child {
+    padding-left: 35px !important;
+}
+.main-table-grapg-box .table-striped>tbody>tr:nth-of-type(odd) td:first-child {
+    padding-left: 15px !important;
+}
+
+.main-table-grapg-box .table-striped tbody tr td.class-right{
+  padding-left: 15px!important;
+}

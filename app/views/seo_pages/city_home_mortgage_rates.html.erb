@@ -593,7 +593,7 @@
                           <%end%>
                         </tr>
                         <tr>
-                          <td> Avg LTV (loan to value)</td>
+                          <td class="class-right"> Avg LTV (loan to value)</td>
                           <%eval(@report['Avg LTV (loan to value']).each do |k,v|%>
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
                           <%end%>
@@ -605,7 +605,7 @@
                           <%end%>
                         </tr>
                         <tr class="row-bordr-botom">
-                          <td>Avg DTI (debt to income) </td>
+                          <td class="class-right">Avg DTI (debt to income) </td>
                           <%eval(@report['Avg DTI (debt to income)']).each do |k,v|%>
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
                           <%end%>
@@ -617,7 +617,7 @@
                           <%end%>
                         </tr>
                         <tr>
-                          <td> Avg mortgage insurance %</td>
+                          <td class="class-right"> Avg mortgage insurance %</td>
                           <%eval(@report['Mortgage insurance percentage']).each do |k,v|%>
                             <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
                           <%end%>
@@ -700,7 +700,7 @@
        <!-- Online Trends for Mortgage Rates end-->
        <div class="seo-auto-loan-tabs loan-detail-blocks">
           <h3><b>Recommended and Best <%=@city.city%>, <%=state_full_name(@state)%> Mortgage Companies</b>
-             <span>In Addition to online mortgage companies, here are some mortgage rate specialists in <%=@city.city%>, <%=state_full_name(@state)%>.</span>
+             <span>In addition to online mortgage companies, here are some mortgage rate specialists in <%=@city.city%>, <%=state_full_name(@state)%>.</span>
           </h3>
           <!--Used Car Loans desktop section end-->
           <div class="tabs-data-main desktop-tabs-data">
@@ -807,7 +807,7 @@
           <button class= "show-all-specialst-btn" id="desktop_loan_off_data">Show all Morgage Specialists </button>
        </div>
        <div class="volume-auto-loan full-width loan-detail-blocks">
-          <h3>News on Mortgages and Reverse Mortgages For <%=@city.city%>, <%=state_full_name(@state)%></h3>
+          <h3>News on Mortgages and Reverse Mortgages for <%=@city.city%>, <%=state_full_name(@state)%></h3>
             <%if @news_articles.present?%>
               <%@news_articles.each do |na|%>
                 <div class="car-auto-loan-news">

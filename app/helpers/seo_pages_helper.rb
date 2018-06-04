@@ -26,6 +26,14 @@ module SeoPagesHelper
 
   end
 
+  def asset_and_dep_formatting(val)
+    if val.present?
+      return val.gsub(',', '').to_i
+    else 
+      return 0
+    end
+  end
+
   #dynamic report starts from here for both mortgage and refinance
   def historial_rates_report(postal_codes, loan_purpose)
     main_hash = {}

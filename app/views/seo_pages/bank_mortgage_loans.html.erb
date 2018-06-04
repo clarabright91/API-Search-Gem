@@ -141,8 +141,8 @@
                 FDIC Certificate Number - <%=@bank.cert%></br>
                 <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
              </p>
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency(@bank.asset, precision: 0) : '$0' %></p>
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency(@bank.dep, precision: 0) : '$0' %></p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency(asset_and_dep_formatting(@bank.asset) * 1000, precision: 0) : '$0' %></p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency(asset_and_dep_formatting(@bank.dep) * 1000, precision: 0) : '$0' %></p>
           </div>
        </div>
        <!--Bank of America Mortgage Overview end-->
@@ -151,7 +151,7 @@
        </p>
        <!--30 Years feed start-->
        <div class="cntnt-list-box">
-          <h5>30-Year Fixed Rates Customized for <%= Date.today.strftime("%B %d")%></h5>
+          <h5>30-Year Fixed Rates Customized for <%= Date.today.strftime("%B %d, %Y")%></h5>
           <div class="cntnt-list-inner gray-bg col-md-12">
              <div class="inner-logo"><img src="/assets/pic1_06.png" alt="">
         <a href=""><%=@bank.name%></a>

@@ -27,8 +27,8 @@
                FDIC Certificate Number - <%=@bank.cert%></br>
                <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
             </p>
-            <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%=number_to_currency(@bank.asset, precision: 0)%></p>
-            <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= number_to_currency(@bank.dep, precision: 0)%></p>
+            <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%=number_to_currency(asset_and_dep_formatting(@bank.asset) * 1000 , precision: 0)%></p>
+            <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= number_to_currency(asset_and_dep_formatting(@bank.dep) * 1000, precision: 0)%></p>
          </div>
       </div>
       <!--Bank of America Auto Loans section end-->
@@ -55,7 +55,7 @@
          </div>
          <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
             <img src="/assets/seo-auto-loan-img2.png" alt="">
-            <a href="" class="apply-btn">Apply</a>
+            <%= link_to "Apply", "https://www.upstart.com", target: :_blank, class: 'apply-btn'%>
          </div>
       </div>
       </div>
@@ -81,7 +81,8 @@
          </div>
          <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
             <img src="/assets/seo-auto-loan-img3.png" alt="">
-            <a href="" class="apply-btn">Apply</a>
+            <!-- <a href="" class="apply-btn">Apply</a> -->
+            <%= link_to "Apply", "https://www.onemainfinancial.com/personal-loans/car-purchase", target: :_blank, class: 'apply-btn'%>
          </div>
       </div>
       </div>
@@ -107,7 +108,7 @@
          </div>
          <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
             <img src="/assets/seo-auto-loan-img1.png" alt="">
-            <a href="" class="apply-btn">Apply</a>
+            <%= link_to "Apply", "https://www.lightstream.com/auto-loans", target: :_blank, class: 'apply-btn'%>
          </div>
          </div>
       </div>
@@ -243,7 +244,7 @@
       </div>
       <!--Used Car Loans Officers section end-->
       <div class="volume-auto-loan full-width">
-         <h2 class="tab_blue_content">News on Car and Auto Loans From <%=@bank.name%></h2>
+         <h2 class="tab_blue_content">News on Car and Auto Loans from <%=@bank.name%></h2>
             <%if @news_articles.present? %>
             <%@news_articles.each do |na|%>
                <div class="car-auto-loan-news">
@@ -261,7 +262,7 @@
          <a href="" class="see-more-link-common">See More Recent News</a>
       </div>
       <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
-         <h3 class="tab_blue_content">Auto Loans From Banks Similar to <%=@bank.name%></h3>
+         <h3 class="tab_blue_content">Auto Loans from Banks Similar to <%=@bank.name%></h3>
          <div class="car-auto-loan-othr-bank">
             <%if @near_by_banks.present? %>
             <%@near_by_banks.each do |nbb|%>
