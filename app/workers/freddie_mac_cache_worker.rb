@@ -9,21 +9,24 @@ class FreddieMacCacheWorker
         @count += 1
         sleep(5)  if @count % 200 == 0
         zip_code = c.zip
-        mortgage_result = common_report_section(zip_code, 'P')
-            freedie_cache_data(mortgage_result.to_json, 'P', c.id) # for mortgage 
-        n_refinance_result = common_report_section(zip_code, 'N')
-            freedie_cache_data(n_refinance_result.to_json, 'N', c.id) # for refinance Non-cash out
-        c_refinance_result = common_report_section(zip_code, 'C')
-            freedie_cache_data(c_refinance_result.to_json, 'C', c.id) # for refinance Cash out         
+        # for mortgage
+        mortgage_result, zip_prefix_p = common_report_section(zip_code, 'P')
+          freedie_cache_data(mortgage_result.to_json, 'P', zip_prefix_p)  
+        # for refinance Non-cash out
+        n_refinance_result, zip_prefix_n  = common_report_section(zip_code, 'N')
+          freedie_cache_data(n_refinance_result.to_json, 'N', zip_prefix_n)
+        # for refinance Cash out   
+        c_refinance_result, zip_prefix_c = common_report_section(zip_code, 'C')
+          freedie_cache_data(c_refinance_result.to_json, 'C', zip_prefix_c)         
       end 
     end
   end  
   
-  def freedie_cache_data(main_hash, loan_type, city_id)
+  def freedie_cache_data(main_hash, loan_type, zip_prefix)
     begin
       ActiveRecord::Base.connection_pool.with_connection do
         data = JSON.parse(main_hash)
-        fmcd = FreddieMacCache.find_or_create_by(city_id: city_id, loan_type: loan_type)
+        fmcd = FreddieMacCache.find_or_create_by(zip_prefix: zip_prefix, loan_type: loan_type)
           fmcd.cached_year = Date.today.year
           fmcd.freddie_data = data
           fmcd.save!
@@ -64,9 +67,11 @@ class FreddieMacCacheWorker
     
     #fetching all records for an city on the basis of all zip codes
     complete_data =  FreddieMacLoanOrigination.where("postal_code::text like ? and  loan_purpose = ?","#{zip.to_s.first(3).to_i}%", loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)  
+        zip_prefix = zip.to_s.first(3) + '00'
 
     unless complete_data.present? 
       complete_data =  FreddieMacLoanOrigination.where("postal_code::text like ? and  loan_purpose = ?","#{zip.to_s.first(2).to_i}%", loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)
+        zip_prefix = zip.to_s.first(2) + '000'
     end   
 
       (current_date.year-8..current_date.year-1).each do |year|
@@ -141,7 +146,7 @@ class FreddieMacCacheWorker
           main_hash['% No cash-out refinance'] = second_average_for_the_location
           main_hash['Avg mortgage insurance %'] =  average_for_the_location 
         end 
-      return main_hash
+      return main_hash, zip_prefix
   end  
 
 end    

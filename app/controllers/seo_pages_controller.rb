@@ -8,15 +8,19 @@ class SeoPagesController < ApplicationController
   def city_home_mortgage_rates
     @news_articles = news_article_data(' mortgage')
     # for report section fetching all cities record similer to current city 
-    cached_data = FreddieMacCache.find_by(city_id: params[:city_id], loan_type: 'P')
+    cached_data = FreddieMacCache.find_by('zip_prefix like ? and loan_type = ?', "#{@city.zip.to_s.first(3)+ '%'}", 'P')
+    unless cached_data.present? 
+      cached_data = FreddieMacCache.find_by('zip_prefix like ? and loan_type = ?', "#{@city.zip.to_s.first(2)+ '%'}", 'P')
+    end
+
     if cached_data.present?
       @header = eval(cached_data.freddie_data.first(1).to_h.values.first).keys.sort
       @report = cached_data.freddie_data
       @flag = true
     else
-      @header, @report = historial_rates_report(@city.zip,'P')
+      @header, @report, zip_prefix = historial_rates_report(@city.zip,'P')
       @flag = false
-      FreddieMacWorker.perform_async(params[:city_id],'P',@header, @report.to_json)
+      FreddieMacWorker.perform_async(zip_prefix,'P',@header, @report.to_json)
     end 
     #section end
     @loan_companies = FactualMortgageCompany.loan_companies_for_city(@city.zip)
@@ -26,15 +30,19 @@ class SeoPagesController < ApplicationController
     @news_articles = news_article_data(' refinance')
     # for report section fetching all cities record similer to current city
     # for loan type N & C
-    cached_data = FreddieMacCache.find_by(city_id: params[:city_id], loan_type: 'N') 
+    cached_data = FreddieMacCache.find_by('zip_prefix like ? and loan_type = ?', "#{@city.zip.to_s.first(3)+ '%'}", 'N')
+    unless cached_data.present? 
+      cached_data = FreddieMacCache.find_by('zip_prefix like ? and loan_type = ?', "#{@city.zip.to_s.first(2)+ '%'}", 'N')
+    end  
+
     if cached_data.present?
       @header = eval(cached_data.freddie_data.first(1).to_h.values.first).keys.sort
       @report = cached_data.freddie_data
       @flag = true
     else
-      @header, @report = historial_rates_report(@city.zip, 'N')
+      @header, @report, zip_prefix = historial_rates_report(@city.zip, 'N')
       @flag = false
-      FreddieMacWorker.perform_async(params[:city_id],'N',@header, @report.to_json)
+      FreddieMacWorker.perform_async(zip_prefix,'N',@header, @report.to_json)
     end
     #section end  
     @loan_officers = LoanOfficer.loan_officers_for_city(@city.zip)

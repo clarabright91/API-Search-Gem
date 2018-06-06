@@ -63,9 +63,10 @@ module SeoPagesHelper
     end_year = current_date - 1.year
     #fetching all records for an city
     complete_data =  FreddieMacLoanOrigination.where("postal_code::text like ? and  loan_purpose = ?","#{zip.to_s.first(3).to_i}%", loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)  
-
+          zip_prefix = (zip.to_s.first(3)+ '00').to_i
     unless complete_data.present? 
       complete_data =  FreddieMacLoanOrigination.where("postal_code::text like ? and  loan_purpose = ?","#{zip.to_s.first(2).to_i}%", loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)
+          zip_prefix = (zip.to_s.first(2)+ '000' ).to_i
     end 
 
       (current_date.year-8..current_date.year-1).each do |year|
@@ -141,7 +142,7 @@ module SeoPagesHelper
           main_hash['% No cash-out refinance'] = second_average_for_the_location
           main_hash['Avg mortgage insurance %'] =  average_for_the_location 
         end 
-      return @header_array, main_hash
+      return @header_array, main_hash, zip_prefix
   end  
 
 end
