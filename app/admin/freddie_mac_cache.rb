@@ -1,7 +1,7 @@
 ActiveAdmin.register FreddieMacCache do
   config.filters = false
   actions :all, except: [:new, :edit, :destroy]
-  permit_params :city_id, :loan_type, :cached_year, :freddie_data
+  permit_params :zip_prefix, :loan_type, :cached_year, :freddie_data
   action_item 'Data Cache', only: :index do
     link_to 'Data Cache', city_freddie_cache_data_path, method: :get
   end
@@ -9,7 +9,7 @@ ActiveAdmin.register FreddieMacCache do
 
   index do
     selectable_column
-    column :city_id
+    column :zip_prefix
     column :loan_type
     column :cached_year
     column :created_at

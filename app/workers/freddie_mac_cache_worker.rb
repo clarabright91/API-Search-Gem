@@ -4,8 +4,8 @@ class FreddieMacCacheWorker
 
   def perform
     @count = 0  
-    City.all.group_by(&:state_code).each do |state, city|
-      city.each do |c|
+    #City.all.group_by(&:state_code).each do |state, city|
+      City.all.each do |c|
         @count += 1
         sleep(5)  if @count % 200 == 0
         zip_code = c.zip
@@ -19,7 +19,7 @@ class FreddieMacCacheWorker
         c_refinance_result, zip_prefix_c = common_report_section(zip_code, 'C')
           freedie_cache_data(c_refinance_result.to_json, 'C', zip_prefix_c)         
       end 
-    end
+    #end
   end  
   
   def freedie_cache_data(main_hash, loan_type, zip_prefix)
