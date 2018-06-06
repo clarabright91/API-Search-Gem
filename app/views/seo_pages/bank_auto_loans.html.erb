@@ -249,9 +249,9 @@
             <%@news_articles.each do |na|%>
                <div class="car-auto-loan-news">
                  <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
-                 <h6>
-                    <p><%=na.text.truncate(200)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
-                 </h6>
+                 
+                    <p><%=na.text.truncate(130)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                 
                </div>
             <%end%>
             <%else%>

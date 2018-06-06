@@ -806,16 +806,16 @@
           <!-- <a href= "" class="show-all-specialst-btn" >Show all Morgage Specialists</a> -->
           <button class= "show-all-specialst-btn" id="desktop_loan_off_data">Show all Morgage Specialists </button>
        </div>
+       
+
+
        <div class="volume-auto-loan full-width loan-detail-blocks">
           <h3>News on Mortgages and Reverse Mortgages for <%=@city.city%>, <%=state_full_name(@state)%></h3>
             <%if @news_articles.present?%>
               <%@news_articles.each do |na|%>
                 <div class="car-auto-loan-news">
                    <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
-                   <h6>
-                      <p><%=na.text.truncate(200)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
-                   </h6>
-
+                      <p><%=na.text.truncate(130)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
                 </div>
               <%end%>
             <%else%>
@@ -825,6 +825,8 @@
             <%end%>
            <a href="" class="see-more-link-common">See More Recent News</a>
        </div>
+
+
        <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
           <h3>Mortgage Rates around <%=@city.city%>, <%=state_full_name(@state)%></h3>
           <div class="car-auto-loan-othr-bank">

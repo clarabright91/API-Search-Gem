@@ -8,12 +8,12 @@ class FreddieMacCacheWorker
       city.each do |c|
         @count += 1
         sleep(5)  if @count % 200 == 0
-        all_zip_code = City.where(city: c.city, state_code: c.state_code).pluck(:zip)
-        mortgage_result = common_report_section(all_zip_code, 'P')
+        zip_code = c.zip
+        mortgage_result = common_report_section(zip_code, 'P')
             freedie_cache_data(mortgage_result.to_json, 'P', c.id) # for mortgage 
-        n_refinance_result = common_report_section(all_zip_code, 'N')
+        n_refinance_result = common_report_section(zip_code, 'N')
             freedie_cache_data(n_refinance_result.to_json, 'N', c.id) # for refinance Non-cash out
-        c_refinance_result = common_report_section(all_zip_code, 'C')
+        c_refinance_result = common_report_section(zip_code, 'C')
             freedie_cache_data(c_refinance_result.to_json, 'C', c.id) # for refinance Cash out         
       end 
     end
@@ -21,11 +21,13 @@ class FreddieMacCacheWorker
   
   def freedie_cache_data(main_hash, loan_type, city_id)
     begin
-      data = JSON.parse(main_hash)
-      fmcd = FreddieMacCache.find_or_create_by(city_id: city_id, loan_type: loan_type)
-        fmcd.cached_year = Date.today.year
-        fmcd.freddie_data = data
-        fmcd.save! 
+      ActiveRecord::Base.connection_pool.with_connection do
+        data = JSON.parse(main_hash)
+        fmcd = FreddieMacCache.find_or_create_by(city_id: city_id, loan_type: loan_type)
+          fmcd.cached_year = Date.today.year
+          fmcd.freddie_data = data
+          fmcd.save!
+      end     
     rescue => e
       p e.message
      # ensure
@@ -34,7 +36,7 @@ class FreddieMacCacheWorker
   end  
 
   #dynamic report starts from here for both mortgage and refinance
-  def common_report_section(postal_codes, loan_purpose)
+  def common_report_section(zip, loan_purpose)
     main_hash = {}
     year_hash_30 = {}
     avg_rate_hash_30 = {}
@@ -59,9 +61,14 @@ class FreddieMacCacheWorker
     current_date = DateTime.now 
     start_year = current_date - 8.year
     end_year = current_date - 1.year
-    #fetching all records for an city on the basis of all zip codes
-      complete_data = FreddieMacLoanOrigination.where(postal_code: postal_codes, loan_purpose: loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)
     
+    #fetching all records for an city on the basis of all zip codes
+    complete_data =  FreddieMacLoanOrigination.where("postal_code::text like ? and  loan_purpose = ?","#{zip.to_s.first(3).to_i}%", loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)  
+
+    unless complete_data.present? 
+      complete_data =  FreddieMacLoanOrigination.where("postal_code::text like ? and  loan_purpose = ?","#{zip.to_s.first(2).to_i}%", loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)
+    end   
+
       (current_date.year-8..current_date.year-1).each do |year|
         date = DateTime.new(year)
         year_start = date.beginning_of_year

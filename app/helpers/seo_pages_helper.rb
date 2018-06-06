@@ -35,7 +35,7 @@ module SeoPagesHelper
   end
 
   #dynamic report starts from here for both mortgage and refinance
-  def historial_rates_report(postal_codes, loan_purpose)
+  def historial_rates_report(zip, loan_purpose)
     main_hash = {}
     year_hash_30 = {}
     avg_rate_hash_30 = {}
@@ -61,12 +61,13 @@ module SeoPagesHelper
     current_date = DateTime.now 
     start_year = current_date - 8.year
     end_year = current_date - 1.year
-    #fetching all records for an city on the basis of all zip codes
-    #if loan_purpose == 'P'
-    complete_data =   FreddieMacLoanOrigination.where(postal_code: postal_codes, loan_purpose: loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)
-    # else 
-    #   FreddieMacLoanOrigination.where(postal_code: postal_codes).where.not(loan_purpose: 'P').where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)
-    # end 
+    #fetching all records for an city
+    complete_data =  FreddieMacLoanOrigination.where("postal_code::text like ? and  loan_purpose = ?","#{zip.to_s.first(3).to_i}%", loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)  
+
+    unless complete_data.present? 
+      complete_data =  FreddieMacLoanOrigination.where("postal_code::text like ? and  loan_purpose = ?","#{zip.to_s.first(2).to_i}%", loan_purpose).where("first_payment_date >= ? and first_payment_date <= ?", start_year.beginning_of_year, end_year.end_of_year)
+    end 
+
       (current_date.year-8..current_date.year-1).each do |year|
         date = DateTime.new(year)
         year_start = date.beginning_of_year

@@ -14,7 +14,7 @@ class SeoPagesController < ApplicationController
       @report = cached_data.freddie_data
       @flag = true
     else
-      @header, @report = historial_rates_report(@similer_cities, 'P')
+      @header, @report = historial_rates_report(@city.zip,'P')
       @flag = false
       FreddieMacWorker.perform_async(params[:city_id],'P',@header, @report.to_json)
     end 
@@ -32,7 +32,7 @@ class SeoPagesController < ApplicationController
       @report = cached_data.freddie_data
       @flag = true
     else
-      @header, @report = historial_rates_report(@similer_cities, 'N')
+      @header, @report = historial_rates_report(@city.zip, 'N')
       @flag = false
       FreddieMacWorker.perform_async(params[:city_id],'N',@header, @report.to_json)
     end
@@ -78,7 +78,6 @@ class SeoPagesController < ApplicationController
            # @near_by_cities << val.first
           #end
         #end         
-       @similer_cities = City.where(city: @city.city, state_code: @city.state_code).pluck(:zip) 
       else
         content_not_found
       end  

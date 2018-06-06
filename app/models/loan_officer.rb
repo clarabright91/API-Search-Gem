@@ -9,10 +9,14 @@ class LoanOfficer < ApplicationRecord
   end
 
   def self.loan_officers_for_city(zip) 
-   loan_officers =  where(zip: zip) 
-   loan_officers = where("zip::text like ?", "#{zip.to_s.first(4).to_i}%")   unless loan_officers.present?
-   loan_officers = where("zip::text like ?", "#{zip.to_s.first(3).to_i}%")   unless loan_officers.present?
-   return  loan_officers.order("RANDOM()").first(10)
+   loan_officers =  where(zip: zip)
+    unless loan_officers.count > 10 
+     loan_officers += where("zip::text like ?", "#{zip.to_s.first(4).to_i}%")
+    end
+    unless loan_officers.count > 10
+     loan_officers += where("zip::text like ?", "#{zip.to_s.first(3).to_i}%")
+    end
+   return loan_officers.first(10)
   end
 
 end
