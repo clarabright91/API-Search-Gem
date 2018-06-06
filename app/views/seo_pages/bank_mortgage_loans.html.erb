@@ -131,7 +131,7 @@
                 <h3><%=@bank.name%> Mortgage Overview</h3>
                 <p>The mortgage and refinance department of <%=@bank.name%> primarily focuses on residential mortgages, which includes privately issued residential mortgage-backed securities, US government agency and corporation issued obligations or guaranteed certification of participation in pools of residential mortgages, and mortgage-backed pass-through securities held-to-maturity at amoritized cost and available-for-sale at fair value. </p>
                 <div class="space-row"> </div>
-                <p>The total amount of outstanding residential mortgages is <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_idscod * 1000, precision: 0) : '$0'%> and total amount of outstanding commercial mortgages is <%=@fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_sccmmb * 1000, precision: 0) : '$0'%> . </p>
+                <p>The total amount of outstanding residential mortgages is <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_idscod * 1000).round(-3), precision: 0) : '$0'%> and total amount of outstanding commercial mortgages is <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_sccmmb * 1000).round(-3), precision: 0) : '$0'%> . </p>
                 <span href="" id="para-see-more-link">See More</span>
              </div>
           </div>
@@ -141,8 +141,8 @@
                 FDIC Certificate Number - <%=@bank.cert%></br>
                 <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
              </p>
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency(asset_and_dep_formatting(@bank.asset) * 1000, precision: 0) : '$0' %></p>
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency(asset_and_dep_formatting(@bank.dep) * 1000, precision: 0) : '$0' %></p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency((asset_and_dep_formatting(@bank.asset) * 1000).round(-3), precision: 0) : '$0' %></p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency((asset_and_dep_formatting(@bank.dep) * 1000).round(-3), precision: 0) : '$0' %></p>
           </div>
        </div>
        <!--Bank of America Mortgage Overview end-->
@@ -392,66 +392,66 @@
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Privately issued residential mortgage-backed securities
                          </p>
-                         <span> <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_idscod * 1000, precision: 0) : '$0'%></span>
+                         <span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_idscod * 1000).round(-3), precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Commercial mortgage-backed securities
                          </p>
-                         <span> <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_sccmmb * 1000, precision: 0) : '$0'%></span>
+                         <span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_sccmmb * 1000).round(-3), precision: 0) : '$0'%></span>
                       </div>
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Commercial mortgage pass-through securities
                          </p>
-                         <span> <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_sccmpt * 1000, precision: 0) : '$0'%></span>
+                         <span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_sccmpt * 1000).round(-3), precision: 0) : '$0'%></span>
                       </div>
 
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Total mortgage-backed securities
                          </p>
-                         <span> <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_scmtgbk * 1000, precision: 0) : '$0' %></span>
+                         <span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_scmtgbk * 1000).round(-3), precision: 0) : '$0' %></span>
                       </div>
                       
                       <div class="volume-auto-loan-row ">
                          <p class="vol-row-inner">Certificates of participation in pools of residential mortgages
                          </p>
-                         <span> <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_idscgtpc * 1000, precision: 0) : '$0' %></span>
+                         <span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_idscgtpc * 1000).round(-3), precision: 0) : '$0' %></span>
                       </div>
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Collaterized mortgage obligations
                          </p>
-                         <span> <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_idsccmo * 1000, precision: 0) : '$0' %></span>
+                         <span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_idsccmo * 1000).round(-3), precision: 0) : '$0' %></span>
                       </div>
                       <div class="volume-auto-loan-row ">
                          <p class="vol-row-inner">Mortgage servicing assets
 
                          </p>
-                         <span> <%=@fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_intanmsr * 1000, precision: 0) : '$0' %></span>
+                         <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_intanmsr * 1000).round(-3), precision: 0) : '$0' %></span>
                       </div>
 
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Real estate mortgages;  personal trust and agency accounts
                          </p>
-                         <span> <%=@fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_tpiremtg * 1000, precision: 0) : '$0' %></span>
+                         <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_tpiremtg * 1000).round(-3), precision: 0) : '$0' %></span>
                       </div>
 
                       <div class="volume-auto-loan-row">
                          <p class="vol-row-inner">Real estate mortgages;  employee benefit and retirement trusts
 
                          </p>
-                         <span> <%=@fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_teremtg * 1000, precision: 0) : '$0' %></span>
+                         <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_teremtg * 1000).round(-3), precision: 0) : '$0' %></span>
                       </div>
 
                       <div class="volume-auto-loan-row bg-white">
                          <p class="vol-row-inner">Real estate mortgages; all other managed accounts
                          </p>
-                         <span> <%=@fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_toremtg * 1000, precision: 0) : '$0' %></span>
+                         <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_toremtg * 1000).round(-3), precision: 0) : '$0' %></span>
                       </div>
 
                       <a class="link-right-inner">Data produced  from US Government reported financials</a>
                    </div>
 
                    <div class="col-xs-12 col-md-5">
-                      <p><%=@bank.name%> lends out a total of <%=@fdic_cal_data.present? ?  number_to_currency(@fdic_cal_data.m_lnlsgr * 1000, precision: 0) : '$0'%> annually. Of this loan volume, <%=@bank.name%> home mortgages are <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.m_lnre * 1000, precision: 0) : '$0'%>. As a result, <%=@bank.name%> home loans represent <%= @fdic_cal_data.present? ? (@fdic_cal_data.m_lnre/@fdic_cal_data.m_lnlsgr).round(2) : '0' %>% of the total lending of <%=@bank.name%>.</p>
+                      <p><%=@bank.name%> lends out a total of <%=@fdic_cal_data.present? ?  number_to_currency((@fdic_cal_data.m_lnlsgr * 1000).round(-3), precision: 0) : '$0'%> annually. Of this loan volume, <%=@bank.name%> home mortgages are <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_lnre * 1000).round(-3), precision: 0) : '$0'%>. As a result, <%=@bank.name%> home loans represent <%= @fdic_cal_data.present? ? (@fdic_cal_data.m_lnre/@fdic_cal_data.m_lnlsgr).round(2) : '0' %>% of the total lending of <%=@bank.name%>.</p>
                    </div>
                   <div class="col-xs-12 col-md-5" id="piechart"></div>
                 </div>
@@ -597,9 +597,9 @@
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
     ['Loans', 'Percentage'],
-    ['Mortgage Loans', <%= @fdic_cal_data.present? ? @fdic_cal_data.m_lnre * 1000 : 0 %>],
-    ['Personal Loans', <%= @fdic_cal_data.present? ? @fdic_cal_data.a_lnauto * 1000 : 0 %>],
-    ['Auto Loans', <%= @fdic_cal_data.present? ? @fdic_cal_data.a_lnauto*0.58 * 1000  : 0 %>],
+    ['Mortgage Loans', <%= @fdic_cal_data.present? ? (@fdic_cal_data.m_lnre * 1000).round(-3) : 0 %>],
+    ['Personal Loans', <%= @fdic_cal_data.present? ? (@fdic_cal_data.a_lnauto * 1000).round(-3) : 0 %>],
+    ['Auto Loans', <%= @fdic_cal_data.present? ? (@fdic_cal_data.a_lnauto*0.58 * 1000).round(-3)  : 0 %>],
   ]);
 
     // Optional; add a title and set the width and height of the chart

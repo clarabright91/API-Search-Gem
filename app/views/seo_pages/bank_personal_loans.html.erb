@@ -16,7 +16,7 @@
                      </div>
                   </h3>
                   <p>
-                     <%=@bank.name%> is very active in personal loans, with a total carrying amount of loans to individuals for household, family and other personal expenditures that are covered by FDIC loss-sharing agreements of  <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_lcon * 1000, precision: 0) : '$0'%>. Nonaccrual other loans from <%=@bank.name%> to individuals for household, family and other personal expenditures on a consolidated basis amount to <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_naconoth * 1000, precision: 0) : '$0'%>.
+                     <%=@bank.name%> is very active in personal loans, with a total carrying amount of loans to individuals for household, family and other personal expenditures that are covered by FDIC loss-sharing agreements of  <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_lcon * 1000).round(-3), precision: 0) : '$0'%>. Nonaccrual other loans from <%=@bank.name%> to individuals for household, family and other personal expenditures on a consolidated basis amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_naconoth * 1000).round(-3), precision: 0) : '$0'%>.
                   </p>
                   <div class="space-row"> </div>
                   <p>Below are some other banks and lending institutions that specialize in personal loans for you to compare. </p>
@@ -29,8 +29,8 @@
                         FDIC Certificate Number - <%=@bank.cert%></br>
                         <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
                      </p>
-               <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency(asset_and_dep_formatting(@bank.asset) * 1000, precision: 0) : '$0'%></p>
-               <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency(asset_and_dep_formatting(@bank.dep) * 1000, precision: 0) : '$0'%></p>
+               <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency((asset_and_dep_formatting(@bank.asset) * 1000).round(-3), precision: 0) : '$0'%></p>
+               <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency((asset_and_dep_formatting(@bank.dep) * 1000).round(-3), precision: 0) : '$0'%></p>
             </div>
          </div>
          <!--Bank of America Personal Loans end-->
@@ -117,40 +117,40 @@
             <h2 class="tab_blue_content">Volume of Personal Loan at <%=@bank.name%></h2>
             <div class="volume-auto-loan-row ">
                <p class="vol-row-inner">Personal loans -retained interest</p>
-               <span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_sziocon * 1000, precision: 0) : '$0' %></span>
+               <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_sziocon * 1000).round(-3), precision: 0) : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Personal loans -subordinated securities</p>
-               <span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_szssccon * 1000, precision: 0) : '$0' %></span>
+               <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_szssccon * 1000).round(-3), precision: 0) : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row ">
                <p class="vol-row-inner">Personal loans -standby letters of credit</p>
-               <span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_idslccon * 1000, precision: 0) : '$0' %></span>
+               <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_idslccon * 1000).round(-3), precision: 0) : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Personal loans -credit enhancements</p>
-               <span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_encecon * 1000, precision: 0) : '$0' %></span>
+               <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_encecon * 1000).round(-3), precision: 0) : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Personal loans -bank asset sales</p>
-               <span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_ascecons * 1000, precision: 0)  : '$0' %></span>
+               <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_ascecons * 1000).round(-3), precision: 0)  : '$0' %></span>
             </div>
 
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Consumer assets sold with recourse </p>
-               <span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_asdrcons * 1000, precision: 0) : '$0' %></span>
+               <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_asdrcons * 1000).round(-3), precision: 0) : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Consumer loan charge-offs</p>
-               <span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_drconoth * 1000, precision: 0) : '$0' %></span>
+               <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_drconoth * 1000).round(-3), precision: 0) : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row bg-white">
                <p class="vol-row-inner">Consumer loan recoveries</p>
-               <span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_crconoth * 1000, precision: 0) : '$0' %></span>
+               <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_crconoth * 1000).round(-3), precision: 0) : '$0' %></span>
             </div>
             <div class="volume-auto-loan-row">
                <p class="vol-row-inner">Consumer loan net charge-offs</p>
-               <span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_ntconoth * 1000, precision: 0) : '$0' %></span>
+               <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_ntconoth * 1000).round(-3), precision: 0) : '$0' %></span>
             </div>
 
             <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
@@ -159,16 +159,16 @@
          <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->
          <div class="volume-auto-loan loan-chargeoff-recovry">
             <h2 class="tab_blue_content"><%=@bank.name%> Personal Loan Chargeoffs, Recoveries  </h2>
-            <p>For <%=@bank.name%>'s assets sold And securitized by other consumer personal loans, the charge-offs amount to <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_szdrcon * 1000, precision: 0) : '$0'%> and the recoveries amount to <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_szcrcon * 1000, precision: 0) : '$0'%> .
+            <p>For <%=@bank.name%>'s assets sold And securitized by other consumer personal loans, the charge-offs amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_szdrcon * 1000).round(-3), precision: 0) : '$0'%> and the recoveries amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_szcrcon * 1000).round(-3), precision: 0) : '$0'%> .
                </p>
                <p>
                An additional figure for personal loan performance are other consumer loans to individuals for household, family and other personal expenditures that are past due still and accruing interest:
                </p>
             <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+ days</p>
-            <p class="loan-chargeoff-recovry-inner-data"><span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_p9conoth * 1000, precision: 0) : '$0'%></span> <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_naconoth * 1000, precision: 0 ) : '$0'%></p>
+            <p class="loan-chargeoff-recovry-inner-data"><span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_p9conoth * 1000).round(-3), precision: 0) : '$0'%></span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_naconoth * 1000).round(-3), precision: 0 ) : '$0'%></p>
             <div class="loan-chargeoff-recovry-inner-hdng">With FDIC Loss-sharing Agreements</div>
             <p class="loan-chargeoff-recovry-inner-data"><span>Past Due 30 -89 days</span> Past Due 90+ days</p>
-            <p class="loan-chargeoff-recovry-inner-data"><span><%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_p3lcon * 1000, precision: 0) : '$0'%></span> <%= @fdic_cal_data.present? ? number_to_currency(@fdic_cal_data.p_p9lcon * 1000, precision: 0) : '$0'%></p>
+            <p class="loan-chargeoff-recovry-inner-data"><span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_p3lcon * 1000).round(-3), precision: 0) : '$0'%></span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_p9lcon * 1000).round(-3), precision: 0) : '$0'%></p>
             <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
          </div>
          <!--Bank of America Personal Loan Chargeoffs, Recoveries section end-->

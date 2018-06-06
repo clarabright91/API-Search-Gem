@@ -24,13 +24,13 @@ class FreddieMacCacheWorker
   
   def freedie_cache_data(main_hash, loan_type, zip_prefix)
     begin
-      ActiveRecord::Base.connection_pool.with_connection do
+      #ActiveRecord::Base.connection_pool.with_connection do
         data = JSON.parse(main_hash)
         fmcd = FreddieMacCache.find_or_create_by(zip_prefix: zip_prefix, loan_type: loan_type)
           fmcd.cached_year = Date.today.year
           fmcd.freddie_data = data
           fmcd.save!
-      end     
+      #end     
     rescue => e
       p e.message
      # ensure
