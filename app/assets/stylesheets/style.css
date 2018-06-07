@@ -764,6 +764,25 @@ label.error {
 .seo-loan-cntnt-box-chnge .col-xs-12.col-md-4.seo-bank-cntn-white-bg.seo-bank-cntn-top-white-bg{ min-height:330px; }
 
 
+.news-see-more{ float: left; width:100%; }
+.news-see-more .show-all-specialst-btn{ float: right;  border:none; margin:5px 6px 0 0; font-size:15px;  }
+.news-see-more-link {
+  color: #19214d;
+  border-radius: 0;
+  padding: 4px 10px 0 10px;
+  float: left;
+  background: none;
+  font-size: 14px;
+  font-style: italic;
+  display: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.news-see-more-link:hover{
+  color: #19214d;
+  text-decoration: underline;
+}
+
 /*mobile device css start*/
 @media(min-width:320px) and (max-width:767px){
 .volume-auto-loan .car-auto-loan-news h6 { white-space: nowrap; text-overflow: ellipsis; overflow: hidden;  min-height: auto !important;}  
@@ -947,8 +966,8 @@ footer span{ font-size:12px; float:left; width:100%; background:#f7f7f7; text-al
 .volume-auto-loan{ width:100%;}
 .volume-auto-loan h2 { color: #fff; font-size: 20px; margin: 0; background: #58a9e1; padding:10px; height:auto;}
 .volume-auto-loan-row{ padding: 17px 15px;}
-.volume-auto-loan p.vol-row-inner { padding: 0; width:78%; line-height:26px; font-size:14px;}
-.volume-auto-loan-row span { width: 20%; font-size: 14px; line-height:26px;}
+.volume-auto-loan p.vol-row-inner { padding: 0; width:65%; line-height:26px; font-size:14px;}
+.volume-auto-loan-row span { width: 35%; font-size: 13px; line-height:26px;}
 .car-auto-loan-news { width: 96%; margin:0 2%; padding: 15px 5px 10px 5px; border-bottom:1px solid #f1f1f1;}
 div.car-auto-loan-news:last-child{ border:none; padding-bottom:0;}
 .car-auto-loan-news p { padding: 0; line-height: 22px; font-size: 15px; font-weight: normal; overflow:hidden; position:relative;}
@@ -1062,14 +1081,17 @@ footer .container{ padding:0;}
 
 .home-loan-breakdown .col-xs-12.col-md-7 { padding: 0;}
 .home-loan-breakdown.volume-auto-loan .volume-auto-loan-row { padding: 12px 10px; font-size: 14px;}
-.home-loan-breakdown.volume-auto-loan .volume-auto-loan-row p { width:75%; font-size:14px; padding-right:10%;}
-.home-loan-breakdown.volume-auto-loan .volume-auto-loan-row span { width:25%; font-size:14px;}
+.home-loan-breakdown.volume-auto-loan .volume-auto-loan-row p { width:65%; font-size:14px; padding-right:2%;}
+.home-loan-breakdown.volume-auto-loan .volume-auto-loan-row span { width:35%; font-size:13px;}
 .col-xs-12.col-md-5.our-story-img.pull-right { text-align: center;}
 .our-story-img img { float: none;}
 .seo_bank_auto_loan_top{ padding:15px 10px !important;}
 .volume-auto-loan{ margin:0 0 35px 0;}
 .apply-btn { padding: 12px 20%; display: table; max-width: 100%; min-width:auto;}
 .graph-box .col-xs-12.col-md-6{ padding:0;}
+
+.news-see-more .show-all-specialst-btn{ display:none; }
+.news-see-more-link{ display: block;}
 
 .seo-bank-cntn-top-white-bg.seo-bank-cntn-white-bg h3 { margin: 0 0 10px 0;}
 .content-main .seo-bank-cntn-top-white-bg p { margin: 0 0 10px 0;}

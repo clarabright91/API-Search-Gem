@@ -818,20 +818,59 @@
        </div>
        <div class="volume-auto-loan full-width loan-detail-blocks">
           <h3>News on Low Cost Refi's for <%=@city.city%>, <%=state_full_name(@state)%></h3>
-          <%if @news_articles.present?%>
-            <%@news_articles.each do |na|%>
-              <div class="car-auto-loan-news">
-                 <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
-                    <p><%=na.text.truncate(130)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
-              </div>
-            <%end%>
-          <%else%>
-            <div class="tabs-data-row no-record-box">
-              No Record Found
+          <div class="mb-hide">
+              <%if @news_articles.present? %>
+                <%@news_articles.each_with_index do |na, i|%>
+                  <%if i < 5%>
+                   <div class="car-auto-loan-news">
+                     <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
+                      <p><%=na.text.truncate(130)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>          
+                   </div>
+                  <%else%>
+                    <div id='news_data_<%=i.to_s%>' style= "display:none;">  
+                      <div class="car-auto-loan-news">
+                       <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
+                        <p><%=na.text.truncate(130)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>        
+                      </div>
+                    </div>
+                  <%end%>
+                <%end%>
+                  <button class= "show-all-specialst-btn" id="desktop_news">See More</button>
+              <%else%>
+                <div class="car-auto-loan-news no-record-box">
+                    No Records Found
+                </div>
+              <%end%>
+           </div>
+            <!-- for mobile view -->
+            <div class="mb-only">
+              <%if @news_articles.present?%>
+                <%@news_articles.each_with_index do |na, i|%>
+                  <%if i < 3 %>
+                    <div class="car-auto-loan-news">
+                      <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
+                        <p><%=na.text.truncate(72)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                    </div>
+                  <%else%>
+                    <div id='mobile_news_articles_data_<%=i.to_s%>' style= "display:none;">
+                      <div class="car-auto-loan-news">
+                        <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
+                          <p><%=na.text.truncate(72)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                      </div>
+                    </div>  
+                  <%end%>  
+                <%end%>
+                  <div class="news-see-more">
+                    <a class= "news-see-more-link" id="mobile_news_data">See More Recent News</a>
+                  </div>
+              <%else%>
+                <div class="car-auto-loan-news">
+                    No Records Found
+                </div>
+              <%end%>
             </div>
-          <%end%>  
-          <a href="" class="see-more-link-common">See More Recent News</a>
        </div>
+
        <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
           <h3>Refinance Rates around <%=@city.city%>, <%=state_full_name(@state)%></h3>
           <div class="car-auto-loan-othr-bank">
@@ -849,7 +888,6 @@
  <!-- search result feed end-->
 
  <script>
-
     $("#desktop_loan_off_data").click(function(){
       <%(5..9).each do |i|%>
         $("#officers_data_<%=i.to_s%>").toggle();
@@ -859,5 +897,15 @@
         <%end%>
 
     });
+    $("#desktop_news").click(function(){
+      <%(5..9).each do |i|%>
+        $("#news_data_<%=i.to_s%>").toggle();
+      <%end%>
+    });
+    $("#mobile_news_data").click(function(){ 
+       <%(3..9).each do |i|%>
+        $("#mobile_news_articles_data_<%=i.to_s%>").toggle();
+      <%end%>
+    })
 
  </script>

@@ -27,7 +27,7 @@ class SeoPagesController < ApplicationController
   end 
 
   def city_home_refinance_rates
-    @news_articles = news_article_data(' refinance')
+    @news_articles = NewsArticle.first(10) #news_article_data(' refinance')
     # for report section fetching all cities record similer to current city
     # for loan type N & C
     cached_data = FreddieMacCache.find_by('zip_prefix like ? and loan_type = ?', "#{@city.zip.to_s.first(3)+ '%'}", 'N')
