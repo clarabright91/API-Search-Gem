@@ -29,14 +29,17 @@ class DirectoriesController < ApplicationController
 
   def mortgage_state_banks
     @flag = 'mortgage_loan'
+    @heading = 'Mortgage'
   end
 
   def personal_loan_state_banks
     @flag = 'personal_loan'
+    @heading = 'Personal Loan'
   end
 
   def auto_loan_state_banks
     @flag = 'auto_loan'
+    @heading = 'Auto Loan'
   end
 
   def mortgage_state_banks_list

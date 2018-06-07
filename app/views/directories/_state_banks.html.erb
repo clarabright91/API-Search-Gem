@@ -1,9 +1,9 @@
 <!-- directory bank content start-->
-<% title 'Mortgage Costs by Bank'+'-'+@alphabet %>
+<% title @heading +' Costs by Bank'+'-'+@alphabet %>
 <section class="content-main dirctory mortgage-rates-state state-bank-page-list">
   <div class="container">
      <div class="directory-box">
-        <h1>Mortgage Costs by Bank - <%=@alphabet%></h1>
+        <h1><%=@heading%> Costs by Bank - <%=@alphabet%></h1>
         <div class="directory-links-box">
           <%@counter= 0%>
           <%if link_calculate(@banks.size).present? %>
