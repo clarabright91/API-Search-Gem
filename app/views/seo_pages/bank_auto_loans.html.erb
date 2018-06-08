@@ -17,11 +17,11 @@
                </h3>
                <p><%=@bank.name%> makes <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_lnlsgr * 1000).round(-3), precision: 0) : '$0'%> total loans annually of which <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_lnauto * 1000).round(-3), precision: 0) : '$0'%> are auto loans, amounting to <%= @fdic_cal_data.present? ? (@fdic_cal_data.a_lnauto/@fdic_cal_data.a_lnlsgr).round(2) : '$0' %> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szioauto * 1000).round(-3), precision: 0) : '$0'%>.</p>
                <div class="space-row"></div>
-               <p> Below are some other banks and lending institutions that specialize in low-cost auto and car loans for your research.</p>
-               <span href="" id="para-see-more-link">See More</span>
+               <p class="mb-hide-spl"> Below are some other banks and lending institutions that specialize in low-cost auto and car loans for your research.</p>
+               <span href="" id="para-see-more-link" class="initial-section">See More</span>
             </div>
          </div>
-         <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg" id="bank_details">
+         <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg mb-hide-spl" id="bank_details">
             <h3><%=@bank.name%></h3>
             <p>Founded <%=@bank.estymd.to_date.strftime("%B %d, %Y")%></br>
                FDIC Certificate Number - <%=@bank.cert%></br>
@@ -437,4 +437,15 @@
       $("#mobile_news_articles_data_<%=i.to_s%>").toggle();
     <%end%>
   })
+
+  $(".initial-section").click(function(){\
+    alert('sadf');
+    $("p").removeClass('.mb-hide-spl');
+  })
 </script>
+
+<!-- <style type="text/css">
+  @media(min-width:320px) and (max-width: 767px){
+  .mb-hide-spl{ display: none; }
+  }
+</style> -->

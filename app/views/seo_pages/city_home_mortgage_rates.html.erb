@@ -495,6 +495,8 @@
           </div>
        </div>
        <!-- Closing Cost Summary end-->
+       
+    <%if @report.present? %>
        <!-- Historical Rates for Albany start-->
        <div class="row">
           <div class="col-xs-12 col-md-12">
@@ -676,7 +678,7 @@
          </div>
       </div>
 
-
+    <%end%>
        <!-- Historical Rates for Albany end-->
        <!-- Online Trends for Mortgage Rates start-->
        <div class="row">
@@ -865,8 +867,8 @@
        <div class="volume-auto-loan full-width loan-detail-blocks car-auto-loan-othr-bank-box">
           <h3>Mortgage Rates around <%=@city.city%>, <%=state_full_name(@state)%></h3>
           <div class="car-auto-loan-othr-bank">
-              <%if @near_by_cities.flatten.compact.present? %>
-                <%@near_by_cities.flatten.compact.each do |city|%>
+              <%if @near_by_cities.present? %>
+                <%@near_by_cities.each do |city|%>
                   <%= link_to city.city+', '+city.state_code,city_home_mortgage_rates_path(state: city.state_code, city: city.city.tr(' ', '+'),city_id: city.id)%>
                 <%end%>
               <%else%>

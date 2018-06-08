@@ -506,10 +506,11 @@ font-weight: bold;margin-top: 5px; min-height:50px;}
 .graph-box p{ float:left; width:100%; background:none; font-size:21px !important; color:#19214d; line-height:26px; font-weight:normal; margin:0; padding:0;}
 .link-right-inner{ text-align:right; font-weight:300; font-size:20px; margin:20px 0 10px 0; float:right; color:#19214d;}
 .graph-box p.para-lft-inner{ text-align:left; font-weight:300; font-size:20px !important; margin-top:20px;}
-.seo-cities-mortgage .car-auto-loan-news { padding: 25px 10px 0 0;}
+.car-auto-loan-news { padding: 25px 10px 0 0;}
 .seo-cities-mortgage .car-auto-loan-othr-bank { padding: 20px 0;}
-.show-all-specialst-btn{ float:right; color:#fff; border-radius:5px; background:#fb6325; font-size:17px; font-weight:normal; text-decoration:none; padding:7px 15px;}
+.show-all-specialst-btn{ float:right; color:#fff; border-radius:5px; background:#fb6325; font-size:17px; line-height:normal; border:none; font-weight:normal; text-decoration:none; padding:7px 15px;}
 .show-all-specialst-btn:hover{ text-decoration:none; color:#fff;}
+#desktop_news{ margin-top: 10px; }
 .content-main p.space-top{ margin:25px 0 30px 0;}
 .seo-cities-mortgage .loan-detail-blocks { margin:10px 0 30px 0;}
 .tabs-data-main .tabs-data-row .col-xs-12.col-md-4 { position: relative;}
@@ -785,6 +786,7 @@ label.error {
 
 /*mobile device css start*/
 @media(min-width:320px) and (max-width:767px){
+.car-auto-loan-othr-bank{ padding:0 0 15px 0;} 
 .volume-auto-loan .car-auto-loan-news h6 { white-space: nowrap; text-overflow: ellipsis; overflow: hidden;  min-height: auto !important;}  
 #global-nav { padding: 0;}
 .navbar-nav { margin: 0; width: 100%; padding: 0;}
