@@ -51,18 +51,21 @@ class SeoPagesController < ApplicationController
   def bank_mortgage_loans
     @news_articles = NewsArticle.first(10) #bank_news_article(" mortgage")
     #fetch loanofficer data using fuzzy search on the basis of search terms      
-    @loan_officers= LoanOfficer.loan_officers_list(@bank.name, 'home',state_full_name(@bank.stname, true) )
-    @loan_officers= LoanOfficer.loan_officers_list(@bank.name, 'mortgage', state_full_name(@bank.stname, true))    unless @loan_officers.present?
+    #@loan_officers= LoanOfficer.loan_officers_list(@bank.name, 'home',state_full_name(@bank.stname, true) )
+    #@loan_officers= LoanOfficer.loan_officers_list(@bank.name, 'mortgage', state_full_name(@bank.stname, true))    unless @loan_officers.present?
+    @loan_officers = LoanOfficer.loan_officers_gen(@bank, "mortgage")
   end
     
   def bank_personal_loans 
     @news_articles = NewsArticle.first(10) #bank_news_article(" personal loans")
-    @loan_officers = LoanOfficer.loan_officers_list(@bank.name,'personal',state_full_name(@bank.stname, true))
+    #@loan_officers = LoanOfficer.loan_officers_list(@bank.name,'personal',state_full_name(@bank.stname, true))
+    @loan_officers = LoanOfficer.loan_officers_gen(@bank, "personal loan")
   end  
 
   def bank_auto_loans
     @news_articles = NewsArticle.first(10) #bank_news_article(" auto loans")
-    @loan_officers = LoanOfficer.loan_officers_list(@bank.name,'auto', state_full_name(@bank.stname, true))
+    #@loan_officers = LoanOfficer.loan_officers_list(@bank.name,'auto', state_full_name(@bank.stname, true))
+    @loan_officers = LoanOfficer.loan_officers_gen(@bank, "auto loan")
   end
 
   private
