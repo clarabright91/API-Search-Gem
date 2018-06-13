@@ -2,30 +2,32 @@ class FreddieMacCacheWorker
   include Sidekiq::Worker
   sidekiq_options :retry => 2
 
-  def perform
-    @count = 0  
-    #City.all.group_by(&:state_code).each do |state, city|
-      City.all.each do |c|
-        @count += 1
-        sleep(5)  if @count % 200 == 0
-        zip_code = c.zip
-        # for mortgage
+  def perform(states)  
+    City.where(state_code: states).each do |c|
+      zip_code = c.zip
+      alreday_exist = FreddieMacCache.where('zip_prefix = ? OR zip_prefix = ?', zip_code.to_s.first(3)+'00', zip_code.to_s.first(2)+'000')
+      # for mortgage
+      unless alreday_exist.find_by(loan_type: 'P', cached_year: Date.today.year).present?
         mortgage_result, zip_prefix_p = common_report_section(zip_code, 'P')
           freedie_cache_data(mortgage_result.to_json, 'P', zip_prefix_p)  
-        # for refinance Non-cash out
+      end
+      # for refinance Non-cash out
+      unless alreday_exist.find_by(loan_type: 'N', cached_year:  Date.today.year).present?
         n_refinance_result, zip_prefix_n  = common_report_section(zip_code, 'N')
           freedie_cache_data(n_refinance_result.to_json, 'N', zip_prefix_n)
-        # for refinance Cash out   
+      end
+      # for refinance Cash out   
+      unless alreday_exist.find_by(loan_type: 'C', cached_year:  Date.today.year).present?
         c_refinance_result, zip_prefix_c = common_report_section(zip_code, 'C')
           freedie_cache_data(c_refinance_result.to_json, 'C', zip_prefix_c)         
-      end 
-    #end
+      end
+    end 
   end  
   
   def freedie_cache_data(main_hash, loan_type, zip_prefix)
     begin
       #ActiveRecord::Base.connection_pool.with_connection do
-        data = JSON.parse(main_hash)
+       data = JSON.parse(main_hash)
         fmcd = FreddieMacCache.find_or_create_by(zip_prefix: zip_prefix, loan_type: loan_type)
           fmcd.cached_year = Date.today.year
           fmcd.freddie_data = data
@@ -109,7 +111,7 @@ class FreddieMacCacheWorker
         avg_debt_to_income_ration_hash[year] = complete_year_data.sum(:original_debt_to_income_ratio).to_f/complete_year_data_count
         #for mortgage report 
           if loan_purpose == 'P'
-            avg_first_time_home_buyer_hash[year] = complete_year_data.where(first_time_home_buyer_flag: 'Y').count/complete_year_data_count.to_f
+            avg_first_time_home_buyer_hash[year] = complete_year_data.where(first_time_home_buyer_flag: 'Y').count*100/complete_year_data_count.to_f
             avg_mortgage_insurance_percentage_hash[year] = complete_year_data.sum(:mortgage_insurance_percentage).to_f/complete_year_data_count
           else
         #for refinance report   
@@ -117,7 +119,7 @@ class FreddieMacCacheWorker
             purpose_n = complete_year_data.where(loan_purpose: 'N').count
             n_c_total = purpose_c + purpose_n
             first_average_for_the_location[year] =  purpose_c.to_f/n_c_total
-            second_average_for_the_location[year] = purpose_n.to_f/n_c_total  
+            second_average_for_the_location[year] = purpose_n.to_f*100/n_c_total  
             average_for_the_location[year] = complete_year_data.sum(:mortgage_insurance_percentage).to_f/complete_year_data_count
           end 
       end

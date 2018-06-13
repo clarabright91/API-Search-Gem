@@ -524,151 +524,111 @@
                         </tr>
                       </thead>
                       <tbody>
-                         <%if @flag%>
-                      <tr>
-                        <td>% 30 year fixed mortgage </td>
-                        <%eval(@report['% 30 year fixed mortgage']).each do |k, v|%>
-                          <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>
-                        <%end%>
-                      </tr>
-                      <tr>
-                        <td>avg mortgage rate </td>
-                          <%eval(@report['avg rate(30 yr)']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
-                          <%end%>
-                      </tr>
-                        
                         <tr>
-                          <td> % 15 year fixed mortgage</td>
-                          <%eval(@report['% 15 year fixed mortgage']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
-                          <%end%>
-                          </tr>
-                        
-                        <tr>
-                          <td> avg mortgage rate</td>
-                          <%eval(@report['avg rate(15 yr)']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr>
-                          <td> % 10/1 ARM</td>
-                          <%eval(@report['% 10/1 ARM']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr>
-                          <td> avg mortgage rate</td>
-                          <%eval(@report['avg rate(10 yr)']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr>
-                          <td> % 7/1 ARM</td>
-                          <%eval(@report['% 7/1 ARM']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                          <td>% 30 year fixed mortgage </td>
+                          <%eval(@report['% 30 year fixed mortgage']).each do |k, v|%>
+                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>
                           <%end%>
                         </tr>
                         <tr>
                           <td>avg mortgage rate </td>
-                          <%eval(@report['avg rate(7 yr)']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr>
-                          <td>% 5/1 ARM </td>
-                          <%eval(@report['% 5/1 ARM']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr class="row-bordr-botom">
-                          <td> avg mortgage rate</td>
-                          <%eval(@report['avg rate(5 yr)']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr>
-                          <td> Avg credit score</td>
-                          <%eval(@report['Avg credit score']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr>
-                          <td class="class-right"> Avg LTV (loan to value)</td>
-                          <%eval(@report['Avg LTV (loan to value']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr>
-                          <td>Avg  Combined LTV (loan to value) </td>
-                          <%eval(@report['Avg Combined LTV (loan to value)']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr class="row-bordr-botom">
-                          <td class="class-right">Avg DTI (debt to income) </td>
-                          <%eval(@report['Avg DTI (debt to income)']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr>
-                          <td>% Cash-out refinance </td>
-                          <%eval(@report['% Cash-out refinance']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
-                          <%end%>
-                        </tr>
-                        <tr>
-                          <td class="class-right">% No cash-out refinance</td>
-                          <%eval(@report['% No cash-out refinance']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
-                          <%end%>
-                        </tr>
-                         <tr>
-                          <td> Avg mortgage insurance %</td>
-                          <%eval(@report['Avg mortgage insurance %']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
-                          <%end%>
-                        </tr> 
-                    <%else%>
-                        <%@count = 0%>
-                        <%@report.each do |term,report|%>
-                            <%@count += 1%>
-                            <tr>
-                            <%if @count <=10%>
-                              <%if @count % 2 == 0%>
-                                <%if @count == 10 %>
-                                  <td class ="row-bordr-botom"> avg refinance rate</td>
-                                <%else%>
-                                  <td> avg refinance rate</td>
-                                <%end%>
-                              <%else%>
-                                <td><%=term%></td>
-                              <%end%>
-                            <%else%>
-                              <%if @count == 14%>
-                                <td class ="row-bordr-botom"><%=term%></td>
-                              <%else%>
-                                <td><%=term%></td>
-                              <%end%>
+                            <%eval(@report['avg rate(30 yr)']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
                             <%end%>
-                              <%report.each do |re,val|%>
-                                <%if @count <= 10 %>
-                                  <%if @count == 10%>
-                                    <td class ="row-bordr-botom"><%=val.to_s == 'NaN' ? ' ' : val == 0.0 ? '' : val.round(2).to_s+'%'%></td>
-                                  <%else%>
-                                    <td><%=val.to_s == 'NaN' ? ' ' : val == 0.0 ? '' : val.round(2).to_s+'%'%></td>
-                                  <%end%>
-                                <%else%>
-                                  <%if @count ==14%>
-                                    <td class ="row-bordr-botom"><%=val.to_s == 'NaN' ? '' : val.round(2)%></td>
-                                  <%else%>
-                                    <td><%=val.to_s == 'NaN' || val == 0.0 ? '' : val.round(2)%></td>
-                                  <%end%>
-                                <%end%>
-                              <%end%>
+                        </tr>
+                          
+                          <tr>
+                            <td> % 15 year fixed mortgage</td>
+                            <%eval(@report['% 15 year fixed mortgage']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
                             </tr>
-                        <%end%>
-                        <%end%>
+                          
+                          <tr>
+                            <td> avg mortgage rate</td>
+                            <%eval(@report['avg rate(15 yr)']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr>
+                            <td> % 10/1 ARM</td>
+                            <%eval(@report['% 10/1 ARM']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr>
+                            <td> avg mortgage rate</td>
+                            <%eval(@report['avg rate(10 yr)']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr>
+                            <td> % 7/1 ARM</td>
+                            <%eval(@report['% 7/1 ARM']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr>
+                            <td>avg mortgage rate </td>
+                            <%eval(@report['avg rate(7 yr)']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr>
+                            <td>% 5/1 ARM </td>
+                            <%eval(@report['% 5/1 ARM']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr class="row-bordr-botom">
+                            <td> avg mortgage rate</td>
+                            <%eval(@report['avg rate(5 yr)']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr>
+                            <td> Avg credit score</td>
+                            <%eval(@report['Avg credit score']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr>
+                            <td class="class-right"> Avg LTV (loan to value)</td>
+                            <%eval(@report['Avg LTV (loan to value']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr>
+                            <td>Avg  Combined LTV (loan to value) </td>
+                            <%eval(@report['Avg Combined LTV (loan to value)']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr class="row-bordr-botom">
+                            <td class="class-right">Avg DTI (debt to income) </td>
+                            <%eval(@report['Avg DTI (debt to income)']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr>
+                            <td>% Cash-out refinance </td>
+                            <%eval(@report['% Cash-out refinance']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
+                            <%end%>
+                          </tr>
+                          <tr>
+                            <td class="class-right">% No cash-out refinance</td>
+                            <%eval(@report['% No cash-out refinance']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr>
+                           <tr>
+                            <td> Avg mortgage insurance %</td>
+                            <%eval(@report['Avg mortgage insurance %']).each do |k,v|%>
+                              <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
+                            <%end%>
+                          </tr> 
+                    
                       </tbody>
                     </table>
                   </div>

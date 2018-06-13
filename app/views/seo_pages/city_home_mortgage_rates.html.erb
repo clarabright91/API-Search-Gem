@@ -524,7 +524,6 @@
                   </thead>
                   <tbody>
                     <!-- This section is for cached data -->
-                    <%if @flag%>
                       <tr>
                         <td>% 30 year fixed mortgage </td>
                         <%eval(@report['% 30 year fixed mortgage']).each do |k, v|%>
@@ -596,13 +595,13 @@
                         <tr>
                           <td class="class-right"> Avg LTV (loan to value)</td>
                           <%eval(@report['Avg LTV (loan to value']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
+                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
                           <%end%>
                         </tr>
                         <tr>
                           <td>Avg  Combined LTV (loan to value) </td>
                           <%eval(@report['Avg Combined LTV (loan to value)']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
+                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
                           <%end%>
                         </tr>
                         <tr class="row-bordr-botom">
@@ -614,57 +613,15 @@
                         <tr >
                           <td>% First time homebuyer </td>
                           <%eval(@report['% First time homebuyer']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
+                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
                           <%end%>
                         </tr>
                         <tr>
                           <td class="class-right"> Avg mortgage insurance %</td>
                           <%eval(@report['Mortgage insurance percentage']).each do |k,v|%>
-                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2)%> </td>    
+                            <td><%= v ==  nil || v == 0.0 ? '' : v.round(2).to_s+'%'%> </td>    
                           <%end%>
                         </tr>
-
-                    <%else%>
-                    <!-- for dynamic report -->
-                        <%@count = 0%>
-                        <%@report.each do |term,report|%>
-                            <%@count += 1%>
-                            <tr>
-                              <%if @count <=10%>
-                                <%if @count % 2 == 0%>
-                                  <%if @count == 10 %>
-                                    <td class ="row-bordr-botom"> avg mortgage rate</td>
-                                  <%else%>
-                                    <td> avg mortgage rate</td>
-                                  <%end%>                                
-                                <%else%>
-                                    <td><%=term%></td>
-                                <%end%>
-                              <%else%>
-                                <%if @count == 14%>
-                                  <td class ="row-bordr-botom"><%=term%></td>
-                                <%else%>
-                                    <td><%=term%></td>
-                                <%end%>
-                              <%end%>
-                              <%report.each do |re,val|%>
-                                <%if @count <= 10  %> 
-                                  <%if @count == 10%>
-                                    <td class ="row-bordr-botom" ><%=val.to_s == 'NaN' || val == 0.0  ? '' : val == 0.0 || val ==  nil ? '' : val.round(2).to_s+'%'%></td>
-                                  <%else%>
-                                    <td><%=val.to_s == 'NaN' || val == 0.0  ? '' : val == 0.0 || val ==  nil ? '' : val.round(2).to_s+'%'%></td> 
-                                  <%end%>  
-                                <%else%>
-                                    <%if @count == 14%>
-                                      <td class ="row-bordr-botom"><%=val.to_s == 'NaN' || val ==  nil || val == 0.0  ? '' : val.round(2)%></td>
-                                    <%else%>
-                                      <td><%=val.to_s == 'NaN' || val ==  nil || val == 0.0  ? '' : val.round(2)%></td>       
-                                    <%end%>
-                                <%end%>
-                              <%end%>
-                            </tr>
-                        <%end%>
-                    <%end%>    
                   </tbody>
                 </table>
               </div>
@@ -888,13 +845,10 @@
         <%(5..9).each do |i|%>
           $("#officers_data_<%=i.to_s%>").toggle();
         <%end%>
-
         <%(3..5).each do |i|%>
           $("#officers_mobile_data_<%=i.to_s%>").toggle();
         <%end%>
-
       });
-
     // section for web view
     $("#desktop_news").click(function(){
       <%(5..9).each do |i|%>

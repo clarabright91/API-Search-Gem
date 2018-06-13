@@ -69,7 +69,16 @@ class PagesController < ApplicationController
   end
 
   def city_freddie_cache_data
-    FreddieMacCacheWorker.perform_async
+    FreddieMacCacheWorker.perform_async(["AK", "AL", "AR", "AZ", "CA", "CO"])
+    FreddieMacCacheWorker.perform_async(["CT", "DC", "DE", "FL", "GA", "HI"])
+    FreddieMacCacheWorker.perform_async(["IA", "ID", "IL", "IN", "KS"])
+    FreddieMacCacheWorker.perform_async(["KY", "LA", "MA", "MD", "ME"])
+    FreddieMacCacheWorker.perform_async(["MI", "MN", "MO", "MS", "MT"])
+    FreddieMacCacheWorker.perform_async(["NC", "ND", "NE", "NH", "NJ"])
+    FreddieMacCacheWorker.perform_async(["NM", "NV", "NY", "OH", "OK"])
+    FreddieMacCacheWorker.perform_async(["OR", "PA", "PR", "RI", "SC"])
+    FreddieMacCacheWorker.perform_async(["SD", "TN", "TX", "UT", "VA"])
+    FreddieMacCacheWorker.perform_async(["VT", "WA", "WI", "WV", "WY"])
     redirect_to admin_freddie_mac_caches_path, notice: 'Data Cache start for Cities.'  
   end   
 
