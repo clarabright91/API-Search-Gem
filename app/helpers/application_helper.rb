@@ -1,3 +1,7 @@
+=begin
+  Developer:      Varun
+  Purpose:        for definning common functions 
+=end
 module ApplicationHelper
   def title(page_title)
     content_for(:title) { page_title }

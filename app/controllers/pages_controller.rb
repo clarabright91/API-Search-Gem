@@ -67,7 +67,8 @@ class PagesController < ApplicationController
      end
     redirect_to admin_root_path, notice: 'Selected Users Deactivated Succesfully.'
   end
-
+  
+  #Calling all the background workers for creating dynamic reports for city pages
   def city_freddie_cache_data
     FreddieMacCacheWorker.perform_async(["AK", "AL", "AR", "AZ", "CA", "CO"])
     FreddieMacCacheAWorker.perform_async(["CT", "DC", "DE", "FL", "GA", "HI"])

@@ -1,3 +1,7 @@
+=begin
+  Developer:      Varun
+  Purpose:        for sharing common code section in seo pages 
+=end
 module SeoPagesHelper
 
   def remove_unnecessary_keywords(arg)

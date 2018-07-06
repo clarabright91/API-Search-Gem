@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= content_for?(:html_title) ? "#{content_for(:html_title)} | My Blog" : "My Blog" %></title>
+
+    <meta name="description" content="<%= content_for?(:meta_description) ? content_for(:meta_description) : "My Blog" %>">
+
+    <link rel="alternate" type="application/atom+xml" title="My Blog - Atom" href="<%= buttercms_blog_atom_path %>">
+    <link rel="alternate" type="application/rss+xml" title="My Blog - RSS" href="<%= buttercms_blog_rss_path %>">
+     <%= stylesheet_link_tag "bootstrap.min"%>
+     <%= stylesheet_link_tag "style"%>
+     <%= javascript_include_tag "jquery.min"%> 
+     <%= javascript_include_tag "jquery.validate.js"%>
+      <%= javascript_include_tag "additional-methods.js"%>  
+    <!-- See https://buttercms.com/docs/#cssstyling -->
+    <link rel="stylesheet" href="http://d2z2rr99bkshyr.cloudfront.net/buttercms-post-defaults.css">
+</head>
+<body>
+
+    <%= render 'partials/header'%>
+    <div class="blog-cntnt"> 
+        <div class="container">
+            <div class="blog-nav">
+                <u> <%= link_to "Research Home", buttercms_blog_path %> </u>
+            </div>
+        </div>   
+    <%= yield %>
+    </div>
+    <%= render 'partials/modals' %>
+    <%= render 'partials/footer' %>
+</body>
+</html>

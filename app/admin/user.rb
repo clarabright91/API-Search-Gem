@@ -1,4 +1,9 @@
+=begin
+  Developer:      Varun
+  Purpose:        CRUD for user from admin login.
+=end
 ActiveAdmin.register User do
+  #for removing default menu
   menu false
   # Permitting Strong parameters
   permit_params :email, :password, :password_confirmation, :first_name,:last_name,:phone_number, :zip_code, :purpose, :home_price, :down_payment, :credit_score, :is_active, :price_alert, :last_search_id
@@ -31,11 +36,11 @@ ActiveAdmin.register User do
       super
     end
   end
-
+  #for custom back action
   action_item 'Back', only: :show do
     link_to('Back', :back)
   end
-
+  #for index page
   index do
     selectable_column
     column :first_name
@@ -47,18 +52,18 @@ ActiveAdmin.register User do
     column :created_at
     actions name: "Actions"
   end
-
+  #for filters in inde page
   filter :first_name
   filter :last_name
   filter :email
   filter :created_at
-
+  #for show page
   show title: "User" do
     panel "User Details" do
       attributes_table_for user, :first_name,:last_name ,:email,:phone_number, :zip_code, :purpose, :home_price, :down_payment, :credit_score,:last_search_id,:price_alert, :is_active, :created_at, :updated_at
     end
   end
-
+  #for new and edit pages
   form do |f|
     f.inputs 'Users' do
       f.input :first_name

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="blog-top-cntnt">
+    <h4>Research from Economics and Loan Experts</h4>
+    <p>Utilize the following research to understand macroeconomic effects and how they may influence the timing and stability of the market and your decision.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="blog-post-box">
+        <% @posts.each do |post| %>
+          <%= render :partial => 'post', :locals => {:post => post} %>
+        <% end %>
+      </div>
+    </div>
+    <!--main content end-->
+    <!--sidebar start-->
+    <div class="col-md-4">
+      <div class="sidebar-blog">
+        <div class="rght-sidebar-box">
+          <h3>Share your research</h3>
+            <div class="rght-sidebar-box-dtail">
+            <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's.</p>
+            <a class="blog-cntct-btn" href="javascript:void(0);">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="rght-sidebar-box">
+          <h3>Research papers by Category</h3>
+          <div class="rght-sidebar-box-dtail">
+            <%ButterCMS::Category.all().each do |category|%>
+              <div class="rght-sidebar-box-dtail-sectns">
+                <h5><%= link_to category.name, buttercms_category_path(category.slug), :title => category.name %> </h5>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>  
+    </div>
+    <!--sidebar end-->
+  </div>
+  <!-- Pagination links -->
+  <div>
+    <% if @previous_page %>
+      <%= link_to "Prev", buttercms_blog_path(:page => @previous_page) %>
+    <% end %>
+
+    <% if @next_page %>
+      <%= link_to "Next", buttercms_blog_path(:page => @next_page) %>
+    <% end %>
+  </div>
+</div>

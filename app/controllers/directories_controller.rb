@@ -1,4 +1,9 @@
 class DirectoriesController < ApplicationController
+=begin
+  Developer:      Varun
+  Created:        19-05-2018
+  Purpose:        for all directory pages
+=end
   include ApplicationHelper
   #apply dry concept for performing common operations
   before_action :state_name, only: [:mortgage_state_cities,:mortgage_state_cities_list, :refinance_state_cities, :refinance_state_cities_list]

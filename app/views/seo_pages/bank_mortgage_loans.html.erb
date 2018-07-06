@@ -122,20 +122,20 @@
  </section>
  <!-- banner search end-->
  <!-- search result feed start-->
- <section class="content-main seo-cities-mortgage">
+ <section class="content-main seo-cities-mortgage autoloan-top-sectn-cntrl">
     <div class="container">
        <!--Bank of America Mortgage Overview start-->
        <div class="seo-auto-loan-cntnt-box mb-bg-gray seo-loan-cntnt-box-chnge">
           <div class="col-xs-12 col-md-8 our-story-cntnt">
-             <div class="gray-box-cntnt" id="bank_content">
+             <div class="gray-box-cntnt seo_bank_auto_loan_top" id="bank_content">
                 <h3><%=@bank.name%> Mortgage Overview</h3>
                 <p>The mortgage and refinance department of <%=@bank.name%> primarily focuses on residential mortgages, which includes privately issued residential mortgage-backed securities, US government agency and corporation issued obligations or guaranteed certification of participation in pools of residential mortgages, and mortgage-backed pass-through securities held-to-maturity at amoritized cost and available-for-sale at fair value. </p>
                 <div class="space-row"> </div>
-                <p>The total amount of outstanding residential mortgages is <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_idscod * 1000).round(-3), precision: 0) : '$0'%> and total amount of outstanding commercial mortgages is <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_sccmmb * 1000).round(-3), precision: 0) : '$0'%> . </p>
-                <span href="" id="para-see-more-link">See More</span>
+                <p class="mb-hide-spl">The total amount of outstanding residential mortgages is <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_idscod * 1000).round(-3), precision: 0) : '$0'%> and total amount of outstanding commercial mortgages is <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_sccmmb * 1000).round(-3), precision: 0) : '$0'%> . </p>
+                <span class="initial-section" href="" id="para-see-more-link">See More</span>
              </div>
           </div>
-          <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg" id="bank_details">
+          <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg mb-hide-spl" id="bank_details">
              <h3><%=@bank.name%></h3>
              <p>Founded  <%=@bank.estymd.to_date.strftime("%B %d, %Y")%></br>
                 FDIC Certificate Number - <%=@bank.cert%></br>
@@ -665,5 +665,8 @@
      <%(3..9).each do |i|%>
       $("#mobile_news_articles_data_<%=i.to_s%>").toggle();
     <%end%>
+  })
+  $(".initial-section").click(function(){
+    $("#bank_details").addClass('show-box');
   })
 </script>

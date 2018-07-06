@@ -1,3 +1,7 @@
+=begin
+  Developer:      Varun
+  Purpose:        for showing custom messages 
+=end
 module DeviseHelper
   def devise_error_messages!
     return '' if resource.errors.empty?

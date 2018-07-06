@@ -119,6 +119,8 @@ header .navbar-right{ margin:0 !important;}
 .more-dtail-link{ border-radius: 3px; color: #fff; float: left; background: #1d76ba; padding: 4px 7px; line-height: normal; font-size: 13px; margin:10px 0 0 0;}
 .more-dtail-link:hover{ color: #fff; text-decoration:none;}
 
+
+
 /*expert ad box css start*/
 .advertisement-box{ float:left; width:100%; padding:10px 0; margin:0;}
 .advertisement{ float:left; width:90%; padding:10px 0; margin:0 5% 50px 5%; padding:15px 15px 15px 225px; box-shadow:0 0 15px #d7d7d7; min-height:188px; position:relative;}
@@ -823,7 +825,7 @@ header .navbar-brand  img{ max-width: 157px;}
 .mb-only{ display:block;}
 
 .content-main { padding:15px 0 0 0 !important;}
-.content-main p { font-size: 14px; margin:0; line-height: 21px;}
+.content-main p { font-size: 15px; margin:0; line-height: 21px;}
 .cntnt-list-box { box-shadow:none; overflow:visible;}
 .cntnt-list-box h5 { font-size:14px; margin: 0; padding:0 3px 4px 3px; border-radius: 0; font-weight:normal;}
 .cntnt-list-inner { float: left; width: 98%; padding:9px 4px; background: #fff !important; box-shadow: 0 0 9px #d7d7d7; margin: 2% 1% 6px 1%;}
@@ -997,7 +999,7 @@ a.seo-loan-aftr-cntnt-link { font-size: 14px; padding: 0 10px; margin-top: 15px;
 .seo-cities-mortgage .loan-detail-block-shadow h3{font-size:18px; color:#19214d; background:none; padding:10px 10px 2px 10px;}
 .seo-cities-mortgage .loan-detail-block-shadow p{ font-size: 15px; margin: 0; line-height: 21px; padding:5px 0 0 0;}
  .loan-detail-block-shadow .loan-detail-blocks-cntnt-inner { padding: 0 10px 0 10px;}
-.seo-cities-mortgage p.top-txt-info { width: auto; float: right; margin:-8px 10px 10px 0; position: relative; line-height: normal; font-size: 13px;}
+.seo-cities-mortgage p.top-txt-info { width: auto; float: right; margin:10px 10px 10px 0; position: relative; line-height: normal; font-size: 13px;}
 .loan-detail-blocks h3 { padding: 10px 10px; font-size: 17px; border-radius:0; line-height:24px;}
 .seo-cities-mortgage .loan-detail-blocks h3 span{ font-size: 15px; line-height:21px;}
 .closing-cost-smry-cntnt .col-xs-12 { text-align: left; font-size: 14px; line-height: normal; border-right: none; padding: 15px 10px 0 10px;}
@@ -1068,7 +1070,7 @@ p.today-rate-link { margin: 0px 0 15px 0; text-align: left; position: relative; 
 
 .inner-mb-changes, .mb-hide-para{ display:none;}
 #srch-edit-mb-only{ border:none;}
-#para-see-more-link, #para-see-less-link{ float:right; text-decoration:underline; color:#19214d; font-size:13px; cursor:pointer;}
+#para-see-more-link, #para-see-less-link{ float:right; text-decoration:underline; color:#19214d; font-size:14px; cursor:pointer;}
 #para-see-more-link{ display:block;}
 
 .gray-box-cntnt span.date-inner-abt-us, .gray-box-cntnt p.left-numbering, .gray-box-cntnt-mb-single .gray-box-cntnt p{ font-weight:400;}
@@ -1129,6 +1131,18 @@ footer .container{ padding:0;}
 
 .no-record-box{ padding: 10px 5px !important; }
 .seo-auto-loan-cntnt-box.seo-auto-loan-cntnt-box2 .row{ margin: 0; }
+
+.content-main.autoloan-top-sectn-cntrl{ padding-top:0 !important;  }
+.seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge { background: #f7f7f7 !important;}
+.autoloan-top-sectn-cntrl .seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge{ background: #f7f7f7 !important; margin: 0; width: 100%;}
+.autoloan-top-sectn-cntrl .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ min-height: auto; margin: 0;}
+.autoloan-top-sectn-cntrl .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt h3{ font-size: 18px; }
+.autoloan-top-sectn-cntrl .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt p{ font-weight: 300;}
+.autoloan-top-sectn-cntrl .seo-auto-loan-cntnt-box{  margin: 0; width: 100%;}
+.autoloan-top-sectn-cntrl .seo-auto-loan-cntnt-box .col-md-4.show-box{  display: block; padding-top:0 !important; }
+.autoloan-top-sectn-cntrl .seo-auto-loan-cntnt-box .col-md-4.show-box h3{ font-size: 20px;}
+.autoloan-top-sectn-cntrl .mb-hide-spl, .autoloan-top-sectn-cntrl .space-row{ display: none; }
+.autoloan-top-sectn-cntrl .col-xs-12.col-md-8.our-story-cntnt { padding: 0;}
 }
 
 /*mobile device css end*/
@@ -1412,7 +1426,7 @@ p.today-rate-link { margin: 0px 0 15px 0; text-align: left; position: relative; 
 
 .inner-mb-changes, .mb-hide-para{ display:none;}
 #srch-edit-mb-only{ border:none;}
-#para-see-more-link, #para-see-less-link{ float:right; text-decoration:underline; color:#19214d; font-size:13px; cursor:pointer;}
+#para-see-more-link, #para-see-less-link{ float:right; text-decoration:underline; color:#19214d; font-size:14px; cursor:pointer;}
 #para-see-more-link{ display:block;}
 
 .gray-box-cntnt span.date-inner-abt-us, .gray-box-cntnt p.left-numbering, .gray-box-cntnt-mb-single .gray-box-cntnt p{ font-weight:400;}
@@ -1555,3 +1569,200 @@ header .navbar-brand img { max-width: 140px;}
   padding-left: 15px!important;
 }
 .volume-auto-loan .car-auto-loan-news p{ min-height: auto !important;}
+
+
+/*Research page*/
+.blog-cntnt {
+    border-top: 1px solid #152545;
+    float: left;
+    width: 100%;
+    padding: 25px 0;
+}
+.blog-post-box{
+    float: left;
+    width: 100%;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0;
+    background: #fff;
+    box-shadow: 0 0 15px #d7d7d7;
+}
+.blog-post{
+    float: left;
+    width: 100%;
+    border-radius: 0;
+    padding: 20px;
+    margin: 0 0 25px 0;
+    background: #f7f7f7;
+    position: relative;
+    min-height: 195px;
+}
+.blog-post-inner {
+    position: relative;
+    width: 100%;
+    float: left;
+    padding: 0 0 5px 200px;
+    margin: 0;
+}
+.blog-post-inner img {
+  position: absolute;
+  left: 0;
+  width: 180px;
+  height: auto;
+  border-radius: 0.25rem;
+}
+.blog-post-inner h4{
+  float: left;
+  width: 100%;
+  color: #19214d;
+  font-size: 20px;
+  margin: 0px 0 8px 0;
+  font-weight: bold;
+  text-align: left;
+  line-height: normal;
+}
+.blog-post-inner h4 a{
+  color: #19214d;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: normal;
+  margin:auto;
+}
+.blog-post-inner p {
+    float: left;
+    width: 100%;
+    color: #19214d;
+    font-size: 18px;
+    margin: 0;
+    font-weight: 300;
+    line-height: 24px;
+}
+.blog-post-inner a{
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.blog-top-cntnt{
+    position: relative;
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+.blog-top-cntnt h4{
+    float: left;
+    width: 100%;
+    color: #19214d;
+    font-size: 30px;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    line-height: normal;
+}
+.blog-top-cntnt p {
+    float: left;
+    width: 100%;
+    color: #19214d;
+    font-size: 25px;
+    margin: 0 0 12px 0;
+    font-weight: normal;
+    line-height: 37px;
+}
+
+.rght-sidebar-box{
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 0 0 30px;
+    padding: 0;
+    float: left;
+    width: 100%;
+    box-shadow: 0 0 15px #d7d7d7;
+}
+.rght-sidebar-box h3 {
+    float: left;
+    width: 100%;
+    background: #19214d;
+    border-radius: 5px 5px 0 0;
+    padding: 11px 20px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+.rght-sidebar-box-dtail {
+    float: left;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+    padding: 5px 25px 20px 25px;
+    margin: 0;
+    background: #fff;
+    text-align: center;
+}
+.rght-sidebar-box-dtail p {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #19214d;
+    background: none;
+    line-height: 32px;
+    text-align: left;
+}
+.rght-sidebar-box-dtail a.blog-cntct-btn{
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff !important;
+    border-radius: 50px;
+    padding: 15px 53px;
+    background: #fb6325;
+    box-shadow: 0px 5px 0 #d6460c;
+    float: none;
+    margin: 15px auto 10px auto;
+    display: inline-block;
+}
+.rght-sidebar-box-dtail-sectns {
+  border-bottom: 1px solid #83879e;
+  float: left;
+  width: 100%;
+  padding: 18px 0 15px 0;
+}
+.rght-sidebar-box-dtail-sectns:last-child{ border-bottom: none; padding:18px 0 5px 0;}
+.rght-sidebar-box-dtail-sectns:first-child{ padding-top: 5px; }
+.rght-sidebar-box-dtail-sectns h5{
+    float: left;
+    width: 100%;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    color: #19214d;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    text-align: left;
+}
+.rght-sidebar-box-dtail-sectns h5 a{ color:#19214d;}
+.rght-sidebar-box-dtail-sectns p{
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #19214d;
+    background: none;
+    line-height: 26px;
+    text-align: left;
+}
+.author-posts{
+  float: left;
+  width: 100%;
+  padding: 0;
+}
+.blog-nav{
+  float: left;
+  width: 100%;
+  padding: 0 0 15px 0;
+}
+.blog-nav a{ color:#19214d; }

@@ -1,4 +1,9 @@
 class SeoPagesController < ApplicationController
+=begin
+Developer:      Varun
+Created:        21-05-2018
+Purpose:        display and define logic for all the seo pages
+=end  
   include ApplicationHelper
   include SeoPagesHelper
   #apply dry concept for common code
@@ -48,7 +53,7 @@ class SeoPagesController < ApplicationController
   end
 
   private
-
+    #common function for all city home pages
     def city_home
       city_home = City.find_by(id: params[:city_id])
       if city_home.present?
@@ -67,7 +72,7 @@ class SeoPagesController < ApplicationController
       city_news_articles = NewsArticle.where("search_term = ? OR search_term = ?", @city.city+flag, @city.city+', '+@city.state_code+flag)
       return city_news_articles.order(id: :desc).first(10)
     end
-
+    #common function for all bank home pages
     def bank_home
       bank_home = FdicInstitution.find_by(cert: params[:cert])
       if bank_home.present? && bank_home.used

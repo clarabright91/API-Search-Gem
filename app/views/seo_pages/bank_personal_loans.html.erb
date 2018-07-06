@@ -1,5 +1,5 @@
 <!-- seo bank personal loan start-->
-   <section class="content-main terms-page seo-auto-loan">
+   <section class="content-main terms-page seo-auto-loan autoloan-top-sectn-cntrl">
       <div class="container">
          <!--Bank of America Personal Loans start-->
          <div class="seo-auto-loan-cntnt-box mb-bg-gray seo-loan-cntnt-box-chnge">
@@ -19,11 +19,11 @@
                      <%=@bank.name%> is very active in personal loans, with a total carrying amount of loans to individuals for household, family and other personal expenditures that are covered by FDIC loss-sharing agreements of  <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_lcon * 1000).round(-3), precision: 0) : '$0'%>. Nonaccrual other loans from <%=@bank.name%> to individuals for household, family and other personal expenditures on a consolidated basis amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_naconoth * 1000).round(-3), precision: 0) : '$0'%>.
                   </p>
                   <div class="space-row"> </div>
-                  <p>Below are some other banks and lending institutions that specialize in personal loans for you to compare. </p>
-                  <span href="" id="para-see-more-link">See More</span>
+                  <p class="mb-hide-spl">Below are some other banks and lending institutions that specialize in personal loans for you to compare. </p>
+                  <span class="initial-section" href="" id="para-see-more-link">See More</span>
                </div>
             </div>
-            <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg" id="bank_details">
+            <div class="col-xs-12 col-md-4 seo-bank-cntn-white-bg seo-bank-cntn-top-white-bg mb-hide-spl" id="bank_details">
                <h3><%=@bank.name%></h3>
                      <p>Founded  <%=@bank.estymd.to_date.strftime("%B %d, %Y")%></br>
                         FDIC Certificate Number - <%=@bank.cert%></br>
@@ -429,5 +429,9 @@
      <%(3..9).each do |i|%>
       $("#mobile_news_articles_data_<%=i.to_s%>").toggle();
     <%end%>
+  })
+  
+  $(".initial-section").click(function(){
+    $("#bank_details").addClass('show-box');
   })
 </script>

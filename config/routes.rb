@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  
+  scope :module => 'buttercms' do
+    get '/research_categories/:slug' => 'categories#show', :as => :buttercms_category
+    get '/author/:slug' => 'authors#show', :as => :buttercms_author
+
+    get '/research/rss' => 'feeds#rss', :format => 'rss', :as => :buttercms_blog_rss
+    get '/research/atom' => 'feeds#atom', :format => 'atom', :as => :buttercms_blog_atom
+    get '/research/sitemap.xml' => 'feeds#sitemap', :format => 'xml', :as => :buttercms_blog_sitemap
+
+    get '/research(/page/:page)' => 'posts#index', :defaults => {:page => 1}, :as => :buttercms_blog
+    get '/research/:slug' => 'posts#show', :as => :buttercms_post
+  end
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   #devise_for :users

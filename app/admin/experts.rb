@@ -1,12 +1,16 @@
+=begin
+  Developer:      Varun
+  Purpose:        CRUD for expert
+=end
 ActiveAdmin.register Expert do
   menu false
   # Permitting Strong parameters
   permit_params :email, :first_name, :last_name, :phone, :license_number, :specialty, :website, :loan_type, :zip, :image, :verified, :remove_image
-
+  #custom back action 
   action_item 'Back', only: :show do
     link_to('Back', :back)
   end
-
+  #for index page
   index do
     selectable_column
     column :first_name
@@ -18,14 +22,14 @@ ActiveAdmin.register Expert do
     column :created_at
     actions name: "Actions"
   end
-
+  #for filters on index page
   filter :first_name
   filter :last_name
   filter :email
   filter :phone
   filter :loan_type, as: :select,include_blank: false, collection: {'mortgage' => 0,'refinance' => 1, 'personal'=> 2, 'auto' => 3}
   filter :created_at
-
+  # for show page
   show title: "Expert" do
     panel "Expert Details" do
       attributes_table_for expert, :first_name,:image, :last_name,:image, :phone,:email,:loan_type, :license_number, :specialty, :website,:zip,:verified, :created_at, :updated_at

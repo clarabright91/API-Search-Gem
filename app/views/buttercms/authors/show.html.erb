@@ -1,0 +1,54 @@
+<%= content_for :html_title, "#{@author.first_name} #{@author.last_name}" %>
+<%= content_for :meta_description, @author.bio %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="blog-post-box">
+        <!-- Author name -->
+        <h2><%= @author.first_name %> <%= @author.last_name %></h2>
+
+        <!-- Author profile -->
+        <% if @author.profile_image %>
+          <img src="<%= @author.profile_image %>" />
+        <% end %>
+
+        <p>Title: <%= @author.title %></p>
+        <p>Bio: <%= @author.bio %></p>
+
+        <!-- Recent posts -->
+        <h4>Recent posts</h4>
+
+        <ul class="author-posts">
+          <% @author.recent_posts.each do |post| %>
+            <li><%= render :partial => 'buttercms/posts/post', :locals => {:post => post} %></li>
+          <% end %>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="sidebar-blog">
+        <div class="rght-sidebar-box">
+          <h3>Share your research</h3>
+            <div class="rght-sidebar-box-dtail">
+            <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's.</p>
+            <a class="blog-cntct-btn" href="javascript:void(0);">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="rght-sidebar-box">
+          <h3>Research papers by Category</h3>
+          <div class="rght-sidebar-box-dtail">
+            <%ButterCMS::Category.all().each do |category|%>
+              <div class="rght-sidebar-box-dtail-sectns">
+                <h5><%= link_to category.name, buttercms_category_path(category.slug), :title => category.name %> </h5>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>

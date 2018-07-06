@@ -1,12 +1,19 @@
+=begin
+  Developer:      Varun
+  Purpose:        CRUD for freddie_mac_loan_origination from admin login.
+=end
 ActiveAdmin.register FreddieMacLoanOrigination, as: "FreddieMac"  do
-  # Permitting Strong parameters
+  #allowing specific actions only
   actions :all, except: [:new, :edit, :destroy]
+  # Permitting Strong parameters
   permit_params :credit_score, :first_payment_date, :first_time_home_buyer_flag, :maturity_date,:metropolitan_statistical_area,:mortgage_insurance_percentage,:number_of_units, :occupancy_status,:original_combined_loan_to_value,:original_debt_to_income_ratio,:original_upb,:original_loan_to_value,:original_interest_rate, :channel,:prepayment_penalty_mortgage_flag, :product_type, :property_state, :property_type, :postal_code,:loan_sequence_number,:loan_purpose,:original_loan_term,:number_of_borrowers, :seller_name, :service_name, :super_conforming_flag, :pre_harp_loan_sequence_number
+  #for removing custom menu
   menu false
+  #for custom back action
   action_item 'Back', only: :show do
     link_to('Back', :back)
   end
-
+  #for index action without pagination
   index pagination_total: false do
   #index do
     selectable_column
@@ -17,13 +24,13 @@ ActiveAdmin.register FreddieMacLoanOrigination, as: "FreddieMac"  do
     column :loan_sequence_number
     actions name: "Actions"
   end
-
+  #for filters in index page
   filter :credit_score
   filter :first_payment_date
   filter :maturity_date
   filter :postal_code
   filter :loan_sequence_number, filters: [:equals]
-
+  #for new and edit pages
   form do |f|
     f.object.first_payment_date ||= DateTime.now
     f.object.maturity_date ||= DateTime.now
