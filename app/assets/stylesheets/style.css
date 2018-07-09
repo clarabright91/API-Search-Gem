@@ -421,12 +421,12 @@ input.error { position:relative; left:0; bottom:0; font-size:18px; color:#929292
 .panel-heading.tabs-data-hdng a{ font-size:15px; font-weight:normal; color:#19214d; width:100%;}
 .tabs-accordians-box{ display:none;}
 .tabs-accordians-box .panel.panel-default{ box-shadow:none; border:none;}
-.tabs-accordians-box .tabs-data-row { padding-top: 0;}
+.tabs-accordians-box .tabs-data-row{  padding-top:0; border-bottom:1px solid #f1f1f1; position:relative; top:-6px; background:#fff;}
 .tabs-accordians-box .col-xs-12.col-md-12{ padding:0}
 .tabs-accordians-box  h5{ font-size:20px; font-weight:normal; color:#19214d; margin-top:15px;}
 .tabs-accordians-box  p{ background:none;}
-.tabs-accordians-box .panel-heading .accordion-toggle::after { font-family: 'Glyphicons Halflings'; content: "\e114"; float: right; color: #fb6325; font-size: 15px;}
-.panel-heading .accordion-toggle.collapsed::after { content:"\e080";}
+.tabs-accordians-box .panel-heading .accordion-toggle::after { font-family: 'Glyphicons Halflings'; content: "\e113"; float: right; color: #fb6325; font-size: 15px;}
+.panel-heading .accordion-toggle.collapsed::after { content:"\e114";}
 .tabs-data-main.tabs-accordians-box{ float:none;}
 .car-auto-loan-news{ float:left; width:20%; margin:0; padding:0 20px 0 0;}
 .car-auto-loan-news h6{ float:left; width:100%; margin:0 0 8px 0; padding:0; font-size:16px; font-weight:bold; color:#fb6325; min-height: 36px !important;}
@@ -459,7 +459,7 @@ a.seo-loan-aftr-cntnt-link{ float:right; text-align:right; color:#fb6325; font-s
 .loan-detail-blocks{ float:left; width:100%; border-radius:5px 5px 0 0; margin:0 0 40px 0;}
 .loan-detail-blocks h3{ float:left; width:100%; background:#58a9e1; border-radius:5px 5px 0 0; padding:15px 25px; color:#fff; font-size:24px; font-weight:bold; margin:0;}
 .content-main.seo-cities-mortgage .gray-box-cntnt h3{ text-transform:none;}
-.loan-detail-blocks h3 b{ font-size:30px;}
+.loan-detail-blocks h3 b{ font-size:24px;}
 .loan-detail-blocks h3 a{ float:right; font-style:italic; font-size:15px; font-weight:normal; color:#fff; text-decoration:underline; margin:5px 0 0 0px;}
 .car-auto-loan-othr-bank-box h3 { background: none; color: #19214d !important; font-weight: bold; padding: 0px 10px 0 0 !important; font-size:24px; min-height: auto;}
 .loan-detail-blocks-cntnt{ float:left; width:100%; border-radius:0 0 5px 5px; padding:0; margin:0; background:#f6f8fa;}
@@ -503,7 +503,7 @@ font-weight: bold;margin-top: 5px; min-height:50px;}
 .closing-cost-smry-cntnt .col-xs-12{ text-align:center; font-size:18px; color:#19214d; line-height:65px; border-right:1px solid #c8d5e6; padding:0;}
 .closing-cost-smry-cntnt .col-xs-12:last-child{ border-right:none;}
 .closing-cost-smry-cntnt .col-xs-12 p{ float:left; width:100%; background:#f6f8fa; font-size:19px; color:#19214d; line-height:normal; font-weight:normal; margin:0; padding:18px 0;}
-.seo-cities-mortgage .loan-detail-blocks h3 span{ float:left; width:100%; font-size:22px; line-height:27px; font-weight:normal; margin:5px 0 0 0;}
+.seo-cities-mortgage .loan-detail-blocks h3 span{ float:left; width:100%; font-size:18px; line-height:22px; font-weight:normal; margin:5px 0 0 0;}
 .seo-cities-mortgage .loan-detail-blocks { margin: 0 0 65px 0;}
 .graph-box p{ float:left; width:100%; background:none; font-size:21px !important; color:#19214d; line-height:26px; font-weight:normal; margin:0; padding:0;}
 .link-right-inner{ text-align:right; font-weight:300; font-size:20px; margin:20px 0 10px 0; float:right; color:#19214d;}
@@ -1009,7 +1009,7 @@ a.seo-loan-aftr-cntnt-link { font-size: 14px; padding: 0 10px; margin-top: 15px;
 .content-main p.space-top{ margin:10px 0 15px 0; padding:0 10px;}
 .seo-bank-table-graph .col-xs-12.col-md-5 p { font-size: 15px; font-weight: 400;}
 .seo-cities-mortgage .car-auto-loan-news { padding: 15px 4px 0 4px;}
-.seo-cities-mortgage .loan-detail-blocks { margin:10px 0 20px 0;}
+.seo-cities-mortgage .loan-detail-blocks { margin:10px 0;}
 .show-all-specialst-btn, .seo-auto-loan .show-all-loan-link{color:#19214d; border-radius:0; padding:0; float:left; background:none; font-size:16px; font-style:italic; text-decoration:underline; margin:10px 0 0 10px;}
 .show-all-specialst-btn:hover{color:#19214d; text-decoration:underline;}
 
@@ -1121,7 +1121,7 @@ footer .container{ padding:0;}
 .sectn-wo-bg .loan-detail-blocks-cntnt-inner { padding: 6px 0 0 0;}
 
 .seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge{ background: none !important; }
-.seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ background: #f7f7f7; padding: 15px; }
+.seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ background: #fff; padding: 15px; }
 .state-bank-page-list .row { margin: 0;}
 
 .directory-box .directory-links-box .row{  margin:0;}
@@ -1134,8 +1134,8 @@ footer .container{ padding:0;}
 
 .content-main.autoloan-top-sectn-cntrl{ padding-top:0 !important;  }
 .seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge { background: #f7f7f7 !important;}
-.autoloan-top-sectn-cntrl .seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge{ background: #f7f7f7 !important; margin: 0; width: 100%;}
-.autoloan-top-sectn-cntrl .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ min-height: auto; margin: 0;}
+.autoloan-top-sectn-cntrl .seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge{ background: #fff !important; margin: 0; width: 100%;}
+.autoloan-top-sectn-cntrl .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ height:auto !important; min-height: auto; margin: 0;}
 .autoloan-top-sectn-cntrl .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt h3{ font-size: 18px; }
 .autoloan-top-sectn-cntrl .seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt p{ font-weight: 300;}
 .autoloan-top-sectn-cntrl .seo-auto-loan-cntnt-box{  margin: 0; width: 100%;}
@@ -1766,3 +1766,5 @@ header .navbar-brand img { max-width: 140px;}
   padding: 0 0 15px 0;
 }
 .blog-nav a{ color:#19214d; }
+
+.content-main p.contact-top-para{ margin:-30px 0 8px 0; font-size:20px; }
