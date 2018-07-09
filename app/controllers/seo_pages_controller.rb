@@ -11,7 +11,7 @@ Purpose:        display and define logic for all the seo pages
   before_action :bank_home, only: [:bank_mortgage_loans, :bank_personal_loans, :bank_auto_loans]
 
   def city_home_mortgage_rates
-    @news_articles = NewsArticle.first(10) #news_article_data(' mortgage')
+    @news_articles = news_article_data(' mortgage')
     # for report section fetching all cities record similer to current city 
     cached_data = FreddieMacCache.find_by('zip_prefix like ? and loan_type = ?', "#{@city.zip.to_s.first(3)+ '%'}", 'P')
     unless cached_data.present? 
@@ -24,7 +24,7 @@ Purpose:        display and define logic for all the seo pages
   end 
 
   def city_home_refinance_rates
-    @news_articles = NewsArticle.first(10) #news_article_data(' refinance')
+    @news_articles = news_article_data(' refinance')
     # for report section fetching all cities record similer to current city
     # for loan type N & C
     cached_data = FreddieMacCache.find_by('zip_prefix like ? and loan_type = ?', "#{@city.zip.to_s.first(3)+ '%'}", 'N')
@@ -38,17 +38,17 @@ Purpose:        display and define logic for all the seo pages
   end 
 
   def bank_mortgage_loans
-    @news_articles = NewsArticle.first(10) #bank_news_article(" mortgage")
+    @news_articles = bank_news_article(" mortgage")
     @loan_officers = LoanOfficer.loan_officers_gen(@bank, "mortgage")
   end
     
   def bank_personal_loans 
-    @news_articles = NewsArticle.first(10) #bank_news_article(" personal loans")
+    @news_articles = bank_news_article(" personal loans")
     @loan_officers = LoanOfficer.loan_officers_gen(@bank, "personal loan")
   end  
 
   def bank_auto_loans
-    @news_articles = NewsArticle.first(10) #bank_news_article(" auto loans")
+    @news_articles = bank_news_article(" auto loans")
     @loan_officers = LoanOfficer.loan_officers_gen(@bank, "auto loan")
   end
 

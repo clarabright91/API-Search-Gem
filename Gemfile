@@ -48,6 +48,9 @@ gem 'jquery-validation-rails', '~> 1.16'
 #gem for facebook
 gem 'omniauth-facebook', '~> 4.0'
 
+#gem for google login
+gem 'omniauth-google-oauth2', '~> 0.5.3'
+
 # for image,file
 gem "paperclip", "~> 5.2.1"
 #gem for background scheduler

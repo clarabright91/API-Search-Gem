@@ -94,6 +94,7 @@ Return:         hash
             <% end %>
          </div>
          <!-- user profile end--> 
+         <% if !current_user.social_login.present?%>
          <!-- change password start-->
          <div class="profile-blocks">
             <h3>Change</h3>
@@ -137,6 +138,7 @@ Return:         hash
             <%end%>
          </div>
          <!-- change password end-->
+        <%end%> 
          <!-- user price alert start-->
          <div class="profile-blocks">
             <h3>Price Alert</h3>

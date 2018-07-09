@@ -160,10 +160,11 @@
             </div>
              <p>or sign up with</p>
              <div class="social-login">
-              <a href=""><%= image_tag("facebook_13.png", :alt => "Facebook") %></a>
-              <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_url() %>
-              <a href=""><%= image_tag("twitter_15.png", :alt => "Twitter") %></a>
-              <a href=""><%= image_tag("google_13.png", :alt => "Google") %></a>
+              <!-- <a href=""><%#= image_tag("facebook_13.png", :alt => "Facebook") %></a> -->
+              <%= link_to image_tag("facebook_13.png"), user_facebook_omniauth_authorize_url() %>
+              <!-- <a href=""><%#= image_tag("twitter_15.png", :alt => "Twitter") %></a> -->
+              <!-- <a href=""><%#= image_tag("google_13.png", :alt => "Google") %></a> -->
+              <%= link_to image_tag("google_13.png"), user_google_oauth2_omniauth_authorize_url() %>
              </div>
           </li>
          </ul>

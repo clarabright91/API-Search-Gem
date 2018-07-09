@@ -30,7 +30,11 @@ class PagesController < ApplicationController
 
   def contact_us_email
     @admin_user = AdminUser.first.email
-    ContactUsMailer.contact_us_email(@admin_user,params).deliver
+    #ContactUsMailer.contact_us_email(@admin_user,params).deliver
+    receivers  = ["ray@relativityteam.com", "tzewee@relativityteam.com", @admin_user]
+      receivers.each do |rec|
+        ContactUsMailer.contact_us_email(rec,params).deliver
+      end
     flash[:notice] = 'Email sent successfully.'
     redirect_back fallback_location: root_path
 	end
