@@ -416,44 +416,48 @@
                          </p>
                          <span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_idscgtpc * 1000).round(-3), precision: 0) : '$0' %></span>
                       </div>
-                      <div class="volume-auto-loan-row bg-white">
-                         <p class="vol-row-inner">Collaterized mortgage obligations
-                         </p>
-                         <span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_idsccmo * 1000).round(-3), precision: 0) : '$0' %></span>
-                      </div>
-                      <div class="volume-auto-loan-row ">
-                         <p class="vol-row-inner">Mortgage servicing assets
+                      <div class="mb-hide" id="fdic_mobile_data_section">
+                          <div class="volume-auto-loan-row bg-white">
+                             <p class="vol-row-inner">Collaterized mortgage obligations
+                             </p>
+                             <span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_idsccmo * 1000).round(-3), precision: 0) : '$0' %></span>
+                          </div>
+                          <div class="volume-auto-loan-row ">
+                             <p class="vol-row-inner">Mortgage servicing assets
 
-                         </p>
-                         <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_intanmsr * 1000).round(-3), precision: 0) : '$0' %></span>
-                      </div>
+                             </p>
+                             <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_intanmsr * 1000).round(-3), precision: 0) : '$0' %></span>
+                          </div>
 
-                      <div class="volume-auto-loan-row bg-white">
-                         <p class="vol-row-inner">Real estate mortgages;  personal trust and agency accounts
-                         </p>
-                         <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_tpiremtg * 1000).round(-3), precision: 0) : '$0' %></span>
-                      </div>
+                          <div class="volume-auto-loan-row bg-white">
+                             <p class="vol-row-inner">Real estate mortgages;  personal trust and agency accounts
+                             </p>
+                             <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_tpiremtg * 1000).round(-3), precision: 0) : '$0' %></span>
+                          </div>
 
-                      <div class="volume-auto-loan-row">
-                         <p class="vol-row-inner">Real estate mortgages;  employee benefit and retirement trusts
+                          <div class="volume-auto-loan-row">
+                             <p class="vol-row-inner">Real estate mortgages;  employee benefit and retirement trusts
 
-                         </p>
-                         <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_teremtg * 1000).round(-3), precision: 0) : '$0' %></span>
-                      </div>
+                             </p>
+                             <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_teremtg * 1000).round(-3), precision: 0) : '$0' %></span>
+                          </div>
 
-                      <div class="volume-auto-loan-row bg-white">
-                         <p class="vol-row-inner">Real estate mortgages; all other managed accounts
-                         </p>
-                         <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_toremtg * 1000).round(-3), precision: 0) : '$0' %></span>
-                      </div>
+                          <div class="volume-auto-loan-row bg-white">
+                             <p class="vol-row-inner">Real estate mortgages; all other managed accounts
+                             </p>
+                             <span> <%=@fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_toremtg * 1000).round(-3), precision: 0) : '$0' %></span>
+                          </div>
+                        </div>
+                        <button class= "show-all-specialst-btn mb-only" id="fdic_mobile_data_section_btn">See More Reported Financials</button>
 
-                      <a class="link-right-inner">Data produced  from US Government reported financials</a>
+                      <a class="link-right-inner mb-hide">Data produced  from US Government reported financials</a>
                    </div>
 
                    <div class="col-xs-12 col-md-5">
                       <p><%=@bank.name%> lends out a total of <%=@fdic_cal_data.present? ?  number_to_currency((@fdic_cal_data.m_lnlsgr * 1000).round(-3), precision: 0) : '$0'%> annually. Of this loan volume, <%=@bank.name%> home mortgages are <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_lnre * 1000).round(-3), precision: 0) : '$0'%>. As a result, <%=@bank.name%> home loans represent <%= @fdic_cal_data.present? ? (@fdic_cal_data.m_lnre/@fdic_cal_data.m_lnlsgr).round(2) : '0' %>% of the total lending of <%=@bank.name%>.</p>
                    </div>
                   <div class="col-xs-12 col-md-5" id="piechart"></div>
+                  <a class="link-right-inner mb-only">Data produced  from US Government reported financials</a>
                 </div>
                 <div class="graph-box">
                    <p>The data above is produced from publicly disclosed information made available through the <%=link_to "Federal Deposit Insurance Company","https://www.fdic.gov/", target: :_blank %>.  <%=@bank.name%> is a member of the FDIC, and is required to accurately disclose these required information in a timely manner. PureLoan aggregates this data and presents it in a view that is educational for our users as they consider a mortgage from <%=@bank.name%>.</p>
@@ -533,13 +537,13 @@
                 <%if i < 5%>
                   <div class="car-auto-loan-news">
                     <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
-                      <p><%=na.text.truncate(130)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                      <p><%=na.text.truncate(130)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                   </div>
                 <%else%>
                   <div id='news_articles_data_<%=i.to_s%>' style= "display:none;">
                     <div class="car-auto-loan-news">
                       <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
-                        <p><%=na.text.truncate(130)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                        <p><%=na.text.truncate(130)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                     </div>
                   </div>  
                 <%end%>  
@@ -558,17 +562,20 @@
                 <%if i < 3 %>
                   <div class="car-auto-loan-news">
                     <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
-                      <p><%=na.text.truncate(72)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                      <p><%=na.text.truncate(72)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                   </div>
                 <%else%>
                   <div id='mobile_news_articles_data_<%=i.to_s%>' style= "display:none;">
                     <div class="car-auto-loan-news">
                       <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
-                        <p><%=na.text.truncate(72)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                        <p><%=na.text.truncate(72)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                     </div>
                   </div>  
                 <%end%>  
               <%end%>
+              <div class="news-see-more">
+                <a class= "news-see-more-link" id="mobile_news_data">See More Recent News</a>
+              </div>
             <%else%>
               <div class="car-auto-loan-news">
                   No Records Found
@@ -576,10 +583,7 @@
             <%end%>
             </div>
           <!-- <a href="" class="see-more-link-common">See More Reported Financials</a> -->
-          <div class="news-see-more">
           
-          <a class= "news-see-more-link" id="mobile_news_data">See More Recent News</a>
-          </div>
        </div>
        <!-- News end here -->
 
@@ -668,5 +672,9 @@
   })
   $(".initial-section").click(function(){
     $("#bank_details").addClass('show-box');
+  })
+
+  $("#fdic_mobile_data_section_btn").click(function(){
+    $("#fdic_mobile_data_section").removeClass("mb-hide")
   })
 </script>

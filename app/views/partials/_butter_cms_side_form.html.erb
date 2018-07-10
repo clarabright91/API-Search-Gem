@@ -1,0 +1,80 @@
+<!--sidebar start-->
+  <div class="col-md-4">
+    <div class="sidebar-blog">
+
+      <div class="rght-sidebar-box">
+        <h3>Share your research</h3>
+          <div class="rght-sidebar-box-dtail">
+          <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's.</p>
+          <%#=link_to "Contact Us",show_cms_pages_path(page_slug: 'contact'), class: 'blog-cntct-btn'%>
+             <a href="" data-toggle="modal" data-target="#research_contact_form"  class='blog-cntct-btn'>Contact Us</a> 
+          </div>
+      </div>
+
+      <div class="rght-sidebar-box">
+        <h3>Research papers by Category</h3>
+        <div class="rght-sidebar-box-dtail">
+          <%ButterCMS::Category.all().each do |category|%>
+            <div class="rght-sidebar-box-dtail-sectns">
+              <h5><%= link_to category.name, buttercms_category_path(category.slug), :title => category.name %> </h5>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>  
+  </div>
+<!--sidebar end-->
+
+<!-- research contact form starts here -->
+  <div class="modal fade signup-login-popup login-popup" id="research_contact_form" role="dialog">
+    <div class="modal-dialog">
+     <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal"><%= image_tag("Homepage-login-overlayw_03.png", :alt => "close", :class => "login-cross-img") %>
+       </button>
+      </div>
+      <div class="modal-body">
+        <div class="pum-content popmake-content">
+      <div class="popup-hdr">
+<h3>Share your Research with your Readers</h3>
+<p>Educate our 74,000 monthly readers on latest academic research and industry news on economics and housing</p>
+</div>
+<div class="popup-cntnt">
+<%= form_with url: research_contact_us_email_path,html: {id: 'contact_us_research_form',multipart: true} ,method: :get do |f| %>
+      <div class="screen-reader-response"></div>
+        <div>
+          <span class="wpcf7-form-control-wrap your-name">
+            <%= f.text_field :name, autofocus: true, placeholder: "Name", class: "wpcf7-form-control wpcf7-text wpcf7-validates-as-required" %>
+          </span>
+        </div>
+      <div>
+        <span class="wpcf7-form-control-wrap your-email">
+          <%= f.email_field :email, autofocus: true, placeholder: "Email",class: "wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" %>
+        </span>
+      </div>
+      <div>
+        <span class="wpcf7-form-control-wrap your-subject">
+          <%= f.url_field :website, autofocus: true, placeholder: "Website",class: "wpcf7-form-control wpcf7-text" %>
+        </span>
+      </div>
+      <div>
+        <span class="wpcf7-form-control-wrap your-message">
+          <%= f.text_area :research_summary, size: "55x5", autofocus: true, placeholder: "Research summary and key insights", style: 'max-width: 100%', class: "wpcf7-form-control wpcf7-textarea"%>
+        </span>
+      </div>
+      <div><span class="wpcf7-form-control-wrap">
+        <%= f.file_field :question,autofocus: true, placeholder: "Research summary and key insights"%>
+        </span> </div>
+        <p>
+        <%= f.submit "SHARE RESEARCH", class: "rates-btn"%>
+        <span class="ajax-loader"></span></p>
+         <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- research contact form ends here -->
+

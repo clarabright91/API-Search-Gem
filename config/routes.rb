@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   put '/update_profile', to: 'pages#update_profile' 
   get '/pages/:page_slug',to: 'pages#show', as: 'show_cms_pages'
   
+  get '/research_contact_us_email', to: 'pages#research_contact_us_email', as: "research_contact_us_email"
+  
   get '/city_freddie_cache_data', to: 'pages#city_freddie_cache_data', as: 'city_freddie_cache_data'  
 
   # for dynamic cmspages

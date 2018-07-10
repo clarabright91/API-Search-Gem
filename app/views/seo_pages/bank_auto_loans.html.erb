@@ -138,32 +138,33 @@
             <p class="vol-row-inner">Auto loans -credit enhancements</p>
             <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_enceauto * 1000).round(-3), precision: 0) : '$0'%></span>
          </div>
-        
-          <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Bank securitization, principal balance on auto loans</p>
-            <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szlauto * 1000).round(-3), precision: 0) : '$0'%></span>
-         </div>
+        <div class="mb-hide" id="fdic_auto_loan_data_section">
+            <div class="volume-auto-loan-row bg-white">
+              <p class="vol-row-inner">Bank securitization, principal balance on auto loans</p>
+              <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szlauto * 1000).round(-3), precision: 0) : '$0'%></span>
+            </div>
 
-         <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Credit exposure in retained interest in auto loans</p>
-            <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szioauto * 1000).round(-3), precision: 0) : '$0'%></span>
-         </div>
+           <div class="volume-auto-loan-row">
+              <p class="vol-row-inner">Credit exposure in retained interest in auto loans</p>
+              <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szioauto * 1000).round(-3), precision: 0) : '$0'%></span>
+           </div>
 
-         <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Credit exposure in subordinated securities in auto loans</p>
-            <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szsscaut * 1000).round(-3), precision: 0) : '$0'%></span>
-         </div>
+           <div class="volume-auto-loan-row bg-white">
+              <p class="vol-row-inner">Credit exposure in subordinated securities in auto loans</p>
+              <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szsscaut * 1000).round(-3), precision: 0) : '$0'%></span>
+           </div>
 
-         <div class="volume-auto-loan-row">
-            <p class="vol-row-inner">Bank's unused commitments auto loans</p>
-            <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szucauto * 1000).round(-3), precision: 0) : '$0'%></span>
-         </div>
+           <div class="volume-auto-loan-row">
+              <p class="vol-row-inner">Bank's unused commitments auto loans</p>
+              <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szucauto * 1000).round(-3), precision: 0) : '$0'%></span>
+           </div>
 
-         <div class="volume-auto-loan-row bg-white">
-            <p class="vol-row-inner">Bank's unused commitments liquidity auto loans</p>
-            <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_ucszauto * 1000).round(-3), precision: 0) : '$0'%></span>
-         </div>
-
+           <div class="volume-auto-loan-row bg-white">
+              <p class="vol-row-inner">Bank's unused commitments liquidity auto loans</p>
+              <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_ucszauto * 1000).round(-3), precision: 0) : '$0'%></span>
+           </div>
+        </div>
+        <button class= "show-all-specialst-btn mb-only" id="fdic_auto_loan_data_section_btn">See More</button>
          <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
       </div>
       <!--Volume of Auto Loan end-->
@@ -253,13 +254,13 @@
                   <%if i < 5%>
                    <div class="car-auto-loan-news">
                      <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
-                      <p><%=na.text.truncate(130)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>          
+                      <p><%=na.text.truncate(130)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>          
                    </div>
                   <%else%>
                     <div id='news_data_<%=i.to_s%>' style= "display:none;">  
                       <div class="car-auto-loan-news">
                        <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
-                        <p><%=na.text.truncate(130)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>        
+                        <p><%=na.text.truncate(130)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>        
                       </div>
                     </div>
                   <%end%>
@@ -278,13 +279,13 @@
                   <%if i < 3 %>
                     <div class="car-auto-loan-news">
                       <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
-                        <p><%=na.text.truncate(72)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                        <p><%=na.text.truncate(72)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                     </div>
                   <%else%>
                     <div id='mobile_news_articles_data_<%=i.to_s%>' style= "display:none;">
                       <div class="car-auto-loan-news">
                         <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
-                          <p><%=na.text.truncate(72)%>,  <%=link_to "more info", na.url, target: "_blank"%></p>
+                          <p><%=na.text.truncate(72)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                       </div>
                     </div>  
                   <%end%>  
@@ -441,14 +442,7 @@
   $(".initial-section").click(function(){
     $("#bank_details").addClass('show-box');
   })
+  $("#fdic_auto_loan_data_section_btn").click(function(){
+    $("#fdic_auto_loan_data_section").removeClass("mb-hide");
+  })
 </script>
-
-
-
-
-<!-- <style type="text/css">
-  @media(min-width:320px) and (max-width: 767px){
-  .mb-hide-spl{ display: none; }
-  }
-
-</style> -->

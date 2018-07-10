@@ -39,6 +39,12 @@ class PagesController < ApplicationController
     redirect_back fallback_location: root_path
 	end
 
+  def research_contact_us_email
+    flash[:notice] = 'Work on progress.'
+    redirect_to buttercms_blog_path
+  end
+
+
   def update_profile
     @user = User.find_by(id: params[:user][:id])
     @user.update_attributes(user_params)
