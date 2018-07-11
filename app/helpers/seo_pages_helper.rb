@@ -23,7 +23,13 @@ module SeoPagesHelper
        return phone.to_s + ' Ext'+ remove_unnecessary_keywords(phone_number[1])
       elsif arg.include?('(') || arg.include?(')') || arg.include?('-') || arg.include?('.') || arg.include?(' ')
        return  number_to_phone(arg.gsub!(/[^0-9A-Za-z]/, '').to_i, area_code: true)    
+      
+      elsif arg.include?('x') || arg.include?('�')
+        arg = arg.gsub('�', '')       if arg.include?('�')
+
+        return number_to_phone(arg.to_i, area_code: true)
       else
+        arg = arg[1..10]       if arg.length > 10
         return number_to_phone(arg.to_i, area_code: true) 
       end
     end

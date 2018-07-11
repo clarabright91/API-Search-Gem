@@ -762,7 +762,13 @@
              </div>
           </div>
           <!-- <a href= "" class="show-all-specialst-btn" >Show all Morgage Specialists</a> -->
-          <button class= "show-all-specialst-btn" id="desktop_loan_off_data">Show all Morgage Specialists </button>
+          <%if @loan_companies.present?%>
+           <button class= "show-all-specialst-btn" id="desktop_loan_off_data">Show all Morgage Specialists </button>
+          <%else%>
+            <div class="car-auto-loan-news">
+              No Records Found
+            </div>
+          <%end%>  
        </div>
        <!-- News section starts from here -->
        <div class="volume-auto-loan full-width loan-detail-blocks">

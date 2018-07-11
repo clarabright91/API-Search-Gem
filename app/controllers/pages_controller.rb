@@ -40,7 +40,19 @@ class PagesController < ApplicationController
 	end
 
   def research_contact_us_email
-    flash[:notice] = 'Work on progress.'
+    @admin_user = AdminUser.first.email
+     receivers  = ["ray@relativityteam.com", "tzewee@relativityteam.com", @admin_user]
+      receivers.each do |rec|
+        if !params[:attachment].nil? && !params[:attachment].blank?
+          file = params[:attachment].tempfile.path
+          file_name = params[:attachment].original_filename
+        else
+          file = ""
+          file_name = ""
+        end           
+        ResearchMailer.research_email(rec, params[:name], params[:email], params[:website], params[:research_summary],file_name,file).deliver
+      end
+    flash[:notice] = 'Research submitted successfully.'
     redirect_to buttercms_blog_path
   end
 

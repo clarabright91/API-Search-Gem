@@ -16,7 +16,21 @@
     <link rel="stylesheet" href="http://d2z2rr99bkshyr.cloudfront.net/buttercms-post-defaults.css">
 </head>
 <body>
-
+    <%if !flash[:notice].blank?%>
+        <div class="col-md-offset-3 col-md-6 alert alert-success" style="height: 5%;">
+          <button type="button" class="close" data-dismiss="alert">x</button>
+            <%= flash[:notice]%>
+        </div>
+      <%elsif !flash[:danger].blank?%>
+        <div class="col-md-offset-3 col-md-6 alert alert-danger" style="height: 5%;">
+          <button type="button" class="close" data-dismiss="alert">x</button>
+            <%= flash[:danger]%>
+        </div> 
+      <%end%>
+      <noscript>
+        <div class="alert alert-danger"> It seems that javascript is disbabled from your browser, Please enable javascript or change the browser for better performance. 
+        </div>
+      </noscript>
     <%= render 'partials/header'%>
     <div class="blog-cntnt"> 
         <div class="container">
