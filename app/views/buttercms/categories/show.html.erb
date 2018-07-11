@@ -17,29 +17,6 @@
 
         </div>
         </div>
-
-        <div class="col-md-4">
-      <div class="sidebar-blog">
-        <div class="rght-sidebar-box">
-          <h3>Share your research</h3>
-            <div class="rght-sidebar-box-dtail">
-            <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's.</p>
-            <!-- <a class="blog-cntct-btn" href="javascript:void(0);">Contact Us</a> -->
-            <%=link_to "Contact Us",show_cms_pages_path(page_slug: 'contact'), class: 'blog-cntct-btn'%>
-            </div>
-        </div>
-
-        <div class="rght-sidebar-box">
-          <h3>Research papers by Category</h3>
-          <div class="rght-sidebar-box-dtail">
-            <%ButterCMS::Category.all().each do |category|%>
-              <div class="rght-sidebar-box-dtail-sectns">
-                <h5><%= link_to category.name, buttercms_category_path(category.slug), :title => category.name %> </h5>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>  
-    </div>
+      <%= render 'partials/butter_cms_side_form'%>
   </div>
 </div>
