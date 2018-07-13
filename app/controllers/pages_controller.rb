@@ -41,8 +41,7 @@ class PagesController < ApplicationController
 
   def research_contact_us_email
     @admin_user = AdminUser.first.email
-     #receivers  = ["ray@relativityteam.com", "tzewee@relativityteam.com", @admin_user]
-     receivers  = ["ankitvarshney19@gmail.com"]
+     receivers  = ["ray@relativityteam.com", "tzewee@relativityteam.com", @admin_user]
       receivers.each do |rec|
         if !params[:attachment].nil? && !params[:attachment].blank?
           file = params[:attachment].tempfile.path
@@ -66,7 +65,7 @@ class PagesController < ApplicationController
       file = ""
       file_name = ""
     end           
-    ResearchPostMailer.research_post_email("ankitvarshney19@gmail.com", params[:name], params[:email], params[:phone_no], params[:research_summary],file_name,file, params[:title]).deliver
+    ResearchPostMailer.research_post_email(@admin_user, params[:name], params[:email], params[:phone_no], params[:research_summary],file_name,file, params[:title]).deliver
 
     flash[:notice] = 'Research posted successfully.'
     redirect_back fallback_location: root_path
