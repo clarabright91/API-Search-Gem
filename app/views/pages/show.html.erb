@@ -9,11 +9,13 @@ Return:         hash
 <section class="content-main terms-page about-page  dynamic-page">
    <div class="container">
       <h1><%=@page.page_name%></h1>
-      <p class="contact-top-para">We would love to hear from you, please drop us a line!</p>
+      <%if remove_space(@page.page_slug).downcase == "contact"%>
+        <p class="contact-top-para">We would love to hear from you, please drop us a line!</p>
+      <%end%>  
       <div class="row">
           <%if remove_space(@page.page_slug).downcase == "contact"%>
             <!-- Email form for contactus -->
-            <div class="col-xs-12 col-md-5 pull-right ">
+            <div class="col-xs-12 col-md-5 ">
               <%= form_with url: contact_us_email_path,id: 'contact_us_form' ,remote: true do |f| %>
                 <div class="login-rows">
                   <%= image_tag("login-user.png", :alt => "Name") %>
@@ -34,7 +36,7 @@ Return:         hash
            </div>  
           <%elsif remove_space(@page.page_slug).downcase == "about"%>
              <div class="col-xs-12 col-md-5 our-story-img pull-right">
-               <img src="/assets/about-us_03.png" alt="">
+               <img src="/images/about-us_03.png" alt="">
              </div>
           <%end%>
           <!-- content for term_of_use webpage -->
@@ -51,11 +53,13 @@ Return:         hash
             </div>
           </div>
         <%else%>
+         <%if remove_space(@page.page_slug).downcase != "contact"%>
          <div class="col-xs-12 col-md-7 our-story-cntnt">
            <div class="gray-box-cntnt">
             <%=raw(@page.page_content)%>
            </div>
          </div>
+         <%end%>
         <%end%>
       </div>
       <!-- meta description of page -->

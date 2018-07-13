@@ -41,7 +41,8 @@ class PagesController < ApplicationController
 
   def research_contact_us_email
     @admin_user = AdminUser.first.email
-     receivers  = ["ray@relativityteam.com", "tzewee@relativityteam.com", @admin_user]
+     #receivers  = ["ray@relativityteam.com", "tzewee@relativityteam.com", @admin_user]
+     receivers  = ["ankitvarshney19@gmail.com"]
       receivers.each do |rec|
         if !params[:attachment].nil? && !params[:attachment].blank?
           file = params[:attachment].tempfile.path
@@ -50,12 +51,26 @@ class PagesController < ApplicationController
           file = ""
           file_name = ""
         end           
-        ResearchMailer.research_email(rec, params[:name], params[:email], params[:website], params[:research_summary],file_name,file).deliver
+        ResearchMailer.research_email(rec, params[:name], params[:email], params[:phone_no], params[:message],file_name,file).deliver
       end
     flash[:notice] = 'Research submitted successfully.'
-    redirect_to buttercms_blog_path
+    redirect_back fallback_location: root_path
   end
 
+  def research_post
+    @admin_user = AdminUser.first.email
+    if !params[:attachment].nil? && !params[:attachment].blank?
+      file = params[:attachment].tempfile.path
+      file_name = params[:attachment].original_filename
+    else
+      file = ""
+      file_name = ""
+    end           
+    ResearchPostMailer.research_post_email("ankitvarshney19@gmail.com", params[:name], params[:email], params[:phone_no], params[:research_summary],file_name,file, params[:title]).deliver
+
+    flash[:notice] = 'Research posted successfully.'
+    redirect_back fallback_location: root_path
+  end
 
   def update_profile
     @user = User.find_by(id: params[:user][:id])

@@ -10,14 +10,15 @@ class LoanOfficer < ApplicationRecord
     key = sum * 1000
     a_state_officers = LoanOfficer.where(state: ApplicationController.helpers.state_full_name(bank.stname, true))
     num_state_officers = a_state_officers.size
-    return  []     if num_state_officers == 0
+    # if there is no loan officer in particular state the this script'll display random data
+    return  LoanOfficer.order("RANDOM()").first(5)     if num_state_officers == 0  
     
     loan_officers = []
     for i in 1..5
       index = (key * i) % num_state_officers
       loan_officers << a_state_officers[index]
     end
-    return loan_officers
+    return loan_officers    
   end
 
   def self.loan_officers_for_city(city_obj) 

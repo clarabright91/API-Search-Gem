@@ -715,7 +715,7 @@
                     <%if i < 3%>
                       <div class="panel panel-default">
                         <div class="panel-heading tabs-data-hdng">
-                          <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%=i.to_s%>">
+                          <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse_<%=i.to_s%>">
                             <%= lc.name%> </a>
                         </div>
                         <div id="collapse_<%=i.to_s%>" class="panel-collapse collapse">
@@ -737,7 +737,7 @@
                         <div id='officers_mobile_data_<%=i.to_s%>' style= "display:none;">
                           <div class="panel panel-default">
                             <div class="panel-heading tabs-data-hdng">
-                              <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%=i.to_s%>">
+                              <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse_<%=i.to_s%>">
                               <%= lc.name%> </a>
                             </div>
                             <div id="collapse_<%=i.to_s%>" class="panel-collapse collapse">
@@ -763,7 +763,7 @@
           </div>
           <!-- <a href= "" class="show-all-specialst-btn" >Show all Morgage Specialists</a> -->
           <%if @loan_companies.present?%>
-           <button class= "show-all-specialst-btn" id="desktop_loan_off_data">Show all Morgage Specialists </button>
+           <button class= "show-all-specialst-btn pull-right see-more-fdic " id="desktop_loan_off_data">See More </button>
           <%else%>
             <div class="car-auto-loan-news">
               No Records Found
@@ -816,7 +816,7 @@
                   <%end%>  
                 <%end%>
                   <div class="news-see-more">
-                    <a class= "news-see-more-link" id="mobile_news_data">See More Recent News</a>
+                    <a class= "news-see-more-link pull-right see-more-fdic" id="mobile_news_data">See More</a>
                   </div>
               <%else%>
                 <div class="car-auto-loan-news">
@@ -854,17 +854,20 @@
         <%(3..5).each do |i|%>
           $("#officers_mobile_data_<%=i.to_s%>").toggle();
         <%end%>
+        $("#desktop_loan_off_data").hide();
       });
     // section for web view
     $("#desktop_news").click(function(){
       <%(5..9).each do |i|%>
         $("#news_data_<%=i.to_s%>").toggle();
       <%end%>
+      $("#desktop_news").hide();
     });
     $("#mobile_news_data").click(function(){
     //section for mobile view 
        <%(3..9).each do |i|%>
         $("#mobile_news_articles_data_<%=i.to_s%>").toggle();
       <%end%>
+      $("#mobile_news_data").hide();
     })
 </script>

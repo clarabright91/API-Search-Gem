@@ -153,7 +153,7 @@
                  <span><%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_ntconoth * 1000).round(-3), precision: 0) : '$0' %></span>
               </div>
             </div>
-            <button class= "show-all-specialst-btn mb-only" id="bank_personal_data_section_btn">See More</button>
+            <button class= "show-all-specialst-btn mb-only pull-right see-more-fdic" id="bank_personal_data_section_btn">See More</button>
             <a class="seo-loan-aftr-cntnt-link" href="">Data produced from US Government reported Financials</a>
          </div>
          <!--Volume of Personal Loan end-->
@@ -210,7 +210,7 @@
                     <%@loan_officers.first(3).each_with_index do |loan_officer, i|%>
                       <div class="panel panel-default">
                          <div class="panel-heading tabs-data-hdng">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%=i.to_s%>">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse_<%=i.to_s%>">
                               <%= remove_unnecessary_keywords(loan_officer.try(:first)) %>  <%= remove_unnecessary_keywords(loan_officer.try(:last))%>
                               </br>
                               <%= remove_unnecessary_keywords(loan_officer.try(:title))%>
@@ -283,7 +283,7 @@
                   <%end%>  
                 <%end%>
                   <div class="news-see-more">
-                    <a class= "news-see-more-link" id="mobile_news_data">See More Recent News</a>
+                    <a class= "news-see-more-link pull-right see-more-fdic" id="mobile_news_data">See More</a>
                   </div>
               <%else%>
                 <div class="car-auto-loan-news">
@@ -422,7 +422,7 @@
     <%(5..9).each do |i|%>
       $("#news_data_<%=i.to_s%>").toggle();
     <%end%>
-
+    $("#desktop_news").hide();
   });
 
   $("#mobile_news_data").click(function(){
@@ -430,13 +430,16 @@
      <%(3..9).each do |i|%>
       $("#mobile_news_articles_data_<%=i.to_s%>").toggle();
     <%end%>
+    $("#mobile_news_data").hide();
   })
   
   $(".initial-section").click(function(){
     $("#bank_details").addClass('show-box');
+  $(".initial-section").hide();
   })
 
   $('#bank_personal_data_section_btn').click(function(){
     $('#bank_personal_data_section').removeClass('mb-hide')
+  $('#bank_personal_data_section_btn').hide();
   })
 </script>

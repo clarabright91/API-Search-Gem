@@ -1,4 +1,3 @@
-<!-- Mailer for sending queries to admin email -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,10 +5,11 @@
   </head>
   <body>
     <h3>Hi Admin</h3>
-      <b><u>Research Query Details: </b></u> <br/>
+      <b><u>Research Post Submission Details: </b></u> <br/>
         Name: <b> <%= @name %> </b> <br/>
         Email: <i> <%= @email%> </i> <br/>
         Phone Number: <i> <%= @phone%> </i> <br/>
-        Message: <p><%= @message%> </p>
+        Title: <u><%= @title%> </u> <br/>
+        Research Summary: <p><%= @research_summary%> </p>
   </body>
 </html>

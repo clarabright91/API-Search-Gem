@@ -1328,6 +1328,10 @@ footer span{ font-size:12px; float:left; width:100%; background:#f7f7f7; text-al
 .seo-auto-loan-cntnt-box2 .seo-bank-cntn-white-bg { background: #fff; box-shadow: 0 0 15px #d7d7d7; border-radius: 5px; padding:0px 15px !important; margin-top:20px; width:100%;}
 .volume-auto-loan{ width:100%;}
 
+.seo-auto-loan-cntnt-box  .col-xs-12.col-md-8.our-story-cntnt{ padding: 0; }
+.seo-auto-loan-cntnt-box  .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ padding: 15px 0 0 0 !important; background: none; min-height: auto; height: auto !important; margin-bottom: 0;}
+
+
 .volume-auto-loan-row{ padding: 17px 15px;}
 .volume-auto-loan p.vol-row-inner { padding: 0; width:78%; line-height:26px; font-size:14px;}
 .volume-auto-loan-row span { width: 20%; font-size: 14px; line-height:26px;}
@@ -1497,10 +1501,12 @@ footer .container{ padding:0; width:100% !important;}
 .sectn-wo-bg .loan-detail-blocks-cntnt-inner { padding: 6px 0 0 0;}
 
 .seo-auto-loan-cntnt-box.mb-bg-gray.seo-loan-cntnt-box-chnge{ background: none !important; }
-.seo-loan-cntnt-box-chnge .col-xs-12.col-md-8.our-story-cntnt .gray-box-cntnt{ background: #f7f7f7; padding: 15px; }
+
 .state-bank-page-list .row { margin: 0;}
 .directory-links-box .col-xs-12.col-md-4 a{ width: 100%; text-align: left;}
 .directory-box .directory-links-box .row{  margin:0;}
+
+.news-see-more-link{ display: block;}
 }
 /*tab css end*/
 
@@ -1545,6 +1551,7 @@ header .navbar-brand img { max-width: 140px;}
 .mortgage-calculator .search-cat.anual-int-rate{ width:12%;}
 .content-main p.main-para-hdng{ font-size: 21px; margin: 0 0 45px 0; line-height: 30px;}
 .loan-dtail .loan-detail-blocks-cntnt-row { font-size:16px;}
+.car-auto-loan-news h6{ font-size: 13px; }
 }
 
 .main-table-grapg-box{ float:left; width:100%; }
@@ -1811,3 +1818,22 @@ header .navbar-brand img { max-width: 140px;}
 }
 #research_contact_form .modal-content{ float: left; width: 100%; }
 #research_contact_form .modal-header, #research_contact_form .modal-body, #research_contact_form .modal-footer{ border-bottom: none; }
+
+/*for post research modal*/
+#research_post_form .modal-dialog{ width: 680px !important; max-width: 100%; padding: 0 !important; } 
+#research_post_form .modal-header{ position: relative; z-index: 1; }
+#research_post_form button.close{ opacity: 1;}
+#research_post_form button.close img {
+    width: 55px;
+    margin-bottom: -14px;
+    position: relative;
+    right: -12px;
+}
+#research_post_form .modal-content{ float: left; width: 100%; }
+#research_post_form .modal-header, #research_post_form .modal-body, #research_post_form .modal-footer{ border-bottom: none; }
+.see-more-fdic {
+    margin-top: 8px;
+    margin-right: 10px;
+    font-size: 14px;
+    font-style: normal;
+}

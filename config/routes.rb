@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   
   post '/research_contact_us_email', to: 'pages#research_contact_us_email', as: "research_contact_us_email"
   
+  post '/research_post', to: 'pages#research_post', as: 'research_post'
+
   get '/city_freddie_cache_data', to: 'pages#city_freddie_cache_data', as: 'city_freddie_cache_data'  
 
   # for dynamic cmspages

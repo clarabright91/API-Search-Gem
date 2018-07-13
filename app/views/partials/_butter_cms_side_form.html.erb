@@ -20,6 +20,15 @@
           <% end %>
         </div>
       </div>
+      
+      <div class="rght-sidebar-box">
+        <h3>Post your research</h3>
+          <div class="rght-sidebar-box-dtail">
+          <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's.</p>
+             <a href="" data-toggle="modal" data-target="#research_post_form"  class='blog-cntct-btn'>Submit Application</a> 
+          </div>
+      </div>
+
     </div>  
   </div>
 <!--sidebar end-->
@@ -35,8 +44,8 @@
       <div class="modal-body">
         <div class="pum-content popmake-content">
           <div class="popup-hdr">
-            <h3>Share your Research with your Readers</h3>
-            <p>Educate our 74,000 monthly readers on latest academic research and industry news on economics and housing</p>
+            <h3>Contact Us</h3>
+            <p>Please fill the below form to contact us, We will update you within 3-4 working days.</p>
           </div>
           <div class="popup-cntnt">
             <%= form_with url: research_contact_us_email_path, html: {multipart: true}, id: "research_form" do |f| %>
@@ -53,17 +62,17 @@
               </div>
               <div>
                 <span class="wpcf7-form-control-wrap your-subject">
-                  <%= f.url_field :website, autofocus: true, placeholder: "Website",class: "wpcf7-form-control wpcf7-text" %>
+                  <%= f.text_field :phone_no, autofocus: true, placeholder: "Phone No",class: "wpcf7-form-control wpcf7-text" %>
                 </span>
               </div>
               <div>
                 <span class="wpcf7-form-control-wrap your-message">
-                  <%= f.text_area :research_summary, size: "55x5", autofocus: true, placeholder: "Research summary and key insights", style: 'max-width: 100%', class: "wpcf7-form-control wpcf7-textarea"%>
+                  <%= f.text_area :message, size: "55x5", autofocus: true, placeholder: "Message", style: 'max-width: 100%', class: "wpcf7-form-control wpcf7-textarea"%>
                 </span>
               </div>
               <div>
                 <span class="wpcf7-form-control-wrap popup-upload-btn">
-                  <img src="/images/upload-nw-icn.png"> Upload Research
+                  <img src="/images/upload-nw-icn.png"> Upload File
                   <%= f.file_field :attachment,autofocus: true%>
                 </span>
               </div>
@@ -78,8 +87,70 @@
     </div>
    </div>
   </div>
-
 <!-- research contact form ends here -->
+
+<!-- Research post form starts frm here-->
+    <div class="modal fade signup-login-popup login-popup" id="research_post_form" role="dialog">
+    <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal"><%= image_tag("cancel_03.png", :alt => "close", :class => "login-cross-img") %>
+       </button>
+      </div>
+      <div class="modal-body">
+        <div class="pum-content popmake-content">
+          <div class="popup-hdr">
+            <h3>Fill the below form to Post your Research</h3>
+            <p>You post will be published within 3-4 working days.</p>
+          </div>
+          <div class="popup-cntnt">
+            <%= form_with url: research_post_path, html: {multipart: true}, id: "post_research_form" do |f| %>
+              <div class="screen-reader-response"></div>
+              <div>
+                <span class="wpcf7-form-control-wrap your-name">
+                  <%= f.text_field :name, autofocus: true, placeholder: "Name", class: "wpcf7-form-control wpcf7-text wpcf7-validates-as-required" %>
+                </span>
+              </div>
+              <div>
+                <span class="wpcf7-form-control-wrap your-email">
+                  <%= f.email_field :email, autofocus: true, placeholder: "Email",class: "wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" %>
+                </span>
+              </div>
+              <div>
+                <span class="wpcf7-form-control-wrap your-subject">
+                  <%= f.text_field :phone_no, autofocus: true, placeholder: "Phone No.",class: "wpcf7-form-control wpcf7-text" %>
+                </span>
+              </div>
+              <div>
+                <span class="wpcf7-form-control-wrap your-subject">
+                  <%= f.text_field :title, autofocus: true, placeholder: "Research Title",class: "wpcf7-form-control wpcf7-text" %>
+                </span>
+              </div>
+              <div>
+                <span class="wpcf7-form-control-wrap your-message">
+                  <%= f.text_area :research_summary, size: "55x5", autofocus: true, placeholder: "Research summary", style: 'max-width: 100%', class: "wpcf7-form-control wpcf7-textarea"%>
+                </span>
+              </div>
+              <div>
+                <span class="wpcf7-form-control-wrap popup-upload-btn">
+                  <img src="/images/upload-nw-icn.png"> Upload Research
+                  <%= f.file_field :attachment,autofocus: true%>
+                </span>
+              </div>
+              <p>
+                <%= f.submit "POST RESEARCH", class: "rates-btn"%>
+                <span class="ajax-loader"></span>
+              </p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+
+<!-- Research post form ends here -->
+
 
 <script type="text/javascript">
   $(document).ready(function(){
@@ -101,6 +172,49 @@
           },
           email: true
       },
+      "message":{
+          required: true
+      },
+      "attachment": {
+        extension: "jpg,jpeg,pdf,docx,doc",
+        filesize:   2097152 
+      }
+    },
+    messages: {
+      "name": {
+          required: "Please enter your name."
+      },
+      "email": {
+          required: "Please enter your email.",
+          email: "Please enter valid email address.",
+      },
+      "message":{
+          required: "Please enter your message."
+      },
+      "attachment": {
+        extension: "File must be JPG, PDF or DOC."
+      }
+    }
+  })
+
+
+  $('#post_research_form').validate({
+    rules: {
+      "name": {
+          required: true
+      },
+      "email": {
+          required: {
+            depends:function(){
+                $(this).val($.trim($(this).val()));
+                return true;
+              }
+          },
+          email: true
+      },
+      "title": {
+        required: true
+      },
       "research_summary":{
           required: true
       },
@@ -116,6 +230,8 @@
       "email": {
           required: "Please enter your email.",
           email: "Please enter valid email address.",
+      },"title": {
+        required: "Please enter research title."
       },
       "research_summary":{
           required: "Please enter your research summary."
