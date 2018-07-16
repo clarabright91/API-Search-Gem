@@ -90,12 +90,12 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'pureloan.herokuapp.com',
-    user_name:            'pureloan.com@gmail.com',
-    password:             'pureloan123',
+    domain:               'example.com',
+    user_name:            'anoop.talentelgia@gmail.com',
+    password:             'Ztech@44',
     authentication:       'plain',
     enable_starttls_auto: true  }
-  config.mailer_sender = 'pureloan.com@gmail.com'
+  config.mailer_sender = 'anoop.talentelgia@gmail.com'
  
   
 
