@@ -779,8 +779,10 @@
                 <%end%>
              </div>
           </div>
-        <%if @loan_officers.present?%>
-          <button class= "show-all-specialst-btn pull-right see-more-fdic" id="desktop_loan_off_data">See More</button>
+        <%if @loan_officers.present? %>
+          <%if @loan_officers.length > 5%>
+            <button class= "show-all-specialst-btn pull-right see-more-fdic" id="desktop_loan_off_data">See More</button>
+          <%end%>
         <%else%>
           <div class="car-auto-loan-news">
             No Records Found

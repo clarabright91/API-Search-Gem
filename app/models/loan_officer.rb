@@ -8,11 +8,11 @@ class LoanOfficer < ApplicationRecord
     sum = 0
     str.each_char{|c| sum += c.ord}
     key = sum * 1000
-    a_state_officers = LoanOfficer.where(state: ApplicationController.helpers.state_full_name(bank.stname, true))
+    a_state_officers = where(state: ApplicationController.helpers.state_full_name(bank.stname, true))
+    #if data is not present on the basis of state
+    a_state_officers = fuzzy_search(title: "%#{term}%")  if a_state_officers.size == 0
     num_state_officers = a_state_officers.size
-    # if there is no loan officer in particular state the this script'll display random data
-    return  LoanOfficer.order("RANDOM()").first(5)     if num_state_officers == 0  
-    
+
     loan_officers = []
     for i in 1..5
       index = (key * i) % num_state_officers

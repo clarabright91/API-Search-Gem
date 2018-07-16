@@ -763,7 +763,9 @@
           </div>
           <!-- <a href= "" class="show-all-specialst-btn" >Show all Morgage Specialists</a> -->
           <%if @loan_companies.present?%>
-           <button class= "show-all-specialst-btn pull-right see-more-fdic " id="desktop_loan_off_data">See More </button>
+            <%if @loan_companies.count > 5%>
+              <button class= "show-all-specialst-btn pull-right see-more-fdic " id="desktop_loan_off_data">See More </button>
+            <%end%>            
           <%else%>
             <div class="car-auto-loan-news">
               No Records Found
