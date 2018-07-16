@@ -84,15 +84,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  # Raise an error on page load if there are pending migrations.
-  config.active_record.migration_error = :page_load
-  config.action_mailer.default_url_options = { host: 'pureloan.com'}
+  config.action_mailer.default_url_options = { host: 'http://pureloan.herokuapp.com/'}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'pureloan.com',
+    domain:               'http://pureloan.herokuapp.com/',
     user_name:            'testtalentelgia@gmail.com',
     password:             'talentelgia',
     authentication:       'plain',
