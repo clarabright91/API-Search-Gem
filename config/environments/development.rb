@@ -43,11 +43,11 @@ config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
   domain:               'example.com',
-  user_name:            'testtalentelgia@gmail.com',
-  password:             'talentelgia',
+  user_name:            'pureloan.com@gmail.com',
+  password:             'pureloan123',
   authentication:       'plain',
   enable_starttls_auto: true  }
-config.mailer_sender = 'testtalentelgia@gmail.com'
+config.mailer_sender = 'pureloan.com@gmail.com'
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large

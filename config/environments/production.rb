@@ -84,18 +84,18 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'http://pureloan.herokuapp.com/'}
+  config.action_mailer.default_url_options = { host: 'pureloan.herokuapp.com'}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'http://pureloan.herokuapp.com/',
-    user_name:            'testtalentelgia@gmail.com',
-    password:             'talentelgia',
+    domain:               'pureloan.herokuapp.com',
+    user_name:            'pureloan.com@gmail.com',
+    password:             'pureloan123',
     authentication:       'plain',
     enable_starttls_auto: true  }
-  config.mailer_sender = 'testtalentelgia@gmail.com'
+  config.mailer_sender = 'pureloan.com@gmail.com'
  
   
 
