@@ -41,7 +41,8 @@ class PagesController < ApplicationController
 
   def research_contact_us_email
     @admin_user = AdminUser.first.email
-     receivers  = ["ray@relativityteam.com", "tzewee@relativityteam.com", @admin_user]
+     #receivers  = ["ray@relativityteam.com", "tzewee@relativityteam.com", @admin_user]
+      receivers = ["ankit.kumar@talentelgia.in", "anoop.kumar@talentelgia.in"]
       receivers.each do |rec|
         if !params[:attachment].nil? && !params[:attachment].blank?
           file = params[:attachment].tempfile.path
