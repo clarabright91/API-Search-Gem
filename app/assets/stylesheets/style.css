@@ -1241,7 +1241,7 @@ select option{ background:#fff;}
 .expert-cntnt-btn-inner { width:100%; margin:10px 0 0 0; border-radius:5px; padding:7px; text-align:center; min-height:95px;}
 .home-experts .row { margin: 0;}
 .expert-cntnt-btn-inner p{ font-size:17px; font-weight:normal; line-height:26px; margin:0; width:100%; text-align:center;}
-.expert-cntnt-btn-inner a{ float:none; margin:15px auto 0 auto; max-width:90%; box-shadow:none; padding:19px 50px; font-size:15px; display:ruby-text;}
+.expert-cntnt-btn-inner a{ float:none; margin:15px auto 0 auto; max-width:90%; box-shadow:none; padding:19px 20px; font-size:15px; display:inline-block;}
 
 footer { padding: 10px 0 0 0;}
 footer ul { width: 100%; text-align:center;}
@@ -1523,6 +1523,7 @@ footer .container{ padding:0; width:100% !important;}
 .autoloan-top-sectn-cntrl .seo-auto-loan-cntnt-box .col-md-4.show-box{  display: block; padding-top:0 !important; }
 .seo-loan-cntnt-box-chnge .col-xs-12.col-md-4.seo-bank-cntn-white-bg.seo-bank-cntn-top-white-bg { min-height: auto; padding: 0 !important;}
 .volume-auto-loan .car-auto-loan-news p{ min-height: auto; margin-bottom: 5px;}
+
 
 }
 /*tab css end*/
