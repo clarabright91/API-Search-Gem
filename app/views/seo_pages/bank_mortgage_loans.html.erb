@@ -535,13 +535,13 @@
               <%@news_articles.each_with_index do |na, i|%>
                 <%if i < 5%>
                   <div class="car-auto-loan-news">
-                    <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
+                    <h6><%=link_to na.headline.truncate(42), na.url, target: "_blank"%></h6> 
                       <p><%=na.text.truncate(130)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                   </div>
                 <%else%>
                   <div id='news_articles_data_<%=i.to_s%>' style= "display:none;">
                     <div class="car-auto-loan-news">
-                      <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
+                      <h6><%=link_to na.headline.truncate(42), na.url, target: "_blank"%></h6> 
                         <p><%=na.text.truncate(130)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                     </div>
                   </div>  
