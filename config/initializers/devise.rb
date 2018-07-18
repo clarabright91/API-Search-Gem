@@ -253,7 +253,11 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   config.omniauth :facebook, '356863861497721', '0ca43ed52593c6c80817fe8271174f16', scope: "email"
-  config.omniauth :google_oauth2, "1042468504695-ol16q6m11h5l66ss5l225n3qs84l2ema.apps.googleusercontent.com", "iecfu5fXQMHXiQoFU8EBDy75", scope: 'userinfo.email,userinfo.profile'
+  #config.omniauth :google_oauth2, "1042468504695-ol16q6m11h5l66ss5l225n3qs84l2ema.apps.googleusercontent.com", "iecfu5fXQMHXiQoFU8EBDy75", scope: 'userinfo.email,userinfo.profile'
+  
+  #new gmail account credentials (email: info.pureloan@gmail.com, pwd: pureloan123)
+  config.omniauth :google_oauth2, "263674585472-f3ttj58vra748dm39558pqb70p9nehsq.apps.googleusercontent.com", "zmvAOkMCid9DYYQlq-Zv1dMd", scope: 'userinfo.email,userinfo.profile'
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
