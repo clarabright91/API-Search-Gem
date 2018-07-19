@@ -109,18 +109,18 @@
         required: true,
         email: true
       },
-      "expert[loan_type]":{
-        required: true
-      },
+      // "expert[loan_type]":{
+      //   required: true
+      // },
       "expert[license_number]":{
         required: true
       },
       "expert[specialty]":{
         required: true
       },
-      "expert[website]":{
-        required: true
-      }
+      // "expert[website]":{
+      //   required: true
+      // }
 
     },
      messages: {
@@ -136,18 +136,18 @@
         "expert[email]":{
           required: 'Please enter email address.'
         },
-        "expert[loan_type]":{
-          required: "Please select loan type."
-        },
+        // "expert[loan_type]":{
+        //   required: "Please select loan type."
+        // },
         "expert[license_number]":{
             required: "Please enter license number."
           },
           "expert[specialty]":{
             required: "Please enter specialty."
           },
-          "expert[website]":{
-            required: "Please enter website."
-          }
+          // "expert[website]":{
+          //   required: "Please enter website."
+          // }
      }
   })
 

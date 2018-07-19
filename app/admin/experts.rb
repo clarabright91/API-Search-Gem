@@ -27,12 +27,12 @@ ActiveAdmin.register Expert do
   filter :last_name
   filter :email
   filter :phone
-  filter :loan_type, as: :select,include_blank: false, collection: {'mortgage' => 0,'refinance' => 1, 'personal'=> 2, 'auto' => 3}
+  #filter :loan_type, as: :select,include_blank: false, collection: {'mortgage' => 0,'refinance' => 1, 'personal'=> 2, 'auto' => 3}
   filter :created_at
   # for show page
   show title: "Expert" do
     panel "Expert Details" do
-      attributes_table_for expert, :first_name,:image, :last_name,:image, :phone,:email,:loan_type, :license_number, :specialty, :website,:zip,:verified, :created_at, :updated_at
+      attributes_table_for expert, :first_name, :last_name,:image, :phone,:email,:loan_type, :license_number, :specialty, :website,:zip,:verified, :created_at, :updated_at
     end
   end
 
@@ -47,9 +47,9 @@ ActiveAdmin.register Expert do
       end
       f.input :phone
       f.input :email
-      f.input :loan_type, as: :select,include_blank: "Select loan type", collection: {'mortgage' => 0,'refinance' => 1, 'personal'=> 2, 'auto' => 3}
+      #f.input :loan_type, as: :select,include_blank: "Select loan type", collection: {'mortgage' => 0,'refinance' => 1, 'personal'=> 2, 'auto' => 3}
       f.input :license_number
-      f.input :specialty
+      f.input :specialty,as: :select,include_blank: "Select loan type", collection: {'Mortgage' => 'Mortgage','Refinance' => 'Refinance', 'Personal'=> 'Personal', 'Auto' => 'Auto'}
       f.input :website
       f.input :zip
       f.input :verified

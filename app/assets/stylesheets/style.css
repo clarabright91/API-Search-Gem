@@ -368,14 +368,41 @@ input.error { position:relative; left:0; bottom:0; font-size:18px; color:#929292
 
 /*expert-application-overlay css start*/
 #expert-app-overlay .modal-header h4 { font-size: 25px; line-height:35px;}
-#expert-app-overlay .form-group{ float:left; width:100%; margin:0 0 25px 0;}
+#expert-app-overlay .form-group{ float:left; width:100%; margin:0 0 25px 0; position: relative;}
+#expert-app-overlay .form-group .error{ font-size:12px; color:red; text-transform: none;}
 #expert-app-overlay .form-group label{ float:left; width:100%; text-align:left; font-size:16px; font-weight:700; color:#19214d; text-transform:uppercase;}
 #expert-app-overlay .form-group input, #expert-app-overlay .form-group select { margin: 0; padding: 12px 7px; font-size: 14px; height: auto;}
 #expert-app-overlay .form-group label span{ font-size:14px; font-weight:normal; color:#a1a3ac; text-transform:none;}
 #expert-app-overlay  .modal-body { padding: 50px 8%;}
-#expert-app-overlay .form-group input[type="file"] { border: none; padding: 0 0; margin-top: 11px; width: auto;}
-#expert-app-overlay.common-popup-layout .rates-btn { padding: 17px 30px; margin-top: 26px;}
+#expert-app-overlay .form-group input[type="file"] {
+  border: none;
+  padding: 0 0;
+  margin-top: 0;
+  width: auto;
+  position: absolute;
+  font-size: 7px;
+  z-index: 0;
+  top: 33px;
+  opacity: 0;
+  min-height: 36px;
+  cursor: pointer;
+}
+#expert-app-overlay.common-popup-layout .rates-btn { padding: 17px 30px; margin-top: 26px; color:#fff; border-color:#fff; width:auto; float:none;}
+.custm-file-input span {
+  background: #fb6325;
+  border-radius: 3px;
+  float: left;
+  color: #fff;
+  padding: 8px 25px;
+  margin: 5px 0 0 0;
+}
+.custm-file-input span .fa{
+  margin-right: 5px;
+}
+.custm-file-input input{}
+ 
 .expert-app-overlay-note{ float:left; width:100%; text-align:center; font-size:19px; font-weight:normal; color:#19214d; line-height:27px; margin:20px 0 0 0;}
+
 /*expert-application-overlay css end*/
 
 
@@ -1854,3 +1881,4 @@ header .navbar-brand img { max-width: 140px;}
     font-size: 14px;
     font-style: normal;
 }
+a:focus, a:active{ text-decoration: none; }

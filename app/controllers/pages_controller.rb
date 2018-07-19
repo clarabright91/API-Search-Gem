@@ -27,7 +27,8 @@ class PagesController < ApplicationController
   def mortgage
 
   end  
-
+  
+  # for sending emails from different different modules starts from here
   def contact_us_email
     @admin_user = AdminUser.first.email
     #ContactUsMailer.contact_us_email(@admin_user,params).deliver
@@ -70,7 +71,9 @@ class PagesController < ApplicationController
     flash[:notice] = 'Research posted successfully.'
     redirect_back fallback_location: root_path
   end
-
+  # for sending emails from different different modules ends here
+  
+  #For update user details from admin panel starts from here
   def update_profile
     @user = User.find_by(id: params[:user][:id])
     @user.update_attributes(user_params)
@@ -103,7 +106,29 @@ class PagesController < ApplicationController
      end
     redirect_to admin_root_path, notice: 'Selected Users Deactivated Succesfully.'
   end
+  #For update user details from admin panel ends here
   
+  def expert_user_registration
+      @expert_user = Expert.new expert_params
+      city_zip = params[:expert][:city].split(',')
+      @expert_user.city = city_zip[0]
+      @expert_user.zip = city_zip[1]
+      begin
+        @expert_user.save!
+        flash[:notice] = 'You are succesfully registered as expert.'
+      rescue => e
+        flash[:danger] = "Your account has not created because '#{e.message}" 
+      end
+      redirect_back fallback_location: root_path
+  end
+
+  def expert_state_and_city
+    if request.xhr?
+     city = City.where(state_code: params[:state]).uniq(&:city).sort_by(&:city).pluck(:city,:zip)
+     render json: city
+    end
+  end 
+
   #Calling all the background workers for creating dynamic reports for city pages
   def city_freddie_cache_data
     FreddieMacCacheWorker.perform_async(["AK", "AL", "AR", "AZ", "CA", "CO"])
@@ -127,5 +152,9 @@ class PagesController < ApplicationController
     
     def user_params
         params.require(:user).permit(:id,:first_name,:last_name,:email,:phone_number,:zip_code,:purpose, :home_price, :down_payment, :credit_score,:password, :password_confirmation, :current_password,:price_alert)
+    end
+
+    def expert_params
+      params.require(:expert).permit(:first_name, :last_name, :phone, :email, :state, :city, :license_number, :specialty, :website, :image, :zip, :loan_type, :verified, :email)
     end 
 end

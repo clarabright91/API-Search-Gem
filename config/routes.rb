@@ -22,7 +22,9 @@ Rails.application.routes.draw do
  # authenticated :user do
    # root to: 'pages#index', as: :authenticated_root
   # end
-
+  post 'pages/expert_user_registration', to: "pages#expert_user_registration", as: 'expert_user_registration'
+  
+  get 'pages/expert_state_and_city', to: 'pages#expert_state_and_city', as: 'expert_state_and_city'  
   root 'pages#index'
   get '/refinance', to: 'pages#refinance', as: 'refinance'
   get '/mortgage', to: 'pages#mortgage', as: 'mortgage'
