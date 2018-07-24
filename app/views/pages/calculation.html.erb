@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="text-center"> <u><h4> Calculation based on Crescent Mortgage Company </h4></u></div>
+  
+  <%=form_with url: calculation_path, method: :get  do |calc| %>
+    <div class="row">
+      <div class="col-xs-12 col-md-2">
+        <div class="form-group">
+          <label>Amount</label> 
+           <%= calc.number_field :amt, placeholder: "Enter Amount",required: true, class: "form-control"%>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <div >
+          <label>Credit Score %</label> 
+            <%= calc.select :cs, options_for_select([['>= 740','>= 740'],['720 & <= 739','720 & <= 739']]), {}, {:class => 'form-control'}%>
+
+
+
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-1">
+        <div >
+          <label>Rate %</label> 
+            <%= calc.select :rate, options_for_select([['5.125','5.125'],['5.000','5.000']]), {}, {:class => 'form-control'} %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <div >
+          <label>Loan To Value %</label> 
+            <%= calc.select :ltv, options_for_select([['80 <= 85','80 <= 85'],['>85 <= 90','>85 <= 90']]), {}, {:class => 'form-control'} %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-1">
+        <div >
+          <label>Time(yrs)</label> 
+            <%= calc.select :time_period, options_for_select([['30 years','30 years']]), {}, {:class => 'form-control'} %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-1">
+        <div >
+          <label>Lock Time</label> 
+            <%= calc.select :lock_period, options_for_select([['15 days','15 days'],['30 days','30 days']]), {}, {:class => 'form-control'} %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-2 pull-right">    
+        <%= calc.submit "Submit", class: "btn btn-success"%>
+      </div>
+    </div>
+  <%end%> 
+</div>
+
+<br/>
+<br/>
+<div class="container">
+  <% if @final_amt_per_month.present? %>
+  <center>
+    <h3>Output</h3>
+  </center>
+  <div class="table-responsive">
+    <table class="table">
+        <tr>
+          <td bgcolor="#DDD" align="center" colspan="2">
+            <h4>
+              You will get:
+              $<%= @p_amt %>
+            </h4>
+          </td>
+        </tr>
+        <tr>
+          <td width="45%">Monthly EMI </td>
+          <td>$<%= @final_amt_per_month.round(2)%>per month</td>
+        </tr>
+        <tr>
+          <td>Selected Rate </td>
+          <td><%= @rate%>%</td>
+        </tr>
+        <tr>
+          <td>Entered Amount</td>
+          <td>$<%=@amt%> per month</td>
+        </tr>
+        <tr>
+          <td>Credit Score </td>
+          <td><%=@cs %></td>
+        </tr>
+        <tr>
+          <td>Loan To Value </td>
+          <td><%=@ltv%></td>
+        </tr>
+        <tr>
+          <td>Conventional Conforming Wholesale Fee</td>
+          <td>$795</td>
+        </tr>
+        <tr>
+          <td>You Have To Pay Total </td>
+          <td>$<%=@total.round(2)%></td>
+        </tr>
+        <tr>
+          <td>You have to pay total Interest</td>
+          <td>$<%=@interest_amt.round(2) %></td>
+        </tr>
+
+    </table>
+  </div>
+  <% end %>
+</div>
+<br/>
+<br/>

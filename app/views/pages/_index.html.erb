@@ -7,68 +7,32 @@
          <div class="row">
             <div class="col-xs-12 col-md-9">
                <div class="desktop-experts">
-                  <div class="col-xs-12 col-md-3 text-center">
-                     <img src="images/mortgage-experts_03.png" alt="">
-                     <h3 class="hiden-txt-mb">James Adamson</h3>
-                     <a href="mailto:jadr32@gmil.com"><img src="images/email_07.png" alt=""> jadr32@gmil.com</a>
-                     <a href="tel:5551234567"><img src="images/phone_07.png" alt=""> (531) 574-5221</a>
-                  </div>
-                  <div class="col-xs-12 col-md-3 text-center">
-                     <img src="images/mortgage-experts_03.png" alt="">
-                     <h3 class="hiden-txt-mb">James Adamson</h3>
-                     <a href="mailto:jadr32@gmil.com"><img src="images/email_07.png" alt=""> jadr32@gmil.com</a>
-                     <a href="tel:5551234567"><img src="images/phone_07.png" alt=""> (531) 574-5221</a>
-                  </div>
-                  <div class="col-xs-12 col-md-3 text-center">
-                     <img src="images/mortgage-experts_03.png" alt="">
-                     <h3 class="hiden-txt-mb">James Adamson</h3>
-                     <a href="mailto:jadr32@gmil.com"><img src="images/email_07.png" alt=""> jadr32@gmil.com</a>
-                     <a href="tel:5551234567"><img src="images/phone_07.png" alt=""> (531) 574-5221</a>
-                  </div>
-                  <div class="col-xs-12 col-md-3 text-center mb-hide">
-                     <img src="images/mortgage-experts_03.png" alt="">
-                     <h3 class="hiden-txt-mb">James Adamson</h3>
-                     <a href="mailto:jadr32@gmil.com"><img src="images/email_07.png" alt=""> jadr32@gmil.com</a>
-                     <a href="tel:5551234567"><img src="images/phone_07.png" alt=""> (531) 574-5221</a>
-                  </div>
+                  <%@experts.each do |exp|%>
+                     <div class="col-xs-12 col-md-3 text-center">
+                        <%= image_tag exp.image.url(:thumb)%>
+                        <h3 class="hiden-txt-mb"><%=exp.first_name%> <%=exp.last_name%></h3>
+                        <a href="mailto:<%=exp.email%>"><img src="images/email_07.png" alt=""> <%= exp.email%></a>
+                        <a href="tel:<%=exp.phone%>"><img src="images/phone_07.png" alt=""> <%=exp.phone%></a>
+                     </div>
+                  <%end%>
                </div>
                <!--experts slider for mobile-->
                <div class="mb-experts-slider">
                   <div id="myCarousel" class="carousel slide" data-ride="carousel">
                      <!-- Wrapper for slides -->
                      <div class="carousel-inner">
-                        <div class="item active">
-                           <div class="col-xs-12 col-md-12 text-center">
-                              <img src="images/mortgage-experts_03.png" alt="">
-                              <h3>James Adamson</h3>
-                              <a href=""><img src="images/email_07.png" alt=""> johnsmith_234@gmil.com</a>
-                              <a href=""><img src="images/phone_07.png" alt=""> (531) 574-5221</a>
+                        <% i = 1 %>
+                         <%@experts.each do |exp|%>
+                           <div class="item <%= (i==1) ? 'active' : '' %>">
+                              <div class="col-xs-12 col-md-12 text-center">
+                                 <div class="mb-expert-img-box"><%= image_tag exp.image.url(:thumb)%></div>
+                                 <h3 class="hiden-txt-mb"><%=exp.first_name%> <%=exp.last_name%></h3>
+                                 <a href="mailto:<%=exp.email%>"><img src="images/email_07.png" alt=""> <%= exp.email%></a>
+                                 <a href="tel:<%=exp.phone%>"><img src="images/phone_07.png" alt=""> <%=exp.phone%></a>
+                              </div>
                            </div>
-                        </div>
-                        <div class="item">
-                           <div class="col-xs-12 col-md-12 text-center">
-                              <img src="images/mortgage-experts_03.png" alt="">
-                              <h3>James Adamson</h3>
-                              <a href=""><img src="images/email_07.png" alt=""> johnsmith_234@gmil.com</a>
-                              <a href=""><img src="images/phone_07.png" alt=""> (531) 574-5221</a>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="col-xs-12 col-md-12 text-center">
-                              <img src="images/mortgage-experts_03.png" alt="">
-                              <h3>James Adamson</h3>
-                              <a href=""><img src="images/email_07.png" alt=""> johnsmith_234@gmil.com</a>
-                              <a href=""><img src="images/phone_07.png" alt=""> (531) 574-5221</a>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="col-xs-12 col-md-12 text-center">
-                              <img src="images/mortgage-experts_03.png" alt="">
-                              <h3>James Adamson</h3>
-                              <a href=""><img src="images/email_07.png" alt=""> johnsmith_234@gmil.com</a>
-                              <a href=""><img src="images/phone_07.png" alt=""> (531) 574-5221</a>
-                           </div>
-                        </div>
+                           <% i+=1 %>
+                         <%end%>
                      </div>
                      <!-- Left and right controls -->
                      <a class="left carousel-control" href="#myCarousel" data-slide="prev">

@@ -9,6 +9,7 @@ class PagesController < ApplicationController
  
   def index
 		#render "index"
+    @experts = Expert.where(verified: true).last(4)
 	end
 
   def show
@@ -27,7 +28,52 @@ class PagesController < ApplicationController
   def mortgage
 
   end  
-  
+    
+  def calculation
+    if params[:amt].present?
+      if params[:amt].present? && params[:amt].to_i > 0
+        @p_amt = params[:amt].to_f
+        @additional_points = 0.0
+
+        if params[:lock_period] == "15 days" && params[:rate] == "5.125"
+          @additional_points =  3.602
+        elsif params[:lock_period] == "15 days" && params[:rate] == "5.000" 
+          @additional_points = 3.253
+        elsif params[:lock_period] == "30 days" && params[:rate] == "5.125" 
+          @additional_points = 3.502 
+        elsif params[:lock_period] == "30 days" && params[:rate] == "5.000" 
+         @additional_points = 3.153
+        end 
+           
+        if params[:cs] == ">= 740" && params[:ltv] == '80 <= 85'
+          @additional_points = @additional_points - 0.250
+        elsif params[:cs] == ">= 740" && params[:ltv] == '>85 <= 90'
+          @additional_points = @additional_points - 0.250
+        elsif params[:cs] == '720 & <= 739' && params[:ltv] == '80 <= 85'
+          @additional_points = @additional_points - 0.500
+        elsif params[:cs] == '720 & <= 739' && params[:ltv] == '>85 <= 90'              
+          @additional_points = @additional_points - 0.500
+        end
+        @p_amt = (@p_amt * @additional_points / 100) + @p_amt
+        @p_amt -= 795 # Conventional Conforming Wholesale Fee 
+        years = params[:time_period] == '30 years' ?  30 : 20
+        months = 12 * years
+        rate = params[:rate].to_f / 100
+        rate = rate / 12
+        @final_amt_per_month = @p_amt * rate * ((1 + rate)**months) / ((1 + rate)**months - 1)
+        @rate = params[:rate]
+        @amt = params[:amt].to_f
+        @cs = params[:cs]
+        @ltv = params[:ltv]
+        @total = @final_amt_per_month * months
+        @interest_amt = @total - @amt  
+      else
+        flash[:danger] = 'You entered wrong value.'
+        redirect_to calculation_path  
+      end
+    end
+  end
+
   # for sending emails from different different modules starts from here
   def contact_us_email
     @admin_user = AdminUser.first.email
@@ -117,7 +163,7 @@ class PagesController < ApplicationController
         @expert_user.save!
         flash[:notice] = 'You are succesfully registered as expert.'
       rescue => e
-        flash[:danger] = "Your account has not created because '#{e.message}" 
+        flash[:danger] = "Your account has not created." 
       end
       redirect_back fallback_location: root_path
   end

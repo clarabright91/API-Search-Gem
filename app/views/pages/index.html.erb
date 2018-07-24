@@ -498,9 +498,6 @@
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group select-arrow">
                           <label>City</label> 
-                          <!-- <select class="form-control">
-                             <option></option>
-                          </select> -->
                         <%= expert_user.select(:city, [], {prompt: "Select city"}, { class: 'city' })%>  
                        </div>
                     </div>
@@ -513,7 +510,7 @@
                        </div>
                     </div>
                     <div class="col-xs-12 col-md-6">
-                       <div class="form-group">
+                       <div class="form-group select-arrow">
                           <label>Speciality <span>(Where you will be listed)</span></label> 
                           <%= expert_user.select :specialty, options_for_select([["Mortgage","Mortgage"], ["Refinance","Refinance"], ["Personal","Personal"], ["Auto","Auto"]]), class: "form-control"%>
                        </div>
@@ -564,8 +561,6 @@
             });
         })
 
-      
-
     });
 
     $.validator.addMethod('filesize', function (value, element, param) {
@@ -575,6 +570,9 @@
       $('#expert_user_form').validate({
         rules: {
           "expert[first_name]": {
+              required: true
+          },
+          "expert[last_name]": {
               required: true
           },
           "expert[phone]":{
@@ -595,6 +593,9 @@
           "expert[license_number]":{
               required: true
           },
+          "expert[website]":{
+            required: true
+          },
           "expert[image]": {
             extension: "jpg,jpeg",
             filesize:   2097152 
@@ -603,6 +604,9 @@
         messages: {
           "expert[first_name]": {
               required: "Please enter your first name."
+          },
+          "expert[last_name]": {
+              required: "Please enter you last name."
           },
           "expert[phone]":{
             required: "PLese enter mobile number."
@@ -617,6 +621,9 @@
           "expert[license_number]":{
               required: "Please enter your license number."
           },
+          "expert[website]":{
+            required: "Please enter website."
+          },
           "expert[image]": {
             extension: "File must be JPG,JPEG."
           }
@@ -624,6 +631,3 @@
       })  
 
 </script>
-
-
-

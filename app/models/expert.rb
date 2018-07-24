@@ -1,6 +1,6 @@
 class Expert < ApplicationRecord
   # Validations for databse attributes
-  validates_presence_of :first_name, :license_number, :specialty  #:last_name, :website
+  validates_presence_of :first_name, :license_number, :specialty, :last_name, :website
   validates :phone, presence: {message: 'Enter valid Mobile Number'},
                       numericality: true,
                       length: { minimum: 10, maximum: 15 }

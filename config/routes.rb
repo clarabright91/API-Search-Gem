@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get '/research/:slug' => 'posts#show', :as => :buttercms_post
   end
 
+  get '/calculation', to: 'pages#calculation', as: 'calculation'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   #devise_for :users

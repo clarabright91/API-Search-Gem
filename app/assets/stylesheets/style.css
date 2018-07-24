@@ -145,8 +145,8 @@ header .navbar-right{ margin:0 !important;}
 .expert-cntnt-btn-inner a{ float: left; background: #fb6325; border-radius: 5px; border: none; text-transform: uppercase; color: #fff; padding: 17px 0; text-align: center; width: 100%; margin: 0; font-size: 15px; font-weight: bold; letter-spacing: 1px; }
 .expert-cntnt-btn-inner a:focus{ text-decoration:none;}
 .mb-experts-slider .carousel-control{ position:absolute; background:none; width:auto; height:auto; top:50%; margin-top:-20px; padding:0;}
-.mb-experts-slider .carousel-control.left{ left:-45px;}
-.mb-experts-slider .carousel-control.right{ right:-45px;}
+.mb-experts-slider .carousel-control.left{ left:-25px;}
+.mb-experts-slider .carousel-control.right{ right:-25px;}
 .mb-experts-slider h3{ display:none;}
 .mb-experts-slider a{ font-size:13px; text-align:left; padding:0 10px; margin-bottom:5px; text-align:center;}
 .mb-experts-slider a img { margin:0 5px 0 0; width: 14px;}
@@ -889,18 +889,37 @@ header .navbar-brand  img{ max-width: 157px;}
 .advertisement a{ float:left; margin:12px auto 8px auto; width:auto; box-shadow:0 0 10px -1px #fff547; padding:13px 6px; font-size:12px; max-width:100%; border:1px solid #fff;}
 .advertisement h4 { font-size:14px; margin:0 0 2px 0; padding:0; line-height:normal; text-align:left;}
 
-.home-experts { padding:0; width: 100%; margin:-10px 0 0 0; box-shadow:none; border:none;}
+.home-experts { padding:15px 0 0 0; width: 80%; margin:0 10%;}
 .home-experts .col-xs-12.col-md-9 { padding: 0;}
 .desktop-experts .col-xs-12.col-md-3.text-center{ padding: 0 2px !important;}
 .desktop-experts .col-xs-12.col-md-3.text-center { width: 33%;}
-.home-experts a { font-size: 11px;}
-.home-experts a img { width: 11px; margin-right:1px;}
+.mb-expert-img-box{ min-height: 100px; padding: 10px 0; display: inline-block; width: 100%;}
+.mb-expert-img-box img{ max-height: 100%;}
+.home-experts a img { width: 11px; margin-right:3px;}
 #myCarousel{ position:relative;}
 .col-xs-12.col-md-3.expert-cntnt-btn { padding:0;}
-.expert-cntnt-btn-inner { width:100%; margin:10px 0 0 0; border-radius:5px; padding:7px; text-align:center; min-height:95px;}
+.expert-cntnt-btn-inner {
+  width: 100%;
+  margin: 10px 0 0 0;
+  border-radius: 0;
+  padding: 7px 7px 5px 7px;
+  text-align: center;
+  min-height: 95px;
+  border-left: none;
+  border-radius: no;
+  border-bottom: none;
+}
 .home-experts .row { margin: 0;}
-.expert-cntnt-btn-inner p{ font-size:17px; font-weight:normal; line-height:26px; margin:0; width:100%; text-align:center;}
-.expert-cntnt-btn-inner a{ float:none; margin:15px auto 0 auto; max-width:90%; box-shadow:none; padding:19px 50px; font-size:15px; display:inline-block; width:auto;}
+.expert-cntnt-btn-inner p{ font-size:14px; font-weight:300; line-height:20px; margin:0; width:100%; text-align:center;}
+.expert-cntnt-btn-inner a{
+    float: none;
+    margin: 15px auto 0 auto;
+    max-width: 90%;
+    box-shadow: 0 0 10px -1px #fcbb0d;
+    padding: 13px 25px;
+    font-size: 13px;
+    display: ruby-text;
+}
 
 footer { padding: 10px 0 0 0;}
 footer ul { width: 100%; text-align:center;}
@@ -1081,8 +1100,8 @@ p.today-rate-link { margin: 0px 0 15px 0; text-align: left; position: relative; 
 #loan-dtail-overlay .row.popup-inner-btns { padding: 0 15px;}
 .loan-detail-blocks-cntnt-row a { font-size: 16px;}
 
-.mb-experts-slider{ display:none;}
-.desktop-experts{ display:block;}
+.mb-experts-slider{ display:block;}
+.desktop-experts{ display:none;}
 .home-experts-box h2{ font-size:20px; margin:0 0 20px 0; padding:0 5px;}
 
 #seo-city-mort-desktop{ display:none;}
@@ -1258,17 +1277,37 @@ select option{ background:#fff;}
 .advertisement a{ float:left; margin:12px auto 0 auto; width:auto; box-shadow:0 0 10px -1px #fff547; padding:14px 26px; font-size:13px; max-width:100%; border:1px solid #fff;}
 .advertisement h4 { font-size:20px; margin:0 0 2px 0; padding:0; line-height:25px; text-align:left;}
 
-.home-experts { padding:0; width: 100%; margin:-10px 0 0 0; box-shadow:none; border:none;}
-.home-experts .col-xs-12.col-md-9 { padding: 0 5px;}
+.home-experts { padding:15px 0 0 0; width: 80%; margin:0 10%;}
+.home-experts .col-xs-12.col-md-9 { padding: 0;}
+.desktop-experts .col-xs-12.col-md-3.text-center{ padding: 0 2px !important;}
 .desktop-experts .col-xs-12.col-md-3.text-center { width: 33%;}
-.home-experts a { font-size: 14px;}
-.home-experts a img { width: 14px;}
+.mb-expert-img-box{ min-height: 100px; padding: 10px 0; display: inline-block; width: 100%;}
+.mb-expert-img-box img{ max-height: 100%;}
+.home-experts a img { width: 11px; margin-right:3px;}
 #myCarousel{ position:relative;}
 .col-xs-12.col-md-3.expert-cntnt-btn { padding:0;}
-.expert-cntnt-btn-inner { width:100%; margin:10px 0 0 0; border-radius:5px; padding:7px; text-align:center; min-height:95px;}
+.expert-cntnt-btn-inner {
+  width: 100%;
+  margin: 10px 0 0 0;
+  border-radius: 0;
+  padding: 7px 7px 5px 7px;
+  text-align: center;
+  min-height: 95px;
+  border-left: none;
+  border-radius: no;
+  border-bottom: none;
+}
 .home-experts .row { margin: 0;}
-.expert-cntnt-btn-inner p{ font-size:17px; font-weight:normal; line-height:26px; margin:0; width:100%; text-align:center;}
-.expert-cntnt-btn-inner a{ float:none; width:auto; margin:15px auto 0 auto; max-width:90%; box-shadow:none; padding:19px 50px; font-size:15px; display:inline-block; width:auto;}
+.expert-cntnt-btn-inner p{ font-size:14px; font-weight:300; line-height:20px; margin:0; width:100%; text-align:center;}
+.expert-cntnt-btn-inner a{
+    float: none;
+    margin: 15px auto 0 auto;
+    max-width: 90%;
+    box-shadow: 0 0 10px -1px #fcbb0d;
+    padding: 13px 25px;
+    font-size: 13px;
+    display: ruby-text;
+}
 
 footer { padding: 10px 0 0 0;}
 footer ul { width: 100%; text-align:center;}
@@ -1447,8 +1486,8 @@ p.today-rate-link { margin: 0px 0 15px 0; text-align: left; position: relative; 
 .loan-dtail-rght-bordr{ border:none;}
 .loan-detail-blocks-cntnt-row a { font-size: 16px;}
 
-.mb-experts-slider{ display:none;}
-.desktop-experts{ display:block;}
+.mb-experts-slider{ display:block;}
+.desktop-experts{ display:none;}
 .home-experts-box h2{ font-size:22px; margin:0 0 20px 0; padding:0 5px;}
 .mb-experts-slider a { font-size: 16px; margin-bottom: 7px; text-align:center;}
 .mb-experts-slider a img { margin: 0 7px 0 0; width: 16px;}
@@ -1886,3 +1925,5 @@ header .navbar-brand img { max-width: 140px;}
     font-style: normal;
 }
 a:focus, a:active{ text-decoration: none; }
+
+
