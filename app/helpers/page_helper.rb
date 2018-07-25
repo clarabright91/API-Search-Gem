@@ -19,5 +19,4 @@ module PageHelper
     end   
     return @user_info
   end
-
 end
