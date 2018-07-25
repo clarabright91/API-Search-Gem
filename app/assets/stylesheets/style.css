@@ -911,14 +911,15 @@ header .navbar-brand  img{ max-width: 157px;}
 }
 .home-experts .row { margin: 0;}
 .expert-cntnt-btn-inner p{ font-size:14px; font-weight:300; line-height:20px; margin:0; width:100%; text-align:center;}
-.expert-cntnt-btn-inner a{
-    float: none;
-    margin: 15px auto 0 auto;
+.expert-cntnt-btn-inner a {
+    float: left;
+    margin: 7px 0 0 20%;
     max-width: 90%;
     box-shadow: 0 0 10px -1px #fcbb0d;
     padding: 13px 25px;
     font-size: 13px;
-    display: ruby-text;
+    display: inline;
+    width: 60%;
 }
 
 footer { padding: 10px 0 0 0;}
@@ -1306,14 +1307,15 @@ select option{ background:#fff;}
 }
 .home-experts .row { margin: 0;}
 .expert-cntnt-btn-inner p{ font-size:14px; font-weight:300; line-height:20px; margin:0; width:100%; text-align:center;}
-.expert-cntnt-btn-inner a{
-    float: none;
-    margin: 15px auto 0 auto;
+.expert-cntnt-btn-inner a {
+    float: left;
+    margin: 7px 0 0 20%;
     max-width: 90%;
     box-shadow: 0 0 10px -1px #fcbb0d;
     padding: 13px 25px;
     font-size: 13px;
-    display: ruby-text;
+    display: inline;
+    width: 60%;
 }
 
 footer { padding: 10px 0 0 0;}
