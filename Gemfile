@@ -60,8 +60,8 @@ gem 'rufus-scheduler', '~> 3.4', '>= 3.4.2'
 gem 'sidekiq', '~> 5.1', '>= 5.1.1'
 
 # gem for find user location
-gem 'geocoder', '~> 1.4', '>= 1.4.6'
-
+#gem 'geocoder', '~> 1.4', '>= 1.4.6' Freegeoip api deprecated so gem version updated
+gem 'geocoder', '~> 1.4', '>= 1.4.9'
 # gem for editor
 gem 'ckeditor'
 

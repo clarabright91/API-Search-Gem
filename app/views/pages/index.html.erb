@@ -6,8 +6,8 @@
       <!-- banner main search start-->
        <div class="search-main adv-search-mb">
           <div class="search-cat zip-srch">
-             <label>Zip Code</label>     
-             <input type="text" placeholder="123456" value= <%=user_location_info.present? ? user_location_info.data["zip_code"].present? ? user_location_info.data["zip_code"] : nil : nil%> >  <!-- calling function defined in pages helper-->
+             <label>Zip Code</label>   
+             <input type="text" placeholder="123456" value= <%=user_location_info.present? ? user_location_info.data["postal"].present? ? user_location_info.data["postal"] : nil : nil%> >  <!-- calling function defined in Application helper-->
           </div>
           <div class="search-cat purpse-srch">
              <label>Purpose</label>

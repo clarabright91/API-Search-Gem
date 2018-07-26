@@ -1010,7 +1010,7 @@ footer span{ font-size:12px; float:left; width:100%; background:#f7f7f7; text-al
 .seo-auto-loan .gray-box-cntnt.seo_bank_auto_loan_top p { padding: 0; line-height: 22px; font-size: 15px; font-weight: normal; max-height: none; overflow:hidden; position:relative;}
 .seo-auto-loan .gray-box-cntnt.seo_bank_auto_loan_top p::after{ position:absolute; content:''; right:7px; bottom:0px;}
 .seo-auto-loan .gray-box-cntnt  p { padding: 0; line-height: 22px; font-size: 15px; font-weight: normal; overflow:hidden; position:relative;}
-.seo-auto-loan .gray-box-cntnt  p::after{ position:absolute; content:'...'; right:7px; bottom:0px;}
+/*.seo-auto-loan .gray-box-cntnt  p::after{ position:absolute; content:'...'; right:7px; bottom:0px;}*/
 .seo-auto-loan-cntnt-box2.seo-auto-loan-cntnt-box{ padding:20px 10px;}
 .volume-auto-loan .volume-auto-loan-row { padding: 14px 10px;}
 .seo-auto-loan-cntnt-box2 .col-xs-12.col-md-9, .seo-auto-loan-cntnt-box2 .col-xs-12.col-md-9 .gray-box-cntnt { padding: 0;}
@@ -1201,6 +1201,10 @@ footer .container{ padding:0;}
 #contact_us_form .login-rows textarea{ width: 100%; }
 .volume-auto-loan .car-auto-loan-news p{ min-height: auto; margin-bottom: 5px;}
 .seo-auto-loan-tabs.loan-detail-blocks #desktop_loan_off_data { padding-right: 10px;}
+
+
+.banner.search-result-banner .search-main.adv-search-mb .search-cat .dollar-icn { bottom: 14px;}
+.see-more-fdic { margin-right: 8px !important;}
 }
 
 /*mobile device css end*/

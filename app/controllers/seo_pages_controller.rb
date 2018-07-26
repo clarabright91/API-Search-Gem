@@ -58,6 +58,7 @@ Purpose:        display and define logic for all the seo pages
       city_home = City.find_by(id: params[:city_id])
       if city_home.present?
         @city = city_home
+        @zip = @city.zip            #for modals 
         @state = state_full_name(city_home.state_code, false) 
         all_city = City.where.not(city: @city.city).where(state_code: @city.state_code).select('distinct on (city) *')
         g_city = all_city.to_a.map{|c| c.zip   if c.zip > @city.zip}.compact.sort.first(2)
@@ -78,6 +79,7 @@ Purpose:        display and define logic for all the seo pages
       if bank_home.present? && bank_home.used
         @state =  bank_home.stname
         @bank = bank_home
+        @zip = @bank.zip        #for modals
         @state_code = state_full_name(bank_home.stname, true)
         @near_by_banks = FdicInstitution.near_by_banks(bank_home.cert)
         @fdic_cal_data = FdicCalculation.find_by(cert: params[:cert])

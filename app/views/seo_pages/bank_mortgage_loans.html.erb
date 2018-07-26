@@ -5,7 +5,7 @@
        <div class="search-main adv-search-mb" id="seo-city-mort-desktop">
           <div class="search-cat zip-srch">
              <label>Zip Code</label>
-             <input type="text" placeholder="123456">
+             <input type="text" placeholder="123456" value= <%=user_location_info.present? ? user_location_info.data["postal"].present? ? user_location_info.data["postal"] : @bank.zip : @bank.zip%> >
           </div>
           <div class="search-cat purpse-srch">
              <label>Purpose</label>
@@ -45,7 +45,7 @@
              <i class="fa fa-angle-double-down"></i>
           </div>
           <div class="section-lft-srch">
-             <p>$500,00 Home Purchase <span>in  94043</span></p>
+             <p>$500,00 Home Purchase <span>in  <%=user_location_info.present? ? user_location_info.data["postal"].present? ? user_location_info.data["postal"] : @bank.zip : @bank.zip%></span></p>
              <p>$100,00 Down <span>750 +</span></p>
           </div>
        </div>
@@ -630,6 +630,30 @@
  </div>
  <!-- common popup end-->
 
+<div class="modal fade common-popup-layout" id="create-price-alert" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><img src="/images/cancel_03.png" alt="" class="login-cross-img"></button>
+            <h4><b>Create a Price Alert to obtain lowest Mortgage</b></br> 
+               Rates and Save even more!
+            </h4>
+         </div>
+         <div class="modal-body">
+            <input type="text" placeholder="Enter your Email">
+            <input type="text" placeholder="Password">
+            <button class="rates-btn">Log In</button>
+            <div class="forgot-signup-links">
+               <a href="">Forgot Password,</a> or 
+               <a href="" data-toggle="modal" data-target="#signup-popup" class="signup-link-clr">Sign up Now</a>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
 <!-- SCript for display pie chart -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -652,10 +676,33 @@
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
     chart.draw(data, options);
   }
-</script>
 
-<!-- Script for performing see more and hide functionality for News section  -->
-<script type="text/javascript">
+
+  $(document).ready(function(){
+            $('.section-lft-srch-drpdwn-icn').click(function(){
+              $('.section-lft-srch-price-alert, .section-lft-srch-drpdwn-icn').hide();
+              $('.srch-results-adv-srch, #srch-edit-mb-only').show();
+            });
+            $('#srch-edit-mb-only').click(function(){
+              $('#seo-city-mort-mb').hide();
+              $('#seo-city-mort-desktop').show();
+            });
+            $('#para-see-more-link').click(function(){
+              $('#para-see-more-link').hide();
+              $('.mb-hide-para, #para-see-less-link').show();
+            });
+            $('#para-see-less-link').click(function(){
+              $('#para-see-less-link, .mb-hide-para').hide();
+              $('#para-see-more-link').show();
+            });
+            $('.section-lft-srch-drpdwn-icn').click(function(){
+              $('.header-main').addClass("black-head");
+            });
+            $('#srch-edit-mb-only').click(function(){
+              $('.header-main').removeClass("black-head");
+            });
+            }); 
+  
   // section for web view
   $("#desktop_news_data").click(function(){
     <%(5..9).each do |i|%>
