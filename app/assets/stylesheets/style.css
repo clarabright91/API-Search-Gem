@@ -1200,6 +1200,7 @@ footer .container{ padding:0;}
 #contact_us_form .login-rows input.login-page-btn { min-width: 220px !important;}
 #contact_us_form .login-rows textarea{ width: 100%; }
 .volume-auto-loan .car-auto-loan-news p{ min-height: auto; margin-bottom: 5px;}
+.seo-auto-loan-tabs.loan-detail-blocks #desktop_loan_off_data { padding-right: 10px;}
 }
 
 /*mobile device css end*/
@@ -1601,6 +1602,7 @@ footer .container{ padding:0; width:100% !important;}
 
 .advertisement .mb-hide{ display: block; }
 .advertisement .mb-only{ display: none; }
+.seo-auto-loan-tabs.loan-detail-blocks #desktop_loan_off_data { padding-right: 10px;}
 }
 /*tab css end*/
 
@@ -1937,3 +1939,12 @@ header .navbar-brand img { max-width: 140px;}
 a:focus, a:active{ text-decoration: none; }
 
 
+@media( min-width:320px) and ( max-width:767px){
+.blog-top-cntnt h4, .blog-post-box h2{ font-size: 20px;}  
+.blog-top-cntnt p { font-size: 16px; line-height: normal;}
+.blog-post-box { padding:0; border-radius: 0; box-shadow: none;}
+.blog-post{ box-shadow: 0 0 15px #d7d7d7; }
+.blog-post-inner { padding: 0;}
+.blog-post-inner img { position: relative;  margin: 0 0 15px 0; width:100%;}
+
+}

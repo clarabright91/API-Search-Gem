@@ -44,8 +44,8 @@
       <div class="modal-body">
         <div class="pum-content popmake-content">
           <div class="popup-hdr">
-            <h3>Contact Us</h3>
-            <p>Please fill the below form to contact us, We will update you within 3-4 working days.</p>
+            <h3>Share your Research with our Readers</h3>
+            <p>Educate our 74,000 monthly readers an latest academic research and industry news an economics and housing</p>
           </div>
           <div class="popup-cntnt">
             <%= form_with url: research_contact_us_email_path, html: {multipart: true}, id: "research_form" do |f| %>
@@ -62,12 +62,12 @@
               </div>
               <div>
                 <span class="wpcf7-form-control-wrap your-subject">
-                  <%= f.text_field :phone_no, autofocus: true, placeholder: "Phone No",class: "wpcf7-form-control wpcf7-text" %>
+                  <%= f.url_field :website, autofocus: true, placeholder: "Website",class: "wpcf7-form-control wpcf7-text" %>
                 </span>
               </div>
               <div>
                 <span class="wpcf7-form-control-wrap your-message">
-                  <%= f.text_area :message, size: "55x5", autofocus: true, placeholder: "Message", style: 'max-width: 100%', class: "wpcf7-form-control wpcf7-textarea"%>
+                  <%= f.text_area :message, size: "55x5", autofocus: true, placeholder: "Research summary and key insights", style: 'max-width: 100%', class: "wpcf7-form-control wpcf7-textarea"%>
                 </span>
               </div>
               <div>
@@ -172,6 +172,9 @@
           },
           email: true
       },
+      "website":{
+        required: true
+      },
       "message":{
           required: true
       },
@@ -187,6 +190,9 @@
       "email": {
           required: "Please enter your email.",
           email: "Please enter valid email address.",
+      },
+      "website":{
+        required: "Please enter wesite."
       },
       "message":{
           required: "Please enter your message."

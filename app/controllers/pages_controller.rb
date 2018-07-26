@@ -97,7 +97,7 @@ class PagesController < ApplicationController
           file = ""
           file_name = ""
         end           
-        ResearchMailer.research_email(rec, params[:name], params[:email], params[:phone_no], params[:message],file_name,file).deliver
+        ResearchMailer.research_email(rec, params[:name], params[:email], params[:website], params[:message],file_name,file).deliver
       end
     flash[:notice] = 'Research submitted successfully.'
     redirect_back fallback_location: root_path
