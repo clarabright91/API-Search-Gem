@@ -230,7 +230,7 @@ footer span{ float:right; font-size:14px; color:#8e8e8e; text-transform:uppercas
 .common-popup-layout .modal-dialog{ width:770px; max-width:90%; background:#fff;}
 .common-popup-layout .modal-header h4{ font-size:28px; font-weight:normal; float:left; width:100%; text-align:center; color:#fff; margin:0;}
 .common-popup-layout .modal-header h4 b{ font-weight:bold;}
-.common-popup-layout .modal-body input, .common-popup-layout .modal-body select{ float:left; width:100%; border:2px solid #19214d; padding:17px 25px; font-size:18px; color:#19214d; border-radius:5px; margin:0 0 35px 0;}
+.common-popup-layout .modal-body input, .common-popup-layout .modal-body select{ float:left; width:100%; padding:17px 25px; font-size:18px; color:#19214d; border-radius:5px; margin:0 0 35px 0;}
 .common-popup-layout .modal-header .close { margin-top: 7px; position: absolute; right: 7px; top: 0; opacity: 1; width: auto;}
 .common-popup-layout .rates-btn { float: none; padding: 17px 74px; width: auto; margin: 15px auto;}
 .common-popup-layout .forgot-signup-links { font-size: 18px; margin: 20px 0 0 0;}

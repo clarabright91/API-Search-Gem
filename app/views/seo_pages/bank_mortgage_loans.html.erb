@@ -547,9 +547,11 @@
                   </div>  
                 <%end%>  
               <%end%>
-              <div class="full-width">
-                <button class= "show-all-specialst-btn" id="desktop_news_data">See More</button>
-              </div>
+              <%if @news_articles.count > 5%>
+                <div class="full-width">
+                  <button class= "show-all-specialst-btn" id="desktop_news_data">See More</button>
+                </div>
+              <%end%>  
             <%else%>
               <div class="car-auto-loan-news">
                   No Records Found
@@ -574,9 +576,11 @@
                   </div>  
                 <%end%>  
               <%end%>
-              <div class="news-see-more">
-                <a class= "news-see-more-link pull-right see-more-fdic" id="mobile_news_data">See More</a>
-              </div>
+              <%if @news_articles.count > 3%>
+                <div class="news-see-more">
+                  <a class= "news-see-more-link pull-right see-more-fdic" id="mobile_news_data">See More</a>
+                </div>
+              <%end%>  
             <%else%>
               <div class="car-auto-loan-news">
                   No Records Found
