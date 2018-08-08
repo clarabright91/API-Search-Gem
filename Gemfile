@@ -32,7 +32,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+#for images
+gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'devise'

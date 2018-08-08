@@ -17,7 +17,9 @@ module SeoPagesHelper
       elsif arg.downcase.include?('ext')
         phone_number = arg.downcase.split('ext')
         phone = if phone_number[0].to_i == 0 || phone_number[0].to_i.to_s.size < 10
-          number_to_phone(phone_number[0].gsub!(/[^0-9A-Za-z]/, '').to_i, area_code: true)
+          ph = phone_number[0].gsub!(/[^0-9A-Za-z]/, '')
+          ph = ph[1..10]       if ph.length > 10
+          number_to_phone(ph, area_code: true)
         else
          number_to_phone(phone_number[0].to_i, area_code: true)
         end
