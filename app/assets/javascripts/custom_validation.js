@@ -92,6 +92,10 @@
      }
   });
 
+  $.validator.addMethod('filesize', function (value, element, param) {
+          return this.optional(element) || (element.files[0].size <= param)
+      }, 'File size must be less than 2-Mb');
+
   $('#new_expert, #edit_expert').validate({
     rules: {
       "expert[first_name]":{
@@ -109,6 +113,9 @@
         required: true,
         email: true
       },
+      "expert[phone]":{
+            required: true
+          },
       // "expert[loan_type]":{
       //   required: true
       // },
@@ -118,6 +125,10 @@
       "expert[specialty]":{
         required: true
       },
+      "expert[image]": {
+            extension: "jpg,jpeg",
+            filesize:   2097152 
+          }
       // "expert[website]":{
       //   required: true
       // }
@@ -136,6 +147,9 @@
         "expert[email]":{
           required: 'Please enter email address.'
         },
+        "expert[phone]":{
+            required: "PLese enter mobile number."
+          },
         // "expert[loan_type]":{
         //   required: "Please select loan type."
         // },
@@ -145,6 +159,9 @@
           "expert[specialty]":{
             required: "Please enter specialty."
           },
+          "expert[image]": {
+            extension: "File must be JPG,JPEG."
+          }
           // "expert[website]":{
           //   required: "Please enter website."
           // }

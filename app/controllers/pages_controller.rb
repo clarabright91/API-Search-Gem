@@ -9,7 +9,7 @@ class PagesController < ApplicationController
  
   def index
 		#render "index"
-    @experts = Expert.where(verified: true).last(4)
+    @experts = Expert.where(verified: true).last(5)
 	end
 
   def show
