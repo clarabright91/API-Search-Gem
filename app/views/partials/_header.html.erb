@@ -21,18 +21,19 @@
         <li>
            <%= link_to 'Refinance Rates', refinance_path%> 
         </li>
-        <%if !user_signed_in? %>
-          <li><a href="#">Mortgage Calculator</a></li>
-        <%end%>
+
+        <li>
+          <a href="#"> Calculator</a>
+        </li>
         <% if user_signed_in? %>
-          <li>
+          <!--li>
             <%= link_to("Profile", edit_user_registration_path)%>
           </li>
           <li>
             <%= link_to("Price Alert", root_path) %>
-          </li>
+          </li-->
           <li>
-            <%= link_to("Favorites", root_path) %>
+            <%= link_to("Settings", root_path) %>
           </li>
           <li>
             <%= link_to("Sign out", destroy_user_session_path) %>
