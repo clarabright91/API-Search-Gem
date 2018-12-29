@@ -160,7 +160,7 @@
          <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->
          <div class="volume-auto-loan loan-chargeoff-recovry">
             <h2 class="tab_blue_content"><%=@bank.name%> Personal Loan Chargeoffs, Recoveries  </h2>
-            <p>For <%=@bank.name%>'s assets sold And securitized by other consumer personal loans, the charge-offs amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_szdrcon * 1000).round(-3), precision: 0) : '$0'%> and the recoveries amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_szcrcon * 1000).round(-3), precision: 0) : '$0'%> .
+            <p>For <%=@bank.name%>'s assets sold and securitized by other consumer personal loans, the charge-offs amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_szdrcon * 1000).round(-3), precision: 0) : '$0'%> and the recoveries amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.p_szcrcon * 1000).round(-3), precision: 0) : '$0'%> .
                </p>
                <p>
                An additional figure for personal loan performance are other consumer loans to individuals for household, family and other personal expenditures that are past due still and accruing interest:

@@ -21,10 +21,8 @@ default: &default
 
 development:
   <<: *default
-  database: d5pqtc7726bdtv
-  host: ec2-34-205-80-61.compute-1.amazonaws.com
-  username: u4cd2g50h2ios5
-  password: p02be3991d08c7d37918542cc48c8510b2e9feb559cd9421869270f402f89aef2
+  database: new_mortgage
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

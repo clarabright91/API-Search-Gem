@@ -73,7 +73,7 @@
                   </div>
                   <span>Up to $40,000, starting 5.99%</span>
                </h3>
-               <p>A car loan through OneMain Financial can provide an easy way to get that special car when other lenders may be saying no to car loans.  If you have good credit, you’re a perfect candidate for a personal loan through Prosper’s peer to peer lending marketplace.  Get low fixed rates without any of the hidden fees and red tape associated with other types of loans.</p>
+               <p>A car loan through OneMain Financial can provide an easy way to get that special car when other lenders may be saying no to car loans.  If you have good credit, you’re a perfect candidate for a personal loan through One Main Financial.  Get low fixed rates without any of the hidden fees and red tape associated with other types of loans.</p>
             </div>
          </div>
          <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
@@ -99,7 +99,7 @@
                   </div>
                   <span>Up to $40,000, starting 5.99%</span>
                </h3>
-               <p>LightStream has over 350,000 customers to date.  Avant prides itself on loan transparency.  You’ll always know what you pay. There are no hidden fees and no collateral needed for an unsecured loan.</p>
+               <p>Light Stream has over 350,000 customers to date.  Light Stream prides itself on loan transparency.  You’ll always know what you pay. There are no hidden fees and no collateral needed for an unsecured loan.</p>
             </div>
          </div>
          <div class="col-xs-12 col-md-3 seo-bank-cntn-white-bg text-center">
@@ -167,7 +167,7 @@
       <!--Bank of America Personal Loan Chargeoffs, Recoveries section start-->
       <div class="volume-auto-loan loan-chargeoff-recovry">
          <h2 class="tab_blue_content"><%=@bank.name%> Auto Loan Chargeoffs, Recoveries </h2>
-         <p> For <%=@bank.name%>'s assets sold and securitized auto loans, the charge-offs amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szdrauto * 1000).round(-3), precision: 0) : '$0'%> and the recoveries amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szcrauto * 1000).round(-3), precision: 0) : '$0'%>.
+         <p> For <%=@bank.name%>'s securitized auto loans, the charge-offs amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szdrauto * 1000).round(-3), precision: 0) : '$0'%> and the recoveries amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szcrauto * 1000).round(-3), precision: 0) : '$0'%>.
          <p>
           <!-- a_szcrauto column not -->
          For general car loans, the charge-offs amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_drauto * 1000).round(-3), precision: 0) : '$0'%> and the recoveries amount to <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_crauto * 1000).round(-3), precision: 0) : '$0'%>. This results in a net charge-offs of automobile loans debited to the allowance for loan and lease losses of <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_ntauto * 1000).round(-3), precision: 0) : '$0'%>.
