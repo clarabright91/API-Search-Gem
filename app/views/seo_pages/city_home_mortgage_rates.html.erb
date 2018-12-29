@@ -870,7 +870,7 @@
  </section>
  <!-- search result feed end-->
   
-  <div class="modal fade common-popup-layout" id="create-price-alert" role="dialog">
+  <div class="modal fade common-popup-layout signup-login-popup" id="create-price-alert" role="dialog">
             <div class="modal-dialog">
                <!-- Modal content-->
                <div class="modal-content">
@@ -881,13 +881,34 @@
                      </h4>
                   </div>
                   <div class="modal-body">
-                     <input type="text" placeholder="Enter your Email">
-                     <input type="text" placeholder="Password">
-                     <button class="rates-btn">Log In</button>
-                     <div class="forgot-signup-links">
-                        <a href="">Forgot Password,</a> or 
-                        <a href="" data-toggle="modal" data-target="#signup-popup" class="signup-link-clr">Sign up Now</a>
-                     </div>
+                     <%= form_for(:user, :url => session_path(:user), :html => {:id => "login_form"}) do |f| %>
+                      <ul class="login-drpdwn">
+                        <li>
+                          <%= image_tag("login-mail.png", :alt => "login-mail") %>
+                          <%= f.email_field :email, autofocus: true %>
+                        </li>
+                        <li>
+                          <%= image_tag("login-pass.png", :alt => "login-pass") %>
+                          <%= f.password_field :password, autocomplete: "off" %>
+                        </li>
+                        <li class="cntnt-login">
+                          <button class="rates-btn">Log In</button>
+                          <div class="forgot-signup-links">
+                            <%= link_to "Forgot Password", new_user_password_path %>
+                              or
+                            <a href="" data-toggle="modal" data-target="#signup-popup" class="signup-link-clr">Sign up Now</a>
+                          </div>
+                           <p>or sign up with</p>
+                           <div class="social-login">
+                            <!-- <a href=""><%#= image_tag("facebook_13.png", :alt => "Facebook") %></a> -->
+                            <%= link_to image_tag("facebook_13.png"), user_facebook_omniauth_authorize_url() %>
+                            <!-- <a href=""><%#= image_tag("twitter_15.png", :alt => "Twitter") %></a> -->
+                            <!-- <a href=""><%#= image_tag("google_13.png", :alt => "Google") %></a> -->
+                            <%= link_to image_tag("google_13.png"), user_google_oauth2_omniauth_authorize_url() %>
+                           </div>
+                        </li>
+                       </ul>
+                     <% end %>
                   </div>
                </div>
             </div>

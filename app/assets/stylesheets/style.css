@@ -1998,6 +1998,33 @@ a.innr-year-link-active{
 p.top-txt-info {
     margin: -5px 0 15px 0;
 }
+#create-price-alert li img {
+    left: 10px;
+    top: 25px;
+}
+#create-price-alert li {
+    margin: 10px 7% 0 7%;
+    padding: 10px 0px 5px 60px;
+}
+.common-popup-layout .modal-body input, .common-popup-layout .modal-body select {
+    padding: 10px 10px !important;
+    margin: 10px 0 0px 0 !important;
+}
+#login_form {
+    border-bottom: 0px solid #e2e2e2 !important;
+}
+#create-price-alert li.cntnt-login {
+    padding: 15px 0 0 0;
+    margin: 10px 0% 0px 0%;
+}
+.common-popup-layout .modal-header {
+    margin-top: -9px;
+}
+#create-price-alert li.cntnt-login .social-login {
+    float: left;
+    width: 100%;
+    min-height: 75px;
+}
 /*cusstom css ends yin*/
 
 
