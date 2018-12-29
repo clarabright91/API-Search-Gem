@@ -1945,7 +1945,28 @@ a:focus, a:active{ text-decoration: none; }
 /*cusstom css starts yin*/
 
 footer ul li:last-child:after{ content:'';}
-
+@media (max-width: 767px) and (min-width: 320px){
+	.cntnt-list-box h5 {
+	    padding: 10px 3px 10px 3px !important;
+	}
+}
+@media (min-width: 768px){
+	#advance-srch-mb .modal-dialog {
+	    width: 100% !important;
+	}
+}
+.expert-app-overlay-note {
+    text-align: left !important;
+}
+.common-popup-layout .modal-dialog {
+    width: 708px !important;
+}
+.popup-hdr p.blg-cont-hdr-p {
+    text-align: left !important;
+}
+#research_contact_form .modal-dialog {
+    width: 560px !important;
+}
 /*cusstom css ends yin*/
 
 

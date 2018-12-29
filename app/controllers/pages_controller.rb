@@ -170,7 +170,8 @@ class PagesController < ApplicationController
 
   def expert_state_and_city
     if request.xhr?
-     city = City.where(state_code: params[:state]).uniq(&:city).sort_by(&:city).pluck(:city,:zip)
+     # city = City.where(state_code: params[:state]).uniq(&:city).sort_by(&:city).pluck(:city,:zip)
+     city = City.where(state_code: params[:state]).uniq(&:city).sort_by(&:city).pluck(:city)
      render json: city
     end
   end 
