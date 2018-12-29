@@ -1971,6 +1971,33 @@ footer ul li:last-child:after{ content:'';}
     padding: 10px 0 !important;
     margin-top: 38px !important;
 }
+.cntnt-list-inner {
+    padding: 10px 23px;
+}
+.cntnt-list-inner .inner-logo img {
+    max-width: 80% !important;
+}
+a.innr-year-link{
+	padding-right: 10px !important;
+	font-weight: bold;
+	color: #000;
+}
+a.innr-year-link-active{
+	color: #fb6325 !important;
+	text-decoration: underline;
+}
+@media (max-width: 1024px) and (min-width: 768px){
+	.seo-cities-mortgage p.top-txt-info {
+	    width: 100%;
+	    margin: -8px 10px 10px 0;
+	    bottom: 0px;
+	    display: inline-block;
+	    padding: 0 20px;
+	}
+}
+p.top-txt-info {
+    margin: -5px 0 15px 0;
+}
 /*cusstom css ends yin*/
 
 
