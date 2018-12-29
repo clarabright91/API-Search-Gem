@@ -57,7 +57,7 @@
           <div class="search-adv-option-box">
              <a href="javascript:void(0);" id="adv-option" class="desktop-btn"><i class="fa fa-angle-double-down"></i> Advanced Options</a>
              <a href="" data-toggle="modal" data-target="#advance-srch-mb" class="mb-btn"><i class="fa fa-angle-double-down"></i> Advanced Options</a>
-             <a data-toggle="modal" data-target="#create-price-alert" href="" class="price-alert-btn"><i class="fa fa-envelope"></i> Create Price Alert</a>
+             <a data-toggle="modal" data-target="#login-popup" href="" class="price-alert-btn"><i class="fa fa-envelope"></i> Create Price Alert</a>
              <div class="search-adv-option" id="search-adv-option-inner">
                 <div class="row">
                    <h4>desired loan programs?</h4>
@@ -141,7 +141,7 @@
                 FDIC Certificate Number - <%=@bank.cert%></br>
                 <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
              </p>
-             <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency((asset_and_dep_formatting(@bank.asset) * 1000).round(-3), precision: 0) : '$0' %></p>
+             <p class="seo-bank-cntn-white-bg-info"><span>Total Assets:</span> <%= @bank.asset.present? ? number_to_currency((asset_and_dep_formatting(@bank.asset) * 1000).round(-3), precision: 0) : '$0' %></p>
              <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency((asset_and_dep_formatting(@bank.dep) * 1000).round(-3), precision: 0) : '$0' %></p>
           </div>
        </div>
@@ -454,7 +454,7 @@
                    </div>
 
                    <div class="col-xs-12 col-md-5">
-                      <p><%=@bank.name%> lends out a total of <%=@fdic_cal_data.present? ?  number_to_currency((@fdic_cal_data.m_lnlsgr * 1000).round(-3), precision: 0) : '$0'%> annually. Of this loan volume, <%=@bank.name%> home mortgages are <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_lnre * 1000).round(-3), precision: 0) : '$0'%>. As a result, <%=@bank.name%> home loans represent <%= @fdic_cal_data.present? ? (@fdic_cal_data.m_lnre/@fdic_cal_data.m_lnlsgr).round(2) : '0' %>% of the total lending of <%=@bank.name%>.</p>
+                      <p><%=@bank.name%> lends out a total of <%=@fdic_cal_data.present? ?  number_to_currency((@fdic_cal_data.m_lnlsgr * 1000).round(-3), precision: 0) : '$0'%> annually. Of this loan volume, <%=@bank.name%> home mortgages are <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_lnre * 1000).round(-3), precision: 0) : '$0'%>. As a result, <%=@bank.name%> home loans represent <%= @fdic_cal_data.present? ? (@fdic_cal_data.m_lnre/@fdic_cal_data.m_lnlsgr).round(2) *100 : '0' %>% of the total lending of <%=@bank.name%>.</p>
                    </div>
                   <div class="col-xs-12 col-md-5" id="piechart"></div>
                   <a class="link-right-inner mb-only">Data produced  from US Government reported financials</a>

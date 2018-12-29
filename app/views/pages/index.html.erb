@@ -89,7 +89,7 @@
                       <div class="form-group"><input type="checkbox" value=""> Miltary</div>
                       <div class="form-group"><input type="checkbox" value=""> Rular</div>
                    </div>
-		                <div class="col-xs-12 col-md-3 menu-up-adv-search"><a href=""><img src="images/menu-up_03.png" alt=""/></a></div>
+		                <div class="col-xs-12 col-md-3 menu-up-adv-search"><a href="javascript:;"><img src="images/menu-up_03.png" alt=""/></a></div>
                 </div>
              </div>
           </div>
@@ -544,6 +544,11 @@
 
  <script>
     $(document).ready(function(){
+
+      $('.menu-up-adv-search').click(function(){
+        $("#search-adv-option-inner").hide("fast").removeClass("display-adv-search");
+      });
+
         $('.state').change(function(){
             id_passed = $(".state option:selected").val();
             $.ajax({

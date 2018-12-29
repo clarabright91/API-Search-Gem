@@ -32,11 +32,17 @@ $(document).ready(function() {
 	});
 	// Show/hide signin/signup modals
 	$('.signup-link-clr').on('click', function(){
-		$('.login-popup').modal('hide');
+    $('.login-popup').modal('hide');
+		$('#forgot-popup').modal('hide');
 	});
 	$('.setLogin').on('click', function(){
 		$('#signup-popup').modal('hide');
+    $('#forgot-popup').modal('hide');
 	});
+  $('.setForgot').on('click', function(){
+    $('#signup-popup').modal('hide');
+    $('.login-popup').modal('hide');
+  });
 
 	$("#login_form").validate({
       rules: {
@@ -165,6 +171,21 @@ $(document).ready(function() {
   })
 
   $("#forgot_signup_form").validate({
+    rules: {
+        "user[email]":{
+          required: true,
+          email: true
+        }
+    },
+    messages: {
+      "user[email]":{
+        required: "Please enter email address.",
+        email: "Please enter valid email address.",
+      }
+    }
+  })
+
+  $("#forgot_signup_form_pop").validate({
     rules: {
         "user[email]":{
           required: true,

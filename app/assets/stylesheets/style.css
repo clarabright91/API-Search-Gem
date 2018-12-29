@@ -2025,6 +2025,35 @@ p.top-txt-info {
     width: 100%;
     min-height: 75px;
 }
+.signup-login-popup .price-alert-header {
+    float: left;
+    padding: 30px 25px;
+    background: #58a8e1;
+    position: relative;
+        margin-top: -9px;
+}
+.signup-login-popup .modal-header h4 {
+    font-size: 25px;
+    font-weight: normal;
+    float: left;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+}
+
+.signup-login-popup .modal-header .close {
+    margin-top: 7px;
+    position: absolute;
+    right: 7px;
+    top: 0;
+    opacity: 1;
+    width: auto;
+}
+.graph-box p {
+    font-size: 20px !important;
+    font-weight: 300 !important;
+}
 /*cusstom css ends yin*/
 
 

@@ -29,7 +29,7 @@
                         FDIC Certificate Number - <%=@bank.cert%></br>
                         <%=@bank.address+', '+@bank.city+', '+@bank.stname%>
                      </p>
-               <p class="seo-bank-cntn-white-bg-info"><span>Total Asset:</span> <%= @bank.asset.present? ? number_to_currency((asset_and_dep_formatting(@bank.asset) * 1000).round(-3), precision: 0) : '$0'%></p>
+               <p class="seo-bank-cntn-white-bg-info"><span>Total Assets:</span> <%= @bank.asset.present? ? number_to_currency((asset_and_dep_formatting(@bank.asset) * 1000).round(-3), precision: 0) : '$0'%></p>
                <p class="seo-bank-cntn-white-bg-info"><span>Total Deposits:</span> <%= @bank.dep.present? ? number_to_currency((asset_and_dep_formatting(@bank.dep) * 1000).round(-3), precision: 0) : '$0'%></p>
             </div>
          </div>

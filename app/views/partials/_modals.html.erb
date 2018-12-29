@@ -136,9 +136,15 @@
 <div class="modal fade signup-login-popup login-popup" id="login-popup" role="dialog">
   <div class="modal-dialog">
    <div class="modal-content">
-    <div class="modal-header">
+    <div class="modal-header login-mdl-header">
      <button type="button" class="close" data-dismiss="modal"><%= image_tag("Homepage-login-overlayw_03.png", :alt => "close", :class => "login-cross-img") %>
      </button>
+    </div>
+    <div class="modal-header price-alert-header" style="display: none;">
+       <button type="button" class="close" data-dismiss="modal"><img src="/images/cancel_03.png" alt="" class="login-cross-img"></button>
+       <h4><b>Create a Price Alert to obtain lowest Mortgage</b></br>
+          <b>Rates and Save even more!</b>
+       </h4>
     </div>
     <div class="modal-body">
       <%= form_for(:user, :url => session_path(:user), :html => {:id => "login_form"}) do |f| %>
@@ -154,7 +160,7 @@
           <li class="cntnt-login">
             <button class="rates-btn">Log In</button>
             <div class="forgot-signup-links">
-              <%= link_to "Forgot Password", new_user_password_path %>
+              <a href="" class="setForgot" data-toggle="modal" data-target="#forgot-popup">Forgot Password</a>
                 or
               <a href="" data-toggle="modal" data-target="#signup-popup" class="signup-link-clr">Sign up Now</a>
             </div>
@@ -174,12 +180,59 @@
   </div>
 </div>
 <!-- login popup end-->
+
+<!-- forgot password  popup start-->
+<div class="modal fade signup-login-popup login-popup" id="forgot-popup" role="dialog">
+  <div class="modal-dialog">
+   <div class="modal-content">
+    <div class="modal-header login-mdl-header">
+     <button type="button" class="close" data-dismiss="modal"><%= image_tag("Homepage-login-overlayw_03.png", :alt => "close", :class => "login-cross-img") %>
+     </button>
+    </div>
+    <div class="modal-body">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: 'forgot_signup_form_pop' }) do |f| %>
+        <ul class="login-drpdwn">
+          <li>
+            <%= image_tag("login-mail.png", :alt => "login-mail") %>
+            <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+          </li>
+          <li class="cntnt-login">
+            <button class="rates-btn">Submit</button>
+            <div class="forgot-signup-links">
+              <a href="" class="setLogin" data-toggle="modal" data-target="#login-popup">Login</a>
+                or
+              <a href="" data-toggle="modal" data-target="#signup-popup" class="signup-link-clr">Sign up Now</a>
+            </div>
+             <p>or sign up with</p>
+             <div class="social-login">
+              <!-- <a href=""><%#= image_tag("facebook_13.png", :alt => "Facebook") %></a> -->
+              <%= link_to image_tag("facebook_13.png"), user_facebook_omniauth_authorize_url() %>
+              <!-- <a href=""><%#= image_tag("twitter_15.png", :alt => "Twitter") %></a> -->
+              <!-- <a href=""><%#= image_tag("google_13.png", :alt => "Google") %></a> -->
+              <%= link_to image_tag("google_13.png"), user_google_oauth2_omniauth_authorize_url() %>
+             </div>
+          </li>
+         </ul>
+       <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- forgot password popup end-->
+
+
 <!-- signup popup start-->
 <div class="modal fade signup-login-popup" id="signup-popup" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header login-mdl-header">
          <button type="button" class="close" data-dismiss="modal"><%= image_tag("Homepage-login-overlayw_03.png", :alt => "close", :class => "login-cross-img") %> </button>
+      </div>
+      <div class="modal-header" style="display: none;">
+         <button type="button" class="close" data-dismiss="modal"><img src="/images/cancel_03.png" alt="" class="login-cross-img"></button>
+         <h4><b>Create a Price Alert to obtain lowest Mortgage</b></br>
+            <b>Rates and Save even more!</b>
+         </h4>
       </div>
       <div class="modal-body">
         <%= form_for(:user, url: user_registration_path, :html => {:id => "signup_form"}) do |f| %>

@@ -52,6 +52,21 @@
 
 <script type="text/javascript">
   $(function() {
+    $('.login-btn').click(function(){
+      $('.login-mdl-header').show();
+      $('.price-alert-header').hide();
+    });
+    $('.price-alert-btn').click(function(){
+      $('.login-mdl-header').hide();
+      $('.price-alert-header').show();
+    });
+    $('.signup-link-clr').click(function(){
+      $('.login-mdl-header').show();
+      $('.price-alert-header').hide();
+    });
+
+    
+
     var pgurl = window.location.href.substr(window.location.href
       .lastIndexOf("/")+1);
         $(".navbar-nav a").each(function(){
