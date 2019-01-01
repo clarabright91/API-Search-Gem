@@ -97,7 +97,7 @@ Return:         hash
          <% if !current_user.social_login.present?%>
          <!-- change password start-->
          <div class="profile-blocks">
-            <h3>Change</h3>
+            <h3>Change Password</h3>
              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "user_password_section" }) do |f|%>
               
             <div class="profile-blocks-cntnt">
@@ -147,7 +147,7 @@ Return:         hash
                <div class="row">
                   <div class="col-xs-12 col-md-12">
                      <div class="form-group">
-                        <label>Email me the latest, up to date pricing for my favaried or last mortage search.</label>
+                        <label>Email me the latest, up to date pricing for my favorited or last mortage search.</label>
                         <span class="checkbox-custm-row">
                           <%= f.radio_button :price_alert,current_user.price_alert == 0 ? current_user.price_alert : 0 %> Daily
                         </span>
@@ -257,7 +257,10 @@ Return:         hash
                      </div>
                      <div class="fav-search-cntnt-comon col-xs-1 col-md-1">
                         <p class="hiden-txt-desktop"></p>
-                        <div class="fav-search-white-block"><a href=""><img src="images/bin_03.png" alt=""></a></div>
+                        <div class="fav-search-white-block">
+                           <%= link_to image_tag("bin_03.png", :alt => "Bin"),"#" %>
+                           <!-- <a href=""><img src="images/bin_03.png" alt=""></a> -->
+                        </div>
                      </div>
                   </div>
                </div>
@@ -273,7 +276,7 @@ Return:         hash
                         <div class="fav-search-white-block">Citybank</div>
                      </div>
                      <div class="fav-search-cntnt-comon col-xs-4 col-md-4">
-                        <p class="">Team</p>
+                        <p class="">Term</p>
                         <div class="fav-search-white-block">30 - Year Fixed</div>
                      </div>
                      <div class="fav-search-cntnt-comon col-xs-4 col-md-4">
@@ -288,7 +291,10 @@ Return:         hash
                      </div>
                      <div class="fav-search-cntnt-comon col-xs-4 col-md-4">
                         <p class="hiden-txt-mb ipad-nw"></p>
-                        <div class="fav-search-white-block"><a href=""><img src="images/bin_03.png" alt=""></a></div>
+                        <div class="fav-search-white-block">
+                           <%= link_to image_tag("bin_03.png", :alt => "Bin"),"#" %>
+                           <!-- <a href=""><img src="images/bin_03.png" alt=""></a> -->
+                        </div>
                      </div>
                   </div>
                </div>
@@ -318,7 +324,10 @@ Return:         hash
                      </div>
                      <div class="fav-search-cntnt-comon col-xs-4 col-md-4">
                         <p class="hiden-txt-desktop"></p>
-                        <div class="fav-search-white-block"><a href=""><img src="images/bin_03.png" alt=""></a></div>
+                        <div class="fav-search-white-block">
+                           <%= link_to image_tag("bin_03.png", :alt => "Bin"),"#" %>
+                           <!-- <a href=""><img src="images/bin_03.png" alt=""></a> -->
+                        </div>
                      </div>
                   </div>
                </div>

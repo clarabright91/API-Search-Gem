@@ -47,7 +47,7 @@ config.action_mailer.smtp_settings = {
   password:             'pureloan123',
   authentication:       'plain',
   enable_starttls_auto: true  }
-config.mailer_sender = 'anoop.talentelgia@gmail.com'
+config.mailer_sender = 'varun.talentelgia@gmail.com'
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
