@@ -43,7 +43,8 @@ gem 'active_skin'
 gem "active_admin_import" , '3.0.0'
 gem 'chartkick'
 gem 'bootstrap-sass'
-gem 'cancan'
+#gem 'cancan'
+gem 'cancancan', '~> 2.3'
 # gem for jquery validation
 gem 'jquery-validation-rails', '~> 1.16'
 
