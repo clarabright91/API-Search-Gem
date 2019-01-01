@@ -26,7 +26,10 @@ Rails.application.routes.draw do
   # end
   post 'pages/expert_user_registration', to: "pages#expert_user_registration", as: 'expert_user_registration'
   
-  get 'pages/expert_state_and_city', to: 'pages#expert_state_and_city', as: 'expert_state_and_city'  
+  get 'pages/expert_state_and_city', to: 'pages#expert_state_and_city', as: 'expert_state_and_city'
+
+  get 'pages/expert_city_and_zip', to: 'pages#expert_city_and_zip', as: 'expert_city_and_zip'  
+  
   root 'pages#index'
   get '/refinance', to: 'pages#refinance', as: 'refinance'
   get '/mortgage', to: 'pages#mortgage', as: 'mortgage'

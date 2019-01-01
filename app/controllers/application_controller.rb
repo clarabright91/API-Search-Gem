@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
   def authenticate_app
     authenticate_or_request_with_http_basic('Administration') do |username, password|
       md5_of_password = Digest::MD5.hexdigest(password)
-      username == 'admin' && md5_of_password == '8092dc9b1315b0134b1346b71a9196f5'
+      # username == 'admin' && md5_of_password == '8092dc9b1315b0134b1346b71a9196f5'
+      username == 'admin' && md5_of_password == '818243132a203f096cace17502badca6'
     end
   end
 end

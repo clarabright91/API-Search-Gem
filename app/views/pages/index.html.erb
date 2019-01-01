@@ -503,25 +503,33 @@
                  </div>
                  <div class="row">
                     <div class="col-xs-12 col-md-6">
+                       <div class="form-group select-arrow">
+                          <label>Zip</label> 
+                        <%= expert_user.select(:zip, [], {prompt: "Select zip"}, { class: 'zip' })%>  
+                       </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
                        <div class="form-group">
                           <label>License Number</label> 
                           <%= expert_user.text_field :license_number, placeholder: "Enter your License Number", class: "form-control"%>
                        </div>
                     </div>
+                 </div>
+                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group select-arrow">
                           <label>Speciality <span>(Where you will be listed)</span></label> 
                           <%= expert_user.select :specialty, options_for_select([["Mortgage","Mortgage"], ["Refinance","Refinance"], ["Personal","Personal"], ["Auto","Auto"]]), class: "form-control"%>
                        </div>
                     </div>
-                 </div>
-                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group">
                           <label>Website</label>
                           <%= expert_user.url_field :website, placeholder: "http//", class: "form-control", value: "http://"%>
                        </div>
                     </div>
+                 </div>
+                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group custm-file-input">
                           <label>Photo</label> 
@@ -565,6 +573,22 @@
             });
         })
 
+        $('.city').change(function(){
+            id_passed = $(".city option:selected").val();
+            $.ajax({
+                url: '/pages/expert_city_and_zip',
+                type: "GET",
+                dataType: 'json',
+                data: {"city" : id_passed},
+                success: function(response) {
+                  $(".zip").empty();
+                  $.each(response, function(e,res){
+                    $(".zip").append($("<option></option>").attr("value",res).text(res)); 
+                  })
+                }
+            });
+        })
+
     });
 
     $.validator.addMethod('filesize', function (value, element, param) {
@@ -594,6 +618,12 @@
           "expert[state]":{
             required: true
           },
+          "expert[city]":{
+            required: true
+          },
+          "expert[zip]":{
+            required: true
+          },
           "expert[license_number]":{
               required: true
           },
@@ -614,7 +644,7 @@
               required: "Please enter you last name."
           },
           "expert[phone]":{
-            required: "PLese enter mobile number."
+            required: "Plese enter mobile number."
           },
           "expert[email]": {
               required: "Please enter your email.",
@@ -622,6 +652,12 @@
           },
           "expert[state]":{
               required: "Please selcet a state"
+          },
+          "expert[city]":{
+              required: "Please selcet a city"
+          },
+          "expert[zip]":{
+              required: "Please selcet a zip"
           },
           "expert[license_number]":{
               required: "Please enter your license number."

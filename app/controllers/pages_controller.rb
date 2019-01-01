@@ -174,6 +174,14 @@ class PagesController < ApplicationController
      city = City.where(state_code: params[:state]).uniq(&:city).sort_by(&:city).pluck(:city)
      render json: city
     end
+  end
+
+  def expert_city_and_zip
+    if request.xhr?
+     # city = City.where(state_code: params[:state]).uniq(&:city).sort_by(&:city).pluck(:city,:zip)
+     zip = City.where(city: params[:city]).sort_by(&:zip).pluck(:zip)
+     render json: zip
+    end
   end 
 
   #Calling all the background workers for creating dynamic reports for city pages
