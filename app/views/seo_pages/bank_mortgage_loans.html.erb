@@ -454,7 +454,7 @@
                    </div>
 
                    <div class="col-xs-12 col-md-5">
-                      <p><%=@bank.name%> lends out a total of <%=@fdic_cal_data.present? ?  number_to_currency((@fdic_cal_data.m_lnlsgr * 1000).round(-3), precision: 0) : '$0'%> annually. Of this loan volume, <%=@bank.name%> home mortgages are <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_lnre * 1000).round(-3), precision: 0) : '$0'%>. As a result, <%=@bank.name%> home loans represent <%= @fdic_cal_data.present? ? (@fdic_cal_data.m_lnre/@fdic_cal_data.m_lnlsgr).round(2) *100 : '0' %>% of the total lending of <%=@bank.name%>.</p>
+                      <p><%=@bank.name%> lends out a total of <%=@fdic_cal_data.present? ?  number_to_currency((@fdic_cal_data.m_lnlsgr * 1000).round(-3), precision: 0) : '$0'%> annually. Of this loan volume, <%=@bank.name%> home mortgages are <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_lnre * 1000).round(-3), precision: 0) : '$0'%>. As a result, <%=@bank.name%> home loans represent <%= @fdic_cal_data.present? ? ((@fdic_cal_data.m_lnre/@fdic_cal_data.m_lnlsgr) *100).round(1) : '0' %>% of the total lending of <%=@bank.name%>.</p>
                    </div>
                   <div class="col-xs-12 col-md-5" id="piechart"></div>
                   <a class="link-right-inner mb-only">Data produced  from US Government reported financials</a>

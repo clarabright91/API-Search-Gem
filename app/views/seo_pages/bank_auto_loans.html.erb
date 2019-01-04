@@ -15,7 +15,7 @@
                      <img src="/images/star_03.png" alt="">
                   </div>
                </h3>
-               <p><%=@bank.name%> makes <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_lnlsgr * 1000).round(-3), precision: 0) : '$0'%> total loans annually of which <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_lnauto * 1000).round(-3), precision: 0) : '$0'%> are auto loans, amounting to <%= @fdic_cal_data.present? ? (@fdic_cal_data.a_lnauto/@fdic_cal_data.a_lnlsgr).round(2) * 100 : '$0' %> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szioauto * 1000).round(-3), precision: 0) : '$0'%>.</p>
+               <p><%=@bank.name%> makes <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_lnlsgr * 1000).round(-3), precision: 0) : '$0'%> total loans annually of which <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_lnauto * 1000).round(-3), precision: 0) : '$0'%> are auto loans, amounting to <%= @fdic_cal_data.present? ? ((@fdic_cal_data.a_lnauto/@fdic_cal_data.a_lnlsgr) * 100).round(1) : '$0' %> % of the entire loan portfolio.  The maximum credit exposure of <%=@bank.name%>'s car and auto financings are <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.a_szioauto * 1000).round(-3), precision: 0) : '$0'%>.</p>
                <div class="space-row"></div>
                <p class="mb-hide-spl"> Below are some other banks and lending institutions that specialize in low-cost auto and car loans for your research.</p>
                <span href="" id="para-see-more-link" class="initial-section">See More</span>
