@@ -1957,7 +1957,12 @@ footer ul li:last-child:after{ content:'';}
 }
 .src-btn-inner{
 	padding: 10px 0 !important;
-    margin-top: 20px !important;
+    margin-top: 35px !important;
+}
+.hm-search-btn-nw{
+    box-shadow: 0px 5px 0 #d6460c;
+    margin-top: 6px;
+    border: none;
 }
 .expert-app-overlay-note {
     text-align: left !important;
@@ -2068,6 +2073,78 @@ p.top-txt-info {
     right: -25px;
     top: -40px;
 }
+
+.popup-hdr h3 {
+    font-size: 24px !important;
+}
+#research_contact_form .modal-content {
+    width: 90% !important;
+}
+.popup-cntnt input[type='url'], .popup-cntnt input[type='text'], .popup-cntnt input[type='email'], .popup-cntnt select, .popup-cntnt textarea{
+    padding: 10px 25px !important;
+    margin: 0 0 28px 0 !important;
+
+}
+.popup-cntnt {
+    padding: 30px 15% 0px 15% !important;
+}
+/*@media( min-width:320px) and ( max-width:767px){
+	.adv-search-mdl-footer {
+	    position: fixed;
+	    z-index: 1060;
+	    top: 503px;
+	    background: #FFF;
+	}
+	.adv-search-mdl-content {
+	    position: absolute;
+	    overflow-y: auto;
+	    height: 504px;
+	    top: 0px;
+	}
+}
+@media( min-width:414px) and ( max-height:736px){
+	.adv-search-mdl-footer {
+	    position: fixed;
+	    z-index: 1060;
+	    top: 663px;
+	    background: #FFF;
+	}
+	.adv-search-mdl-content {
+	    position: absolute;
+	    overflow-y: auto;
+	    height: 663px;
+	    top: 0px;
+	}
+}
+@media( min-width:375px) and ( max-height:812px){
+	.adv-search-mdl-footer {
+	    position: fixed;
+	    z-index: 1060;
+	    top: 740px;
+	    background: #FFF;
+	}
+	.adv-search-mdl-content {
+	    position: absolute;
+	    overflow-y: auto;
+	    height: 741px;
+	    top: 0px;
+	}
+}
+@media( min-width:768px) and ( max-width:1024px){
+	.adv-search-mdl-footer {
+	    position: fixed;
+	    z-index: 1060;
+	    top: 950px;
+	    background: #FFF;
+	}
+	.adv-search-mdl-content {
+	    position: absolute;
+	    overflow-y: auto;
+	    height: 1024px;
+	    top: 0px;
+	}
+}*/
+
 /*cusstom css ends yin*/
 
 
