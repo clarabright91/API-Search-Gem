@@ -2144,7 +2144,38 @@ p.top-txt-info {
 	    top: 0px;
 	}
 }*/
-
+@media( min-width:320px) and ( max-width:1024px){
+	#advance-srch-mb .modal-dialog {
+	   width: 100% !important;
+	   height: 100%;
+	}
+	#advance-srch-mb .modal-header {
+	   position: fixed;
+	   top: 0;
+	   z-index: 1;
+	}
+	#advance-srch-mb .modal-body {
+	   padding: 60px 15px 0;
+	   position: fixed;
+	   background: #fff;
+	   height: calc(100% - 60px);
+	   overflow: auto;
+	}
+	.modal-footer.adv-search-mdl-footer {
+	   position: fixed;
+	   bottom: 0;
+	   background: #fff;
+	}
+}
+#research_contact_form .popup-cntnt {
+    padding: 30px 7% 0px 7% !important;
+}
+#research_contact_form .popup-hdr {
+    padding: 10px 25px !important;
+}
+#research_contact_form .popup-hdr p {
+    font-size: 16px !important;
+}
 /*cusstom css ends yin*/
 
 
