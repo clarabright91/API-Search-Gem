@@ -2176,6 +2176,9 @@ p.top-txt-info {
 #research_contact_form .popup-hdr p {
     font-size: 16px !important;
 }
+.wpcf7-form-control-wrap label.error {
+    bottom: 10px !important;
+}
 /*cusstom css ends yin*/
 
 
