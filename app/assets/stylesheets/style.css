@@ -1961,8 +1961,10 @@ footer ul li:last-child:after{ content:'';}
 }
 .hm-search-btn-nw{
     box-shadow: 0px 5px 0 #d6460c;
-    margin-top: 6px;
+    /*margin-top: 6px;*/
     border: none;
+    padding: 10px 0 !important;
+    margin-top: 38px !important;
 }
 .expert-app-overlay-note {
     text-align: left !important;
