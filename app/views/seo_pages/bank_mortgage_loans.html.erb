@@ -685,6 +685,8 @@
 <!-- SCript for display pie chart -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+
+  
   // Load google charts
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
@@ -695,8 +697,8 @@
     var data = google.visualization.arrayToDataTable([
     ['Loans', 'Percentage'],
     ['Mortgage Loans', <%= @fdic_cal_data.present? ? ((@fdic_cal_data.m_lnre/@fdic_cal_data.m_lnlsgr) * 100).round(1) : 0 %>],
-    ['Personal Loans', <%= @fdic_cal_data.present? ? (@fdic_cal_data.a_lnauto * 1000).round(-3) : 0 %>],
-    ['Auto Loans', <%= @fdic_cal_data.present? ? (@fdic_cal_data.a_lnauto*0.58 * 1000).round(-3)  : 0 %>],
+    ['Personal Loans', <%= ((63.3 * (100 - ((@fdic_cal_data.m_lnre/@fdic_cal_data.m_lnlsgr) * 100).round(1)))/100).round(1) %>],
+    ['Auto Loans', <%= ((36.7 * (100 - ((@fdic_cal_data.m_lnre/@fdic_cal_data.m_lnlsgr) * 100).round(1)))/100).round(1) %>],
   ]);
 
     // Optional; add a title and set the width and height of the chart
