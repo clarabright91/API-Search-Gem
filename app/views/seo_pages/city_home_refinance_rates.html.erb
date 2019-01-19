@@ -41,7 +41,11 @@
              </a>
           </div>
           <div class="section-lft-srch-drpdwn-icn">
-             <i class="fa fa-angle-double-down"></i>
+             <!-- <i class="fa fa-angle-double-down"></i> -->
+             <a href="" data-toggle="modal" data-target="#advance-srch-mb" class="mb-btn">
+              <i class="fa fa-pencil"></i>
+             </a>
+             
           </div>
           <div class="section-lft-srch">
              <p>$500,00 Home Purchase <span>in <%=user_location_info.present? ? user_location_info.data["postal"].present? ? user_location_info.data["postal"] : @city.zip : @city.zip%></span></p>
@@ -958,8 +962,8 @@
                 }, 300);
               });
             $('.section-lft-srch-drpdwn-icn').click(function(){
-              $('.section-lft-srch-price-alert, .section-lft-srch-drpdwn-icn').hide();
-              $('.srch-results-adv-srch, #srch-edit-mb-only').show();
+              //$('.section-lft-srch-price-alert, .section-lft-srch-drpdwn-icn').hide();
+              //$('.srch-results-adv-srch, #srch-edit-mb-only').show();
             });
             $('#srch-edit-mb-only').click(function(){
               $('#seo-city-mort-mb').hide();

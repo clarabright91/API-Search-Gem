@@ -50,13 +50,15 @@ config.action_mailer.delivery_method = :smtp
   # enable_starttls_auto: true  }
 
   config.action_mailer.smtp_settings = {
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'pureloan.com', #mydomain actually contains the realvalue
-    :authentication => :plain,
-  }
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'pureloan.com',
+  user_name:            'hello@pureloan.com',
+  password:             'IpL@20!9#PL$',
+  authentication:       'plain',
+  ssl:                  false,
+  enable_starttls_auto: true  }
+
 config.mailer_sender = 'varun.talentelgia@gmail.com'
 
   # Debug mode disables concatenation and preprocessing of assets.
