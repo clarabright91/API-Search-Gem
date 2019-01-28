@@ -105,7 +105,7 @@ Rails.application.configure do
   authentication:       'plain',
   ssl:                  false,
   enable_starttls_auto: true  }
-  config.mailer_sender = 'varun.talentelgia@gmail.com'
+  config.mailer_sender = ''
  
   
 
