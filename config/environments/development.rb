@@ -59,7 +59,7 @@ config.action_mailer.delivery_method = :smtp
   ssl:                  false,
   enable_starttls_auto: true  }
 
-config.mailer_sender = ''
+  config.mailer_sender = 'hello@pureloan.com'
   # varun.talentelgia@gmail.com
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
