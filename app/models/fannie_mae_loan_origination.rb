@@ -1,0 +1,2 @@
+class FannieMaeLoanOrigination < ApplicationRecord
+end
