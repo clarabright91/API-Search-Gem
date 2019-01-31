@@ -1,3 +1,4 @@
+<% if current_admin_user.role != 'marketing_manager' %>
 <!-- from for Upload CSV File  -->
 <%= form_for :dump, :url=>{:action=>"import_csv"}, :html => { :multipart => true, :id => 'import_csv' } do |f| %>
   <table>
@@ -41,3 +42,8 @@
     text-transform: none !important;
   }
 </style>
+<% else %>
+  <center>
+    Oops, you don't have access of this action.
+  </center>
+<% end %>

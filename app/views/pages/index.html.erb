@@ -31,7 +31,8 @@
                 <option>750+</option>
              </select>
           </div>
-          <button class="rates-btn">Get Rates</button>
+          <!-- <button class="rates-btn hm-src-btn-main">Get Rates</button> -->
+          <button class="rates-btn hm-search-btn-nw">Get Rates</button>
           <div class="search-adv-option-box">
              <a href="javascript:void(0);" id="adv-option" class="desktop-btn">Advanced Options</a>
              <a href="" data-toggle="modal" data-target="#advance-srch-mb"  class="mb-btn">Advanced Options</a>
@@ -89,7 +90,7 @@
                       <div class="form-group"><input type="checkbox" value=""> Miltary</div>
                       <div class="form-group"><input type="checkbox" value=""> Rular</div>
                    </div>
-		                <div class="col-xs-12 col-md-3 menu-up-adv-search"><a href=""><img src="images/menu-up_03.png" alt=""/></a></div>
+		                <div class="col-xs-12 col-md-3 menu-up-adv-search"><a href="javascript:;"><img src="images/menu-up_03.png" alt=""/></a></div>
                 </div>
              </div>
           </div>
@@ -432,7 +433,7 @@
                <div class="advertisement">
                   <img class="mb-hide" src="images/home-ad.jpg" alt="">
                   <img class="mb-only" src="images/expert-ad-mb-img.png" alt="">
-                  <h4>Become a mortgage expert on pureloan.com for Albany, CA</h4>
+                  <h4>Become a mortgage expert on Pureloan.com for Albany, CA</h4>
                   <span class="">Reach hundreds of thousands of home buyers or 
                   refi customers every month!</span>          
                     <a href="" data-toggle="modal" data-target="#expert-app-overlay" class="dtail-btn">Submit Application</a>
@@ -453,7 +454,7 @@
        <div class="modal-content">
           <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal"><img src="images/cancel_03.png" alt="" class="login-cross-img"></button>
-             <h4>Become an expert on <b>PureLOAN.com</b> and reach hundreds of 
+             <h4>Become an expert on <b>Pureloan.com</b> and reach hundreds of 
                 thousands of home buyers or refi customers every month!
              </h4>
           </div>
@@ -503,25 +504,33 @@
                  </div>
                  <div class="row">
                     <div class="col-xs-12 col-md-6">
+                       <div class="form-group select-arrow">
+                          <label>Zip</label> 
+                        <%= expert_user.select(:zip, [], {prompt: "Select zip"}, { class: 'zip' })%>  
+                       </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
                        <div class="form-group">
                           <label>License Number</label> 
                           <%= expert_user.text_field :license_number, placeholder: "Enter your License Number", class: "form-control"%>
                        </div>
                     </div>
+                 </div>
+                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group select-arrow">
                           <label>Speciality <span>(Where you will be listed)</span></label> 
                           <%= expert_user.select :specialty, options_for_select([["Mortgage","Mortgage"], ["Refinance","Refinance"], ["Personal","Personal"], ["Auto","Auto"]]), class: "form-control"%>
                        </div>
                     </div>
-                 </div>
-                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group">
                           <label>Website</label>
-                          <%= expert_user.url_field :website, placeholder: "http//", class: "form-control"%>
+                          <%= expert_user.url_field :website, placeholder: "http//", class: "form-control", value: "http://"%>
                        </div>
                     </div>
+                 </div>
+                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group custm-file-input">
                           <label>Photo</label> 
@@ -544,6 +553,11 @@
 
  <script>
     $(document).ready(function(){
+
+      $('.menu-up-adv-search').click(function(){
+        $("#search-adv-option-inner").hide("fast").removeClass("display-adv-search");
+      });
+
         $('.state').change(function(){
             id_passed = $(".state option:selected").val();
             $.ajax({
@@ -555,6 +569,22 @@
                   $(".city").empty();
                   $.each(response, function(e,res){
                     $(".city").append($("<option></option>").attr("value",res).text(res)); 
+                  })
+                }
+            });
+        })
+
+        $('.city').change(function(){
+            id_passed = $(".city option:selected").val();
+            $.ajax({
+                url: '/pages/expert_city_and_zip',
+                type: "GET",
+                dataType: 'json',
+                data: {"city" : id_passed},
+                success: function(response) {
+                  $(".zip").empty();
+                  $.each(response, function(e,res){
+                    $(".zip").append($("<option></option>").attr("value",res).text(res)); 
                   })
                 }
             });
@@ -589,6 +619,12 @@
           "expert[state]":{
             required: true
           },
+          "expert[city]":{
+            required: true
+          },
+          "expert[zip]":{
+            required: true
+          },
           "expert[license_number]":{
               required: true
           },
@@ -596,6 +632,7 @@
             required: true
           },
           "expert[image]": {
+            required: true,
             extension: "jpg,jpeg",
             filesize:   2097152 
           }
@@ -608,7 +645,7 @@
               required: "Please enter you last name."
           },
           "expert[phone]":{
-            required: "PLese enter mobile number."
+            required: "Plese enter mobile number."
           },
           "expert[email]": {
               required: "Please enter your email.",
@@ -617,6 +654,12 @@
           "expert[state]":{
               required: "Please selcet a state"
           },
+          "expert[city]":{
+              required: "Please selcet a city"
+          },
+          "expert[zip]":{
+              required: "Please selcet a zip"
+          },
           "expert[license_number]":{
               required: "Please enter your license number."
           },
@@ -624,6 +667,7 @@
             required: "Please enter website."
           },
           "expert[image]": {
+            required: "Please upload an image.",
             extension: "File must be JPG,JPEG."
           }
         }

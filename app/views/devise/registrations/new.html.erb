@@ -18,6 +18,10 @@ Return:         hash
        <%= f.text_field :first_name, autofocus: true, placeholder: "First Name" %>
       </div>
       <div class="login-rows">
+       <%= image_tag("login-user.png", :alt => "User") %>
+       <%= f.text_field :last_name, autofocus: true, placeholder: "Last Name" %>
+      </div>
+      <div class="login-rows">
        <%= image_tag("login-mail.png", :alt => "login-mail") %>
        <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
       </div>

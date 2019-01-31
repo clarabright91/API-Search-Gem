@@ -87,15 +87,25 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'pureloan.herokuapp.com'}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.gmail.com',
+  #   port:                 587,
+  #   domain:               'example.com',
+  #   user_name:            'info.pureloan@gmail.com',
+  #   password:             'pureloan123',
+  #   authentication:       'plain',
+  #   enable_starttls_auto: true  }
+
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'example.com',
-    user_name:            'info.pureloan@gmail.com',
-    password:             'pureloan123',
-    authentication:       'plain',
-    enable_starttls_auto: true  }
-  config.mailer_sender = 'anoop.talentelgia@gmail.com'
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'pureloan.com',
+  user_name:            'hello@pureloan.com',
+  password:             'IpL@20!9#PL$',
+  authentication:       'plain',
+  ssl:                  false,
+  enable_starttls_auto: true  }
+  config.mailer_sender = 'hello@pureloan.com'
  
   
 

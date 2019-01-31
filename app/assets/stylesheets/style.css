@@ -1942,6 +1942,248 @@ header .navbar-brand img { max-width: 140px;}
 }
 a:focus, a:active{ text-decoration: none; }
 
+/*cusstom css starts yin*/
+
+footer ul li:last-child:after{ content:'';}
+@media (max-width: 767px) and (min-width: 320px){
+	.cntnt-list-box h5 {
+	    padding: 10px 3px 10px 3px !important;
+	}
+}
+@media (min-width: 768px){
+	#advance-srch-mb .modal-dialog {
+	    width: 100% !important;
+	}
+}
+.src-btn-inner{
+	padding: 10px 0 !important;
+    margin-top: 22px !important;
+}
+.hm-search-btn-nw{
+    box-shadow: 0px 5px 0 #d6460c;
+    /*margin-top: 6px;*/
+    border: none;
+    padding: 10px 0 !important;
+    margin-top: 38px !important;
+}
+.expert-app-overlay-note {
+    text-align: left !important;
+}
+.common-popup-layout .modal-dialog {
+    width: 708px !important;
+}
+.popup-hdr p.blg-cont-hdr-p {
+    text-align: left !important;
+}
+#research_contact_form .modal-dialog {
+    width: 560px !important;
+}
+.hm-src-btn-main {
+    padding: 10px 0 !important;
+    margin-top: 38px !important;
+}
+.cntnt-list-inner {
+    padding: 10px 23px;
+}
+.cntnt-list-inner .inner-logo img {
+    max-width: 80% !important;
+}
+a.innr-year-link{
+	padding-right: 10px !important;
+	font-weight: bold;
+	color: #000;
+}
+a.innr-year-link-active{
+	color: #fb6325 !important;
+	text-decoration: underline;
+}
+@media (max-width: 1024px) and (min-width: 768px){
+	.seo-cities-mortgage p.top-txt-info {
+	    width: 100%;
+	    margin: -8px 10px 10px 0;
+	    bottom: 0px;
+	    display: inline-block;
+	    padding: 0 20px;
+	}
+}
+p.top-txt-info {
+    margin: -5px 0 15px 0;
+}
+#create-price-alert li img {
+    left: 10px;
+    top: 25px;
+}
+#create-price-alert li {
+    margin: 10px 7% 0 7%;
+    padding: 10px 0px 5px 60px;
+}
+.common-popup-layout .modal-body input, .common-popup-layout .modal-body select {
+    padding: 10px 10px !important;
+    margin: 10px 0 0px 0 !important;
+}
+#login_form {
+    border-bottom: 0px solid #e2e2e2 !important;
+}
+#create-price-alert li.cntnt-login {
+    padding: 15px 0 0 0;
+    margin: 10px 0% 0px 0%;
+}
+.common-popup-layout .modal-header {
+    margin-top: -9px;
+}
+#create-price-alert li.cntnt-login .social-login {
+    float: left;
+    width: 100%;
+    min-height: 75px;
+}
+.signup-login-popup .price-alert-header {
+    float: left;
+    padding: 30px 25px;
+    background: #58a8e1;
+    position: relative;
+        margin-top: -9px;
+}
+.signup-login-popup .modal-header h4 {
+    font-size: 25px;
+    font-weight: normal;
+    float: left;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+}
+
+.signup-login-popup .modal-header .close {
+    margin-top: 7px;
+    position: absolute;
+    right: 7px;
+    top: 0;
+    opacity: 1;
+    width: auto;
+}
+.graph-box p {
+    font-size: 20px !important;
+    font-weight: 300 !important;
+}
+.price-alert-header b{
+	font-size: 18px !important;
+}
+#research_contact_form button.close img {
+    width: 55px;
+    margin-bottom: -10px;
+    position: relative;
+    right: -25px;
+    top: -40px;
+}
+
+.popup-hdr h3 {
+    font-size: 24px !important;
+}
+#research_contact_form .modal-content {
+    width: 90% !important;
+}
+.popup-cntnt input[type='url'], .popup-cntnt input[type='text'], .popup-cntnt input[type='email'], .popup-cntnt select, .popup-cntnt textarea{
+    padding: 10px 25px !important;
+    margin: 0 0 28px 0 !important;
+
+}
+.popup-cntnt {
+    padding: 30px 15% 0px 15% !important;
+}
+/*@media( min-width:320px) and ( max-width:767px){
+	.adv-search-mdl-footer {
+	    position: fixed;
+	    z-index: 1060;
+	    top: 503px;
+	    background: #FFF;
+	}
+	.adv-search-mdl-content {
+	    position: absolute;
+	    overflow-y: auto;
+	    height: 504px;
+	    top: 0px;
+	}
+}
+@media( min-width:414px) and ( max-height:736px){
+	.adv-search-mdl-footer {
+	    position: fixed;
+	    z-index: 1060;
+	    top: 663px;
+	    background: #FFF;
+	}
+	.adv-search-mdl-content {
+	    position: absolute;
+	    overflow-y: auto;
+	    height: 663px;
+	    top: 0px;
+	}
+}
+@media( min-width:375px) and ( max-height:812px){
+	.adv-search-mdl-footer {
+	    position: fixed;
+	    z-index: 1060;
+	    top: 740px;
+	    background: #FFF;
+	}
+	.adv-search-mdl-content {
+	    position: absolute;
+	    overflow-y: auto;
+	    height: 741px;
+	    top: 0px;
+	}
+}
+@media( min-width:768px) and ( max-width:1024px){
+	.adv-search-mdl-footer {
+	    position: fixed;
+	    z-index: 1060;
+	    top: 950px;
+	    background: #FFF;
+	}
+	.adv-search-mdl-content {
+	    position: absolute;
+	    overflow-y: auto;
+	    height: 1024px;
+	    top: 0px;
+	}
+}*/
+@media( min-width:320px) and ( max-width:1024px){
+	#advance-srch-mb .modal-dialog {
+	   width: 100% !important;
+	   height: 100%;
+	}
+	#advance-srch-mb .modal-header {
+	   position: fixed;
+	   top: 0;
+	   z-index: 1;
+	}
+	#advance-srch-mb .modal-body {
+	   padding: 60px 15px 0;
+	   position: fixed;
+	   background: #fff;
+	   height: calc(100% - 60px);
+	   overflow: auto;
+	}
+	.modal-footer.adv-search-mdl-footer {
+	   position: fixed;
+	   bottom: 0;
+	   background: #fff;
+	}
+}
+#research_contact_form .popup-cntnt {
+    padding: 30px 7% 0px 7% !important;
+}
+#research_contact_form .popup-hdr {
+    padding: 10px 25px !important;
+}
+#research_contact_form .popup-hdr p {
+    font-size: 16px !important;
+}
+.wpcf7-form-control-wrap label.error {
+    bottom: 10px !important;
+}
+/*cusstom css ends yin*/
+
+
 
 @media( min-width:320px) and ( max-width:767px){
 .blog-top-cntnt h4, .blog-post-box h2{ font-size: 20px;}  

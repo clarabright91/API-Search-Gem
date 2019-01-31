@@ -39,16 +39,28 @@ Rails.application.configure do
 config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3000 }
 config.action_mailer.perform_deliveries = true
 config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
+#config.action_mailer.smtp_settings = {
+  # address:              'smtp.gmail.com',
+  # port:                 587,
+  # domain:               'example.com',
+  # user_name:            'info.pureloan@gmail.com',
+  # password:             'pureloan123',
+  # authentication:       'plain',
+  # ssl:                  false,
+  # enable_starttls_auto: true  }
+
+  config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
-  domain:               'example.com',
-  user_name:            'info.pureloan@gmail.com',
-  password:             'pureloan123',
+  domain:               'pureloan.com',
+  user_name:            'hello@pureloan.com',
+  password:             'IpL@20!9#PL$',
   authentication:       'plain',
+  ssl:                  false,
   enable_starttls_auto: true  }
-config.mailer_sender = 'anoop.talentelgia@gmail.com'
 
+  config.mailer_sender = 'hello@pureloan.com'
+  # varun.talentelgia@gmail.com
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
