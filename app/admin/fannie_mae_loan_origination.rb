@@ -1,8 +1,7 @@
-ActiveAdmin.register FannieMaeLoanOrigination, as: "FannieMae"  do
-  menu :parent => "Freddie Data"
+ActiveAdmin.register FannieMaeLoanOrigination, as: "FannieMae" do
+  menu parent: 'Freddie Data', label: 'Fannie mae'
   actions :all, except: [:new, :edit, :destroy]
-  index pagination_total: false do
-  #index do
+  index :title => "Fannie Mae" do
     selectable_column
     column :loan_identifier
     column :first_payment_date
