@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190101124153) do
+ActiveRecord::Schema.define(version: 20190225131517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,37 @@ ActiveRecord::Schema.define(version: 20190101124153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject"], name: "index_auto_responders_on_subject"
+  end
+
+  create_table "calculator_home_affordabilities", force: :cascade do |t|
+    t.date "date", null: false
+    t.string "state_code", null: false
+    t.float "home_price_index", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "calculator_home_insurances", force: :cascade do |t|
+    t.string "state_code", null: false
+    t.float "insurance_rate", null: false
+    t.float "avg_annual_insurance", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "calculator_price_to_rent_ratios", force: :cascade do |t|
+    t.string "state_code", null: false
+    t.float "price_rent_ratio", null: false
+    t.string "city", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "calculator_property_taxes", force: :cascade do |t|
+    t.string "state_code"
+    t.float "tax_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cities", force: :cascade do |t|
@@ -232,6 +263,36 @@ ActiveRecord::Schema.define(version: 20190101124153) do
     t.index ["name"], name: "index_factual_mortgage_companies_on_name"
     t.index ["state", "city"], name: "index_factual_mortgage_companies_on_state_and_city"
     t.index ["state", "latitude", "longitude"], name: "index_mortgage_companies_on_state_and_latitude_and_longitude"
+  end
+
+  create_table "fannie_mae_loan_originations", force: :cascade do |t|
+    t.string "loan_identifier"
+    t.string "origination_channel"
+    t.string "seller_name"
+    t.float "original_interest_rate"
+    t.integer "original_upb"
+    t.integer "original_loan_term"
+    t.datetime "origination_date"
+    t.datetime "first_payment_date"
+    t.integer "original_loan_to_value_ltv"
+    t.integer "original_combined_loan_to_value_cltv"
+    t.integer "number_of_borrowers"
+    t.integer "original_debt_to_income_ratio"
+    t.integer "borrower_credit_score_at_origination"
+    t.boolean "first_time_home_buyer_indicator"
+    t.string "loan_purpose"
+    t.string "property_type"
+    t.integer "number_of_units"
+    t.string "occupancy_type"
+    t.string "property_state"
+    t.string "zip_code_short"
+    t.integer "primary_mortage_insurance_percent"
+    t.string "product_type"
+    t.integer "co_borrower_credit_score_at_origination"
+    t.integer "mortage_insurance_type"
+    t.boolean "relocation_mortage_indicator"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "fdic_bank_assets_sold_and_securitizeds", force: :cascade do |t|

@@ -97,6 +97,11 @@ Rails.application.routes.draw do
 
   get '/refinance/:state-(:city_from)-(:city_to)/:city_list', to: 'directories#refinance_state_cities_list', as: 'refinance_state_cities_list'
 
+
+  #--------------------------- routes for calculator controller ----------------------------------
+
+  get 'calculator', to: 'calculator#index'
+
   #--------------------------- route for wrong requested pages ----------------------------------
 
   match '*path', to: redirect('/'), via: :all

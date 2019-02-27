@@ -11,7 +11,7 @@ a:hover{ text-decoration:none;}
 input[type="text"], select { -webkit-appearance:none; -moz-appearance:none; appearance:none; position:relative; }
 
 /*header css start*/
-header{ float:left; width:100%; background:#fff; position:relative; margin:0 !important;}
+header{ float:none; width:100%; background:#fff; position:relative; margin:0 !important;}
 /* .black-head{ background:#000 !important;} */
 .logo-white{ display:none;}
 header .navbar-default{ background:none; border-radius:0; border:none; margin:0 !important;}

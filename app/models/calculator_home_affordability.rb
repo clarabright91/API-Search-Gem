@@ -1,0 +1,2 @@
+class CalculatorHomeAffordability < ApplicationRecord
+end
