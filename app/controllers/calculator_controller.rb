@@ -372,14 +372,14 @@ class CalculatorController < ApplicationController
     ca_affordability_list = CalculatorHomeAffordability.where(state_code: "CA")
     if ca_affordability_list.present?
       ca_affordability_list.each do |ca_aff|
-        @ca_affordability[ca_aff.date.strftime("%d/%m/%Y")] = ca_aff.home_price_index
+        @ca_affordability[ca_aff.date.strftime("%m/%Y")] = ca_aff.home_price_index
       end
     end
 
     nation_wide_affordability_list = CalculatorHomeAffordability.where(state_code: "Nationwide")
     if nation_wide_affordability_list.present?
       nation_wide_affordability_list.each do |nation_wide|
-        @nation_wide_affordability[nation_wide.date.strftime("%d/%m/%Y")] = nation_wide.home_price_index
+        @nation_wide_affordability[nation_wide.date.strftime("%m/%Y")] = nation_wide.home_price_index
       end
     end
 

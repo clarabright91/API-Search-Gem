@@ -528,10 +528,14 @@
         },
         xAxis: {
             categories: ca_keys,
+            labels:{
+              rotation:-30,
+            }            
         },
         yAxis:{
           title: "",
           max: area_chart_max,
+          gridLineDashStyle:"Dash",
         },
         plotOptions: {
             series: {
@@ -578,11 +582,15 @@
             enabled: false
         },
         xAxis: {
-            categories: nation_wide_keys
+            categories: nation_wide_keys,
+            labels:{
+              rotation:-30,
+            }
         },
         yAxis:{
           title: "",
-          max: area_chart_max
+          max: area_chart_max,
+          gridLineDashStyle:"Dash",
         },
         plotOptions: {
             series: {
