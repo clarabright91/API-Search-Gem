@@ -319,7 +319,7 @@ class CalculatorController < ApplicationController
     @default_pmi_insurance = 100.00
     @price_to_rent_ratio = 38.02
 
-    @purpose_list = [['purchase', 'purchase']]
+    @purpose_list = [['Purchase', 'Purchase']]
     @mortgage_term_list = [ ['15 years', 15], ['20 years', 20], ['25 years', 25], ['30 years', 30]]
   end
 

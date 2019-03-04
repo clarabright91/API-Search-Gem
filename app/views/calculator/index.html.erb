@@ -600,7 +600,7 @@
         series: [{
             name: undefined,
             data: nation_wide_values,
-            color: "#4F98D9",
+            color: "#3C95D0",
             fillOpacity: 0.8
         }],
         title: {
@@ -639,6 +639,26 @@
       $('#mortgage_month').val(parseInt($('#mortgage_term').val())*12 + " "+ "months")
     }
 
+    if($('#annual_interest_rate')!=''){
+      var value = $('#annual_interest_rate').val()
+      if (value.includes("%")) {
+      }
+      else{
+        $('#annual_interest_rate').val(value + "%")
+      }
+    }
+
+    $(function () {
+      $("#annual_interest_rate").change(function () {
+        var value = $(this).val()
+        if (value.includes("%")) {
+        }
+        else{
+          $('#annual_interest_rate').val(value + "%")
+        }
+      });
+    });
+
     $(function () {
       $("#mortgage_term").change(function () {
         var selectedText = $(this).find("option:selected").text();
@@ -646,6 +666,7 @@
         $('#mortgage_month').val(parseInt(selectedValue)*12 + " "+ "months")
       });
     });
+
 
   });
 </script>

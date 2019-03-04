@@ -75,7 +75,7 @@ body {
 }
 
 .form-wrapper {
-  background-color: #3393dd;
+  background-color: #0093D8;
   padding: 20px 0;
 }
 
@@ -136,7 +136,7 @@ body {
 }
 
 .primary-btn {
-  background-color: #fb6324;
+  background-color: #FF6032;
   color: #fff;
   text-transform: uppercase;
   font-size: 18px;
@@ -148,7 +148,7 @@ body {
 
 .primary-btn:hover,
 .primary-btn:focus {
-  background-color: #fb6324;
+  background-color: #FF6032;
   color: #fff;
 }
 
@@ -189,7 +189,7 @@ body {
 
 .ex-breakdown h1 {
   display: block;
-  background-color: #58a9e1;
+  background-color: #46A9DD;
   color: #fff;
   text-transform: capitalize;
   font-size: 24px;
@@ -209,7 +209,7 @@ body {
 }
 
 .ex-breakdown .table thead tr {
-  background-color: #f7f8fa;
+  background-color: #F6F8FA;
 }
 
 .ex-breakdown .table-striped>tbody>tr:nth-of-type(2n+1) {
@@ -217,7 +217,7 @@ body {
 }
 
 .ex-breakdown .table-striped>tbody>tr {
-  background-color: #f7f8fa;
+  background-color: #F6F8FA;
 }
 
 .ex-breakdown .table tbody tr td {
@@ -229,7 +229,7 @@ body {
 }
 
 .table-footer td {
-  color: #fb6324 !important;
+  color: #FF6031 !important;
   font-weight: 600 !important;
 }
 
