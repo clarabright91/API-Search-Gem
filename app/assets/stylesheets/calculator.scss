@@ -6,6 +6,17 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+.purr{
+  position: fixed;
+  top: 30px;
+  right: 100px;
+  width: 250px;
+  padding: 20px;
+  background-color: #FCC;
+  border: solid 2px #C66;
+  &:first-letter { text-transform: uppercase; }
+}
+
 .top-nav-bar {
   margin-bottom: 0;
 }
@@ -79,16 +90,23 @@ body {
 }
 
 .form-wrapper {
-  background-color: #0093D8;
+  background-color: #3394de;
   padding: 20px 0;
+  
 }
-
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999999;
+}
 .form-wrapper .form-control {
   border-color: #fff;
   height: 44px;
   box-shadow: none;
   color: #19214d;
   font-weight: 600;
+  font-size: 15px;
 }
 
 .flex-group {
@@ -101,10 +119,16 @@ body {
   flex: 0 0 50%;
   max-width: 50%;
   border-right: 1px solid #b7c5df;
+  background-color: #fff;
+  border-radius: 4px 0px 0px 4px;
 }
+
 
 .flex-group select {
   border-radius: 4px 0px 0px 4px;
+  background-color: transparent;
+  position: relative;
+  z-index: 999;
 }
 
 .flex-group input {
@@ -123,11 +147,13 @@ body {
 }
 
 .form-wrapper label {
-  font-weight: 500;
+  font-weight: 600;
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
 }
-
+.padding-left{
+padding-left: 7px !important;
+}
 .form-wrapper select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -187,13 +213,13 @@ body {
 
 .contain-wrapper p {
   margin: 0 0 20px;
-  color: #162647;
-  font-size: 22px;
+  color: #19214d;
+  font-size: 17px;
 }
 
 .ex-breakdown h1 {
   display: block;
-  background-color: #46A9DD;
+  background-color: #58a9e1;
   color: #fff;
   text-transform: capitalize;
   font-size: 24px;
@@ -226,10 +252,12 @@ body {
 
 .ex-breakdown .table tbody tr td {
   border-top: none;
-  padding: 18px;
-  font-size: 20px;
+  padding: 15px 10px;
+  font-size: 18px;
   color: #19224d;
   font-weight: 400;
+  height: 58px;
+  vertical-align: middle;
 }
 
 .table-footer td {
@@ -330,10 +358,18 @@ body {
 .graph-container {
   padding: 15px 0;
 }
-
+.editable-field {
+    background-color: #f7f8fa;
+    border: 1px solid #58a9e1;
+    text-align: center;
+    max-width: 180px;
+    padding: 5px 5px;
+    font-size: 18px;
+    font-weight: normal;
+}
 .graph-bx p {
   margin: 0;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 footer {
@@ -389,7 +425,17 @@ footer .copyright {
 .search-section {
   position: relative;
 }
-
+.purpose-span{
+  position: relative;
+  background-color: #fff;
+  border-radius: 4px;
+  display: block;
+}
+.purpose-span select{
+  background-color: transparent;
+  position: relative;
+  z-index: 999;
+}
 .search-section::before {
   content: "\f107";
   font-family: FontAwesome;
@@ -453,6 +499,9 @@ footer .copyright {
   }
   .link-to {
     margin-bottom: 15px;
+  }
+  .sticky {
+    position: relative;
   }
 }
 
@@ -606,6 +655,10 @@ footer .copyright {
   .toggle-btn{
     display: none;
   }
+  .editable-field{
+    max-width: 85px;
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -613,7 +666,7 @@ footer .copyright {
   .ex-breakdown .table tbody tr td,
   .ex-breakdown .compare-table .table-striped tr th,
   .ex-breakdown .compare-table .table-border tbody tr td .sub-table tr td {
-    padding: 10px 15px;
+    padding: 10px;
   }
   .ex-breakdown h1 {
     font-size: 14px;
@@ -659,6 +712,10 @@ footer .copyright {
   }
   .graph-bx h2 {
     font-size: 16px;
+  }
+  .editable-field{
+    max-width: 75px;
+    font-size: 12px;
   }
 }
 

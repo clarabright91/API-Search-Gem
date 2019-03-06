@@ -17,36 +17,7 @@ class CalculatorController < ApplicationController
     monthly_payoff_schedule_graph
     investment_return_from_ownership
     set_affordability_chart_data
-    render :index
-  end
-  
-  def download_csv
-    set_variables
-    set_property_tax_and_home_insurance_and_price_to_rent_ratio_by_zip_code
-    calculate_loan_payment
-    number_of_payments
-    set_default_pmi_insurance
-    monthly_interest_rate
-    calculate_discount_factor
-    calculate_monthly_payment
-    calculate_monthly_property_tax
-    calculate_pmi_term
-    monthly_expenses_breakdown
-    respond_to do |format|
-      format.html
-      format.csv { send_data to_csv, filename: "Monthly Payoff Schedule #{Date.today}.csv" }
-    end
-  end
-
-  def to_csv
-    monthly_payoff_csv = monthly_payoff_schedule
-    attributes = ['month', 'payoff_principal', 'payoff_interest', 'payoff_remaining']
-    CSV.generate(headers: true) do |csv|
-      csv << attributes
-      monthly_payoff_csv.each_with_index do |row, index|
-        csv << attributes.map{ |attr| row[attr.to_sym]}
-      end
-    end
+    # render :index
   end
 
   def calculate_monthly_payment
@@ -97,7 +68,6 @@ class CalculatorController < ApplicationController
 
     if (@costs_compare_sum[:buy].abs <=0)
        @costs_compare_sum[:benifit] = "Buying is better than renting even if you could rent for free! In addition, you can save average #{ ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2)) } per year from your federal taxable income. Increase your profit by visiting our <a href=''>MORTGAGE RATES</a> and getting a more favorable mortgages."
-
     else
       if (@costs_compare_sum[:buy].abs >0 && @costs_compare_sum[:rent].abs > @costs_compare_sum[:buy].abs)
         @costs_compare_sum[:benifit] = "Buying is cheaper than renting! You’ll earn an extra #{ActionController::Base.helpers.number_to_currency(((@costs_compare_sum[:buy] - @costs_compare_sum[:rent]).round(2)))} after #{@mortgage_term} years of buying a house. In addition, you can save average #{ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2))} per year from your federal taxable income. If you lower your mortgage interest rate, you could save more! Come to visit our <a href=''>MORTGAGE RATES</a> and find other favorable mortgages."
@@ -156,7 +126,7 @@ class CalculatorController < ApplicationController
       {:name=>"Principal", :data=>{}, dataset: {borderWidth:5}},
       {:name=>"Interest", :data=>{}, dataset: {borderDash: [10,4]}},
       {:name=>"Remaining", :data=>{}, dataset: {borderDash: [10,4]}},
-      {:name=>"Total", :data=>{}, dataset: {borderWidth:6}},
+      {:name=>"Total Paid", :data=>{}, dataset: {borderWidth:6}},
     ]
 
     x = 1
@@ -237,12 +207,12 @@ class CalculatorController < ApplicationController
     @payoff_schedule_graph[0][:data] = principle_amount3
     @payoff_schedule_graph[1][:data] = interest_amount3
     @payoff_schedule_graph[3][:data] = total_amount3
+    @payoff_over_time_max = ((@payoff_schedule_graph[3][:data].values.max.ceil/50000)+1)*50000
   end
 
   def monthly_expenses_breakdown
     @mortgage_principal = {}
     @mortgage_interest  = {}
-    @property_tax = {}
     @home_insurance = {}
     @pmi_insurance = {}
     @hoa_dues = {}
@@ -253,21 +223,41 @@ class CalculatorController < ApplicationController
     
     @mortgage_interest[:monthly] = (calculate_monthly_payment-@mortgage_principal[:monthly]) rescue 0.0
     @mortgage_interest[:total] =  (calculate_monthly_payment*number_of_payments-@mortgage_principal[:total]) rescue 0.0
+
+    # @property_tax = {}
+    # @property_tax[:monthly] = calculate_monthly_property_tax rescue 0.0
+    # @property_tax[:total] = (@property_tax[:monthly]*number_of_payments) rescue 0.0
     
-    @property_tax[:monthly] = calculate_monthly_property_tax rescue 0.0
-    @property_tax[:total] = (calculate_monthly_property_tax*number_of_payments) rescue 0.0
-    
-    @home_insurance[:monthly] = ((@default_annual_home_insurance*1.0)/12) rescue 0.0
+    if params["monthly_home_insurance"].present?
+      @home_insurance[:monthly] = params["monthly_home_insurance"].to_f
+    else
+      @home_insurance[:monthly] = ((@default_annual_home_insurance*1.0)/12).round(2) rescue 0.0
+    end
+
+    # @home_insurance[:monthly] = ((@default_annual_home_insurance*1.0)/12) rescue 0.0
+
     @home_insurance[:total] = ((@default_annual_home_insurance*1.0*number_of_payments)/12) rescue 0.0
     
-    @pmi_insurance[:monthly] = @default_pmi_insurance rescue 0.0
-    @pmi_insurance[:total] =  @default_pmi_insurance==0 ? 0.0 :  @default_pmi_insurance*calculate_pmi_term rescue 0.0
+    if params["monthly_pmi_insurance"].present?
+      @pmi_insurance[:monthly] = params["monthly_pmi_insurance"].to_f
+      @default_pmi_insurance = params["monthly_pmi_insurance"].to_f
+    else
+      @pmi_insurance[:monthly] = @default_pmi_insurance rescue 0.0
+    end
 
-    @hoa_dues[:monthly] = 0.00
+    @pmi_insurance[:total] =  @pmi_insurance[:monthly].to_i == 0 ? 0.0 :  @pmi_insurance[:monthly]*calculate_pmi_term rescue 0.0
+
+    if params["monthly_hoa_dues"].present?
+      @hoa_dues[:monthly] = params["monthly_hoa_dues"].to_f
+    else
+      @hoa_dues[:monthly] = 0.00
+    end
+
     
-    @monthly_expenses_sum[:monthly] =  ((@mortgage_principal[:monthly] + @mortgage_interest[:monthly] + @property_tax[:monthly] + @home_insurance[:monthly] + @pmi_insurance[:monthly]))  rescue 0.0
+    
+    @monthly_expenses_sum[:monthly] =  ((@mortgage_principal[:monthly] + @mortgage_interest[:monthly] + @property_tax[:monthly] + @home_insurance[:monthly] + @pmi_insurance[:monthly] + @hoa_dues[:monthly]))  rescue 0.0
 
-    @monthly_expenses_sum[:total] = ((@mortgage_principal[:total] + @mortgage_interest[:total] + @property_tax[:total] + @home_insurance[:total] + @pmi_insurance[:total])) rescue 0.0
+    @monthly_expenses_sum[:total] = ((@mortgage_principal[:total] + @mortgage_interest[:total] + @property_tax[:total] + @home_insurance[:total] + @pmi_insurance[:total] + @hoa_dues[:monthly])) rescue 0.0
         
     @mortgage_principal[:percentage] = ((@mortgage_principal[:monthly]*100 / @monthly_expenses_sum[:monthly])).round(2) rescue 0.0
 
@@ -279,7 +269,9 @@ class CalculatorController < ApplicationController
 
     @pmi_insurance[:percentage] =  ((@pmi_insurance[:monthly]*100 / @monthly_expenses_sum[:monthly])).round(2) rescue 0.0
 
-    @monthly_expenses_sum[:percentage] = (@mortgage_principal[:percentage] + @mortgage_interest[:percentage] + @property_tax[:percentage] + @home_insurance[:percentage] + @pmi_insurance[:percentage]).to_i rescue 100
+    @hoa_dues[:percentage] =  ((@hoa_dues[:monthly]*100 / @monthly_expenses_sum[:monthly])).round(2) rescue 0.0
+
+    @monthly_expenses_sum[:percentage] = (@mortgage_principal[:percentage] + @mortgage_interest[:percentage] + @property_tax[:percentage] + @home_insurance[:percentage] + @pmi_insurance[:percentage]).round() rescue 100
   end
 
   def calculate_pmi_term
@@ -287,7 +279,16 @@ class CalculatorController < ApplicationController
   end
 
   def calculate_monthly_property_tax
-    (@home_price * @default_property_tax_perc*1.0 /100/12) rescue 0.0
+    @property_tax = {}
+
+    if params["monthly_property_tax"].present?
+        @property_tax[:monthly] = params["monthly_property_tax"].to_f rescue 0.0
+        @property_tax[:total] = (@property_tax[:monthly]*number_of_payments) rescue 0.0
+    else
+      @property_tax[:monthly] = (@home_price * @default_property_tax_perc*1.0 /100/12) rescue 0.0
+      @property_tax[:total] = (@property_tax[:monthly]*number_of_payments) rescue 0.0
+    end
+    return @property_tax[:monthly]
   end
 
   def calculate_discount_factor
@@ -372,7 +373,7 @@ class CalculatorController < ApplicationController
     ca_affordability_list = CalculatorHomeAffordability.where(state_code: "CA")
     if ca_affordability_list.present?
       ca_affordability_list.each do |ca_aff|
-        @ca_affordability[ca_aff.date.strftime("%m/%Y")] = ca_aff.home_price_index
+        @ca_affordability[ca_aff.date.strftime("%m/%Y")] = ca_aff.home_price_index.round(2)
       end
     end
 

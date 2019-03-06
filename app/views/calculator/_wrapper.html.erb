@@ -1,78 +1,4 @@
-<!-- <.....form wrapper.... -->
-<section class="form-wrapper" id="myHeader">
-  <%= form_tag(calculator_path, method: :get) do %>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-9">
-          <div class="row">
-            <div class="col-md-7">
-              <div class="row form-row">
-                <div class="col-md-3 col-xs-6">
-                  <div class="form-group">
-                    <label>Zip Code</label>
-                    <%= text_field_tag :zip_code, @zip_code, :class=> "form-control" %>
-                  </div>
-                </div>
-                <div class="col-md-3 col-xs-6">
-                  <div class="form-group search-section">
-                    <label>Purpose</label>
-                    <span class="purpose-span">
-                      <%= select_tag 'purpose', options_for_select(@purpose_list), :class=> "form-control" %>
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>Home Price</label>
-                    <div class="dollar-icn">$</div>
-                    <%= text_field_tag :home_price, number_to_currency(@home_price, :unit=> "", precision: 0), :class=> "form-control" %>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>Down Payment</label>
-                    <div class="dollar-icn">$</div>
-                    <%= text_field_tag :down_payment,number_to_currency(@down_payment,  :unit=> "", precision: 0), :class=> "form-control" %>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="row form-row">
-                <div class="col-md-7">
-                  <div class="form-group">
-                    <label>Mortgage Term</label>
-                    <div class="flex-group">
-                      <div class="search-section">
-                        <%= select_tag 'mortgage_term', options_for_select(@mortgage_term_list, @mortgage_term), :class=> "form-control" %>
-                      </div>
-                      <%= text_field_tag :mortgage_month, '', :class=> "form-control padding-left" %>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-5">
-                  <div>
-                    <label>Annual Interst Rate</label>
-                    <%= text_field_tag :annual_interest_rate, @annual_interest_rate, :class=> "form-control" %>
-                    <a href="" class="link-to">Use Today's Rate</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <%= submit_tag "Calculate Mortgage", :class => "btn btn-block primary-btn" %>
-          <a href="#" class="btn btn-block border-btn">Get Latest Rates</a>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</section>
-<!-- <.....form wrapper end.... -->
-<!-- <.....main content wrapper.... -->
-<section class="contain-wrapper">
-  <div class="container">
+<div class="container">
     <div>
       <div>
         <p> pure-loan.com provides a mortgage calculator to help you understand your monthly home expenses. this includes mort-gage principal home loan interesr , and estimate total payment for both home motgage and refinance customers. </p>
@@ -460,64 +386,7 @@
       </div>
     </div>
   </div>
-</section>
-<!-- <.....main content wrapper end .... -->
 
-<!-- The Payoff Schedule Modal -->
-<div class="modal" id="payoff_schedule_modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Monthly Payoff Schedule</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <!-- Modal body -->
-      <div class="modal-body ex-breakdown">
-        <div class="scroll-table mCustomScrollbar">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th width="5%"></th>
-                <th align="center">
-                  <center>Principal</center>
-                </th>
-                <th>Interet</th>
-                <th>Remainging</th>
-              </tr>
-            </thead>
-            <tbody>
-                <%                
-                if @monthly_payoff_list.present?
-                  %>
-                  <tr>
-                    <td align="center"></td>
-                    <td></td>
-                    <td></td>
-                    <td align="center">
-                      <%= (@home_price - @down_payment).to_f %>
-                    </td>
-                  </tr>
-                  <%
-                  @monthly_payoff_list.each do |monthly_payoff, index|
-                  %>
-                    <tr>
-                      <td align="center"><%= monthly_payoff[:month] %></td>
-                      <td align="center"><%= number_to_currency(monthly_payoff[:payoff_principal]) %></td>
-                      <td align="center"><%= monthly_payoff[:payoff_interest] %></td>
-                      <td align="center"><%= number_to_currency(monthly_payoff[:payoff_remaining]) %></td>
-                    </tr>
-                  <%
-                  end
-                end
-                %>
-              </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script type="text/javascript">
   $(document).ready(function(){
@@ -526,7 +395,6 @@
     nation_wide_keys = <%= raw @nation_wide_affordability.keys.reverse %>
     nation_wide_values = <%= raw @nation_wide_affordability.values.reverse %>
     area_chart_max = <%= raw @area_chart_max %>
-    
 
     Highcharts.chart('ca-affordability', {
         chart: {
@@ -643,7 +511,7 @@
     });
 
     if ($('#mortgage_term').val()!=''){
-      $('#mortgage_month').val(parseInt($('#mortgage_term').val())*12 + " "+ "month")
+      $('#mortgage_month').val(parseInt($('#mortgage_term').val())*12 + " "+ "months")
     }
 
     if($('#annual_interest_rate')!=''){
@@ -670,7 +538,7 @@
       $("#mortgage_term").change(function () {
         var selectedText = $(this).find("option:selected").text();
         var selectedValue = $(this).val();
-        $('#mortgage_month').val(parseInt(selectedValue)*12 + " "+ "month")
+        $('#mortgage_month').val(parseInt(selectedValue)*12 + " "+ "months")
       });
     });
     var monthly_tax_value = ''
@@ -757,20 +625,6 @@
 
       }
     });
-
-  window.onscroll = function() {myFunction()};
-
-  var header = document.getElementById("myHeader");
-  var sticky = header.offsetTop;
-
-  function myFunction() {
-    if (window.pageYOffset > sticky) {
-      header.classList.add("sticky");
-    } else {
-      header.classList.remove("sticky");
-    }
-  }
-
 
   });
 </script>
