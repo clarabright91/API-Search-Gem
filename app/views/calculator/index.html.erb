@@ -168,7 +168,7 @@
                 <%= text_field_tag :monthly_hoa_dues, @hoa_dues[:monthly], :class=> "editable-field", :readonly => true %>
                 <%#= number_to_currency(@hoa_dues[:monthly], unit: "")%>
                 </td>
-                <td align="center"></td>
+                <td align="center"><%= number_to_currency(@hoa_dues[:total], unit: "")%></td>
                 <td align="center"><%= @hoa_dues[:percentage]%>%</td>
               </tr>
               <tr class="table-footer">
@@ -448,7 +448,7 @@
               </div>
               <div class="col-sm-6">
                 <div class="graph-bx">
-                  <h2>Mountain View (94043) Homes Prices</h2>
+                  <h2>CA Homes Prices</h2>
                   <div class="graph-container"></div>
                   <div id="ca-affordability" style="height: 400px"></div>
                   <p>Based on the strong historical housing growth in the entire United State and Mountain View CA, home Ownership is a Strong investment compared to renting.</p>                 
@@ -526,7 +526,7 @@
     nation_wide_keys = <%= raw @nation_wide_affordability.keys.reverse %>
     nation_wide_values = <%= raw @nation_wide_affordability.values.reverse %>
     area_chart_max = <%= raw @area_chart_max %>
-    
+    params_data = <%= raw params.to_json %>
 
     Highcharts.chart('ca-affordability', {
         chart: {
@@ -673,18 +673,21 @@
         $('#mortgage_month').val(parseInt(selectedValue)*12 + " "+ "month")
       });
     });
-    var monthly_tax_value = ''
-    var monthly_home_ins = ''
-    var monthly_pmi_ins = ''
-    var monthly_hoa_dues = ''
-    var update_value = {}
-    update_value['monthly_property_tax'] = $("#monthly_property_tax").val()
+  var monthly_tax_value = ''
+  var monthly_home_ins = ''
+  var monthly_pmi_ins = ''
+  var monthly_hoa_dues = ''
 
-    update_value['monthly_home_insurance'] = $("#monthly_home_insurance").val()
+  params_data['monthly_property_tax'] = $("#monthly_property_tax").val()
 
-    update_value['monthly_pmi_insurance'] = $("#monthly_pmi_insurance").val()
+  params_data['monthly_home_insurance'] = $("#monthly_home_insurance").val()
 
-    update_value['monthly_hoa_dues'] = $("#monthly_hoa_dues").val()
+  params_data['monthly_pmi_insurance'] = $("#monthly_pmi_insurance").val()
+
+  params_data['monthly_hoa_dues'] = $("#monthly_hoa_dues").val()
+
+  remove_keys = ['action','controller','mortgage_month','utf8']
+  remove_keys.forEach(e => delete params_data[e]);
 
     $("#monthly_property_tax").click(function(){
       $(this).attr("readonly", false);
@@ -693,11 +696,11 @@
 
     $("#monthly_property_tax").focusout(function() {
       if (monthly_tax_value != $(this).val()){
-        update_value['monthly_property_tax'] = $(this).val()
+        params_data['monthly_property_tax'] = $(this).val()
         $.ajax({
          type: "GET",
          url: "/calculator",
-         data : update_value,
+         data : params_data,
          dataType: "script",
         });
 
@@ -711,11 +714,11 @@
 
     $("#monthly_home_insurance").focusout(function() {
       if (monthly_home_ins != $(this).val()){
-        update_value['monthly_home_insurance'] = $(this).val()
+        params_data['monthly_home_insurance'] = $(this).val()
         $.ajax({
          type: "GET",
          url: "/calculator",
-         data : update_value,
+         data : params_data,
          dataType: "script",
         });
 
@@ -729,11 +732,11 @@
 
     $("#monthly_pmi_insurance").focusout(function() {
       if (monthly_pmi_ins != $(this).val()){
-        update_value['monthly_pmi_insurance'] = $(this).val()
+        params_data['monthly_pmi_insurance'] = $(this).val()
         $.ajax({
          type: "GET",
          url: "/calculator",
-         data : update_value,
+         data : params_data,
          dataType: "script",
         });
 
@@ -747,11 +750,11 @@
 
     $("#monthly_hoa_dues").focusout(function() {
       if (monthly_hoa_dues != $(this).val()){
-        update_value['monthly_hoa_dues'] = $(this).val()
+        params_data['monthly_hoa_dues'] = $(this).val()
         $.ajax({
          type: "GET",
          url: "/calculator",
-         data : update_value,
+         data : params_data,
          dataType: "script",
         });
 

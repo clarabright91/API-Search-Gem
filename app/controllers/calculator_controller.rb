@@ -2,7 +2,10 @@ class CalculatorController < ApplicationController
   before_action :load_default
 
   def index
-    set_variables if params[:commit].present?
+    if(params[:commit].present? || params["monthly_property_tax"].present?)
+      set_variables
+    end
+
     set_property_tax_and_home_insurance_and_price_to_rent_ratio_by_zip_code
     calculate_loan_payment
     number_of_payments
@@ -70,7 +73,7 @@ class CalculatorController < ApplicationController
        @costs_compare_sum[:benifit] = "Buying is better than renting even if you could rent for free! In addition, you can save average #{ ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2)) } per year from your federal taxable income. Increase your profit by visiting our <a href=''>MORTGAGE RATES</a> and getting a more favorable mortgages."
     else
       if (@costs_compare_sum[:buy].abs >0 && @costs_compare_sum[:rent].abs > @costs_compare_sum[:buy].abs)
-        @costs_compare_sum[:benifit] = "Buying is cheaper than renting! You’ll earn an extra #{ActionController::Base.helpers.number_to_currency(((@costs_compare_sum[:buy] - @costs_compare_sum[:rent]).round(2)))} after #{@mortgage_term} years of buying a house. In addition, you can save average #{ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2))} per year from your federal taxable income. If you lower your mortgage interest rate, you could save more! Come to visit our <a href=''>MORTGAGE RATES</a> and find other favorable mortgages."
+        @costs_compare_sum[:benifit] = "Buying is cheaper than renting! You’ll earn an extra #{ActionController::Base.helpers.number_to_currency(((@costs_compare_sum[:buy] - @costs_compare_sum[:rent]).round(2)))} after #{@mortgage_term} years of buying a house. In addition, you can save average #{ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2))} per year from your federal taxable income. If you lower your mortgage interest rate, you could save more! Come to visit our <a href='#'>MORTGAGE RATES</a> and find other favorable mortgages."
       else
         if (@costs_compare_sum[:buy].abs >0 && @costs_compare_sum[:rent].abs == @costs_compare_sum[:buy].abs )
             @costs_compare_sum[:benifit] = "The cost of buying a house is about the same as renting a house for #{@mortgage_term} years! However, you could save more through lowering your mortgage interest rate. Come to visit our <a href=''>MORTGAGE RATES</a> to get more favorable mortgages."
@@ -231,7 +234,7 @@ class CalculatorController < ApplicationController
     if params["monthly_home_insurance"].present?
       @home_insurance[:monthly] = params["monthly_home_insurance"].to_f
     else
-      @home_insurance[:monthly] = ((@default_annual_home_insurance*1.0)/12).round(2) rescue 0.0
+      @home_insurance[:monthly] = (@home_price*0.35).round(2) rescue 0.0
     end
 
     # @home_insurance[:monthly] = ((@default_annual_home_insurance*1.0)/12) rescue 0.0
@@ -244,7 +247,6 @@ class CalculatorController < ApplicationController
     else
       @pmi_insurance[:monthly] = @default_pmi_insurance rescue 0.0
     end
-
     @pmi_insurance[:total] =  @pmi_insurance[:monthly].to_i == 0 ? 0.0 :  @pmi_insurance[:monthly]*calculate_pmi_term rescue 0.0
 
     if params["monthly_hoa_dues"].present?
@@ -253,8 +255,8 @@ class CalculatorController < ApplicationController
       @hoa_dues[:monthly] = 0.00
     end
 
-    
-    
+    @hoa_dues[:total] = (@hoa_dues[:monthly]*number_of_payments) rescue 0.0
+
     @monthly_expenses_sum[:monthly] =  ((@mortgage_principal[:monthly] + @mortgage_interest[:monthly] + @property_tax[:monthly] + @home_insurance[:monthly] + @pmi_insurance[:monthly] + @hoa_dues[:monthly]))  rescue 0.0
 
     @monthly_expenses_sum[:total] = ((@mortgage_principal[:total] + @mortgage_interest[:total] + @property_tax[:total] + @home_insurance[:total] + @pmi_insurance[:total] + @hoa_dues[:monthly])) rescue 0.0
@@ -271,7 +273,7 @@ class CalculatorController < ApplicationController
 
     @hoa_dues[:percentage] =  ((@hoa_dues[:monthly]*100 / @monthly_expenses_sum[:monthly])).round(2) rescue 0.0
 
-    @monthly_expenses_sum[:percentage] = (@mortgage_principal[:percentage] + @mortgage_interest[:percentage] + @property_tax[:percentage] + @home_insurance[:percentage] + @pmi_insurance[:percentage]).round() rescue 100
+    @monthly_expenses_sum[:percentage] = (@mortgage_principal[:percentage] + @mortgage_interest[:percentage] + @property_tax[:percentage] + @home_insurance[:percentage] + @pmi_insurance[:percentage] + @hoa_dues[:monthly]).round() rescue 100
   end
 
   def calculate_pmi_term
@@ -326,8 +328,8 @@ class CalculatorController < ApplicationController
 
   def set_variables
     @zip_code = params[:zip_code] if params[:zip_code].present?
-    @home_price = params[:home_price].to_i if params[:home_price].present?
-    @down_payment = params[:down_payment].to_i if params[:down_payment].present?
+    @home_price = params[:home_price].gsub(/[$,]/,'').to_i if params[:home_price].present?
+    @down_payment = params[:down_payment].gsub(/[$,]/,'').to_i if params[:down_payment].present?
     @mortgage_term = params[:mortgage_term].to_i if params[:mortgage_term].present?
     @annual_interest_rate = params[:annual_interest_rate].to_f if params[:annual_interest_rate].present?  
   end
