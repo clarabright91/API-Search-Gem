@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  state_code: 
+  insurance_rate: 
+  avg_annual_insurance: 1.5
+
+two:
+  state_code: 
+  insurance_rate: 
+  avg_annual_insurance: 1.5

@@ -1,0 +1,2 @@
+class CalculatorHomeInsurance < ApplicationRecord
+end

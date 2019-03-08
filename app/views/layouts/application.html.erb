@@ -16,10 +16,25 @@
       <!-- required stylesheets link -->
       <%= stylesheet_link_tag "bootstrap.min"%>
       <%= stylesheet_link_tag "style"%>
+
+      <!-- required stylesheets link for calculator-->
+      <% if (params["controller"] == "calculator") %>
+        <%= stylesheet_link_tag "calculator"%>
+      <%end%>
+
+      <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Lato:300,400,700,900"%>
+
       <!-- required javascript files -->
       <%= javascript_include_tag "jquery.min"%>
       <%= javascript_include_tag "jquery.validate.js"%>
       <%= javascript_include_tag "additional-methods.js"%>
+
+      <!-- required javascript files for chart -->
+      <%= javascript_include_tag "highcharts"%>
+      <%= javascript_include_tag "Chart.bundle"%>
+      <%= javascript_include_tag "chartkick"%>
+      <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+
       <!-- required style links  -->
       <script src="https://use.fontawesome.com/e7102aad9c.js"></script>
 
