@@ -6,7 +6,7 @@
       <!-- banner main search start-->
        <div class="search-main adv-search-mb">
           <div class="search-cat zip-srch">
-             <label>Zip Code</label>   
+             <label>Zip Code</label>
              <input type="text" placeholder="123456" value= <%=user_location_info.present? ? user_location_info.data["postal"].present? ? user_location_info.data["postal"] : nil : nil%> >  <!-- calling function defined in Application helper-->
           </div>
           <div class="search-cat purpse-srch">
@@ -102,7 +102,7 @@
  <!-- search result feed start-->
  <section class="content-main">
             <div class="container">
-               <p class="main-para-hdng">Pureloan searches all the major banks and lenders to give you the best rates. Here are a few sample rates 
+               <p class="main-para-hdng">Pureloan searches all the major banks and lenders to give you the best rates. Here are a few sample rates
                   in your area for 30-year fixed, 15year fixed, and 5/1 Adjustable Rate Mortgage (ARM).
                </p>
                <div class="cntnt-list-box">
@@ -134,7 +134,7 @@
                      </div>
                      <div class="inner-block-btn">
                         <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
-                        <a href="" class="dtail-btn">View Details</a>
+                        <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                         <a href="" class="lendr-web-link">Lender Website</a>
                      </div>
            <div class="mb-scroll-icn">
@@ -210,7 +210,7 @@
            </div>
                   </div>
                </div>
-                           
+
                <div class="cntnt-list-box">
                   <h5>15-Years Fixed Rates Customized for <%= Date.today.strftime("%B %d, %Y")%></h5>
                   <div class="cntnt-list-inner gray-bg col-md-12">
@@ -316,8 +316,8 @@
            </div>
                   </div>
                </div>
-         
-         
+
+
                <div class="cntnt-list-box">
                   <h5>15-Years Fixed Rates Customized for <%= Date.today.strftime("%B %d, %Y")%></h5>
                   <div class="cntnt-list-inner gray-bg col-md-12">
@@ -427,21 +427,21 @@
          </section>
  <!-- search result feed end-->
  <%if Expert.where(verified: true).count < 1%>
- <!-- Advertisement with expert start--> 
+ <!-- Advertisement with expert start-->
          <section class="advertisement-box">
             <div class="container">
                <div class="advertisement">
                   <img class="mb-hide" src="images/home-ad.jpg" alt="">
                   <img class="mb-only" src="images/expert-ad-mb-img.png" alt="">
                   <h4>Become a mortgage expert on Pureloan.com for Albany, CA</h4>
-                  <span class="">Reach hundreds of thousands of home buyers or 
-                  refi customers every month!</span>          
+                  <span class="">Reach hundreds of thousands of home buyers or
+                  refi customers every month!</span>
                     <a href="" data-toggle="modal" data-target="#expert-app-overlay" class="dtail-btn">Submit Application</a>
                </div>
             </div>
          </section>
- <%end%>        
-         <!-- Advertisement with expert end--> 
+ <%end%>
+         <!-- Advertisement with expert end-->
  <!--Rendering Experts  -->
  <%if Expert.where(verified: true).count >= 1%>
     <%= render 'pages/index'%>
@@ -454,7 +454,7 @@
        <div class="modal-content">
           <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal"><img src="images/cancel_03.png" alt="" class="login-cross-img"></button>
-             <h4>Become an expert on <b>Pureloan.com</b> and reach hundreds of 
+             <h4>Become an expert on <b>Pureloan.com</b> and reach hundreds of
                 thousands of home buyers or refi customers every month!
              </h4>
           </div>
@@ -463,13 +463,13 @@
                  <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group">
-                          <label>First Name</label> 
+                          <label>First Name</label>
                           <%= expert_user.text_field :first_name, placeholder: "Enter your First Name", class: "form-control"%>
                        </div>
                     </div>
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group">
-                          <label>Last Name</label> 
+                          <label>Last Name</label>
                           <%= expert_user.text_field :last_name, placeholder: "Enter your Last Name", class: "form-control"%>
                        </div>
                     </div>
@@ -477,13 +477,13 @@
                  <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group">
-                          <label>Phone</label> 
+                          <label>Phone</label>
                           <%= expert_user.text_field :phone, placeholder: "Enter your Phone", class: "form-control", number: true%>
                        </div>
                     </div>
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group">
-                          <label>Email</label> 
+                          <label>Email</label>
                           <%= expert_user.email_field :email, placeholder: "Enter your Email", class: "form-control"%>
                        </div>
                     </div>
@@ -491,27 +491,27 @@
                  <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group select-arrow">
-                          <label>State</label> 
-                        <%= expert_user.select(:state, City.pluck(:state_code).uniq.sort, {prompt: "Select State"}, { class: 'state' })%>  
+                          <label>State</label>
+                        <%= expert_user.select(:state, City.pluck(:state_code).uniq.sort, {prompt: "Select State"}, { class: 'state' })%>
                        </div>
                     </div>
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group select-arrow">
-                          <label>City</label> 
-                        <%= expert_user.select(:city, [], {prompt: "Select city"}, { class: 'city' })%>  
+                          <label>City</label>
+                        <%= expert_user.select(:city, [], {prompt: "Select city"}, { class: 'city' })%>
                        </div>
                     </div>
                  </div>
                  <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group select-arrow">
-                          <label>Zip</label> 
-                        <%= expert_user.select(:zip, [], {prompt: "Select zip"}, { class: 'zip' })%>  
+                          <label>Zip</label>
+                        <%= expert_user.select(:zip, [], {prompt: "Select zip"}, { class: 'zip' })%>
                        </div>
                     </div>
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group">
-                          <label>License Number</label> 
+                          <label>License Number</label>
                           <%= expert_user.text_field :license_number, placeholder: "Enter your License Number", class: "form-control"%>
                        </div>
                     </div>
@@ -519,7 +519,7 @@
                  <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group select-arrow">
-                          <label>Speciality <span>(Where you will be listed)</span></label> 
+                          <label>Speciality <span>(Where you will be listed)</span></label>
                           <%= expert_user.select :specialty, options_for_select([["Mortgage","Mortgage"], ["Refinance","Refinance"], ["Personal","Personal"], ["Auto","Auto"]]), class: "form-control"%>
                        </div>
                     </div>
@@ -533,14 +533,14 @@
                  <div class="row">
                     <div class="col-xs-12 col-md-6">
                        <div class="form-group custm-file-input">
-                          <label>Photo</label> 
+                          <label>Photo</label>
                           <span><i class="fa fa-camera"></i> Upload</span>
                           <%= expert_user.file_field :image %>
                        </div>
                     </div>
                  </div>
                  <%= expert_user.submit "Submit Application", class: "rates-btn"%>
-              <%end%>   
+              <%end%>
 <!--              <button class="rates-btn">Submit Application</button> -->
              <div class="expert-app-overlay-note">
                 Your listing as an expert in the city Albany, California will be processed when we verify your status and we recieve an authentication link back from your business site
@@ -568,7 +568,7 @@
                 success: function(response) {
                   $(".city").empty();
                   $.each(response, function(e,res){
-                    $(".city").append($("<option></option>").attr("value",res).text(res)); 
+                    $(".city").append($("<option></option>").attr("value",res).text(res));
                   })
                 }
             });
@@ -584,7 +584,7 @@
                 success: function(response) {
                   $(".zip").empty();
                   $.each(response, function(e,res){
-                    $(".zip").append($("<option></option>").attr("value",res).text(res)); 
+                    $(".zip").append($("<option></option>").attr("value",res).text(res));
                   })
                 }
             });
@@ -634,7 +634,7 @@
           "expert[image]": {
             required: true,
             extension: "jpg,jpeg",
-            filesize:   2097152 
+            filesize:   2097152
           }
         },
         messages: {
@@ -671,6 +671,6 @@
             extension: "File must be JPG,JPEG."
           }
         }
-      })  
+      })
 
 </script>
