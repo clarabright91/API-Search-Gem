@@ -57,8 +57,10 @@ header .navbar-right{ margin:0 !important;}
 /*signup modal css end*/
 
 /*view details modal css start*/
+
 #view-details-popup .modal-dialog{
-  width: 800px;
+  max-width: 800px;
+
 }
 #view-details-popup button.close {
     position: absolute;
