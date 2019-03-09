@@ -259,7 +259,7 @@ class CalculatorController < ApplicationController
 
     @monthly_expenses_sum[:monthly] =  ((@mortgage_principal[:monthly] + @mortgage_interest[:monthly] + @property_tax[:monthly] + @home_insurance[:monthly] + @pmi_insurance[:monthly] + @hoa_dues[:monthly]))  rescue 0.0
 
-    @monthly_expenses_sum[:total] = ((@mortgage_principal[:total] + @mortgage_interest[:total] + @property_tax[:total] + @home_insurance[:total] + @pmi_insurance[:total] + @hoa_dues[:monthly])) rescue 0.0
+    @monthly_expenses_sum[:total] = ((@mortgage_principal[:total] + @mortgage_interest[:total] + @property_tax[:total] + @home_insurance[:total] + @pmi_insurance[:total])) rescue 0.0
         
     @mortgage_principal[:percentage] = ((@mortgage_principal[:monthly]*100 / @monthly_expenses_sum[:monthly])).round(2) rescue 0.0
 
@@ -273,7 +273,7 @@ class CalculatorController < ApplicationController
 
     @hoa_dues[:percentage] =  ((@hoa_dues[:monthly]*100 / @monthly_expenses_sum[:monthly])).round(2) rescue 0.0
 
-    @monthly_expenses_sum[:percentage] = (@mortgage_principal[:percentage] + @mortgage_interest[:percentage] + @property_tax[:percentage] + @home_insurance[:percentage] + @pmi_insurance[:percentage] + @hoa_dues[:monthly]).round() rescue 100
+    @monthly_expenses_sum[:percentage] = (@mortgage_principal[:percentage] + @mortgage_interest[:percentage] + @property_tax[:percentage] + @home_insurance[:percentage] + @pmi_insurance[:percentage] + @hoa_dues[:percentage]).round() rescue 100
   end
 
   def calculate_pmi_term
