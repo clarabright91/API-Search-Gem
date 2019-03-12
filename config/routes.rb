@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
   scope :module => 'buttercms' do
     get '/research_categories/:slug' => 'categories#show', :as => :buttercms_category
     get '/author/:slug' => 'authors#show', :as => :buttercms_author
@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   get '/calculation', to: 'pages#calculation', as: 'calculation'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+
+  get "admin/fannie_mae", to: 'admin/fannie_maes#index', as: 'admin_fannie_maes'
   ActiveAdmin.routes(self)
+
   #devise_for :users
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   ActiveAdmin.register_page "UploadCsv"
@@ -25,11 +28,11 @@ Rails.application.routes.draw do
    # root to: 'pages#index', as: :authenticated_root
   # end
   post 'pages/expert_user_registration', to: "pages#expert_user_registration", as: 'expert_user_registration'
-  
+
   get 'pages/expert_state_and_city', to: 'pages#expert_state_and_city', as: 'expert_state_and_city'
 
-  get 'pages/expert_city_and_zip', to: 'pages#expert_city_and_zip', as: 'expert_city_and_zip'  
-  
+  get 'pages/expert_city_and_zip', to: 'pages#expert_city_and_zip', as: 'expert_city_and_zip'
+
   root 'pages#index'
   get '/refinance', to: 'pages#refinance', as: 'refinance'
   get '/mortgage', to: 'pages#mortgage', as: 'mortgage'
@@ -38,26 +41,26 @@ Rails.application.routes.draw do
   get '/activate', to: 'pages#user_mass_activate'
   get '/deactivate', to: 'pages#user_mass_deactivate'
   get '/profile', to: 'pages#user_profile'
-  put '/update_profile', to: 'pages#update_profile' 
+  put '/update_profile', to: 'pages#update_profile'
   get '/pages/:page_slug',to: 'pages#show', as: 'show_cms_pages'
-  
+
   post '/research_contact_us_email', to: 'pages#research_contact_us_email', as: "research_contact_us_email"
-  
+
   post '/research_post', to: 'pages#research_post', as: 'research_post'
 
-  get '/city_freddie_cache_data', to: 'pages#city_freddie_cache_data', as: 'city_freddie_cache_data'  
+  get '/city_freddie_cache_data', to: 'pages#city_freddie_cache_data', as: 'city_freddie_cache_data'
 
   # for dynamic cmspages
   #CmsPage.load                      if CmsPage.present?
 
   #--------------------------- routes for mortgage loan pages ---------------------------------
-  get '/mortgage/lender/:alphabet', to: 'directories#mortgage_state_banks', as: 'mortgage_state_banks'  
+  get '/mortgage/lender/:alphabet', to: 'directories#mortgage_state_banks', as: 'mortgage_state_banks'
 
   get '/mortgage/lender/:alphabet-(:bank_from)-(:bank_to)/:bank_list', to: 'directories#mortgage_state_banks_list', as: 'mortgage_banks_list'
 
   get 'mortgage/lender-(:cert)/(:bank_name+mortgage)', to: 'seo_pages#bank_mortgage_loans', as: 'bank_home_mortgage_loan'
-  
-  
+
+
   #--------------------------- routes for personal loan pages ----------------------------------
 
   get '/personal+loan/lender/:alphabet', to: 'directories#personal_loan_state_banks', as: 'personal_loan_state_banks'
@@ -74,28 +77,33 @@ Rails.application.routes.draw do
 
   get 'auto+loan/lender-(:cert)/(:bank_name+auto+loans)', to: 'seo_pages#bank_auto_loans', as: 'bank_home_auto_loan'
 
-  
-  #-------------------------- routes for directory pages------------------------------  
+
+  #-------------------------- routes for directory pages------------------------------
   get '/directory', to: 'directories#directory_root', as: 'directory'
 
-  #-------------------------- routes for city mortgage pages------------------------------ 
-  get '/mortgage/:state-(:city_id)(/:city+mortgage+rates)', to: 'seo_pages#city_home_mortgage_rates', as: 'city_home_mortgage_rates' 
+  #-------------------------- routes for city mortgage pages------------------------------
+  get '/mortgage/:state-(:city_id)(/:city+mortgage+rates)', to: 'seo_pages#city_home_mortgage_rates', as: 'city_home_mortgage_rates'
 
   get '/mortgage/:state', to: 'directories#mortgage_state_cities', as: 'mortgage_state_cities'
 
-  get '/mortgage/:state-(:city_from)-(:city_to)/:city_list', to: 'directories#mortgage_state_cities_list', as: 'mortgage_state_cities_list' 
-    
+  get '/mortgage/:state-(:city_from)-(:city_to)/:city_list', to: 'directories#mortgage_state_cities_list', as: 'mortgage_state_cities_list'
+
 
   #--------------------------- routes for city refinance pages ----------------------------------
-  
+
   get '/refinance/:state-(:city_id)(/:city+refinance+rates)', to: 'seo_pages#city_home_refinance_rates', as: 'city_home_refinance_rates'
 
   get '/refinance/:state', to: 'directories#refinance_state_cities', as: 'refinance_state_cities'
 
   get '/refinance/:state-(:city_from)-(:city_to)/:city_list', to: 'directories#refinance_state_cities_list', as: 'refinance_state_cities_list'
 
+
+  #--------------------------- routes for calculator controller ----------------------------------
+
+  get 'calculator', to: 'calculator#index'
+
   #--------------------------- route for wrong requested pages ----------------------------------
-  
+
   match '*path', to: redirect('/'), via: :all
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

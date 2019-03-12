@@ -1,0 +1,2 @@
+class CalculatorPriceToRentRatio < ApplicationRecord
+end
