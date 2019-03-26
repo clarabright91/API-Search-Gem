@@ -24,7 +24,7 @@ class CalculatorController < ApplicationController
   end
 
   def get_todays_rate
-    today_rate_hash = {"10" =>"4.0", "15" =>"4.2", "20" =>"4.5", "25" =>"4.8", "30" =>"5.0"}
+    today_rate_hash = {"10" =>"4.000", "15" =>"4.125", "20" =>"4.250", "25" =>"4.375", "30" =>"4.500"}
     today_rate = '4.0'
     if params[:mortgage_term].present?
       today_rate = today_rate_hash[params[:mortgage_term]]
@@ -138,7 +138,7 @@ class CalculatorController < ApplicationController
       {:name=>"Principal", :data=>{}, dataset: {borderWidth:5}},
       {:name=>"Interest", :data=>{}, dataset: {borderDash: [10,4]}},
       {:name=>"Remaining", :data=>{}, dataset: {borderDash: [10,4]}},
-      {:name=>"Total Paid", :data=>{}, dataset: {borderWidth:6}},
+      {:name=>"Total Paid", :data=>{}, dataset: {borderWidth:6}}
     ]
 
     x = 1
@@ -391,7 +391,7 @@ class CalculatorController < ApplicationController
     nation_wide_affordability_list = CalculatorHomeAffordability.where(state_code: "Nationwide")
     if nation_wide_affordability_list.present?
       nation_wide_affordability_list.each do |nation_wide|
-        @nation_wide_affordability[nation_wide.date.strftime("%m/%Y")] = nation_wide.home_price_index
+        @nation_wide_affordability[nation_wide.date.strftime("%m/%Y")] = nation_wide.home_price_index.round(2)
       end
     end
 
