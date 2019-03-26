@@ -646,7 +646,7 @@
         url:'/get_todays_rate',
         data: {mortgage_term: term},
         success:function(res){
-        $('#annual_interest_rate').val(res["today_rate"])
+        $('#annual_interest_rate').val(res["today_rate"] + '%')
         }
       });
     });
