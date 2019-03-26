@@ -506,6 +506,19 @@
         }
     });
 
+    // get_todays_rate
+    $("#today_rate").click(function(){
+      var term = $('#mortgage_term').val()
+      $.ajax({
+        type:'GET',
+        url:'/get_todays_rate',
+        data: {mortgage_term: term},
+        success:function(res){
+        $('#annual_interest_rate').val(res["today_rate"])
+        }
+      });
+    });
+
     $(".toggle-btn").click(function(){
       $(".toggle-container").toggle(500);
     });
@@ -517,6 +530,10 @@
     if($('#annual_interest_rate')!=''){
       var value = $('#annual_interest_rate').val()
       if (value.includes("%")) {
+        value = value.replace('%%','%')
+        value = value.replace('% %','%')
+        value = value.replace('%%%','%')
+        $('#annual_interest_rate').val(value)
       }
       else{
         $('#annual_interest_rate').val(value + "%")
@@ -527,6 +544,10 @@
       $("#annual_interest_rate").change(function () {
         var value = $(this).val()
         if (value.includes("%")) {
+          value = value.replace('%%','%')
+          value = value.replace('% %','%')
+          value = value.replace('%%%','%')
+          $('#annual_interest_rate').val(value)
         }
         else{
           $('#annual_interest_rate').val(value + "%")

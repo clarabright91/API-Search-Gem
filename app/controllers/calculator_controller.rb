@@ -23,6 +23,15 @@ class CalculatorController < ApplicationController
     # render :index
   end
 
+  def get_todays_rate
+    today_rate_hash = {"10" =>"4.0", "15" =>"4.2", "20" =>"4.5", "25" =>"4.8", "30" =>"5.0"}
+    today_rate = '4.0'
+    if params[:mortgage_term].present?
+      today_rate = today_rate_hash[params[:mortgage_term]]
+    end
+    render json: {today_rate: today_rate}
+  end
+
   def calculate_monthly_payment
     monthly_pay = (calculate_loan_payment/calculate_discount_factor) rescue 0.0
     monthly_pay = 0.0 if (monthly_pay.nan? || monthly_pay.infinite?)

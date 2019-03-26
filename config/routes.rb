@@ -101,6 +101,7 @@ Rails.application.routes.draw do
   #--------------------------- routes for calculator controller ----------------------------------
 
   get 'calculator', to: 'calculator#index'
+  get 'get_todays_rate', to: 'calculator#get_todays_rate'
 
   #--------------------------- route for wrong requested pages ----------------------------------
 
