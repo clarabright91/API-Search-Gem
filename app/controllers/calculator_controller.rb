@@ -23,6 +23,15 @@ class CalculatorController < ApplicationController
     # render :index
   end
 
+  def get_todays_rate
+    today_rate_hash = {"10" =>"4.0", "15" =>"4.2", "20" =>"4.5", "25" =>"4.8", "30" =>"5.0"}
+    today_rate = '4.0'
+    if params[:mortgage_term].present?
+      today_rate = today_rate_hash[params[:mortgage_term]]
+    end
+    render json: {today_rate: today_rate}
+  end
+
   def calculate_monthly_payment
     monthly_pay = (calculate_loan_payment/calculate_discount_factor) rescue 0.0
     monthly_pay = 0.0 if (monthly_pay.nan? || monthly_pay.infinite?)
@@ -70,15 +79,15 @@ class CalculatorController < ApplicationController
     end
 
     if (@costs_compare_sum[:buy].abs <=0)
-       @costs_compare_sum[:benifit] = "Buying is better than renting even if you could rent for free! In addition, you can save average #{ ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2)) } per year from your federal taxable income. Increase your profit by visiting our <a href=''>MORTGAGE RATES</a> and getting a more favorable mortgages."
+       @costs_compare_sum[:benifit] = "Buying is better than renting even if you could rent for free! In addition, you can save average #{ ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2)) } per year from your federal taxable income. Increase your profit by visiting our <a href='JavaScript:void(0);'>MORTGAGE RATES</a> and getting a more favorable mortgages."
     else
       if (@costs_compare_sum[:buy].abs >0 && @costs_compare_sum[:rent].abs > @costs_compare_sum[:buy].abs)
-        @costs_compare_sum[:benifit] = "Buying is cheaper than renting! You’ll earn an extra #{ActionController::Base.helpers.number_to_currency(((@costs_compare_sum[:buy] - @costs_compare_sum[:rent]).round(2)))} after #{@mortgage_term} years of buying a house. In addition, you can save average #{ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2))} per year from your federal taxable income. If you lower your mortgage interest rate, you could save more! Come to visit our <a href='#'>MORTGAGE RATES</a> and find other favorable mortgages."
+        @costs_compare_sum[:benifit] = "Buying is cheaper than renting! You’ll earn an extra #{ActionController::Base.helpers.number_to_currency(((@costs_compare_sum[:buy] - @costs_compare_sum[:rent]).round(2)))} after #{@mortgage_term} years of buying a house. In addition, you can save average #{ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2))} per year from your federal taxable income. If you lower your mortgage interest rate, you could save more! Come to visit our <a href='JavaScript:void(0);'>MORTGAGE RATES</a> and find other favorable mortgages."
       else
         if (@costs_compare_sum[:buy].abs >0 && @costs_compare_sum[:rent].abs == @costs_compare_sum[:buy].abs )
-            @costs_compare_sum[:benifit] = "The cost of buying a house is about the same as renting a house for #{@mortgage_term} years! However, you could save more through lowering your mortgage interest rate. Come to visit our <a href=''>MORTGAGE RATES</a> to get more favorable mortgages."
+            @costs_compare_sum[:benifit] = "The cost of buying a house is about the same as renting a house for #{@mortgage_term} years! However, you could save more through lowering your mortgage interest rate. Come to visit our <a href='JavaScript:void(0);'>MORTGAGE RATES</a> to get more favorable mortgages."
           else
-           @costs_compare_sum[:benifit] = "You'd better to rent a house instead pf buying. Or you could lower your mortgage interest rate to save the cost of buying. Come to visit our <a href=''>MORTGAGE RATES</a> to get more favorable mortgages."
+           @costs_compare_sum[:benifit] = "You'd better to rent a house instead pf buying. Or you could lower your mortgage interest rate to save the cost of buying. Come to visit our <a href='JavaScript:void(0);'>MORTGAGE RATES</a> to get more favorable mortgages."
         end
       end
     end
