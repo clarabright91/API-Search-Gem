@@ -279,15 +279,10 @@
 <div class="modal fade" id="view-details-popup" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal"><%= image_tag("Homepage-login-overlayw_03.png", :alt => "close", :class => "login-cross-img") %> </button>
-      <div class="modal-header" style="display: none;">
-        <h4><b>Create a Price Alert to obtain lowest Mortgage</b></br>
-          <b>Rates and Save even more!</b>
-        </h4>
-      </div>
-      <div class="modal-body">
-        <div class="with-nav-tabs panel-warning">
-          <section class="tab-header">
+      <!-- <button type="button" class="close" data-dismiss="modal"><%#= image_tag("Homepage-login-overlayw_03.png", :alt => "close", :class => "login-cross-img") %> </button> -->
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <div class="modal-header">
+        <section class="tab-header">
             <div class="row">
               <div class="col-md-3">
                 <div class="bank-logos">
@@ -308,7 +303,10 @@
                 </ul>
               </div>
             </div>
-          </section>
+        </section>
+      </div>
+      <div class="modal-body">
+        <div class="with-nav-tabs panel-warning">
           <div class="panel-body">
             <div class="tab-content">
               <div class="tab-pane fade in active" id="tab1warning">

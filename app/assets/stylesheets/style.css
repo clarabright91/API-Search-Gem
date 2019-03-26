@@ -70,7 +70,11 @@ header .navbar-right{ margin:0 !important;}
     z-index: 999;
     right: 5px;
     top: 5px;
-    opacity: 1;
+    font-size: 35px;
+    opacity: .2;
+}
+#view-details-popup button.close:hover{
+  opacity: 0.5;
 }
 .bank-logos span{
   width: 63px;
@@ -2322,9 +2326,44 @@ p.top-txt-info {
 .blog-post{ box-shadow: 0 0 15px #d7d7d7; }
 .blog-post-inner { padding: 0;}
 .blog-post-inner img { position: relative;  margin: 0 0 15px 0; width:100%;}
-#view-details-popup{
+  #view-details-popup .modal-dialog {
     position: absolute;
-    overflow: visible;
+    max-width: 100%;
+    width: 100%;
+    margin: 0px;
+    top: 50%;
+    left: 50%;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+  }
+  #view-details-popup .modal-header .col-md-3{
+    padding: 0;
+  }
+  #view-details-popup .modal-header{
+    padding-top: 0;
+  }
+  #view-details-popup .nav-tabs > li > a {
+    font-size: 15px;
+    padding: 10px;
+  }
+  #view-details-popup .nav-tabs{
+    padding: 5px 10px 0;
+  }
+  .content-bx-content .table-condensed>tbody>tr>td{
+    font-size: 14px;
+  }
+  .content-bx-content {
+    font-size: 14px;
+  }
+  .content-bx h1 {
+    font-size: 14px;
+  }
+  .mb-scroll-icn a{
+    height: 100%;
+    display: block;
+  }
+  .mb-scroll-icn a:focus {
+    outline: none;
   }
 }
 

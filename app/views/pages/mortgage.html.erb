@@ -6,7 +6,7 @@
       <!-- banner main search start-->
       <div class="search-main adv-search-mb">
         <div class="search-cat zip-srch">
-           <label>Zip Code</label>     
+           <label>Zip Code</label>
            <input type="text" placeholder="123456" value= <%=user_location_info.present? ? user_location_info.data["postal"].present? ? user_location_info.data["postal"] : nil : nil%> >  <!-- calling function defined in Application helper-->
         </div>
         <div class="search-cat purpse-srch">
@@ -101,7 +101,7 @@
  <!-- search result feed start-->
   <section class="content-main">
     <div class="container">
-      <p class="main-para-hdng">Pureloan searches all the major banks and lenders to give you the best rates. Here are a few sample rates 
+      <p class="main-para-hdng">Pureloan searches all the major banks and lenders to give you the best rates. Here are a few sample rates
           in your area for 30-year fixed, 15year fixed, and 5/1 Adjustable Rate Mortgage (ARM).
       </p>
       <div class="cntnt-list-box">
@@ -133,11 +133,11 @@
             </div>
               <div class="inner-block-btn">
                 <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
               </div>
              <div class="mb-scroll-icn">
-              <a href=""><i class="fa fa-angle-right"></i></a>
+              <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
              </div>
           </div>
           <div class="cntnt-list-inner col-md-12">
@@ -167,11 +167,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
               <div class="mb-scroll-icn">
-                <a href=""><i class="fa fa-angle-right"></i></a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
              </div>
           </div>
           <div class="cntnt-list-inner gray-bg col-md-12">
@@ -201,14 +201,14 @@
              </div>
              <div class="inner-block-btn">
                 <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
                <div class="mb-scroll-icn">
-                 <a href=""><i class="fa fa-angle-right"></i></a>
+                 <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
                 </div>
           </div>
-       </div>    
+       </div>
        <div class="cntnt-list-box">
           <h5>15-Years Fixed Rates Customized for <%= Date.today.strftime("%B %d, %Y")%></h5>
           <div class="cntnt-list-inner gray-bg col-md-12">
@@ -238,11 +238,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
              <div class="mb-scroll-icn">
-             <a href=""><i class="fa fa-angle-right"></i></a>
+             <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
              </div>
           </div>
           <div class="cntnt-list-inner col-md-12">
@@ -272,11 +272,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
              <div class="mb-scroll-icn">
-             <a href=""><i class="fa fa-angle-right"></i></a>
+             <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
              </div>
           </div>
           <div class="cntnt-list-inner gray-bg col-md-12">
@@ -306,11 +306,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
              <div class="mb-scroll-icn">
-             <a href=""><i class="fa fa-angle-right"></i></a>
+             <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
              </div>
           </div>
        </div>
@@ -343,11 +343,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
              <div class="mb-scroll-icn">
-             <a href=""><i class="fa fa-angle-right"></i></a>
+             <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
              </div>
           </div>
           <div class="cntnt-list-inner col-md-12">
@@ -377,11 +377,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
              <div class="mb-scroll-icn">
-             <a href=""><i class="fa fa-angle-right"></i></a>
+             <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
              </div>
           </div>
           <div class="cntnt-list-inner gray-bg col-md-12">
@@ -411,11 +411,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
              <div class="mb-scroll-icn">
-             <a href=""><i class="fa fa-angle-right"></i></a>
+             <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
              </div>
           </div>
        </div>

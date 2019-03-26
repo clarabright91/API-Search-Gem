@@ -45,7 +45,7 @@
              <a href="" data-toggle="modal" data-target="#advance-srch-mb" class="mb-btn">
               <i class="fa fa-pencil"></i>
              </a>
-             
+
           </div>
           <div class="section-lft-srch">
              <p>$500,00 Home Purchase <span>in  <%=user_location_info.present? ? user_location_info.data["postal"].present? ? user_location_info.data["postal"] : @bank.zip : @bank.zip%></span></p>
@@ -182,11 +182,11 @@
            </div>
           <div class="inner-block-btn">
             <img src="/images/heart_03.png" alt="" class="wishlist-icn-fill">
-            <a href="" class="dtail-btn">View Details</a>
+            <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
             <a href="" class="lendr-web-link">Lender Website</a>
           </div>
         <div class="mb-scroll-icn">
-        <a href=""><i class="fa fa-angle-right"></i></a>
+        <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
         </div>
           </div>
           <div class="cntnt-list-inner col-md-12">
@@ -216,11 +216,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="/images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
             <div class="mb-scroll-icn">
-            <a href=""><i class="fa fa-angle-right"></i></a>
+            <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
             </div>
           </div>
           <div class="cntnt-list-inner gray-bg col-md-12">
@@ -250,11 +250,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="/images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
             <div class="mb-scroll-icn">
-            <a href=""><i class="fa fa-angle-right"></i></a>
+            <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
             </div>
           </div>
        </div>
@@ -288,11 +288,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="/images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
             <div class="mb-scroll-icn">
-            <a href=""><i class="fa fa-angle-right"></i></a>
+            <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
             </div>
           </div>
           <div class="cntnt-list-inner col-md-12">
@@ -322,11 +322,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="/images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
             <div class="mb-scroll-icn">
-            <a href=""><i class="fa fa-angle-right"></i></a>
+            <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
             </div>
           </div>
           <div class="cntnt-list-inner gray-bg col-md-12">
@@ -356,11 +356,11 @@
              </div>
              <div class="inner-block-btn">
                 <img src="/images/heart_03.png" alt="" class="wishlist-icn-fill">
-                <a href="" class="dtail-btn">View Details</a>
+                <a href="" data-toggle="modal" data-target="#view-details-popup" class="dtail-btn">View Details</a>
                 <a href="" class="lendr-web-link">Lender Website</a>
              </div>
             <div class="mb-scroll-icn">
-            <a href=""><i class="fa fa-angle-right"></i></a>
+            <a href="" data-toggle="modal" data-target="#view-details-popup"><i class="fa fa-angle-right"></i></a>
             </div>
           </div>
        </div>
@@ -413,7 +413,7 @@
                          </p>
                          <span> <%= @fdic_cal_data.present? ? number_to_currency((@fdic_cal_data.m_scmtgbk * 1000).round(-3), precision: 0) : '$0' %></span>
                       </div>
-                      
+
                       <div class="volume-auto-loan-row ">
                          <p class="vol-row-inner">Certificates of participation in pools of residential mortgages
                          </p>
@@ -485,7 +485,7 @@
                           <p><%= remove_unnecessary_keywords(loan_officer.title)%></p>
                       </div>
                       <div class="col-xs-12 col-md-6">
-                          <p><%= loan_officer.phone1.present? ? mobile_no_formatting(loan_officer.phone1) : 
+                          <p><%= loan_officer.phone1.present? ? mobile_no_formatting(loan_officer.phone1) :
                           loan_officer.phone2.present? ? mobile_no_formatting(loan_officer.phone2) : mobile_no_formatting(loan_officer.cell)%>
                           </p>
                       </div>
@@ -529,7 +529,7 @@
           </div>
        </div>
        <!-- Home Equity Loan Officers end-->
-       
+
        <!-- News of Bank start-->
        <div class="volume-auto-loan full-width loan-detail-blocks">
           <h3>News on <%=@bank.name%> Mortgages and Home Loans</h3>
@@ -538,23 +538,23 @@
               <%@news_articles.each_with_index do |na, i|%>
                 <%if i < 5%>
                   <div class="car-auto-loan-news">
-                    <h6><%=link_to na.headline.truncate(42), na.url, target: "_blank"%></h6> 
+                    <h6><%=link_to na.headline.truncate(42), na.url, target: "_blank"%></h6>
                       <p><%=na.text.truncate(130)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                   </div>
                 <%else%>
                   <div id='news_articles_data_<%=i.to_s%>' style= "display:none;">
                     <div class="car-auto-loan-news">
-                      <h6><%=link_to na.headline.truncate(42), na.url, target: "_blank"%></h6> 
+                      <h6><%=link_to na.headline.truncate(42), na.url, target: "_blank"%></h6>
                         <p><%=na.text.truncate(130)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                     </div>
-                  </div>  
-                <%end%>  
+                  </div>
+                <%end%>
               <%end%>
               <%if @news_articles.count > 5%>
                 <div class="full-width">
                   <button class= "show-all-specialst-btn" id="desktop_news_data">See More</button>
                 </div>
-              <%end%>  
+              <%end%>
             <%else%>
               <div class="car-auto-loan-news">
                   No Records Found
@@ -567,23 +567,23 @@
               <%@news_articles.each_with_index do |na, i|%>
                 <%if i < 3 %>
                   <div class="car-auto-loan-news">
-                    <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
+                    <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
                       <p><%=na.text.truncate(72)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                   </div>
                 <%else%>
                   <div id='mobile_news_articles_data_<%=i.to_s%>' style= "display:none;">
                     <div class="car-auto-loan-news">
-                      <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6> 
+                      <h6><%=link_to na.headline.truncate(50), na.url, target: "_blank"%></h6>
                         <p><%=na.text.truncate(72)%>,  <%#=link_to "more info", na.url, target: "_blank"%></p>
                     </div>
-                  </div>  
-                <%end%>  
+                  </div>
+                <%end%>
               <%end%>
               <%if @news_articles.count > 3%>
                 <div class="news-see-more">
                   <a class= "news-see-more-link pull-right see-more-fdic" id="mobile_news_data">See More</a>
                 </div>
-              <%end%>  
+              <%end%>
             <%else%>
               <div class="car-auto-loan-news">
                   No Records Found
@@ -591,7 +591,7 @@
             <%end%>
             </div>
           <!-- <a href="" class="see-more-link-common">See More Reported Financials</a> -->
-          
+
        </div>
        <!-- News end here -->
 
@@ -664,7 +664,7 @@
       <div class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><img src="/images/cancel_03.png" alt="" class="login-cross-img"></button>
-            <h4><b>Create a Price Alert to obtain lowest Mortgage</b></br> 
+            <h4><b>Create a Price Alert to obtain lowest Mortgage</b></br>
                Rates and Save even more!
             </h4>
          </div>
@@ -673,7 +673,7 @@
             <input type="text" placeholder="Password">
             <button class="rates-btn">Log In</button>
             <div class="forgot-signup-links">
-               <a href="">Forgot Password,</a> or 
+               <a href="">Forgot Password,</a> or
                <a href="" data-toggle="modal" data-target="#signup-popup" class="signup-link-clr">Sign up Now</a>
             </div>
          </div>
@@ -686,7 +686,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
-  
+
   // Load google charts
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
@@ -732,8 +732,8 @@
             $('#srch-edit-mb-only').click(function(){
               $('.header-main').removeClass("black-head");
             });
-            }); 
-  
+            });
+
   // section for web view
   $("#desktop_news_data").click(function(){
     <%(5..9).each do |i|%>
@@ -743,7 +743,7 @@
   });
 
   $("#mobile_news_data").click(function(){
-  //section for mobile view 
+  //section for mobile view
      <%(3..9).each do |i|%>
       $("#mobile_news_articles_data_<%=i.to_s%>").toggle();
     <%end%>
