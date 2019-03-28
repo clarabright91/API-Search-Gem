@@ -153,7 +153,8 @@ header .navbar-right{ margin:0 !important;}
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 0;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin-top: 15px;
 }
 .content-bx h1{
   font-size: 18px;
@@ -175,7 +176,7 @@ header .navbar-right{ margin:0 !important;}
 }
 .content-bx-content .table-condensed>tbody>tr>td{
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   color: #19214d;
 }
 .content-bx-content .table-striped>tbody>tr:nth-of-type(odd){
@@ -183,6 +184,49 @@ header .navbar-right{ margin:0 !important;}
 }
 .popup-logo-img{
   max-width: 63px;
+}
+.small-p {
+  margin-left: 5px;
+  color: #666;
+  font-size: 14px;
+  margin-top: 13px;
+}
+.content-btns {
+  float: right;
+  display: flex;
+  align-items: center;
+  margin: 15px 0px;
+}
+.content-btns p {
+  margin-bottom: 0;
+  margin-right: 15px;
+}
+
+.content-btns p{
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.orange-clr{
+  color: #fb6325 !important;
+}
+
+.content-btns .btn-orange {
+    background: #fb6325;
+    color: #fff;
+    border-radius: 0;
+    border: 2px solid #fb6325;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+.content-btns .btn-orange.reverse-btn{
+  background: transparent;
+  color: #fb6325;
+  display: none;
+}
+.loan-para {
+  display: flex;
+  justify-content: space-between;
 }
 /*view details modal css end*/
 /*banner search css start*/
@@ -2330,11 +2374,29 @@ p.top-txt-info {
     position: absolute;
     max-width: 100%;
     width: 100%;
-    margin: 0px;
+    margin: 0px 0px 25px 0px;
     top: 50%;
     left: 50%;
     height: 100vh;
     transform: translate(-50%, -50%);
+  }
+  .content-btns {
+      float: none;
+      width: 100%;
+      display: block;
+  }
+  .content-btns .btn-orange {
+      width: 100%;
+      margin-top: 10px;
+  }
+  .content-btns .btn-orange.reverse-btn{
+    display: inline-block;
+  }
+  .content-btns p{
+    text-align: center;
+  }
+  .loan-para {
+    display: block;
   }
   #view-details-popup .modal-header .col-md-3{
     padding: 0;
