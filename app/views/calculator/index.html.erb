@@ -125,8 +125,6 @@
                 <td>Property Tax</td>
                 <td align="center">
                 <%= text_field_tag :monthly_property_tax, @property_tax[:monthly], :class=> "editable-field", :readonly => true %>
-
-                  <%#= number_to_currency(@property_tax[:monthly], unit: "")%>
                 </td>
                 <td align="center">
                   <%= number_to_currency(@property_tax[:total], unit: "")%>
@@ -139,8 +137,6 @@
                 <td>Home Insurance</td>
                 <td align="center">
                 <%= text_field_tag :monthly_home_insurance, @home_insurance[:monthly], :class=> "editable-field", :readonly => true %>
-
-                <%#= number_to_currency(@home_insurance[:monthly], unit: "")%>
                 </td>
                 <td align="center">
                   <%= number_to_currency(@home_insurance[:total], unit: "")%>
@@ -153,7 +149,6 @@
                 <td>PMI Insurance</td>
                 <td align="center">
                 <%= text_field_tag :monthly_pmi_insurance, @pmi_insurance[:monthly], :class=> "editable-field", :readonly => true %>
-                <%#= number_to_currency(@pmi_insurance[:monthly], unit: "")%>
                 </td>
                 <td align="center">
                   <%= number_to_currency(@pmi_insurance[:total], unit: "")%>
@@ -166,7 +161,6 @@
                 <td>HOA Dues</td>
                 <td align="center">
                 <%= text_field_tag :monthly_hoa_dues, @hoa_dues[:monthly], :class=> "editable-field", :readonly => true %>
-                <%#= number_to_currency(@hoa_dues[:monthly], unit: "")%>
                 </td>
                 <td align="center"><%= number_to_currency(@hoa_dues[:total], unit: "")%></td>
                 <td align="center"><%= @hoa_dues[:percentage]%>%</td>
@@ -187,7 +181,7 @@
         <div class="ex-breakdown">
           <h1>Mortgage Payoff Over Time</h1>
           <div class="graph-wrapper">
-            <%= line_chart @payoff_schedule_graph, discrete: true, legend: "bottom", prefix: "$" , thousands: ",", points: false, colors: ['#6495ed', '#7FFF00', '#C71585', 'red'],max: @payoff_over_time_max %>
+            <div id="payoff-schedule-graph" style="height: 400px"></div>
             <div class="text-right">
               <a href="javascript:void(0)" class="btn primary-btn toggle-btn monthly-btn">SHOW PAYOFF SCHEDULE</a>
               <a href="#" class="btn btn-block primary-btn modal-btn" data-toggle="modal" data-target="#payoff_schedule_modal">SHOW PAYOFF SCHEDULE</a>
@@ -213,7 +207,7 @@
                 </tr>
               </thead>
               <tbody>
-                <%                
+                <%
                 if @monthly_payoff_list.present?
                   %>
                   <tr>
@@ -451,7 +445,7 @@
                   <h2>CA Homes Prices</h2>
                   <div class="graph-container"></div>
                   <div id="ca-affordability" style="height: 400px"></div>
-                  <p>Based on the strong historical housing growth in the entire United State and Mountain View CA, home Ownership is a Strong investment compared to renting.</p>                 
+                  <p>Based on the strong historical housing growth in the entire United State and Mountain View CA, home Ownership is a Strong investment compared to renting.</p>
                 </div>
               </div>
             </div>
@@ -487,7 +481,7 @@
               </tr>
             </thead>
             <tbody>
-                <%                
+                <%
                 if @monthly_payoff_list.present?
                   %>
                   <tr>
@@ -518,7 +512,6 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
   $(document).ready(function(){
     ca_keys = <%= raw @ca_affordability.keys.reverse %>
@@ -527,6 +520,85 @@
     nation_wide_values = <%= raw @nation_wide_affordability.values.reverse %>
     area_chart_max = <%= raw @area_chart_max %>
     params_data = <%= raw params.to_json %>
+
+    principle_values  = <%= raw @principle.values %>
+    interest_values  = <%= raw @interest.values %>
+    remaining_values  = <%= raw @remaining.values %>
+    total_paid_values  = <%= raw @total_paid.values %>
+
+   $('#payoff-schedule-graph').highcharts({
+          title: {
+              text: '',
+          },
+          credits:{
+            enabled: false
+          },
+          xAxis: {
+         },
+          yAxis: {
+              title: {
+                  text: ''
+              },
+              plotLines: [{
+                  value: 0,
+                  width: 1,
+                  color: '#808080'
+              }],
+              labels:{
+                format: "{value}",
+                formatter: function() {
+                  var formatter2 = new Intl.NumberFormat('en-US', {
+                      style: 'currency',
+                      currency: 'USD',
+                      minimumFractionDigits: 0
+                    })
+                    return (formatter2.format(this.value));
+                  }
+              }
+          },
+          tooltip: {
+              valueSuffix: '',
+
+              formatter:function(){
+                var formatter2 = new Intl.NumberFormat('en-US', {
+                      style: 'currency',
+                      currency: 'USD',
+                      minimumFractionDigits: 0
+                    })
+                    return '<b>'+ this.point.x+ '</b><br></br>' +this.series.name+': <b>'+ (formatter2.format(this.point.y)) +'</b><br/>'
+              },
+          },
+          legend: {
+              align: 'center',
+              verticalAlign: 'bottom',
+              borderWidth: 0
+          },
+          series: [{
+              name: 'Principal',
+              pointStart: 1,
+              color:'#6495ed',
+              lineWidth: 4,
+              data: principle_values
+          }, {
+              name: 'Interest',
+              pointStart: 1,
+              dashStyle: 'dash',
+              color:'#7FFF00',
+              data: interest_values
+          }, {
+              name: 'Remaining',
+              pointStart: 1,
+              dashStyle: 'dash',
+              color:'#C71585',
+              data: remaining_values
+          }, {
+              name: 'Total Paid',
+              pointStart: 1,
+              color:'red',
+              lineWidth: 5,
+              data: total_paid_values
+          }]
+      });
 
     Highcharts.chart('ca-affordability', {
         chart: {
@@ -540,7 +612,7 @@
             categories: ca_keys,
             labels:{
               rotation:-30,
-            }            
+            }
         },
         yAxis:{
           title: "",
