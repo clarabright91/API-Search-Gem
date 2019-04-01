@@ -1,3 +1,4 @@
+
 <!-- <.....form wrapper.... -->
 <section class="form-wrapper" id="myHeader">
   <%= form_tag(calculator_path, method: :get) do %>
@@ -181,7 +182,7 @@
         <div class="ex-breakdown">
           <h1>Mortgage Payoff Over Time</h1>
           <div class="graph-wrapper">
-            <div id="payoff-schedule-graph" style="height: 400px"></div>
+            <div id="payoff-schedule-graph" style="height: 300px"></div>
             <div class="text-right">
               <a href="javascript:void(0)" class="btn primary-btn toggle-btn monthly-btn">SHOW PAYOFF SCHEDULE</a>
               <a href="#" class="btn btn-block primary-btn modal-btn" data-toggle="modal" data-target="#payoff_schedule_modal">SHOW PAYOFF SCHEDULE</a>
@@ -436,16 +437,16 @@
                 <div class="graph-bx">
                   <h2>Nationwide Home Prices</h2>
                   <div class="graph-container"></div>
-                  <div id="nation-wide-affordability" style="height: 400px"></div>
-                  <p>Based on the strong historical housing growth in the entire United State and Mountain View CA, home Ownership is a Strong investment compared to renting.</p>
+                  <div id="nation-wide-affordability" style="height: 300px"></div>
+                  <p>Nationwide home prices grew at an average of <%=@nation_wide_avg_five%> % over the past 5 years, <%=@nation_wide_avg_ten%> % over the past 10 years, and <%=@nation_wide_avg_thirty %> % over the past 30 years.</p>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="graph-bx">
                   <h2>CA Homes Prices</h2>
                   <div class="graph-container"></div>
-                  <div id="ca-affordability" style="height: 400px"></div>
-                  <p>Based on the strong historical housing growth in the entire United State and Mountain View CA, home Ownership is a Strong investment compared to renting.</p>
+                  <div id="ca-affordability" style="height: 300px"></div>
+                  <p>California home prices grew at an average of <%=@ca_avg_five%> % over the past 5 years. <%= @ca_avg_ten %> % over the past 10 years, and <%=@ca_avg_thirty%> % over the past 30 years</p>
                 </div>
               </div>
             </div>
@@ -628,7 +629,10 @@
             name: '',
             data: ca_values,
             color: "#4DD264",
-            fillOpacity: 0.8
+            fillOpacity: 0.8,
+            marker:{
+              enabled: false
+            }
         }],
         title: {
           align:"center",
@@ -683,7 +687,10 @@
             name: undefined,
             data: nation_wide_values,
             color: "#3C95D0",
-            fillOpacity: 0.8
+            fillOpacity: 0.8,
+            marker:{
+              enabled: false
+            }
         }],
         title: {
           align:"center",
@@ -782,14 +789,27 @@
   remove_keys = ['action','controller','mortgage_month','utf8']
   remove_keys.forEach(e => delete params_data[e]);
 
+  $("#monthly_property_tax").each(function (){
+        $(this).maskMoney().maskMoney('mask',Number($(this).val()));
+    });
+    $("#monthly_home_insurance").each(function (){
+        $(this).maskMoney().maskMoney('mask',Number($(this).val()));
+    });
+    $("#monthly_pmi_insurance").each(function (){
+        $(this).maskMoney().maskMoney('mask',Number($(this).val()));
+    });
+    $("#monthly_hoa_dues").each(function (){
+        $(this).maskMoney().maskMoney('mask',Number($(this).val()));
+    });   
+
     $("#monthly_property_tax").click(function(){
       $(this).attr("readonly", false);
-      monthly_tax_value = $(this).val()
+      monthly_tax_value = Number($(this).val().replace(/[^0-9.-]+/g,""));
     });
 
     $("#monthly_property_tax").focusout(function() {
-      if (monthly_tax_value != $(this).val()){
-        params_data['monthly_property_tax'] = $(this).val()
+      if (monthly_tax_value != Number($(this).val().replace(/[^0-9.-]+/g,""))){
+        params_data['monthly_property_tax'] = Number($(this).val().replace(/[^0-9.-]+/g,""));
         $.ajax({
          type: "GET",
          url: "/calculator",
@@ -802,12 +822,12 @@
 
     $("#monthly_home_insurance").click(function(){
       $(this).attr("readonly", false);
-      monthly_home_ins = $(this).val()
+      monthly_home_ins = Number($(this).val().replace(/[^0-9.-]+/g,""));
     });
 
     $("#monthly_home_insurance").focusout(function() {
-      if (monthly_home_ins != $(this).val()){
-        params_data['monthly_home_insurance'] = $(this).val()
+      if (monthly_home_ins != Number($(this).val().replace(/[^0-9.-]+/g,""))){
+        params_data['monthly_home_insurance'] = Number($(this).val().replace(/[^0-9.-]+/g,""));
         $.ajax({
          type: "GET",
          url: "/calculator",
@@ -820,12 +840,12 @@
 
     $("#monthly_pmi_insurance").click(function(){
       $(this).attr("readonly", false);
-      monthly_pmi_ins = $(this).val()
+      monthly_pmi_ins = Number($(this).val().replace(/[^0-9.-]+/g,""));
     });
 
     $("#monthly_pmi_insurance").focusout(function() {
-      if (monthly_pmi_ins != $(this).val()){
-        params_data['monthly_pmi_insurance'] = $(this).val()
+      if (monthly_pmi_ins != Number($(this).val().replace(/[^0-9.-]+/g,""))){
+        params_data['monthly_pmi_insurance'] = Number($(this).val().replace(/[^0-9.-]+/g,""));
         $.ajax({
          type: "GET",
          url: "/calculator",
@@ -838,12 +858,12 @@
 
     $("#monthly_hoa_dues").click(function(){
       $(this).attr("readonly", false);
-      monthly_hoa_dues = $(this).val()
+      monthly_hoa_dues = Number($(this).val().replace(/[^0-9.-]+/g,""));
     });
 
     $("#monthly_hoa_dues").focusout(function() {
-      if (monthly_hoa_dues != $(this).val()){
-        params_data['monthly_hoa_dues'] = $(this).val()
+      if (monthly_hoa_dues != Number($(this).val().replace(/[^0-9.-]+/g,""))){
+        params_data['monthly_hoa_dues'] = Number($(this).val().replace(/[^0-9.-]+/g,""));
         $.ajax({
          type: "GET",
          url: "/calculator",
@@ -853,6 +873,7 @@
 
       }
     });
+
 
   window.onscroll = function() {myFunction()};
 

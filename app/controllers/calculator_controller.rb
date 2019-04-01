@@ -78,15 +78,15 @@ class CalculatorController < ApplicationController
     end
 
     if (@costs_compare_sum[:buy].abs <=0)
-       @costs_compare_sum[:benifit] = "Buying is better than renting even if you could rent for free! In addition, you can save average #{ ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2)) } per year from your federal taxable income. Increase your profit by visiting our <a href='JavaScript:void(0);'>MORTGAGE RATES</a> and getting a more favorable mortgages."
+       @costs_compare_sum[:benifit] = "Buying is better than renting even if you could rent for free! In addition, you can save average #{ ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2)) } per year from your federal taxable income. Increase your profit by visiting our <a href='JavaScript:void(0);'>mortgage rates</a> and getting a more favorable mortgages."
     else
       if (@costs_compare_sum[:buy].abs >0 && @costs_compare_sum[:rent].abs > @costs_compare_sum[:buy].abs)
-        @costs_compare_sum[:benifit] = "Buying is cheaper than renting! You’ll earn an extra #{ActionController::Base.helpers.number_to_currency(((@costs_compare_sum[:buy] - @costs_compare_sum[:rent]).round(2)))} after #{@mortgage_term} years of buying a house. In addition, you can save average #{ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2))} per year from your federal taxable income. If you lower your mortgage interest rate, you could save more! Come to visit our <a href='JavaScript:void(0);'>MORTGAGE RATES</a> and find other favorable mortgages."
+        @costs_compare_sum[:benifit] = "Buying is cheaper than renting! You’ll earn an extra #{ActionController::Base.helpers.number_to_currency(((@costs_compare_sum[:buy] - @costs_compare_sum[:rent]).round(2)))} after #{@mortgage_term} years of buying a house. In addition, you can save average #{ActionController::Base.helpers.number_to_currency(@mortgage_interest_deduction.round(2))} per year from your federal taxable income. If you lower your mortgage interest rate, you could save more! Come to visit our <a href='JavaScript:void(0);'>mortgage rates</a> and find other favorable mortgages."
       else
         if (@costs_compare_sum[:buy].abs >0 && @costs_compare_sum[:rent].abs == @costs_compare_sum[:buy].abs )
-            @costs_compare_sum[:benifit] = "The cost of buying a house is about the same as renting a house for #{@mortgage_term} years! However, you could save more through lowering your mortgage interest rate. Come to visit our <a href='JavaScript:void(0);'>MORTGAGE RATES</a> to get more favorable mortgages."
+            @costs_compare_sum[:benifit] = "The cost of buying a house is about the same as renting a house for #{@mortgage_term} years! However, you could save more through lowering your mortgage interest rate. Come to visit our <a href='JavaScript:void(0);'>mortgage rates</a> to get more favorable mortgages."
           else
-           @costs_compare_sum[:benifit] = "You'd better to rent a house instead pf buying. Or you could lower your mortgage interest rate to save the cost of buying. Come to visit our <a href='JavaScript:void(0);'>MORTGAGE RATES</a> to get more favorable mortgages."
+           @costs_compare_sum[:benifit] = "You'd better to rent a house instead pf buying. Or you could lower your mortgage interest rate to save the cost of buying. Come to visit our <a href='JavaScript:void(0);'>mortgage rates</a> to get more favorable mortgages."
         end
       end
     end
@@ -381,16 +381,48 @@ class CalculatorController < ApplicationController
     ca_affordability_list = CalculatorHomeAffordability.where(state_code: "CA")
     if ca_affordability_list.present?
       ca_affordability_list.each do |ca_aff|
-        @ca_affordability[ca_aff.date.strftime("%m/%Y")] = ca_aff.home_price_index.round(2)
+        @ca_affordability[ca_aff.date.strftime("%Y")] = ca_aff.home_price_index.round(2)
       end
     end
 
     nation_wide_affordability_list = CalculatorHomeAffordability.where(state_code: "Nationwide")
     if nation_wide_affordability_list.present?
       nation_wide_affordability_list.each do |nation_wide|
-        @nation_wide_affordability[nation_wide.date.strftime("%m/%Y")] = nation_wide.home_price_index.round(2)
+        @nation_wide_affordability[nation_wide.date.strftime("%Y")] = nation_wide.home_price_index.round(2)
       end
     end
+
+    @nation_wide_avg_five = 0.0
+    @nation_wide_avg_ten = 0.0
+    @nation_wide_avg_thirty = 0.0
+    @ca_avg_five = 0.0
+    @ca_avg_ten = 0.0
+    @ca_avg_thirty = 0.0
+
+    if @nation_wide_affordability.present? && @ca_affordability.present?
+      @nation_wide_affordability.keys[0..4].each do |x|
+        @nation_wide_avg_five = @nation_wide_avg_five + @nation_wide_affordability[x]
+        @ca_avg_five = @ca_avg_five + @ca_affordability[x]
+      end
+
+      @nation_wide_affordability.keys[0..9].each do |x|
+        @nation_wide_avg_ten = @nation_wide_avg_ten + @nation_wide_affordability[x]
+        @ca_avg_ten = @ca_avg_ten + @ca_affordability[x]
+      end
+
+      @nation_wide_affordability.keys[0..29].each do |x|
+        @nation_wide_avg_thirty = @nation_wide_avg_thirty + @nation_wide_affordability[x]
+        @ca_avg_thirty = @ca_avg_thirty + @ca_affordability[x]
+      end
+    end
+    @nation_wide_avg_five = (@nation_wide_avg_five/5).round(2)
+    @ca_avg_five = (@ca_avg_five/5).round(2)
+
+    @nation_wide_avg_ten = (@nation_wide_avg_ten/10).round(2)
+    @ca_avg_ten = (@ca_avg_ten/10).round(2)
+
+    @nation_wide_avg_thirty = (@nation_wide_avg_thirty/30).round(2)
+    @ca_avg_thirty = (@ca_avg_thirty/30).round(2)
 
     if nation_wide_affordability_list.present? && ca_affordability_list.present?
       if nation_wide_affordability_list.maximum(:home_price_index) > ca_affordability_list.maximum(:home_price_index)

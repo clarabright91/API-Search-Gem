@@ -14,7 +14,7 @@ Rails.application.config.assets.precompile += %w( calculator.scss )
 Rails.application.config.assets.precompile += %w( highcharts )
 Rails.application.config.assets.precompile += %w( chartkick.js )
 Rails.application.config.assets.precompile += %w( Chart.bundle )
-
+Rails.application.config.assets.precompile += %w( maskmoney )
 
 # Add additional assets to the asset load path.
 # Rails.application.config.assets.paths << Emoji.images_path

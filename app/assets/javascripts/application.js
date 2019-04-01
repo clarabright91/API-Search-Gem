@@ -16,4 +16,5 @@
 //= require jquery.validate.additional-methods
 //= require turbolinks
 //= require bootstrap
+//= require maskmoney
 //= require_tree .

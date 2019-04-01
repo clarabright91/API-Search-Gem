@@ -98,3 +98,4 @@ gem "roo", "~> 2.7.0"
 gem "chartkick"
 gem "highcharts-rails"
 gem 'whenever', require: false
+gem 'maskmoney-rails'
