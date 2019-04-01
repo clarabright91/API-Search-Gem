@@ -115,7 +115,10 @@ header .navbar-right{ margin:0 !important;}
   opacity: 1;
 }
 #view-details-popup .panel-body {
-  padding: 15px 15px 0;
+  padding: 0px 15px 0;
+}
+#view-details-popup .modal-header {
+  border-bottom: none;
 }
 .tab-header{
   border-bottom: 1px solid #ddd;
@@ -167,10 +170,11 @@ header .navbar-right{ margin:0 !important;}
   padding: 15px;
 }
 .content-bx-content{
-  padding: 15px;
+  padding: 0 10px 0 10px;
   font-size: 16px;
   color: #19214d;
 }
+
 .mb-none{
   margin-bottom: 0;
 }
@@ -205,6 +209,18 @@ header .navbar-right{ margin:0 !important;}
 .content-btns p{
   font-size: 15px;
   font-weight: 600;
+}
+
+#tab1warning table{
+  margin-bottom: 0;
+}
+
+#tab1warning table tbody tr:first-child td{
+  border-top: none;
+}
+
+#tab2warning{
+  margin-bottom: 152px;
 }
 
 .orange-clr{
