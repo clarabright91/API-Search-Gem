@@ -59,11 +59,15 @@ header .navbar-right{ margin:0 !important;}
 /*view details modal css start*/
 
 #view-details-popup .modal-dialog{
-  max-width: 800px;
+  max-width: 995px;
   width: 96%;
 }
 #view-details-popup .modal-body{
   padding: 0;
+}
+
+#view-details-popup  .content-bx{
+  margin-top: 5px;
 }
 #view-details-popup button.close {
     position: absolute;
@@ -75,6 +79,9 @@ header .navbar-right{ margin:0 !important;}
 }
 #view-details-popup button.close:hover{
   opacity: 0.5;
+}
+.padding-5{
+  padding: 0 5px;
 }
 .bank-logos span{
   width: 63px;
@@ -180,7 +187,7 @@ header .navbar-right{ margin:0 !important;}
 }
 .content-bx-content .table-condensed>tbody>tr>td{
   padding: 10px;
-  font-size: 14px;
+  font-size: 13px;
   color: #19214d;
 }
 .content-bx-content .table-striped>tbody>tr:nth-of-type(odd){
@@ -220,7 +227,7 @@ header .navbar-right{ margin:0 !important;}
 }
 
 #tab2warning{
-  margin-bottom: 152px;
+  margin-bottom: 92px;
 }
 
 .orange-clr{
