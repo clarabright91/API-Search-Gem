@@ -125,7 +125,7 @@
               <tr>
                 <td>Property Tax</td>
                 <td align="center">
-                <%= text_field_tag :monthly_property_tax, @property_tax[:monthly], :class=> "editable-field", :readonly => true %>
+                <%= text_field_tag :monthly_property_tax, @property_tax[:monthly], :class=> "editable-field" %>
                 </td>
                 <td align="center">
                   <%= number_to_currency(@property_tax[:total], unit: "")%>
@@ -137,7 +137,7 @@
               <tr>
                 <td>Home Insurance</td>
                 <td align="center">
-                <%= text_field_tag :monthly_home_insurance, @home_insurance[:monthly], :class=> "editable-field", :readonly => true %>
+                <%= text_field_tag :monthly_home_insurance, @home_insurance[:monthly], :class=> "editable-field" %>
                 </td>
                 <td align="center">
                   <%= number_to_currency(@home_insurance[:total], unit: "")%>
@@ -149,7 +149,7 @@
               <tr>
                 <td>PMI Insurance</td>
                 <td align="center">
-                <%= text_field_tag :monthly_pmi_insurance, @pmi_insurance[:monthly], :class=> "editable-field", :readonly => true %>
+                <%= text_field_tag :monthly_pmi_insurance, @pmi_insurance[:monthly], :class=> "editable-field" %>
                 </td>
                 <td align="center">
                   <%= number_to_currency(@pmi_insurance[:total], unit: "")%>
@@ -161,7 +161,7 @@
               <tr>
                 <td>HOA Dues</td>
                 <td align="center">
-                <%= text_field_tag :monthly_hoa_dues, @hoa_dues[:monthly], :class=> "editable-field", :readonly => true %>
+                <%= text_field_tag :monthly_hoa_dues, @hoa_dues[:monthly], :class=> "editable-field" %>
                 </td>
                 <td align="center"><%= number_to_currency(@hoa_dues[:total], unit: "")%></td>
                 <td align="center"><%= @hoa_dues[:percentage]%>%</td>
@@ -446,7 +446,7 @@
                   <h2>CA Homes Prices</h2>
                   <div class="graph-container"></div>
                   <div id="ca-affordability" style="height: 300px"></div>
-                  <p>California home prices grew at an average of <%=@ca_avg_five%> % over the past 5 years. <%= @ca_avg_ten %> % over the past 10 years, and <%=@ca_avg_thirty%> % over the past 30 years</p>
+                  <p>California home prices grew at an average of <%=@ca_avg_five%> % over the past 5 years. <%= @ca_avg_ten %> % over the past 10 years, and <%=@ca_avg_thirty%> % over the past 30 years.</p>
                 </div>
               </div>
             </div>
@@ -526,7 +526,7 @@
     interest_values  = <%= raw @interest.values %>
     remaining_values  = <%= raw @remaining.values %>
     total_paid_values  = <%= raw @total_paid.values %>
-
+    x_axis_max_value = <%= raw @principle.values.count %>
    $('#payoff-schedule-graph').highcharts({
           title: {
               text: '',
@@ -535,6 +535,9 @@
             enabled: false
           },
           xAxis: {
+            endOnTick: true,
+            max: x_axis_max_value,
+            min: 1
          },
           yAxis: {
               title: {
@@ -803,7 +806,6 @@
     });   
 
     $("#monthly_property_tax").click(function(){
-      $(this).attr("readonly", false);
       monthly_tax_value = Number($(this).val().replace(/[^0-9.-]+/g,""));
     });
 
@@ -816,12 +818,10 @@
          data : params_data,
          dataType: "script",
         });
-
       }
     });
 
     $("#monthly_home_insurance").click(function(){
-      $(this).attr("readonly", false);
       monthly_home_ins = Number($(this).val().replace(/[^0-9.-]+/g,""));
     });
 
@@ -839,7 +839,6 @@
     });
 
     $("#monthly_pmi_insurance").click(function(){
-      $(this).attr("readonly", false);
       monthly_pmi_ins = Number($(this).val().replace(/[^0-9.-]+/g,""));
     });
 
@@ -857,7 +856,6 @@
     });
 
     $("#monthly_hoa_dues").click(function(){
-      $(this).attr("readonly", false);
       monthly_hoa_dues = Number($(this).val().replace(/[^0-9.-]+/g,""));
     });
 
