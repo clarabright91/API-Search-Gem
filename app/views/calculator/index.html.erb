@@ -527,6 +527,7 @@
     remaining_values  = <%= raw @remaining.values %>
     total_paid_values  = <%= raw @total_paid.values %>
     x_axis_max_value = <%= raw @principle.values.count %>
+
    $('#payoff-schedule-graph').highcharts({
           title: {
               text: '',
@@ -776,102 +777,27 @@
         $('#mortgage_month').val(parseInt(selectedValue)*12 + " "+ "month")
       });
     });
-  var monthly_tax_value = ''
-  var monthly_home_ins = ''
-  var monthly_pmi_ins = ''
-  var monthly_hoa_dues = ''
 
   params_data['monthly_property_tax'] = $("#monthly_property_tax").val()
-
   params_data['monthly_home_insurance'] = $("#monthly_home_insurance").val()
-
   params_data['monthly_pmi_insurance'] = $("#monthly_pmi_insurance").val()
-
   params_data['monthly_hoa_dues'] = $("#monthly_hoa_dues").val()
-
   remove_keys = ['action','controller','mortgage_month','utf8']
   remove_keys.forEach(e => delete params_data[e]);
 
-  $("#monthly_property_tax").each(function (){
+   $("#monthly_property_tax").add("#monthly_home_insurance").add("#monthly_pmi_insurance").add("#monthly_hoa_dues").each(function (){
         $(this).maskMoney().maskMoney('mask',Number($(this).val()));
     });
-    $("#monthly_home_insurance").each(function (){
-        $(this).maskMoney().maskMoney('mask',Number($(this).val()));
+
+    $("#monthly_property_tax").add("#monthly_home_insurance").add("#monthly_pmi_insurance").add("#monthly_hoa_dues").change(function() {
+       params_data[this.name] = Number($(this).val().replace(/[^0-9.-]+/g,""));
+      $.ajax({
+       type: "GET",
+       url: "/calculator",
+       data : params_data,
+       dataType: "script",
+      });
     });
-    $("#monthly_pmi_insurance").each(function (){
-        $(this).maskMoney().maskMoney('mask',Number($(this).val()));
-    });
-    $("#monthly_hoa_dues").each(function (){
-        $(this).maskMoney().maskMoney('mask',Number($(this).val()));
-    });   
-
-    $("#monthly_property_tax").click(function(){
-      monthly_tax_value = Number($(this).val().replace(/[^0-9.-]+/g,""));
-    });
-
-    $("#monthly_property_tax").focusout(function() {
-      if (monthly_tax_value != Number($(this).val().replace(/[^0-9.-]+/g,""))){
-        params_data['monthly_property_tax'] = Number($(this).val().replace(/[^0-9.-]+/g,""));
-        $.ajax({
-         type: "GET",
-         url: "/calculator",
-         data : params_data,
-         dataType: "script",
-        });
-      }
-    });
-
-    $("#monthly_home_insurance").click(function(){
-      monthly_home_ins = Number($(this).val().replace(/[^0-9.-]+/g,""));
-    });
-
-    $("#monthly_home_insurance").focusout(function() {
-      if (monthly_home_ins != Number($(this).val().replace(/[^0-9.-]+/g,""))){
-        params_data['monthly_home_insurance'] = Number($(this).val().replace(/[^0-9.-]+/g,""));
-        $.ajax({
-         type: "GET",
-         url: "/calculator",
-         data : params_data,
-         dataType: "script",
-        });
-
-      }
-    });
-
-    $("#monthly_pmi_insurance").click(function(){
-      monthly_pmi_ins = Number($(this).val().replace(/[^0-9.-]+/g,""));
-    });
-
-    $("#monthly_pmi_insurance").focusout(function() {
-      if (monthly_pmi_ins != Number($(this).val().replace(/[^0-9.-]+/g,""))){
-        params_data['monthly_pmi_insurance'] = Number($(this).val().replace(/[^0-9.-]+/g,""));
-        $.ajax({
-         type: "GET",
-         url: "/calculator",
-         data : params_data,
-         dataType: "script",
-        });
-
-      }
-    });
-
-    $("#monthly_hoa_dues").click(function(){
-      monthly_hoa_dues = Number($(this).val().replace(/[^0-9.-]+/g,""));
-    });
-
-    $("#monthly_hoa_dues").focusout(function() {
-      if (monthly_hoa_dues != Number($(this).val().replace(/[^0-9.-]+/g,""))){
-        params_data['monthly_hoa_dues'] = Number($(this).val().replace(/[^0-9.-]+/g,""));
-        $.ajax({
-         type: "GET",
-         url: "/calculator",
-         data : params_data,
-         dataType: "script",
-        });
-
-      }
-    });
-
 
   window.onscroll = function() {myFunction()};
 
@@ -885,7 +811,5 @@
       header.classList.remove("sticky");
     }
   }
-
-
   });
 </script>
