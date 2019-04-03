@@ -382,4 +382,315 @@
   </div>
 </div>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    ca_keys = <%= raw @ca_affordability.keys.reverse %>
+    ca_values = <%= raw @ca_affordability.values.reverse %>
+    nation_wide_keys = <%= raw @nation_wide_affordability.keys.reverse %>
+    nation_wide_values = <%= raw @nation_wide_affordability.values.reverse %>
+    area_chart_max = <%= raw @area_chart_max %>
 
+
+    principle_values  = <%= raw @principle.values %>
+    interest_values  = <%= raw @interest.values %>
+    remaining_values  = <%= raw @remaining.values %>
+    total_paid_values  = <%= raw @total_paid.values %>
+    x_axis_max_value = <%= raw @principle.values.count %>
+
+    $('#payoff-schedule-graph').highcharts({
+        title: {
+            text: '',
+        },
+        credits:{
+          enabled: false
+        },
+        xAxis: {
+          endOnTick: true,
+          max: x_axis_max_value,
+          min: 1
+       },
+        yAxis: {
+            title: {
+                text: ''
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }],
+            labels:{
+              format: "{value}",
+              formatter: function() {
+                var formatter2 = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 0
+                  })
+                  return (formatter2.format(this.value));
+                }
+            }
+        },
+        tooltip: {
+            valueSuffix: '',
+
+            formatter:function(){
+              var formatter2 = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 0
+                  })
+                  return '<b>'+ this.point.x+ '</b><br></br>' +this.series.name+': <b>'+ (formatter2.format(this.point.y)) +'</b><br/>'
+            },
+        },
+        legend: {
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Principal',
+            pointStart: 1,
+            color:'#6495ed',
+            lineWidth: 4,
+            data: principle_values
+        }, {
+            name: 'Interest',
+            pointStart: 1,
+            dashStyle: 'dash',
+            color:'#7FFF00',
+            data: interest_values
+        }, {
+            name: 'Remaining',
+            pointStart: 1,
+            dashStyle: 'dash',
+            color:'#C71585',
+            data: remaining_values
+        }, {
+            name: 'Total Paid',
+            pointStart: 1,
+            color:'red',
+            lineWidth: 5,
+            data: total_paid_values
+        }]
+    });
+
+    Highcharts.chart('ca-affordability', {
+        chart: {
+            type: 'area',
+            backgroundColor: '#FFFF',
+        },
+        credits: {
+            enabled: false
+        },
+        xAxis: {
+            categories: ca_keys,
+            labels:{
+              rotation:-30,
+            }
+        },
+        yAxis:{
+          title: "",
+          max: area_chart_max,
+          gridLineDashStyle:"Dash",
+        },
+        plotOptions: {
+            series: {
+              stacking: 'normal'
+            }
+        },
+        series: [{
+            name: '',
+            data: ca_values,
+            color: "#4DD264",
+            fillOpacity: 0.8,
+            marker:{
+              enabled: false
+            }
+        }],
+        title: {
+          align:"center",
+          floating:false,
+          margin:15,
+          style:{ "color": "#333333", "fontSize": "18px" },
+          text:undefined,
+          useHTML:false,
+          verticalAlign:undefined,
+          widthAdjust:-44,
+          x:0,
+          y:undefined
+        },
+        legend: {
+          enabled: false
+        },
+        tooltip: {
+          pointFormat: '{point.y}',
+          shadow: false,
+          style: {
+              fontSize: '14px',
+              fontWeight: '800'
+          }
+        }
+    });
+
+    Highcharts.chart('nation-wide-affordability', {
+        chart: {
+            type: 'area',
+            backgroundColor: '#FFFF',
+        },
+        credits: {
+            enabled: false
+        },
+        xAxis: {
+            categories: nation_wide_keys,
+            labels:{
+              rotation:-30,
+            }
+        },
+        yAxis:{
+          title: "",
+          max: area_chart_max,
+          gridLineDashStyle:"Dash",
+        },
+        plotOptions: {
+            series: {
+              stacking: 'normal'
+            }
+        },
+        series: [{
+            name: undefined,
+            data: nation_wide_values,
+            color: "#3C95D0",
+            fillOpacity: 0.8,
+            marker:{
+              enabled: false
+            }
+        }],
+        title: {
+          align:"center",
+          floating:false,
+          margin:15,
+          style:{ "color": "#333333", "fontSize": "18px" },
+          text:undefined,
+          useHTML:false,
+          verticalAlign:undefined,
+          widthAdjust:-44,
+          x:0,
+          y:undefined
+        },
+        legend: {
+          enabled: false
+        },
+        tooltip: {
+          pointFormat: '{point.y}',
+          shadow: false,
+          style: {
+              fontSize: '14px',
+              fontWeight: '800'
+          }
+        }
+    });
+  });
+
+
+  $(document).ready(function(){
+
+    // get_todays_rate
+    $("#today_rate").click(function(){
+      var term = $('#mortgage_term').val()
+      $.ajax({
+        type:'GET',
+        url:'/get_todays_rate',
+        data: {mortgage_term: term},
+        success:function(res){
+        $('#annual_interest_rate').val(res["today_rate"] + '%')
+        }
+      });
+    });
+
+    $(".toggle-btn").click(function(){
+      $(".toggle-container").toggle(500);
+    });
+
+    if ($('#mortgage_term').val()!=''){
+      $('#mortgage_month').val(parseInt($('#mortgage_term').val())*12 + " "+ "month")
+    }
+
+    if($('#annual_interest_rate')!=''){
+      var value = $('#annual_interest_rate').val()
+      if (value.includes("%")) {
+        value = value.replace('%%','%')
+        value = value.replace('% %','%')
+        value = value.replace('%%%','%')
+        $('#annual_interest_rate').val(value)
+      }
+      else{
+        $('#annual_interest_rate').val(value + "%")
+      }
+    }
+
+    $("#annual_interest_rate").change(function () {
+      var value = $(this).val()
+      if (value.includes("%")) {
+        value = value.replace('%%','%')
+        value = value.replace('% %','%')
+        value = value.replace('%%%','%')
+        $('#annual_interest_rate').val(value)
+      }
+      else{
+        $('#annual_interest_rate').val(value + "%")
+      }
+    });
+
+    $("#mortgage_term").change(function () {
+      var selectedText = $(this).find("option:selected").text();
+      var selectedValue = $(this).val();
+      $('#mortgage_month').val(parseInt(selectedValue)*12 + " "+ "month")
+    });
+  });
+
+  $(document).ready(function(){
+    FixHeader()
+
+      var items = document.querySelectorAll("#monthly_property_tax, #monthly_home_insurance, #monthly_pmi_insurance, #monthly_hoa_dues");
+
+      for (var i = 0; i < items.length; i++)
+      {
+        $(items[i]).maskMoney().maskMoney('mask',Number(items[i].value));
+      }
+
+    data = $("#calculator_form").serialize();
+    all_data = data +
+            "&monthly_property_tax=" + $("#monthly_property_tax").val() +
+            "&monthly_home_insurance=" + $("#monthly_home_insurance").val() +
+            "&monthly_pmi_insurance=" + $("#monthly_pmi_insurance").val() +
+            "&monthly_hoa_dues=" + $("#monthly_hoa_dues").val()
+
+
+
+    $("#monthly_property_tax, #monthly_home_insurance, #monthly_pmi_insurance, #monthly_hoa_dues").change(function() {
+      all_data[this.name] = Number($(this).val().replace(/[^0-9.-]+/g,""));
+      $.ajax({
+       type: "GET",
+       url: "/calculator",
+       data : all_data,
+       dataType: "script",
+      });
+    });
+    function FixHeader() {
+      window.onscroll = function() {myFunction()};
+
+      var header = document.getElementById("myHeader");
+      var sticky = header.offsetTop;
+
+      function myFunction() {
+        if (window.pageYOffset > sticky) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      }
+    }
+
+
+  });
+</script>
