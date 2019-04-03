@@ -400,19 +400,33 @@ class CalculatorController < ApplicationController
     @ca_avg_thirty = 0.0
 
     if @nation_wide_affordability.present? && @ca_affordability.present?
+      nation_wide_affordability = @nation_wide_affordability.values
+      ca_affordability = @ca_affordability.values
+
+      if nation_wide_affordability.min > ca_affordability.min
+        @aff_min_value = ((nation_wide_affordability.min/100).to_i+1)*100
+      else
+        @aff_min_value = ((ca_affordability.min/100).to_i+1)*100
+      end
+      @ca_first_value = @aff_min_value - ca_affordability.reverse[0]
+      @nation_wide_first_value = @aff_min_value - nation_wide_affordability.reverse[0]
+
+      @ca_values = ca_affordability.reverse.map{ |ca| (ca +@ca_first_value ).round(2) }
+      @nation_wide_values = nation_wide_affordability.reverse.map{ |nation| (nation+@nation_wide_first_value).round(2) }
+
       @nation_wide_affordability.keys[0..4].each do |x|
-        @nation_wide_avg_five = @nation_wide_avg_five + @nation_wide_affordability[x]
-        @ca_avg_five = @ca_avg_five + @ca_affordability[x]
+        @nation_wide_avg_five = @nation_wide_avg_five + (@nation_wide_affordability[x] + @nation_wide_first_value)
+        @ca_avg_five = @ca_avg_five + (@ca_affordability[x] + @ca_first_value)
       end
 
       @nation_wide_affordability.keys[0..9].each do |x|
-        @nation_wide_avg_ten = @nation_wide_avg_ten + @nation_wide_affordability[x]
-        @ca_avg_ten = @ca_avg_ten + @ca_affordability[x]
+        @nation_wide_avg_ten = @nation_wide_avg_ten + (@nation_wide_affordability[x] + @nation_wide_first_value)
+        @ca_avg_ten = @ca_avg_ten + (@ca_affordability[x] + @ca_first_value)
       end
 
       @nation_wide_affordability.keys[0..29].each do |x|
-        @nation_wide_avg_thirty = @nation_wide_avg_thirty + @nation_wide_affordability[x]
-        @ca_avg_thirty = @ca_avg_thirty + @ca_affordability[x]
+        @nation_wide_avg_thirty = @nation_wide_avg_thirty + (@nation_wide_affordability[x] + @nation_wide_first_value)
+        @ca_avg_thirty = @ca_avg_thirty + (@ca_affordability[x] + @ca_first_value)
       end
     end
     @nation_wide_avg_five = (@nation_wide_avg_five/5).round(2)
@@ -424,14 +438,11 @@ class CalculatorController < ApplicationController
     @nation_wide_avg_thirty = (@nation_wide_avg_thirty/30).round(2)
     @ca_avg_thirty = (@ca_avg_thirty/30).round(2)
 
-    if nation_wide_affordability_list.present? && ca_affordability_list.present?
-      if nation_wide_affordability_list.maximum(:home_price_index) > ca_affordability_list.maximum(:home_price_index)
-        @area_chart_max = nation_wide_affordability_list.maximum(:home_price_index)
-      else
-        @area_chart_max = ca_affordability_list.maximum(:home_price_index)
-      end
-      @area_chart_max = ((@area_chart_max.ceil/50)+1)*50
+    if @nation_wide_values.max < @ca_values.max
+      @area_chart_max =  @ca_values.max
+    else
+      @area_chart_max =  @nation_wide_values.max
     end
-
+     @area_chart_max = ((@area_chart_max.ceil/50)+1)*50
   end
 end
