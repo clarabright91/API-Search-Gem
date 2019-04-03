@@ -668,7 +668,12 @@
 
 
     $("#monthly_property_tax, #monthly_home_insurance, #monthly_pmi_insurance, #monthly_hoa_dues").change(function() {
-      all_data[this.name] = Number($(this).val().replace(/[^0-9.-]+/g,""));
+      data = $("#calculator_form").serialize();
+      all_data = data +
+            "&monthly_property_tax=" + $("#monthly_property_tax").val() +
+            "&monthly_home_insurance=" + $("#monthly_home_insurance").val() +
+            "&monthly_pmi_insurance=" + $("#monthly_pmi_insurance").val() +
+            "&monthly_hoa_dues=" + $("#monthly_hoa_dues").val()
       $.ajax({
        type: "GET",
        url: "/calculator",

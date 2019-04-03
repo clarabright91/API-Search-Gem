@@ -240,7 +240,7 @@ class CalculatorController < ApplicationController
     @mortgage_interest[:total] =  (calculate_monthly_payment*number_of_payments-@mortgage_principal[:total]) rescue 0.0
 
     if params["monthly_home_insurance"].present?
-      @home_insurance[:monthly] = params["monthly_home_insurance"].to_f
+      @home_insurance[:monthly] = params["monthly_home_insurance"].delete(',').to_f
     else
       @home_insurance[:monthly] = (@home_price*0.35).round(2) rescue 0.0
     end
@@ -248,15 +248,15 @@ class CalculatorController < ApplicationController
     @home_insurance[:total] = ((@default_annual_home_insurance*1.0*number_of_payments)/12) rescue 0.0
 
     if params["monthly_pmi_insurance"].present?
-      @pmi_insurance[:monthly] = params["monthly_pmi_insurance"].to_f
-      @default_pmi_insurance = params["monthly_pmi_insurance"].to_f
+      @pmi_insurance[:monthly] = params["monthly_pmi_insurance"].delete(',').to_f
+      @default_pmi_insurance = params["monthly_pmi_insurance"].delete(',').to_f
     else
       @pmi_insurance[:monthly] = @default_pmi_insurance rescue 0.0
     end
     @pmi_insurance[:total] =  @pmi_insurance[:monthly].to_i == 0 ? 0.0 :  @pmi_insurance[:monthly]*calculate_pmi_term rescue 0.0
 
     if params["monthly_hoa_dues"].present?
-      @hoa_dues[:monthly] = params["monthly_hoa_dues"].to_f
+      @hoa_dues[:monthly] = params["monthly_hoa_dues"].delete(',').to_f
     else
       @hoa_dues[:monthly] = 0.00
     end
@@ -290,7 +290,7 @@ class CalculatorController < ApplicationController
     @property_tax = {}
 
     if params["monthly_property_tax"].present?
-        @property_tax[:monthly] = params["monthly_property_tax"].to_f rescue 0.0
+        @property_tax[:monthly] = params["monthly_property_tax"].delete(',').to_f rescue 0.0
         @property_tax[:total] = (@property_tax[:monthly]*number_of_payments) rescue 0.0
     else
       @property_tax[:monthly] = (@home_price * @default_property_tax_perc*1.0 /100/12) rescue 0.0
@@ -337,7 +337,7 @@ class CalculatorController < ApplicationController
     @home_price = params[:home_price].gsub(/[$,]/,'').to_i if params[:home_price].present?
     @down_payment = params[:down_payment].gsub(/[$,]/,'').to_i if params[:down_payment].present?
     @mortgage_term = params[:mortgage_term].to_i if params[:mortgage_term].present?
-    @annual_interest_rate = params[:annual_interest_rate].to_f if params[:annual_interest_rate].present?
+    @annual_interest_rate = params[:annual_interest_rate].delete(',').to_f if params[:annual_interest_rate].present?
   end
 
   def set_default_pmi_insurance
