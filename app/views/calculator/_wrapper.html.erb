@@ -1,8 +1,8 @@
 <div class="container">
   <div>
     <div>
-      <p> pure-loan.com provides a mortgage calculator to help you understand your monthly home expenses. this includes mort-gage principal home loan interesr , and estimate total payment for both home motgage and refinance customers. </p>
-      <p> These calculator are based on your location, interst rate, and our proprientary analysis platform.  We use various sources of public data to estimate additional costs such as property tax, home insuarance, and PMI insuarance it applicable.
+      <p> pure-loan.com provides a mortgage calculator to help you understand your monthly home expenses. this includes mortgage principal home loan interest , and estimate total payment for both home mortgage and refinance customers. </p>
+      <p> These calculator are based on your location, interest rate, and our proprietary analysis platform. We use various sources of public data to estimate additional costs such as property tax, home insurance, and PMI insurance it applicable.
       </p>
       <p id=”notice”><%= notice %></p>
       <div class="ex-breakdown">
@@ -385,9 +385,11 @@
 <script type="text/javascript">
   $(document).ready(function(){
     ca_keys = <%= raw @ca_affordability.keys.reverse %>
-    ca_values = <%= raw @ca_affordability.values.reverse %>
+    ca_values = <%= raw @ca_values %>
+
     nation_wide_keys = <%= raw @nation_wide_affordability.keys.reverse %>
-    nation_wide_values = <%= raw @nation_wide_affordability.values.reverse %>
+    nation_wide_values = <%= raw @nation_wide_values %>
+
     area_chart_max = <%= raw @area_chart_max %>
 
 
@@ -658,15 +660,6 @@
         $(items[i]).maskMoney().maskMoney('mask',Number(items[i].value));
       }
 
-    data = $("#calculator_form").serialize();
-    all_data = data +
-            "&monthly_property_tax=" + $("#monthly_property_tax").val() +
-            "&monthly_home_insurance=" + $("#monthly_home_insurance").val() +
-            "&monthly_pmi_insurance=" + $("#monthly_pmi_insurance").val() +
-            "&monthly_hoa_dues=" + $("#monthly_hoa_dues").val()
-
-
-
     $("#monthly_property_tax, #monthly_home_insurance, #monthly_pmi_insurance, #monthly_hoa_dues").change(function() {
       all_data[this.name] = Number($(this).val().replace(/[^0-9.-]+/g,""));
       $.ajax({
@@ -676,6 +669,7 @@
        dataType: "script",
       });
     });
+
     function FixHeader() {
       window.onscroll = function() {myFunction()};
 
