@@ -99,3 +99,5 @@ gem "chartkick"
 gem "highcharts-rails"
 gem 'whenever', require: false
 gem 'maskmoney-rails'
+
+gem 'rate_sheet_extractor' , git: "git@github.com:PureLoan/APIHookup.git"
