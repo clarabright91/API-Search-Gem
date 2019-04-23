@@ -1,5 +1,5 @@
 <!-- header start -->
-<header>
+<header class="fixed-header">
   <div class="container">
    <nav class="navbar navbar-default navbar-tall navbar-full">
     <div class="navbar-header">
@@ -10,7 +10,8 @@
         <span class="icon-bar"></span>
       </button>
       <!-- <a class="navbar-brand" href=""><%#= image_tag("logo.png", :alt => "PureLOAN") %></a> -->
-      <%= link_to image_tag("logo.png", :alt => "PureLOAN"),root_path, class: "navbar-brand" %>
+      <%= link_to image_tag("logo.png", :alt => "PureLOAN"),root_path, class: "navbar-brand blue-logo" %>
+      <%= link_to image_tag("white-logo.png", :alt => "PureLOAN"),root_path, class: "navbar-brand white-logo" %>
     </div>
     <div class="navbar-collapse collapse" id="global-nav" aria-expanded="false">
      <div class="navbar-right">
@@ -77,4 +78,18 @@
         })
     });
 
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    var header = $(".fixed-header");
+    $(window).scroll(function() {    
+        var scroll = $(window).scrollTop();
+        if (scroll >= 50) {
+            header.addClass("scrolled");
+        } else {
+            header.removeClass("scrolled");
+        }
+    });
+  });
 </script>
