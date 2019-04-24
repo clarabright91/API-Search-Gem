@@ -1,6 +1,6 @@
 GIT
   remote: https://clarabright91:rate-pureloan987@github.com/PureLoan/APIHookup.git
-  revision: 49ffdac217328222a06a799bbe283e560143e37d
+  revision: 16e145a7e3bd747cbe7bb7b86398e85d838dd5eb
   specs:
     rate_sheet_extractor (0.1.0)
       activesupport
