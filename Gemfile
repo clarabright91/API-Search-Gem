@@ -100,9 +100,5 @@ gem "highcharts-rails"
 gem 'whenever', require: false
 gem 'maskmoney-rails'
 
-# gem 'rate_sheet_extractor' , git: "https://github.com/PureLoan/APIHookup.git"
-
-
-gem 'rate_sheet_extractor', :git => 'https://clarabright91:Bittu123456@github.com/PureLoan/APIHookup.git'
-# , :ref => 'revision_no'
+gem 'rate_sheet_extractor', :git => 'https://clarabright91:rate-pureloan987@github.com/PureLoan/APIHookup.git'
 
