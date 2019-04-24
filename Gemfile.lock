@@ -1,6 +1,6 @@
 GIT
   remote: https://clarabright91:rate-pureloan987@github.com/PureLoan/APIHookup.git
-  revision: 475401ed4d0d8d8308b0e9d167690b3414be24e9
+  revision: 49ffdac217328222a06a799bbe283e560143e37d
   specs:
     rate_sheet_extractor (0.1.0)
       activesupport
@@ -375,7 +375,7 @@ GEM
       tilt
     select2-rails (4.0.3)
       thor (~> 0.14)
-    selenium-webdriver (3.141.5926)
+    selenium-webdriver (3.142.0)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     sidekiq (5.2.7)
