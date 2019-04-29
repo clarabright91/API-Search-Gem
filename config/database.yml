@@ -1,8 +1,0 @@
-development:
-  host: localhost
-  adapter: postgresql
-  encoding: unicode
-  username: postgres
-  password: 12345678
-  pool: 5
-  database: pure_loan
